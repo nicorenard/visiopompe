@@ -1,0 +1,90 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Pompes</title>
+</head>
+<body>
+<!---------side-bar------->
+
+
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-centered" style="width:200px;" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-hide-large"
+  onclick="w3_close()">Fermer &times;</button>
+
+        <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar">
+        <a href="{% url 'homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i> Visiopompe V0.1</a>
+        <a href="{% url 'pompe:index' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pompes</a>
+        <a href="{% url 'pompe:pieces' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pièces détachées</a>
+        <a href="{% url 'pompe:huiles' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Huiles</a>
+        <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Kits maintenance</a>
+        <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i> Support</a>
+
+</div>
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+<!---------Contenu------->
+
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Kits de Maintenance</h2>
+    </div>
+    {% for kit in kits %}
+    <section class="w3-container w3-padding-24 w3-mobile">
+        <div class="w3-cell-row w3-border">
+            <div class="w3-col m3">
+                <img src="{{kit.image.url}}" class="w3-leftbar" alt="{{kit.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:50%; ">
+            </div>
+            <div class="w3-col m6">
+                <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{kit.nom}} - <strong>MARQUE</strong> : {{kit.marque}}</p>
+                <p style="font-size: 14px;">Référence fabriquant : <i>{{kit.reference_marque}}</i></p>
+                <p style="font-size: 14px;">Revendeur : <i>{{kit.nom_revendeur}}</i> <strong>||</strong> Référence revendeur : <i>{{kit.reference_revendeur}}</i></p></p>
+                <p style="font-size: 14px;">Informations du kit : <i>{{kit.information}}</i></p>
+            </div>
+            <div class="w3-col m3 w3-leftbar" >
+                <p>&nbsp;<img src="{% static 'pompe/img/icon_quantite.png' %}" alt="quantite" style="width: 15%">
+                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.quantite }}</strong></i></p>
+                <br>
+                <p>&nbsp;<img src="{% static 'pompe/img/icon_localisation.png' %}" alt="geolocalisation" style="width: 15%">
+                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.localisation}}</strong></i></p>
+                <br>
+            </div>
+
+            </div>
+             {% endfor %}
+    </section>
+    <section class="w3-container w3-mobile">
+       <div class="w3-panel w3-display-container">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Revendeurs de kits</h3>
+            <p><a href="https://www.jrtech.fr/"><img src="https://www.jrtech.fr/graphisme/logo-haut.svg"></a> </p>
+       </div>
+    </section>
+    <section class="w3-container w3-mobile">
+      <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+            <p><i class="fa fa-quote-right w3-xlarge"></i></p>
+            <p><i class="w3-serif w3-xlarge">Quand le bateau est au milieu du fleuve, il est bien tard pour réparer l’avarie.”.</i></p>
+            <p align="left">Proverbe Chinois</p>
+      </div>
+
+    </section>
+</div>
+</body>
+
+</html>

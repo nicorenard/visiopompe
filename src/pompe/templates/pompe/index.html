@@ -1,0 +1,136 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Pompes</title>
+</head>
+<body>
+<!---------side bar------->
+
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-centered" style="width:200px;" id="mySidebar">
+
+        <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar">
+        <a href="{% url 'homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i> Visiopompe V0.1</a>
+        <a href="{% url 'pompe:index' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pompes</a>
+        <a href="{% url 'pompe:pieces' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pièces détachées</a>
+        <a href="{% url 'pompe:huiles' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Huiles</a>
+        <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Kits maintenance</a>
+        <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i> Support</a>
+
+</div>
+
+<!---------Contenu------->
+
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Pompes</h2>
+    </div>
+    <section class="w3-container w3-padding-32 w3-mobile">
+        {% for pompe in pompes %}
+        <div class="w3-container w3-border-top  w3-border-light-grey ">
+            <p class="w3-bottombar" style="font-size: 20px; "><strong>NOM</strong> : {{pompe.nom}}
+                - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.marque}}
+                - <strong style="font-size: 18px;">Modèle</strong> : {{pompe.modele}}</p>
+            <p style="text-align: right;">
+            <img src="{% static 'pompe/img/option/icons_edit.png' %}" onclick="document.getElementById('modal01').style.display='block'" class="w3-hover-opacity">
+            <img src="{% static 'pompe/img/option/icons_duplicate.png' %}" onclick="document.getElementById('modal02').style.display='block'" class="w3-hover-opacity">
+            <img src="{% static 'pompe/img/option/icons_delete.png' %}" onclick="document.getElementById('modal03').style.display='block'" class="w3-hover-opacity"></p>
+        </div>
+        <div class="w3-container w3-cell-row" >
+            <div class ="w3-container w3-cell" style="width: 50%">
+                <img src="{{pompe.image.url}}" alt="{{pompe.nom}}" style="width: 75%; display: block; margin: auto;">
+            </div>
+            <div class="w3-container w3-cell w3-leftbar">
+                <p style="font-size: 16px; text-align: left;">
+                    <img src="{% static 'pompe/img/icon_localisation2.png' %}"  >
+                        &nbsp;Localisation : {{pompe.localisation_etage}}&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_piece}}
+                        <i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_emplacement}}
+                    </p>
+
+                <p style="font-size: 16px; ">Statut actuel : {% if pompe.statut == 'A' %}<img src="{% static 'pompe/img/icon_statut_actif.png' %}" alt="pompe_ok">
+                {% elif pompe.statut == 'R' %}<img src="{% static 'pompe/img/icon_reparation.png' %}" alt="pompe_reparation">
+                {% elif pompe.statut == 'P' %}<img src="{% static 'pompe/img/icon_enpanne.png' %}" alt="pompe_pb">
+                {% else %}<img src="{% static 'pompe/img/icons_stockage.png'%}" alt="pompe_stock">
+                {% endif %}<!---generer l'image en fonction du statut pompe.statut----></p>
+
+                <p class="w3-bottombar w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Dernière Vidange: <i>{{pompe.date_derniere_vidange}}</i></p>
+                <h5 class="w3-border-bottom w3-border-light-grey">&nbsp;Informations diverses :</h5>
+                <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
+                <p><img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbsp;<a href="{{pompe.manuel}}">Documentation technique</a></p>
+            </div>
+
+        </div>
+        <div class="w3-container w3-cell-row ">
+            <div class="w3-container w3-cell w3-mobile w3-leftbar">
+                <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service}}</p>
+                <p><img src="{% static 'pompe/img/icon_numeroserie.png' %}">&nbsp;N° de série : {{pompe.numero_serie}}</p>
+                <p><img src="{% static 'pompe/img/icon_code_umr.png' %}"> N° inventaire UMR : {{pompe.code_umr}}</p>
+            </div>
+            <div class="w3-container w3-leftbar w3-cell w3-mobile">
+                <p><img src="{% static 'pompe/img/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.phasage}}</p>
+                <p><img src="{% static 'pompe/img/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.puissance}} Hertz</p>
+                <p>{% if pompe.etage <= 2 %}<img src="{% static 'pompe/img/icon_1etage.png'%}" alt="pompe_etage_1">
+                    {% else %}<img src="{% static 'pompe/img/icon_2etage.png'%}" alt="pompe_etage_2">
+                    {% endif %}Nombre d'étage : {{pompe.nombre_etage}}</p>
+            </div>
+            <div class="w3-container w3-leftbar w3-cell w3-mobile">
+                <p><img src="{% static 'pompe/img/icon_vidangeurgente.png' %}">&nbsp;Huile : {{pompe.huile}}</p>
+                <p><img src="{% static 'pompe/img/icon_vide.png' %}" >&nbspVide théorique : {{pompe.vide_theorique |stringformat:".2e"}}</p>
+                <p><img src="{% static 'pompe/img/icon_vide.png' %}" > Vide testé : {{pompe.vide_teste |stringformat:".2e"}}</p>
+            </div>
+        </div>
+
+    </section>
+                {% endfor %}
+
+    <section>
+        <div class="w3-container" >
+            <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+                <p><i class="fa fa-quote-right w3-xlarge"></i></p>
+                <p><i class="w3-serif w3-xlarge">“Le son de la pompe qui grince est aussi nécessaire que la musique des sphères.”</i></p>
+                <p align="left">Henry David Thoreau</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!----modal--->
+<div id="modal01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+        <div class="w3-center"><br>
+                <span onclick="document.getElementById('modal01').style.display='none'" class="w3-button w3-hover-red w3-display-topright" title="Fermer">&times;</span>
+            <form action="{% url %}" method="post" class="w3-container" >
+            {% csrf_token %}
+                {% for field in form %}
+                <div class=" field">
+                    {{field.errors}}
+                    {{field.label_tag}}: {{field}}
+                </div>
+            {% endfor%}
+             <p><input type="submit"></p>
+
+        </form>
+        </div>
+    </div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('modal01');
+var modal = document.getElementById('modal02');
+var modal = document.getElementById('modal03');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</body>
+
+</html>
