@@ -40,50 +40,50 @@
             <img src="{% static 'pompe/img/option/icons_duplicate.png' %}" onclick="document.getElementById('modal02').style.display='block'" class="w3-hover-opacity">
             <img src="{% static 'pompe/img/option/icons_delete.png' %}" onclick="document.getElementById('modal03').style.display='block'" class="w3-hover-opacity"></p>
         </div>
-        <div class="w3-container w3-cell-row" >
-            <div class ="w3-container w3-cell" style="width: 50%">
-                <img src="{{pompe.image.url}}" alt="{{pompe.nom}}" style="width: 75%; display: block; margin: auto;">
+        <div class="w3-container w3-cell-row">
+            <!----section image--->
+            <div class ="w3-container w3-cell"  style="width: 15%">
+                <img src="{{pompe.image.url}}" alt="{{pompe.nom}}" style="width: 100%; display: block; margin: auto;">
             </div>
-            <div class="w3-container w3-cell w3-leftbar">
-                <p style="font-size: 16px; text-align: left;">
+            <!----section infopompe--->
+            <div class="w3-container w3-cell-row  w3-leftbar">
+                <div class="w3-container w3-cell w3-mobile">
+                <p style="font-size: 16px">
                     <img src="{% static 'pompe/img/icon_localisation2.png' %}"  >
                         &nbsp;Localisation : {{pompe.localisation_etage}}&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_piece}}
-                        <i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_emplacement}}
-                    </p>
-
+                        <i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_emplacement}} </p>
+                <!---genere l'image en fonction du statut pompe.statut---->
                 <p style="font-size: 16px; ">Statut actuel : {% if pompe.statut == 'A' %}<img src="{% static 'pompe/img/icon_statut_actif.png' %}" alt="pompe_ok">
                 {% elif pompe.statut == 'R' %}<img src="{% static 'pompe/img/icon_reparation.png' %}" alt="pompe_reparation">
                 {% elif pompe.statut == 'P' %}<img src="{% static 'pompe/img/icon_enpanne.png' %}" alt="pompe_pb">
                 {% else %}<img src="{% static 'pompe/img/icons_stockage.png'%}" alt="pompe_stock">
-                {% endif %}<!---generer l'image en fonction du statut pompe.statut----></p>
-
-                <p class="w3-bottombar w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Dernière Vidange: <i>{{pompe.date_derniere_vidange}}</i></p>
-                <h5 class="w3-border-bottom w3-border-light-grey">&nbsp;Informations diverses :</h5>
-                <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
-                <p><img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbsp;<a href="{{pompe.manuel}}">Documentation technique</a></p>
-            </div>
-
-        </div>
-        <div class="w3-container w3-cell-row ">
-            <div class="w3-container w3-cell w3-mobile w3-leftbar">
-                <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service}}</p>
-                <p><img src="{% static 'pompe/img/icon_numeroserie.png' %}">&nbsp;N° de série : {{pompe.numero_serie}}</p>
-                <p><img src="{% static 'pompe/img/icon_code_umr.png' %}"> N° inventaire UMR : {{pompe.code_umr}}</p>
-            </div>
-            <div class="w3-container w3-leftbar w3-cell w3-mobile">
-                <p><img src="{% static 'pompe/img/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.phasage}}</p>
-                <p><img src="{% static 'pompe/img/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.puissance}} Hertz</p>
-                <p>{% if pompe.etage <= 2 %}<img src="{% static 'pompe/img/icon_1etage.png'%}" alt="pompe_etage_1">
-                    {% else %}<img src="{% static 'pompe/img/icon_2etage.png'%}" alt="pompe_etage_2">
-                    {% endif %}Nombre d'étage : {{pompe.nombre_etage}}</p>
-            </div>
-            <div class="w3-container w3-leftbar w3-cell w3-mobile">
-                <p><img src="{% static 'pompe/img/icon_vidangeurgente.png' %}">&nbsp;Huile : {{pompe.huile}}</p>
-                <p><img src="{% static 'pompe/img/icon_vide.png' %}" >&nbspVide théorique : {{pompe.vide_theorique |stringformat:".2e"}}</p>
-                <p><img src="{% static 'pompe/img/icon_vide.png' %}" > Vide testé : {{pompe.vide_teste |stringformat:".2e"}}</p>
+                {% endif %}</p>
+                <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Dernière Vidange: <i>{{pompe.date_derniere_vidange}}</i></p>
+                </div>
+                <div class="w3-container w3-cell w3-mobile">
+                    <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service}}</p>
+                    <p><img src="{% static 'pompe/img/icon_numeroserie.png' %}">&nbsp;N° de série : {{pompe.numero_serie}}</p>
+                    <p><img src="{% static 'pompe/img/icon_code_umr.png' %}"> N° inventaire UMR : {{pompe.code_umr}}</p>
+                </div>
+                <div class="w3-container  w3-cell w3-mobile">
+                    <p><img src="{% static 'pompe/img/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.phasage}}</p>
+                    <p><img src="{% static 'pompe/img/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.puissance}} Hertz</p>
+                    <p>{% if pompe.etage <= 2 %}<img src="{% static 'pompe/img/icon_1etage.png'%}" alt="pompe_etage_1">
+                        {% else %}<img src="{% static 'pompe/img/icon_2etage.png'%}" alt="pompe_etage_2">
+                        {% endif %}Nombre d'étage : {{pompe.nombre_etage}}</p>
+                </div>
+                <div class="w3-container  w3-cell w3-mobile">
+                    <p><img src="{% static 'pompe/img/icon_vidangeurgente.png' %}">&nbsp;Huile : {{pompe.huile}}</p>
+                    <p><img src="{% static 'pompe/img/icon_vide.png' %}" >&nbspVide théorique : {{pompe.vide_theorique |stringformat:".2e"}}</p>
+                    <p><img src="{% static 'pompe/img/icon_vide.png' %}" > Vide testé : {{pompe.vide_teste |stringformat:".2e"}}</p>
+                </div>
             </div>
         </div>
-
+        <!----section info supplementaire--->
+        <div class="w3-container w3-border-top  w3-border-light-grey ">
+            <h5 class="w3-border-bottom w3-border-light-grey">&nbsp;Informations diverses :</h5>
+                <p><img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbsp;<a href="{{pompe.manuel}}">Documentation technique</a> - <img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
+        </div>
     </section>
                 {% endfor %}
 
@@ -104,17 +104,7 @@
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
         <div class="w3-center"><br>
                 <span onclick="document.getElementById('modal01').style.display='none'" class="w3-button w3-hover-red w3-display-topright" title="Fermer">&times;</span>
-            <form action="{% url %}" method="post" class="w3-container" >
-            {% csrf_token %}
-                {% for field in form %}
-                <div class=" field">
-                    {{field.errors}}
-                    {{field.label_tag}}: {{field}}
-                </div>
-            {% endfor%}
-             <p><input type="submit"></p>
 
-        </form>
         </div>
     </div>
 </div>

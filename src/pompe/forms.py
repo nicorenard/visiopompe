@@ -1,11 +1,8 @@
 from django import forms
 from .models import Pompes
 
-class AjoutPompe(forms.Form):
-    nom = forms.CharField(max_length=100)
-
-
-
+class AjoutPompe(forms.ModelForm):
+    pass
 
 class ModifPompeForm(forms.ModelForm):
 
