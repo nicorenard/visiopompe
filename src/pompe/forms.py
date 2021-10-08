@@ -1,8 +1,11 @@
 from django import forms
+from django.forms import ModelForm
 from .models import Pompes
 
-class AjoutPompe(forms.ModelForm):
-    pass
+class AjoutPompe(ModelForm):
+    class Meta:
+        model = Pompes
+        fields = '__all__'
 
 class ModifPompeForm(forms.ModelForm):
 

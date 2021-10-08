@@ -49,7 +49,11 @@ function w3_close() {
     <section class="w3-container w3-padding-16 w3-mobile" >
         <div class="w3-cell-row w3-border">
             <div class="w3-col m3">
-               <img src="{{piece.image.url}}" class="w3-leftbar" alt="{{piece.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:50%">
+                {% if piece.image %}
+                <img src="{{piece.image.url}}" class="w3-leftbar" alt="{{piece.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:50%">
+                {% else %}
+                <img src="{% static 'pompe/img/noimage.jpg' %}" alt="no image" style="width: 50%">
+                {% endif %}
             </div>
             <div class="w3-col m6">
                 <p class="w3-leftbar" style="font-size: 25px; "><strong>NOM</strong> : {{piece.nom}} - <strong>MARQUE</strong> : {{piece.marque}}</p>
@@ -68,6 +72,13 @@ function w3_close() {
     </section>
     {% endfor %}
     <section class="w3-container w3-mobile">
+       <div class="w3-panel w3-display-container">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Réparateurs</h3>
+            <p><a href="http://www.sofintec.fr/"><img src="http://www.sofintec.fr/img/sofintec/logo-sofintec-2.jpg"></a>
+            <a href="https://chaplain.fr/"><img src="https://chaplain.fr/wp-content/uploads/2019/04/CHAPLAINz.png" style="width: 12%"></a></p>
+       </div>
+    </section>
+    <section class="w3-container w3-mobile">
             <div class="w3-panel w3-leftbar w3-display-container">
                 <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
                 <p><i class="fa fa-quote-right w3-xlarge"></i></p>
@@ -75,6 +86,7 @@ function w3_close() {
                 <p align="left">Maoude Reboot</p>
             </div>
     </section>
+
 </div>
 
 
