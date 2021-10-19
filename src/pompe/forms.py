@@ -2,7 +2,8 @@ from django import forms
 from django.forms import ModelForm
 from .models import Pompes
 
-class AjoutPompe(ModelForm):
+class Pompeform(forms.ModelForm):
+
     class Meta:
         model = Pompes
         fields = '__all__'

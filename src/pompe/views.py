@@ -1,8 +1,8 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views import View
 from .models import Pompes, PiecesPompe, Kit, Huile
-from .forms import ModifPompeForm, AjoutPompe
+from .forms import ModifPompeForm, Pompeform
 
 
 def index(request):
@@ -22,43 +22,27 @@ def piece(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
     return render(request, 'pompe/pieces.html', {'pieces': pieces})
 
-def modifpompes(request):
-    form = ModifPompeForm()
-    return render(request, 'pompe/index.html', {'form': form})
+def ajout_pompe(request):
+    if request.method == "POST":
+        form = Pompeform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/index')
+    else:
+        form = Pompeform()
+    return render(request, 'pompe/forms.html', {'form': form})
 
-class PompeAjout(View):
-    def get(self, request):
-        form = AjoutPompe()
-        ctx = {'form': form}
-        return render(request, 'pompe/index.html', ctx)
+def modif_pompe(request):
+    if request.method == "POST":
+        form = ModifPompeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'pompe/index.html')
+    else:
+        form = ModifPompeForm()
+    return
 
-    def post(self, request):
-        form = AjoutPompe(request.POST)
-        if not form.is_valid():
-            ctx = {'form': form}
-            return render(request, 'pompe/index.html', ctx)
 
-        nouvellepompe = form.save()
-        x = reverse('form:main') + '#' + str(nouvellepompe.id)
-        return redirect(x)
-
-class PompeUpdate(View):
-    def get(self, request, pk):
-        oldpompe = get_object_or_404(Pompes, pk=pk)
-        form = AjoutPompe(instance=oldpompe)
-        ctx = {'form': form}
-        return render(request, 'pompe/index.html', ctx)
-
-    def post(self, request, pk):
-        oldpompe = get_object_or_404(Pompes, pk=pk)
-        form = AjoutPompe(request.POST, instance=oldpompe)
-        if not form.is_valid():
-            ctx = {'form': form}
-            return render(request, 'pompe/index.html', ctx)
-
-        editpompe = form.save()
-        x = reverse('form:main')
-        return redirect(x)
 
 # definir API pour appli bureau ?
 

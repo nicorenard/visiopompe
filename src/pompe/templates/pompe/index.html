@@ -34,6 +34,7 @@
         <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
         </form>
+        <a href="{% url 'pompe:ajout_pompe' %}" > {% static '/pompe/img/option/icon_edit.png' %} </a>
     </div>
     <section class="w3-container w3-padding-32 w3-mobile">
         {% for pompe in pompes %}
@@ -42,9 +43,10 @@
                 - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.marque}}
                 - <strong style="font-size: 18px;">Modèle</strong> : {{pompe.modele}}</p>
             <p style="text-align: right;">
-            <img src="{% static 'pompe/img/option/icons_edit.png' %}" onclick="document.getElementById('modal01').style.display='block'" class="w3-hover-opacity">
-            <img src="{% static 'pompe/img/option/icons_duplicate.png' %}" onclick="document.getElementById('modal02').style.display='block'" class="w3-hover-opacity">
-            <img src="{% static 'pompe/img/option/icons_delete.png' %}" onclick="document.getElementById('modal03').style.display='block'" class="w3-hover-opacity"></p>
+
+            <img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity"><a href="#"></a>
+            <img src="{% static 'pompe/img/option/icons_duplicate.png' %}" class="w3-hover-opacity">
+            <img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity"></p>
         </div>
         <div class="w3-container w3-cell-row">
             <!----section image--->
@@ -110,39 +112,6 @@
     </section>
 </div>
 
-<!----modal--->
-<div id="modal01" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-        <div class="w3-center"><br>
-            <span onclick="document.getElementById('modal01').style.display='none'" class="w3-button w3-hover-red w3-display-topright" title="Fermer">&times;</span>
-
-            <form action="PompeAjout" method="post">
-            {% csrf_token %}
-            <table>
-            {{ form.as_table }}
-            </table>
-            <input type="submit" value="Submit">
-            <input type="submit"
-            onclick="window.location='{% url 'pompe:index' %}' ; return false;"
-            value="Cancel">
-          </form>
-
-        </div>
-    </div>
-</div>
-<script>
-// Get the modal
-var modal = document.getElementById('modal01');
-var modal = document.getElementById('modal02');
-var modal = document.getElementById('modal03');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
 </body>
 
 </html>
