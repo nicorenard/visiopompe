@@ -29,32 +29,32 @@ class Pompes(models.Model):
         ('W', 'Welch'),
         ('Ax', 'Autres'),
     ]
-    marque = models.CharField(max_length=5, choices=marque_choix, default='Ad')
-    modele = models.CharField(max_length=20, default='')
+    marque = models.CharField(max_length=5, choices=marque_choix, default='Ad', verbose_name="Fabriquant")
+    modele = models.CharField(max_length=20, default='', verbose_name="Modèle de la pompe")
     numero_serie = models.CharField(max_length=100, default='')
     puissance_choix = [
         ('50', '50 Hertz'),
         ('60', '60 Hertz'),
 
     ]
-    puissance = models.CharField(default='50', choices=puissance_choix, max_length=2)
+    puissance = models.CharField(default='50', choices=puissance_choix, max_length=2, verbose_name="Puissance du moteur")
     etage_choix = [
         ('0', 'Membranes'),
         ('1', '1 étage'),
         ('2', '2 étages')
     ]
-    nombre_etage = models.CharField(max_length=1, choices=etage_choix, default='0')
-    vide_teste = models.FloatField(default=0)
-    vide_theorique = models.FloatField(default=0)
+    nombre_etage = models.CharField(max_length=1, choices=etage_choix, default='0', verbose_name="Nombre d'étages")
+    vide_teste = models.FloatField(default=0, verbose_name="Vide limite testé")
+    vide_theorique = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
     phasage_code = [
         ('Mono', 'Monophasé'),
         ('Tri', 'Triphasé'),
     ]
-    phasage = models.CharField(max_length=4, choices=phasage_code, default='M')
-    code_umr = models.CharField(max_length=100, default='')
-    localisation_etage = models.CharField(max_length=10, default='')
-    localisation_piece = models.CharField(max_length=10, default='')
-    localisation_emplacement = models.CharField(max_length=50, default='')
+    phasage = models.CharField(max_length=4, choices=phasage_code, default='M', verbose_name="Phasage du moteur électrique")
+    code_umr = models.CharField(max_length=100, default='', verbose_name="Codification UMR")
+    localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage")
+    localisation_piece = models.CharField(max_length=10, default='', verbose_name="Pièce")
+    localisation_emplacement = models.CharField(max_length=50, default='', verbose_name="Place dans la pièce")
     mise_en_service = models.DateField(auto_now=date.today)
     statut_pompe = [
         ('A', 'Active'),
@@ -62,10 +62,10 @@ class Pompes(models.Model):
         ('R', 'En Réparation'),
         ('P', 'En panne'),
             ]
-    statut = models.CharField(max_length=1, choices=statut_pompe, default='A')
-    date_derniere_vidange = models.DateField(default=date.today)
-    huile = models.CharField(max_length=50)
-    manuel = models.FileField(upload_to='upload/', max_length=254, default='', blank=True)
+    statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat actuel de la pompe")
+    date_derniere_vidange = models.DateField(default=date.today, verbose_name="Date de la dernière vidange")
+    huile = models.CharField(max_length=50, verbose_name="Huile utilisée")
+    manuel = models.FileField(upload_to='upload/', max_length=254, default='', blank=True, verbose_name="Manuel technique")
     information = models.CharField(max_length=100, default='')
 
     def __str__(self):
@@ -75,10 +75,10 @@ class Pompes(models.Model):
 class PiecesPompe(models.Model):
     nom = models.CharField(max_length=50)
     image = models.ImageField(upload_to='', max_length=254, blank=True, null=True)
-    marque = models.CharField(max_length=50)
-    type_pompe = models.CharField(max_length=100)
-    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0)
-    localisation = models.CharField(max_length=20, default='')
+    marque = models.CharField(max_length=50, verbose_name="Fabriquant")
+    type_pompe = models.CharField(max_length=100, verbose_name="Modèle de pompe")
+    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
+    localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
     information = models.CharField(max_length=50, default='')
 
     def __str__(self):
@@ -101,10 +101,10 @@ class Huile(models.Model):
 
     ]
     image = models.ImageField(choices=huile_image, max_length=254, blank=True, null=True)
-    marque = models.CharField(max_length=50, default='')
-    type_pompe = models.CharField(max_length=100, default='')
-    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0)
-    localisation = models.CharField(max_length=20, default='')
+    marque = models.CharField(max_length=50, default='', verbose_name="Fabriquant")
+    type_pompe = models.CharField(max_length=100, default='', verbose_name="Modèle de pompe")
+    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
+    localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
     information = models.TextField(max_length=100, default='')
 
     def __str__(self):
@@ -115,12 +115,12 @@ class Kit(models.Model):
 
     nom = models.CharField(max_length=50, default='')
     image = models.ImageField(upload_to='', max_length=254, blank=True, null=True)
-    marque = models.CharField(max_length=50, default='')
-    reference_marque = models.CharField(max_length=50, default='')
-    nom_revendeur = models.CharField(max_length=40, default='')
-    reference_revendeur = models.CharField(max_length=50, default='')
-    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0)
-    localisation = models.CharField(max_length=20, default='')
+    marque = models.CharField(max_length=50, default='', verbose_name="Fabriquant")
+    reference_marque = models.CharField(max_length=50, default='', verbose_name="Référence Fabriquant")
+    nom_revendeur = models.CharField(max_length=40, default='', verbose_name="Révendeur")
+    reference_revendeur = models.CharField(max_length=50, default='', verbose_name="Référence Revendeur")
+    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
+    localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
     information = models.TextField(max_length=100, default='')
 
     def __str__(self):

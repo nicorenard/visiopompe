@@ -44,7 +44,7 @@
                 - <strong style="font-size: 18px;">Modèle</strong> : {{pompe.modele}}</p>
             <p style="text-align: right;">
 
-            <img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity"><a href="#"></a>
+            <a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity"></a>
             <img src="{% static 'pompe/img/option/icons_duplicate.png' %}" class="w3-hover-opacity">
             <img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity"></p>
         </div>

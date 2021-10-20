@@ -1,6 +1,5 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
 from .models import Pompes, PiecesPompe, Kit, Huile
 from .forms import ModifPompeForm, Pompeform
 
@@ -22,25 +21,33 @@ def piece(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
     return render(request, 'pompe/pieces.html', {'pieces': pieces})
 
+def suppression_pompe(request, pk):
+    Pompes.objects.filter(id=id).delete()
+    pass
+
 def ajout_pompe(request):
     if request.method == "POST":
         form = Pompeform(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/index')
+        return redirect('/pompe')
+
     else:
         form = Pompeform()
+
     return render(request, 'pompe/forms.html', {'form': form})
 
-def modif_pompe(request):
+def modif_pompe(request, pk):
+    pompe= get_object_or_404(Pompes, pk=pk)
+
     if request.method == "POST":
-        form = ModifPompeForm(request.POST)
+        form = ModifPompeForm(request.POST, instance=pompe)
         if form.is_valid():
             form.save()
-            return render(request, 'pompe/index.html')
+            return redirect('/pompe')
     else:
-        form = ModifPompeForm()
-    return
+        form = ModifPompeForm(instance=pompe)
+    return render(request, 'pompe/pompe_edit.html', {'form': form})
 
 
 
