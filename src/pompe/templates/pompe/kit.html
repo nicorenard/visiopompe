@@ -22,6 +22,7 @@
         <a href="{% url 'pompe:pieces' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pièces détachées</a>
         <a href="{% url 'pompe:huiles' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Huiles</a>
         <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Kits maintenance</a>
+        <a href="{% url 'pompe:ajout_kit' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Ajout</a>
         <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i> Support</a>
 
 </div>
@@ -55,7 +56,7 @@ function w3_close() {
                 <img src="{% static 'pompe/img/noimage.jpg' %}" alt="no image" style="width: 50%">
                  {% endif %}
             </div>
-            <div class="w3-col m6">
+            <div class="w3-col m5">
                 <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{kit.nom}} - <strong>MARQUE</strong> : {{kit.marque}}</p>
                 <p style="font-size: 14px;">Référence fabriquant : <i>{{kit.reference_marque}}</i></p>
                 <p style="font-size: 14px;">Revendeur : <i>{{kit.nom_revendeur}}</i> <strong>||</strong> Référence revendeur : <i>{{kit.reference_revendeur}}</i></p></p>
@@ -69,8 +70,13 @@ function w3_close() {
                     <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.localisation}}</strong></i></p>
                 <br>
             </div>
-
+            <div class="w3-col m1">
+                <p>
+                    <a href="{% url 'pompe:kit_edit' pk=kit.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" ></a>
+                    <a href="{% url 'pompe:kit_suppression' pk=kit.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" ></a>
+                </p>
             </div>
+        </div>
              {% endfor %}
     </section>
     <section class="w3-container w3-mobile">
