@@ -47,7 +47,7 @@ function w3_close() {
         <h2>Kits de Maintenance</h2>
     </div>
     {% for kit in kits %}
-    <section class="w3-container w3-padding-24 w3-mobile">
+    <section class="w3-container w3-padding-16 w3-mobile">
         <div class="w3-cell-row w3-border">
             <div class="w3-col m3">
                 {% if kit.image %}
@@ -59,7 +59,7 @@ function w3_close() {
             <div class="w3-col m5">
                 <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{kit.nom}} - <strong>MARQUE</strong> : {{kit.marque}}</p>
                 <p style="font-size: 14px;">Référence fabriquant : <i>{{kit.reference_marque}}</i></p>
-                <p style="font-size: 14px;">Revendeur : <i>{{kit.nom_revendeur}}</i> <strong>||</strong> Référence revendeur : <i>{{kit.reference_revendeur}}</i></p></p>
+                <p style="font-size: 14px;">Revendeur : <i>{{kit.nom_revendeur}}</i> <strong>||</strong> Référence revendeur : <i>{{kit.reference_revendeur}}</i></p>
                 <p style="font-size: 14px;">Informations du kit : <i>{{kit.information}}</i></p>
             </div>
             <div class="w3-col m3 w3-leftbar" >
@@ -77,8 +77,9 @@ function w3_close() {
                 </p>
             </div>
         </div>
-             {% endfor %}
+
     </section>
+    {% endfor %}
     <section class="w3-container w3-mobile">
        <div class="w3-panel w3-display-container">
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Revendeurs de kits</h3>

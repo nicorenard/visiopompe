@@ -48,7 +48,7 @@ function w3_close() {
         <h2>Huiles</h2>
     </div>
     {% for huile in huiles %}
-    <section class="w3-panel w3-padding-32 w3-mobile ">
+    <section class="w3-panel w3-padding-12 w3-mobile ">
         <div class="w3-cell-row w3-border">
             <div class="w3-col m3">
                  <img src="{{huile.image.url }}" class="w3-leftbar" alt="{{huile.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:30%">
@@ -74,8 +74,8 @@ function w3_close() {
                 </p>
             </div>
         </div>
-    {% endfor %}
     </section>
+    {% endfor %}
     <section>
           <div class="w3-container w3-mobile" >
             <div class="w3-panel w3-leftbar">
