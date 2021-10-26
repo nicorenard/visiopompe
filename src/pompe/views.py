@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pompes, PiecesPompe, Kit, Huile
 from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
     ModifKitForm
+from .filters import PompeFilter
 
 
 def index(request):
@@ -55,6 +56,7 @@ def ajout_piece(request):
     if request.method == "POST":
         form = PieceForm(request.POST)
         if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
             form.save()
         return redirect("/pompe/pieces")
 

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pompe.apps.PompeConfig',
+    'django-filters'
+
 ]
 
 MIDDLEWARE = [
