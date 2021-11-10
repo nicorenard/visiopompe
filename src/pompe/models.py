@@ -21,15 +21,15 @@ class Pompes(models.Model):
     image = models.ImageField(max_length=254, choices=image_choix, blank=True, null=True)
     nom = models.CharField(max_length=100, default='')
     marque_choix = [
-        ('Ad', 'Adixen'),
-        ('Al', 'Alcatel'),
-        ('E', 'Edwards Vacuum'),
-        ('P', 'Pfeiffer Vacuum'),
-        ('V', 'Vacuubrand'),
-        ('W', 'Welch'),
-        ('Ax', 'Autres'),
+        ('Adixen', 'Adixen'),
+        ('Alcatel', 'Alcatel'),
+        ('Edwards Vacuum', 'Edwards Vacuum'),
+        ('Pfeiffer Vacuum', 'Pfeiffer Vacuum'),
+        ('Vacuubrand', 'Vacuubrand'),
+        ('Welch', 'Welch'),
+        ('Autres', 'Autres'),
     ]
-    marque = models.CharField(max_length=5, choices=marque_choix, default='Ad', verbose_name="Fabriquant")
+    marque = models.CharField(max_length=50, choices=marque_choix, default='', verbose_name="Fabriquant")
     modele = models.CharField(max_length=20, default='', verbose_name="Modèle de la pompe")
     numero_serie = models.CharField(max_length=100, default='')
     puissance_choix = [
@@ -47,17 +47,17 @@ class Pompes(models.Model):
     vide_teste = models.FloatField(default=0, verbose_name="Vide limite testé")
     vide_theorique = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
     phasage_code = [
-        ('Mono', 'Monophasé'),
-        ('Tri', 'Triphasé'),
+        ('Monophasé', 'Monophasé'),
+        ('Triphasé', 'Triphasé'),
     ]
     phasage = models.CharField(max_length=4, choices=phasage_code, default='M', verbose_name="Phasage du moteur électrique")
     code_umr = models.CharField(max_length=100, default='', verbose_name="Codification UMR")
-    etage_choix = [
-        ('1', '1er étage'),
-        ('2', '2ème étage'),
-        ('3', '3ème étage'),
+    localisation_choix = [
+        ('1er étage', '1er étage'),
+        ('2ème étage', '2ème étage'),
+        ('3ème étage', '3ème étage'),
     ]
-    localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage", choices=etage_choix)
+    localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage", choices=localisation_choix)
     localisation_piece = models.CharField(max_length=10, default='', verbose_name="Pièce")
     localisation_emplacement = models.CharField(max_length=50, default='', verbose_name="Place dans la pièce", blank=True)
     mise_en_service = models.DateField(auto_now=date.today)
