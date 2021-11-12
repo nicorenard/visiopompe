@@ -8,7 +8,11 @@ from .filters import PompeFilter
 
 def index(request):
     pompes = Pompes.objects.all().order_by('localisation_etage')
-    return render(request, 'pompe/index.html', {'pompes': pompes})
+    filterpompe = PompeFilter(request.GET, queryset=pompes)
+    pompes = filterpompe.qs
+
+    context = {'pompes': pompes, 'filterpompe' : filterpompe}
+    return render(request, 'pompe/index.html', context)
 
 
 def ajout_pompe(request):
@@ -56,7 +60,7 @@ def ajout_piece(request):
     if request.method == "POST":
         form = PieceForm(request.POST)
         if form.is_valid():
-            handle_uploaded_file(request.FILES['file'])
+        #    handle_uploaded_file(request.FILES['file'])
             form.save()
         return redirect("/pompe/pieces")
 

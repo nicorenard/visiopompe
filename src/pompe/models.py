@@ -50,7 +50,7 @@ class Pompes(models.Model):
         ('Monophasé', 'Monophasé'),
         ('Triphasé', 'Triphasé'),
     ]
-    phasage = models.CharField(max_length=4, choices=phasage_code, default='M', verbose_name="Phasage du moteur électrique")
+    phasage = models.CharField(max_length=10, choices=phasage_code, default='M', verbose_name="Phasage du moteur électrique")
     code_umr = models.CharField(max_length=100, default='', verbose_name="Codification UMR")
     localisation_choix = [
         ('1er étage', '1er étage'),
@@ -59,7 +59,7 @@ class Pompes(models.Model):
     ]
     localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage", choices=localisation_choix)
     localisation_piece = models.CharField(max_length=10, default='', verbose_name="Pièce")
-    localisation_emplacement = models.CharField(max_length=50, default='', verbose_name="Place dans la pièce", blank=True)
+    localisation_emplacement = models.CharField(max_length=50, default='', verbose_name="Emplacement", blank=True)
     mise_en_service = models.DateField(auto_now=date.today)
     statut_pompe = [
         ('A', 'Active'),
@@ -67,7 +67,7 @@ class Pompes(models.Model):
         ('R', 'En Réparation'),
         ('P', 'En panne'),
             ]
-    statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat actuel de la pompe")
+    statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat de la pompe")
     date_derniere_vidange = models.DateField(default=date.today, verbose_name="Date de la dernière vidange")
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
     manuel = models.FileField(upload_to='upload/', max_length=254, default='', blank=True, verbose_name="Manuel technique")
