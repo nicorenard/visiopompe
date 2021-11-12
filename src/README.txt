@@ -9,7 +9,7 @@ Ce projet à pour but de centraliser et de mettre en place une gestion d'un parc
 et pompes à palettes au sein d'un laboratoire.
 Le listing des pompes peut se faire sur plusieurs niveaux de locations avec tous les détails technique et historique
  de la vie de l'appareillage. Ce mini projet inclus également la gestion
-des équipements de maintenance, de pièces détachés et d'huile pour le fonctionnement de ces appreillages.
+des équipements de maintenance, de pièces détachés et d'huiles pour le fonctionnement de ces appreillages.
 
 ## Pour commencer
 
@@ -20,7 +20,7 @@ Entrez ici les instructions pour bien débuter avec votre projet...
 Ce qu'il est requis pour commencer avec votre projet...
 
 - Installer les dépendances contenus dans le dossier "requierement.txt"
-- Configurez le serveur pour recevoir Django et python
+- Configurez le serveur pour recevoir Django et python.
 - Créer un fichier .env avec cette structure à la racine du site avant de l'uploader sur votre serveur :
     SECRET_KEY = **Introdsuiez une clé secrète
     DJANGO_DEBUG = False
@@ -55,10 +55,7 @@ Par la suite, la navigation au sein du site web se fait grâce au menu situé
 * [Python 3] - langage de programmation
 * [W3.css] - Framework front-end
 * [Django] - Framework Back-end
-* [Pycharm](https://atom.io/) - IDE
-
-## Contribution
-
+* [Pycharm]- IDE
 
 ## Versions
 

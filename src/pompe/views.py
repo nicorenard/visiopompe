@@ -138,7 +138,7 @@ def kit(request):
 
 def ajout_kit(request):
     if request.method == "POST":
-        form = KitForm(request.POST)
+        form = KitForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect("/pompe/kit")
