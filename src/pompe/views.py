@@ -17,14 +17,13 @@ def index(request):
 
 def ajout_pompe(request):
     if request.method == "POST":
-        form = Pompeform(request.POST)
+        form = Pompeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect('/pompe')
 
     else:
         form = Pompeform()
-
     return render(request, 'pompe/forms.html', {'form': form})
 
 

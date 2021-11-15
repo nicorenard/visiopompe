@@ -3,7 +3,7 @@ from .models import *
 from django_filters import CharFilter
 
 class PompeFilter(django_filters.FilterSet):
-    localisation_piece = CharFilter(field_name="Pièce", lookup_expr='icontains', label='Pièce')
+    localisation_piece = CharFilter(field_name="localisation_piece", lookup_expr='icontains', label='Pièce')
 
     class Meta:
         model = Pompes

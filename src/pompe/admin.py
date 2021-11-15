@@ -4,6 +4,7 @@ from .models import Pompes, PiecesPompe, Huile, Kit
 
 
 
+
 # Register your models here.
 class PompeAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Pompes._meta.get_fields()]

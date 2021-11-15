@@ -50,7 +50,7 @@ class Pompes(models.Model):
         ('Monophasé', 'Monophasé'),
         ('Triphasé', 'Triphasé'),
     ]
-    phasage = models.CharField(max_length=10, choices=phasage_code, default='M', verbose_name="Phasage du moteur électrique")
+    phasage = models.CharField(max_length=15, choices=phasage_code, default='Monophasé', verbose_name="Phasage du moteur électrique")
     code_umr = models.CharField(max_length=100, default='', verbose_name="Codification UMR")
     localisation_choix = [
         ('1er étage', '1er étage'),
@@ -70,7 +70,7 @@ class Pompes(models.Model):
     statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat de la pompe")
     date_derniere_vidange = models.DateField(default=date.today, verbose_name="Date de la dernière vidange")
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
-    manuel = models.FileField(upload_to='upload/', max_length=254, default='', blank=True, verbose_name="Manuel technique")
+    manuel = models.FileField(upload_to='upload/', max_length=254, blank=True, null=True, verbose_name="Manuel technique")
     information = models.CharField(max_length=100, default='', blank=True)
 
     def __str__(self):

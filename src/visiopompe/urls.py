@@ -24,6 +24,5 @@ urlpatterns = [
     path('', index , name='homepage'),
     path('pompe/', include(('pompe.urls', 'pompe'), namespace='pompe')),
 
-]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# valable que dans le serve de dev pas en production.

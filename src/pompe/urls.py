@@ -22,5 +22,6 @@ urlpatterns = [
     path('kit_edit/<int:pk>/', views.modif_kit, name="kit_edit"),
     path('kit_suppression/<int:pk>/', views.suppression_kit, name="kit_suppression"),
 
+
 ]
 
