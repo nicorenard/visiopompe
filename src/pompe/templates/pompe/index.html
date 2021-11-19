@@ -96,12 +96,8 @@
         </div>
         <!----section info supplementaire--->
         <div class="w3-container w3-border-top  w3-border-light-grey ">
-            <h5 class="w3-border-bottom w3-border-light-grey">&nbsp;Informations diverses :</h5>
-                <p>{% if pompe.manuel != '' %}
-                    <img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbsp;<a href="/media/{{pompe.manuel}}">Documentation technique</a>
-                    {% else %}
-                    <img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbspDocumentation non disponible
-                    {% endif %}- <img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
+            <h5 class="w3-border-bottom w3-border-light-grey"><u>&nbspHistorique :</u></h5>
+                <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
         </div>
     </section>
                 {% endfor %}
