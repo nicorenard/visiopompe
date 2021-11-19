@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import Pompes, PiecesPompe, Huile, Kit
-
-
-
+from .models import Pompes, PiecesPompe, Huile, Kit, Doc
 
 
 # Register your models here.
@@ -25,8 +22,13 @@ class KitAdmin(admin.ModelAdmin):
     search_fields = ('nom', 'localisation', 'reference_marque')
 
 
+class DocAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in Doc._meta.get_fields()]
+    search_fields = ('nom', 'fabriquant')
+
+
 admin.site.register(Pompes, PompeAdmin)
 admin.site.register(PiecesPompe, PiecesPompeAdmin)
 admin.site.register(Huile, HuileAdmin)
 admin.site.register(Kit, KitAdmin)
-
+admin.site.register(Doc, DocAdmin)

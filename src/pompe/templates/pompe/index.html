@@ -75,7 +75,7 @@
                 {% elif pompe.statut == 'P' %}<img src="{% static 'pompe/img/icon_enpanne.png' %}" alt="pompe_pb">
                 {% else %}<img src="{% static 'pompe/img/icons_stockage.png'%}" alt="pompe_stock">
                 {% endif %}</p>
-                <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Dernière Vidange: <i>{{pompe.date_derniere_vidange}}</i></p>
+                <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Dernière Vidange: <strong>{{pompe.date_derniere_vidange}}</strong></p>
                 </div>
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service}}</p>
@@ -85,14 +85,12 @@
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.phasage}}</p>
                     <p><img src="{% static 'pompe/img/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.puissance}} Hertz</p>
-                    <p>{% if pompe.etage <= 2 %}<img src="{% static 'pompe/img/icon_1etage.png'%}" alt="pompe_etage_1">
-                        {% else %}<img src="{% static 'pompe/img/icon_2etage.png'%}" alt="pompe_etage_2">
-                        {% endif %}Nombre d'étage : {{pompe.nombre_etage}}</p>
+                    <p><img src="{% static 'pompe/img/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Nombre d'étage(s) : {{pompe.nombre_etage}}</p>
                 </div>
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/icon_vidangeurgente.png' %}">&nbsp;Huile : {{pompe.huile}}</p>
                     <p><img src="{% static 'pompe/img/icon_vide.png' %}" >&nbspVide théorique : {{pompe.vide_theorique |stringformat:".0e"}}</p>
-                    <p><img src="{% static 'pompe/img/icon_vide.png' %}" > Vide testé : {{pompe.vide_teste |stringformat:".0e"}}</p>
+                    <p><img src="{% static 'pompe/img/icon_vide.png' %}" > <strong>Vide testé </strong>: {{pompe.vide_teste |stringformat:".0e"}}</p>
                 </div>
             </div>
         </div>
@@ -102,7 +100,7 @@
                 <p>{% if pompe.manuel != '' %}
                     <img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbsp;<a href="/media/{{pompe.manuel}}">Documentation technique</a>
                     {% else %}
-                    <img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbsp;<a href="#">Aucune documentation technique disponible</a>
+                    <img src="{% static 'pompe/img/icon_manuel.png' %}" >&nbspDocumentation non disponible
                     {% endif %}- <img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
         </div>
     </section>

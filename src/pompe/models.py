@@ -9,9 +9,9 @@ class Pompes(models.Model):
         ('/pompe_img/edwards_pompe.jpg', 'Edwards'),
         ('/pompe_img/leybold_pompe.jpg', 'Leybold'),
         ('/pompe_img/pfeiffer_pompe.jpg', 'Pfeiffer'),
-        ('/pompe_img/vaccubrand_1.jpg', 'Vaccubrand pompe à palettes'),
-        ('/pompe_img/vaccubrand_membrane.jpg', 'Vaccubrand pompe à membranes'),
-        ('/pompe_img/vaccubrand_pompage.jpg', 'Vaccubrand groupe de pompages'),
+        ('/pompe_img/vacuubrand_1.jpg', 'Vacuubrand pompe à palettes'),
+        ('/pompe_img/vacuubrand_membrane.jpg', 'Vacuubrand pompe à membranes'),
+        ('/pompe_img/vacuubrand_pompage.jpg', 'Vacuubrand groupe de pompages'),
         ('/pompe_img/welch_pompe.jpg', 'Welch pompe à palettes'),
         ('/pompe_img/welch_pompe3.jpg', 'Welch groupe de pompages'),
         ('/pompe_img/welch_membrane.jpg', 'Welch pompe à membranes'),
@@ -70,8 +70,7 @@ class Pompes(models.Model):
     statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat de la pompe")
     date_derniere_vidange = models.DateField(default=date.today, verbose_name="Date de la dernière vidange")
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
-    manuel = models.FileField(upload_to='upload/', max_length=254, blank=True, null=True, verbose_name="Manuel technique")
-    information = models.CharField(max_length=100, default='', blank=True)
+    information = models.CharField(max_length=100, default='', blank=True, null=True)
 
     def __str__(self):
         return self.nom
@@ -84,7 +83,7 @@ class PiecesPompe(models.Model):
     type_pompe = models.CharField(max_length=100, verbose_name="Modèle de pompe")
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
     localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
-    information = models.CharField(max_length=50, default='', blank=True)
+    information = models.CharField(max_length=50, default='', blank=True, null=True)
 
     def __str__(self):
         return self.nom
@@ -110,7 +109,7 @@ class Huile(models.Model):
     type_pompe = models.CharField(max_length=100, default='', verbose_name="Modèle de pompe")
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
     localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
-    information = models.TextField(max_length=100, default='', blank=True)
+    information = models.TextField(max_length=100, default='', blank=True, null=True)
 
     def __str__(self):
         return self.nom
@@ -126,13 +125,32 @@ class Kit(models.Model):
     reference_revendeur = models.CharField(max_length=50, default='', verbose_name="Référence Revendeur")
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
     localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
-    information = models.TextField(max_length=100, default='', blank=True)
+    information = models.TextField(max_length=100, default='', blank=True, null=True)
 
     def __str__(self):
         return self.nom
 
 
-'''def historique(self, date_h, commentaire_h):
-        date_h = models.DateField(auto_now=True)
-        commentaire_h = models.TextField(max_length=500)
-'''
+class Doc(models.Model):
+    nom = models.CharField(max_length=50, default='')
+
+    fabriquant_choice = [
+        ('Adixen', 'Adixen'),
+        ('Alcatel', 'Alcatel'),
+        ('Edwards', 'Edwards'),
+        ('Leybold', 'Leybold'),
+        ('Pfeiffer', 'Pfeiffer'),
+        ('Vacuubrand', 'Vacuubrand'),
+        ('Welch', 'Welch'),
+        ('Autres', 'Autres'),
+    ]
+    fabriquant = models.CharField(max_length=29,choices=fabriquant_choice, verbose_name="Fabriquant")
+    manuel = models.FileField(upload_to='upload/', max_length=254, verbose_name="Manuel technique")
+    informations = models.TextField(max_length=20, default='', blank=True, null=True)
+
+    def __str__(self):
+        return self.nom
+
+    def diplay_name(self):
+        return "%s, %s" % (self.nom, self.fabriquant)
+

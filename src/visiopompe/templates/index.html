@@ -8,12 +8,7 @@
 
     <title>Page de démarrage</title>
 
-<script>
-function Fonctionrecherche() {
-  var x = document.getElementById("myInput");
-   document.getElementById("").innerHTML = "You are searching for: " + x.value;
-}
-</script>
+
 </head>
 <body>
 
@@ -30,23 +25,11 @@ function Fonctionrecherche() {
         <a href="{% url 'pompe:pieces' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pièces détachées</a>
         <a href="{% url 'pompe:huiles' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Huiles</a>
         <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Kits maintenance</a>
+        <a href="{% url 'pompe:docs' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Documentations</a>
         <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i> Support</a>
 
 </div>
-<script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "25%";
-  document.getElementById("mySidebar").style.width = "25%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
 
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
 <!---------Contenu------->
 <div class="w3-main w3-mobile" style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
@@ -77,6 +60,12 @@ function w3_close() {
                 <div class="w3-display-container w3-leftbar">
                   <div class="w3-display-topleft w3-black w3-padding">Kits de maintenance</div>
                   <a href="{% url 'pompe:kit' %}"><img src="{% static 'img/kit2.jpg' %}" alt="kit de maintenance" style="width:100%"></a>
+                </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container w3-leftbar">
+                  <div class="w3-display-topleft w3-black w3-padding">Documentations</div>
+                  <a href="{% url 'pompe:docs' %}"><img src="{% static 'img/bg_doc.jpg' %}" alt="documentation" style="width:100%"></a>
                 </div>
             </div>
         </div>

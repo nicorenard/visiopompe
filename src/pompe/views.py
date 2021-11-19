@@ -1,8 +1,8 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Pompes, PiecesPompe, Kit, Huile
+from .models import Pompes, PiecesPompe, Kit, Huile, Doc
 from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
-    ModifKitForm
+    ModifKitForm, DocForm
 from .filters import PompeFilter
 
 
@@ -168,5 +168,24 @@ def suppression_kit(request, pk):
 
     context = {'item': kits}
     return render(request, 'pompe/suppression_kit.html', context)
+
+def doc(request):
+    docs = Doc.objects.all().order_by('fabriquant')
+    #filterdoc = DocFilter(request.GET, queryset=docs)
+    #docs = filterdoc.qs
+
+    context = {'docs': docs}
+    return render(request, 'pompe/doc.html', context)
+
+def ajout_doc(request):
+    if request.method == "POST":
+        form = DocForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('/docs')
+
+    else:
+        form = DocForm()
+    return render(request, 'pompe/forms5.html', {'form': form})
 
 # definir API pour appli bureau ?
