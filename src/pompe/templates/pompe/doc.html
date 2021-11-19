@@ -42,7 +42,7 @@ function w3_close() {
         <h2>Documentations Technique</h2>
     </div>
 
-<div class="w3-bar w3-grey">
+<div class="w3-bar w3-grey w3-large">
   <button class="w3-bar-item w3-button tablink w3-red" onclick="openMarque(event,'Adixen')">Adixen</button>
   <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Alcatel')">Alcatel</button>
   <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Edwards')">Edwards</button>
@@ -68,51 +68,141 @@ function openMarque(evt, marqueName) {
   evt.currentTarget.className += " w3-red";
 }
 </script>
-
-    <div class="w3-container marque" id="Edwards">
-        <div class="w3-table w3-row-padding w3-responsive w3-centered">
+    <div class="w3-container marque" id="Adixen">
+        <ol class="w3-table w3-row-padding w3-responsive w3-border">
             {%  for docs in docs %}
-        {% if docs.fabriquant == 'Edwards' %}
+            {% if docs.fabriquant == 'Adixen' %}
 
-            <p class=" w3-row s2 w3-card-2 ">
-                <p class="w3-centered"><img src="{% static 'pompe/img/doc_logo/logo_edwards.png' %}" alt="Edwards" ></p>
-                <p class="w3-centered"><strong>{{docs.nom}}</strong></p>
-                <p class="w3-centered"> {{docs.informations}}</p>
-                <p class="w3-hover-greyscale w3-lime w3-centered"><a href="/media/{{docs.manuel}}" >Télécharger</a></p>
-            </p>
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_adixen.png' %}" alt="Adixen"  style="width : 200px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+                <td class="w3-centered w3-border"> Informations : {{docs.informations}}</td>
+
+            </tr>
 
             {% endif %}
         {% endfor %}
-        </div>
+        </ol>
     </div>
+    <div class="w3-container marque" id="Alcatel">
+        <table class="w3-table w3-row-padding w3-responsive">
+            {%  for docs in docs %}
+            {% if docs.fabriquant == 'Alcatel' %}
 
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_alcatel.png' %}" alt="Alcatel"  style="width : 200px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-centered w3-border"> {{docs.informations}}</td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+            </tr>
 
-    <div class="w3-container  marque" id="Leybold" style="display:none">
-       <table class="w3-table w3-bordered w3-hoverable w3-row-padding w3-responsive">
-         {%  for docs in docs %}
-    {% if docs.fabriquant == 'Leybold' %}
-
-    <tr class="w3-hover-greyscale">
-
-        <td><strong>{{docs.nom}}</strong></td>
-        <td>{{docs.informations}}</td>
-        <td class="w3-lime w3-centered"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
-    </tr>
-
-    {% endif %}
+            {% endif %}
         {% endfor %}
-    </table>
+        </table>
+    </div>
+    <div class="w3-container marque" id="Edwards">
+        <table class="w3-table w3-row-padding w3-responsive">
+            {%  for docs in docs %}
+            {% if docs.fabriquant == 'Edwards' %}
+
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_edwards.png' %}" alt="Edwards"  style="width : 200px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-centered w3-border"> {{docs.informations}}</td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+            </tr>
+
+            {% endif %}
+        {% endfor %}
+        </table>
+    </div>
+    <div class="w3-container marque" id="Leybold">
+        <table class="w3-table w3-row-padding w3-responsive">
+            {%  for docs in docs %}
+            {% if docs.fabriquant == 'Leybold' %}
+
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_leybold.png' %}" alt="leybold"  style="width : 200px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-centered w3-border"> {{docs.informations}}</td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+            </tr>
+
+            {% endif %}
+        {% endfor %}
+        </table>
+    </div>
+    <div class="w3-container marque" id="Pfeiffer">
+        <table class="w3-table w3-row-padding w3-responsive">
+            {%  for docs in docs %}
+            {% if docs.fabriquant == 'Pfeiffer' %}
+
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_pfeiffer.png' %}" alt="Pfeiffer Vacuum"  style="width : 200px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-centered w3-border"> {{docs.informations}}</td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+            </tr>
+
+            {% endif %}
+        {% endfor %}
+        </table>
+    </div>
+    <div class="w3-container marque" id="Vacuubrand">
+        <table class="w3-table w3-row-padding w3-responsive">
+            {%  for docs in docs %}
+            {% if docs.fabriquant == 'Vacuubrand' %}
+
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_vacuubrand.jpg' %}" alt="Vacuubrand"  style="width : 200px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-centered w3-border"> {{docs.informations}}</td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+            </tr>
+
+            {% endif %}
+        {% endfor %}
+        </table>
+    </div>
+    <div class="w3-container marque" id="Welch">
+        <table class="w3-table w3-row-padding w3-responsive">
+            {%  for docs in docs %}
+            {% if docs.fabriquant == 'Welch' %}
+
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_welch.png' %}" alt="welch"  style="width : 100px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-centered w3-border"> {{docs.informations}}</td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+            </tr>
+
+            {% endif %}
+        {% endfor %}
+        </table>
+    </div>
+    <div class="w3-container marque" id="Autres">
+        <table class="w3-table w3-row-padding w3-responsive">
+            {%  for docs in docs %}
+            {% if docs.fabriquant == 'Autres' %}
+
+            <tr class=" w3-rows s6">
+                <td class="w3-centered w3-border"><img src="{% static 'pompe/img/doc_logo/logo_vide.jpg' %}" alt="Autres"  style="width : 100px"></td>
+                <td class="w3-centered w3-border"><strong>{{docs.nom}}</strong></td>
+                <td class="w3-centered w3-border"> {{docs.informations}}</td>
+                <td class="w3-hover-greyscale w3-lime w3-right-align w3-border"><a href="/media/{{docs.manuel}}" >Télécharger</a></td>
+            </tr>
+
+            {% endif %}
+        {% endfor %}
+        </table>
     </div>
 
 
 
 
 
-
-
-
-
-    <section class="w3-container w3-mobile">
+    <section class="w3-container w3-mobile w3-small">
             <div class="w3-panel w3-leftbar w3-display-container">
                 <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
                 <p><i class="fa fa-quote-right w3-xlarge"></i></p>
