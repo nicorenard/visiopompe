@@ -1,6 +1,7 @@
 from datetime import date
 from django.db import models
 
+
 class Pompes(models.Model):
 
     image_choix = [
@@ -144,13 +145,10 @@ class Doc(models.Model):
         ('Welch', 'Welch'),
         ('Autres', 'Autres'),
     ]
-    fabriquant = models.CharField(max_length=29,choices=fabriquant_choice, verbose_name="Fabriquant")
+    fabriquant = models.CharField(max_length=29, choices=fabriquant_choice, verbose_name="Fabriquant")
     manuel = models.FileField(upload_to='upload/', max_length=254, verbose_name="Manuel technique")
-    informations = models.TextField(max_length=20, default='', blank=True, null=True)
+    informations = models.TextField(max_length=50, default='', blank=True, null=True)
 
     def __str__(self):
         return self.nom
-
-    def diplay_name(self):
-        return "%s, %s" % (self.nom, self.fabriquant)
 

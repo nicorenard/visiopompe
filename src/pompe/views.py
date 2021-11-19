@@ -182,7 +182,7 @@ def ajout_doc(request):
         form = DocForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/docs')
+        return redirect('/pompe/doc')
 
     else:
         form = DocForm()
