@@ -69,7 +69,7 @@ class Pompes(models.Model):
         ('P', 'En panne'),
             ]
     statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat de la pompe")
-    date_derniere_vidange = models.DateField(default=date.today, verbose_name="Date de la dernière vidange")
+    date_derniere_vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange")
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
     information = models.CharField(max_length=100, default='', blank=True, null=True)
 
@@ -152,3 +152,10 @@ class Doc(models.Model):
     def __str__(self):
         return self.nom
 
+class VersionApp(models.Model):
+    version = models.CharField(default='x.x.x', max_length=10, verbose_name="Version")
+    majeur = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour majeur")
+    mineur = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour mineur")
+    bug = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Bugs")
+    texte = models.TextField(blank=True, null=True, max_length=254, verbose_name="Description" )
+    date_version = models.DateField(default=date.today, verbose_name="Date")

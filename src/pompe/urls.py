@@ -6,6 +6,7 @@ app_name = 'pompe'
 
 urlpatterns = [
     path('', views.index, name="index"),
+    path('versionapp', views.version, name="version"),
     path('huiles/', views.huile, name="huiles"),
     path('pieces/', views.piece, name="pieces"),
     path('kit/', views.kit, name="kit"),
@@ -24,6 +25,4 @@ urlpatterns = [
     path('kit_suppression/<int:pk>/', views.suppression_kit, name="kit_suppression"),
     path('forms5/', views.ajout_doc, name="ajout_doc"),
 
-
 ]
-

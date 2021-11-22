@@ -21,6 +21,7 @@
         <a href="{% url 'pompe:huiles' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Huiles</a>
         <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Kits maintenance</a>
         <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i> Support</a>
+        <a href="{% url 'pompe:version' %}" class="w3-button w3-small w3-right w3-mobile"> Version</a>
 
 </div>
 
@@ -40,7 +41,9 @@
         <!----section marque et boutons---->
 
     </div>
+
     <section class="w3-container w3-padding-32 w3-mobile">
+
         {% for pompe in pompes %}
         <div class="w3-container w3-border-top  w3-border-light-grey ">
             <p class="w3-bottombar" style="font-size: 20px; "><strong>NOM</strong> : {{pompe.nom}}
@@ -62,7 +65,7 @@
                 {% endif %}
 
             </div>
-            <!----section infopompe--->
+            <!----section carateristiques--->
             <div class="w3-container w3-cell-row  w3-leftbar">
                 <div class="w3-container w3-cell w3-mobile">
                 <p style="font-size: 16px">
@@ -75,7 +78,10 @@
                 {% elif pompe.statut == 'P' %}<img src="{% static 'pompe/img/icon_enpanne.png' %}" alt="pompe_pb">
                 {% else %}<img src="{% static 'pompe/img/icons_stockage.png'%}" alt="pompe_stock">
                 {% endif %}</p>
-                <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Dernière Vidange: <strong>{{pompe.date_derniere_vidange}}</strong></p>
+                <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Prochaine Vidange:
+                    {% if current_date > pompe.date_derniere_vidange %}<strong style="color:red;">{{pompe.date_derniere_vidange}}</strong>
+                    {% else %} <strong>{{pompe.date_derniere_vidange}}</strong></p>
+                    {% endif %}
                 </div>
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service}}</p>

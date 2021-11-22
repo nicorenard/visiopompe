@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pompes, PiecesPompe, Huile, Kit, Doc
+from .models import Pompes, PiecesPompe, Huile, Kit, Doc, VersionApp
 
 
 # Register your models here.
@@ -27,8 +27,14 @@ class DocAdmin(admin.ModelAdmin):
     search_fields = ('nom', 'fabriquant')
 
 
+class VersionAppAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in VersionApp._meta.get_fields()]
+    search_fields = ['version','date_version']
+
+
 admin.site.register(Pompes, PompeAdmin)
 admin.site.register(PiecesPompe, PiecesPompeAdmin)
 admin.site.register(Huile, HuileAdmin)
 admin.site.register(Kit, KitAdmin)
 admin.site.register(Doc, DocAdmin)
+admin.site.register(VersionApp, VersionAppAdmin)

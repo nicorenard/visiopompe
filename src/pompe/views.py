@@ -1,6 +1,6 @@
-
+import datetime
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Pompes, PiecesPompe, Kit, Huile, Doc
+from .models import Pompes, PiecesPompe, Kit, Huile, Doc, VersionApp
 from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
     ModifKitForm, DocForm
 from .filters import PompeFilter
@@ -10,8 +10,9 @@ def index(request):
     pompes = Pompes.objects.all().order_by('localisation_etage')
     filterpompe = PompeFilter(request.GET, queryset=pompes)
     pompes = filterpompe.qs
+    current_date = datetime.date.today()
 
-    context = {'pompes': pompes, 'filterpompe': filterpompe}
+    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date}
     return render(request, 'pompe/index.html', context)
 
 
@@ -171,8 +172,6 @@ def suppression_kit(request, pk):
 
 def doc(request):
     docs = Doc.objects.all().order_by('fabriquant')
-    #filterdoc = DocFilter(request.GET, queryset=docs)
-    #docs = filterdoc.qs
 
     context = {'docs': docs}
     return render(request, 'pompe/doc.html', context)
@@ -187,5 +186,11 @@ def ajout_doc(request):
     else:
         form = DocForm()
     return render(request, 'pompe/forms5.html', {'form': form})
+
+
+def version(request):
+    versions = VersionApp.objects.all().order_by('-version')
+    return render(request, 'pompe/versionapp.html', {'versions': versions})
+
 
 # definir API pour appli bureau ?
