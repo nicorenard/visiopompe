@@ -34,11 +34,11 @@
     </div>
     <div class="w3-modal-content" >
             <div class="w3-center"><br>
-                <p>Vous êtes sur le point de supprimer cette pompe : {{item}}. <br>Etes-vous sur ce vouloir le faire ?</p>
+                <p>Vous êtes sur le point de supprimer cette pompe : <strong>{{item}}</strong>. <br>Etes-vous sur ce vouloir le faire ?</p>
                 <form action="{% url 'pompe:pompe_suppression' item.pk  %}" method="POST">
                     {% csrf_token %}
-                    <a href="{% url 'pompe:index' %}">Annuler</a>
-                    <input type="submit" name="Confirmer">
+                    <button class="w3-button w3-red"><a href="{% url 'pompe:index' %}">Annuler</a></button>
+                    <button class="w3-button w3-green">Confirmer</button>
                 </form>
             </div>
     </div>
