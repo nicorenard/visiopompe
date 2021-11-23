@@ -1,5 +1,6 @@
 from datetime import date
 from django.db import models
+from django.db.models import ForeignKey
 
 
 class Pompes(models.Model):
@@ -16,8 +17,7 @@ class Pompes(models.Model):
         ('/pompe_img/welch_pompe.jpg', 'Welch pompe à palettes'),
         ('/pompe_img/welch_pompe3.jpg', 'Welch groupe de pompages'),
         ('/pompe_img/welch_membrane.jpg', 'Welch pompe à membranes'),
-        ('/pompe_img/noimage.jpg', 'Aucune image'),
-
+        ('/pompe_img/noimage.jpg', 'Aucune image')
     ]
     image = models.ImageField(max_length=254, choices=image_choix, blank=True, null=True)
     nom = models.CharField(max_length=100, default='')
@@ -35,8 +35,7 @@ class Pompes(models.Model):
     numero_serie = models.CharField(max_length=100, default='')
     puissance_choix = [
         ('50', '50 Hertz'),
-        ('60', '60 Hertz'),
-
+        ('60', '60 Hertz')
     ]
     puissance = models.CharField(default='50', choices=puissance_choix, max_length=2, verbose_name="Puissance du moteur")
     etage_choix = [
@@ -49,14 +48,14 @@ class Pompes(models.Model):
     vide_theorique = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
     phasage_code = [
         ('Monophasé', 'Monophasé'),
-        ('Triphasé', 'Triphasé'),
+        ('Triphasé', 'Triphasé')
     ]
     phasage = models.CharField(max_length=15, choices=phasage_code, default='Monophasé', verbose_name="Phasage du moteur électrique")
     code_umr = models.CharField(max_length=100, default='', verbose_name="Codification UMR")
     localisation_choix = [
         ('1er étage', '1er étage'),
         ('2ème étage', '2ème étage'),
-        ('3ème étage', '3ème étage'),
+        ('3ème étage', '3ème étage')
     ]
     localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage", choices=localisation_choix)
     localisation_piece = models.CharField(max_length=10, default='', verbose_name="Pièce")
@@ -76,6 +75,24 @@ class Pompes(models.Model):
     def __str__(self):
         return self.nom
 
+class Post(Pompes):
+    def save(self):
+        post = super(Post, self).save()
+
+        PostHistory.objects.create(
+            post=post,
+            nom=post.nom,
+            statut=post.statut,
+            vidange=post.date_derniere_vidange,
+            information=post.information
+
+        )
+
+
+class PostHistory(Pompes):
+    post = ForeignKey(Post)
+    class Meta:
+        ordering = ['-pk']
 
 class PiecesPompe(models.Model):
     nom = models.CharField(max_length=50)
