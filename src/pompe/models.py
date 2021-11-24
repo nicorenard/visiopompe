@@ -1,5 +1,6 @@
 from datetime import date
 from django.db import models
+from field_history.tracker import FieldHistoryTracker
 
 
 class Pompes(models.Model):
@@ -69,7 +70,8 @@ class Pompes(models.Model):
     statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat de la pompe")
     date_vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange")
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
-    information = models.CharField(max_length=100, default='', blank=True, null=True)
+    information = models.CharField(max_length=100, blank=True, null=True)
+    field_history = FieldHistoryTracker(['information'])
 
     def __str__(self):
         return self.nom

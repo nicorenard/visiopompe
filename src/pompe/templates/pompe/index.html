@@ -104,11 +104,16 @@
         <div class="w3-container w3-border-top  w3-border-light-grey ">
             <h5 class="w3-border-bottom w3-border-light-grey"><u>&nbspHistorique :</u></h5>
                 <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
-                {% endfor %}
+
+
+             <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{history}}
+                    - {{history.object_id}}"</p>
+
 
         </div>
+        {% endfor %}
     </section>
-                {% endfor %}
+
     <!----section citation--->
     <section>
         <div class="w3-container" >

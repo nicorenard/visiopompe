@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pompe.apps.PompeConfig',
     'django_filters',
-
+    'field_history',
 ]
 
 MIDDLEWARE = [

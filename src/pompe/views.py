@@ -1,5 +1,6 @@
 import datetime
 from django.shortcuts import render, redirect, get_object_or_404
+from field_history.models import FieldHistory
 from .models import Pompes, PiecesPompe, Kit, Huile, Doc, VersionApp
 from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
     ModifKitForm, DocForm
@@ -11,8 +12,9 @@ def index(request):
     filterpompe = PompeFilter(request.GET, queryset=pompes)
     pompes = filterpompe.qs
     current_date = datetime.date.today()
+    history = list(FieldHistory.objects.all())
 
-    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date}
+    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date, 'history':history}
     return render(request, 'pompe/index.html', context)
 
 
