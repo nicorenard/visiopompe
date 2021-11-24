@@ -79,8 +79,8 @@
                 {% else %}<img src="{% static 'pompe/img/icons_stockage.png'%}" alt="pompe_stock">
                 {% endif %}</p>
                 <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Prochaine Vidange:
-                    {% if current_date > pompe.date_derniere_vidange %}<strong style="color:red;">{{pompe.date_derniere_vidange}}</strong>
-                    {% else %} <strong>{{pompe.date_derniere_vidange}}</strong></p>
+                    {% if current_date > pompe.date_vidange %}<strong style="color:red;">{{pompe.date_vidange}}</strong>
+                    {% else %} <strong>{{pompe.date_vidange}}</strong></p>
                     {% endif %}
                 </div>
                 <div class="w3-container w3-cell w3-mobile">

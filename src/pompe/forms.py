@@ -14,7 +14,7 @@ class ModifPompeForm(forms.ModelForm):
     class Meta:
         model = Pompes
         fields = ("localisation_etage", "localisation_piece", "localisation_emplacement", "statut", "vide_teste",
-                  "date_derniere_vidange", "huile", "information")
+                  "date_vidange", "huile", "information")
 
 
 class HuileForm(forms.ModelForm):
