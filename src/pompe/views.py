@@ -1,4 +1,8 @@
 import datetime
+import json
+
+import field_history.models
+from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
 from field_history.models import FieldHistory
 from .models import Pompes, PiecesPompe, Kit, Huile, Doc, VersionApp
@@ -12,9 +16,12 @@ def index(request):
     filterpompe = PompeFilter(request.GET, queryset=pompes)
     pompes = filterpompe.qs
     current_date = datetime.date.today()
-    history = list(FieldHistory.objects.all())
 
-    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date, 'history':history}
+    historique = list(FieldHistory.objects.values('serialized_data'))
+   # la deserialisation est un pb !!!!)
+
+    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date,
+               'historique':historique}
     return render(request, 'pompe/index.html', context)
 
 

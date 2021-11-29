@@ -30,18 +30,81 @@
     <div class="w3-container w3-dark-grey">
         <h2>Pompes</h2>
     </div>
-    <!----menu recherche par filtre---->
-    <div class="w3-container w3-lime w3-padding-12" >
+    <!---------dashboard_pompe-------->
+    <div class="w3-container w3-padding-12">
+        <div class="w3-row-padding">
+            <div class="w3-col s3">
+                <div class="w3-half">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4> TEST</h4>
+                        </header>
+                        <div class="w3-container">
+                            <p>blabla</p>
+                        </div>
+                        <footer class="w3-container">
+                            <p>blabla</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col s3">
+                <div class="w3-half">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4> TEST</h4>
+                        </header>
+                        <div class="w3-container">
+                            <p>blabla</p>
+                        </div>
+                        <footer class="w3-container">
+                            <p>blabla</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col s3">
+                <div class="w3-half">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4> TEST</h4>
+                        </header>
+                        <div class="w3-container">
+                            <p>blabla</p>
+                        </div>
+                        <footer class="w3-container">
+                            <p>blabla</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col s3">
+                <div class="w3-half">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4> TEST</h4>
+                        </header>
+                        <div class="w3-container">
+                            <p>blabla</p>
+                        </div>
+                        <footer class="w3-container">
+                            <p>blabla</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!----menu recherche par filtre---->
+    <section class="w3-container w3-lime w3-padding-12" >
         <form action="" method="get">
             {{filterpompe.form.as_table}}
 
         <button type="submit"><i class="fa fa-search"></i></button>
         </form>
-        <!----section marque et boutons---->
-
-    </div>
-
+    </section>
+    <!----section marque et boutons---->
     <section class="w3-container w3-padding-32 w3-mobile">
 
         {% for pompe in pompes %}
@@ -91,7 +154,7 @@
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.phasage}}</p>
                     <p><img src="{% static 'pompe/img/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.puissance}} Hertz</p>
-                    <p><img src="{% static 'pompe/img/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Nombre d'étage(s) : {{pompe.nombre_etage}}</p>
+                    <p><img src="{% static 'pompe/img/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Technologie : {{pompe.technologie}}</p>
                 </div>
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/icon_vidangeurgente.png' %}">&nbsp;Huile : {{pompe.huile}}</p>
@@ -104,14 +167,10 @@
         <div class="w3-container w3-border-top  w3-border-light-grey ">
             <h5 class="w3-border-bottom w3-border-light-grey"><u>&nbspHistorique :</u></h5>
                 <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
-
-
-             <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{history}}
-                    - {{history.object_id}}"</p>
-
-
+                <p><img src="{% static 'pompe/img/icon_information.png' %}" >{{historique}} </p>
+            {% endfor %}
         </div>
-        {% endfor %}
+
     </section>
 
     <!----section citation--->

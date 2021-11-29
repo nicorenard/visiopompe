@@ -5,7 +5,7 @@ from .models import Pompes, PiecesPompe, Huile, Kit, Doc, VersionApp
 # Register your models here.
 class PompeAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Pompes._meta.get_fields()]
-    search_fields = ('localisation_etage', 'localisation_etage', 'localisation_piece', 'statut', 'date_derniere_vidange')
+    search_fields = ('localisation_etage', 'localisation_etage', 'localisation_piece', 'statut', 'date_vidange')
 
 
 class PiecesPompeAdmin(admin.ModelAdmin):

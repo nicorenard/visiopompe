@@ -5,7 +5,7 @@ from field_history.tracker import FieldHistoryTracker
 
 class Pompes(models.Model):
 
-    image_choix = [
+    IMAGES = [
         ('/pompe_img/adixen_pompe.jpg', 'Adixen'),
         ('/pompe_img/alcatel_pompe.jpg', 'Alcatel'),
         ('/pompe_img/edwards_pompe.jpg', 'Edwards'),
@@ -19,9 +19,9 @@ class Pompes(models.Model):
         ('/pompe_img/welch_membrane.jpg', 'Welch pompe à membranes'),
         ('/pompe_img/noimage.jpg', 'Aucune image')
     ]
-    image = models.ImageField(max_length=254, choices=image_choix, blank=True, null=True)
+    image = models.ImageField(max_length=254, choices=IMAGES, blank=True, null=True)
     nom = models.CharField(max_length=100, default='')
-    marque_choix = [
+    MARQUE = [
         ('Adixen', 'Adixen'),
         ('Alcatel', 'Alcatel'),
         ('Edwards Vacuum', 'Edwards Vacuum'),
@@ -30,44 +30,45 @@ class Pompes(models.Model):
         ('Welch', 'Welch'),
         ('Autres', 'Autres'),
     ]
-    marque = models.CharField(max_length=50, choices=marque_choix, default='', verbose_name="Fabriquant")
+    marque = models.CharField(max_length=50, choices=MARQUE, default='', verbose_name="Fabriquant")
     modele = models.CharField(max_length=20, default='', verbose_name="Modèle de la pompe")
     numero_serie = models.CharField(max_length=100, default='')
-    puissance_choix = [
+    PUISSANCE = [
         ('50', '50 Hertz'),
         ('60', '60 Hertz')
     ]
-    puissance = models.CharField(default='50', choices=puissance_choix, max_length=2, verbose_name="Puissance du moteur")
-    etage_choix = [
-        ('0', 'Membranes'),
-        ('1', '1 étage'),
-        ('2', '2 étages')
+    puissance = models.CharField(default='50', choices=PUISSANCE, max_length=2, verbose_name="Puissance du moteur")
+    TECHNOLOGIE = [
+        ('Sèches - Membranes', 'Sèches - Membranes'),
+        ('Sèches - Vis', 'Sèches - Vis'),
+        ('Palettes - 1 étage', 'Palettes - 1 étage'),
+        ('Palettes - 2 étages', 'Palettes - 2 étages')
     ]
-    nombre_etage = models.CharField(max_length=1, choices=etage_choix, default='0', verbose_name="Nombre d'étages")
+    technologie = models.CharField(max_length=30, choices=TECHNOLOGIE, verbose_name="Technologie du vide")
     vide_teste = models.FloatField(default=0, verbose_name="Vide limite testé")
     vide_theorique = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
-    phasage_code = [
+    PHASAGE = [
         ('Monophasé', 'Monophasé'),
         ('Triphasé', 'Triphasé')
     ]
-    phasage = models.CharField(max_length=15, choices=phasage_code, default='Monophasé', verbose_name="Phasage du moteur électrique")
+    phasage = models.CharField(max_length=15, choices=PHASAGE, default='Monophasé', verbose_name="Phasage du moteur électrique")
     code_umr = models.CharField(max_length=100, default='', verbose_name="Codification UMR")
-    localisation_choix = [
+    LOCALISATION = [
         ('1er étage', '1er étage'),
         ('2ème étage', '2ème étage'),
         ('3ème étage', '3ème étage')
     ]
-    localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage", choices=localisation_choix)
+    localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage", choices=LOCALISATION)
     localisation_piece = models.CharField(max_length=10, default='', verbose_name="Pièce")
     localisation_emplacement = models.CharField(max_length=50, default='', verbose_name="Emplacement", blank=True)
     mise_en_service = models.DateField(auto_now=date.today)
-    statut_pompe = [
+    STATUT_POMPE = [
         ('A', 'Active'),
         ('S', 'Stockage'),
         ('R', 'En Réparation'),
         ('P', 'En panne'),
             ]
-    statut = models.CharField(max_length=1, choices=statut_pompe, default='A', verbose_name="Etat de la pompe")
+    statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='A', verbose_name="Etat de la pompe")
     date_vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange")
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
     information = models.CharField(max_length=100, blank=True, null=True)
