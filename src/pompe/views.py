@@ -1,7 +1,6 @@
 import datetime
 import json
-
-import field_history.models
+import field_history
 from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
 from field_history.models import FieldHistory
@@ -16,12 +15,23 @@ def index(request):
     filterpompe = PompeFilter(request.GET, queryset=pompes)
     pompes = filterpompe.qs
     current_date = datetime.date.today()
+    pompe_ok = pompes.filter(statut='A').count()
+    pompe_stock = pompes.filter(statut='S').count()
+    pompe_hs = pompes.filter(statut='P').count()
+    pompe_rep = pompes.filter(statut='R').count()
 
-    historique = list(FieldHistory.objects.values('serialized_data'))
+    ''' si besoin d'un total de pompe umr faire pompe_total = pompes.count()
+    # si besoin par etage : faire pompe_etage = pompes.filter(localisation_etage='1er_etage')
+    # pompe_etage = pompes.filter(localisation_etage='2e_etage')
+    # pompe_etage = pompes.filter(localisation_etage='3e_etage')'''
+
+    historique = field_history.objects.values('serialized_data')
+        #list(FieldHistory.objects.values('serialized_data'))
    # la deserialisation est un pb !!!!)
 
-    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date,
-               'historique':historique}
+    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date, 'pompe_ok': pompe_ok,
+               'pompe_stock': pompe_stock, 'pompe_hs': pompe_hs, 'pompe_rep': pompe_rep,
+               'historique': historique}
     return render(request, 'pompe/index.html', context)
 
 
