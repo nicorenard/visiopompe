@@ -1,6 +1,5 @@
 import datetime
 import json
-import field_history
 from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
 from field_history.models import FieldHistory
@@ -11,29 +10,34 @@ from .filters import PompeFilter
 
 
 def index(request):
-    pompes = Pompes.objects.all().order_by('localisation_etage')
+    pompes = Pompes.objects.all().order_by('mise_en_service')
     filterpompe = PompeFilter(request.GET, queryset=pompes)
     pompes = filterpompe.qs
     current_date = datetime.date.today()
+    #pour la dashboard
     pompe_ok = pompes.filter(statut='A').count()
     pompe_stock = pompes.filter(statut='S').count()
     pompe_hs = pompes.filter(statut='P').count()
     pompe_rep = pompes.filter(statut='R').count()
+    pompe_e1 = pompes.filter(localisation_etage='1er étage').count()
+    pompe_e2 = pompes.filter(localisation_etage='2ème étage').count()
+    pompe_e3 = pompes.filter(localisation_etage='3ème étage').count()
+    pompe_all = pompes.count()
 
-    ''' si besoin d'un total de pompe umr faire pompe_total = pompes.count()
-    # si besoin par etage : faire pompe_etage = pompes.filter(localisation_etage='1er_etage')
-    # pompe_etage = pompes.filter(localisation_etage='2e_etage')
-    # pompe_etage = pompes.filter(localisation_etage='3e_etage')'''
+    ''' 
+    RECUPERER LES DONNEES DE serialized_data dans la table Fieldhistory_fieldhistory
+    sous forme de dictionnaire et ensuite les trier en fonction du "PK" et "fields".
+    
+    data2 = FieldHistory.objects.values('serialized_data')
+    data = list(FieldHistory.objects.values('serialized_data'))
+    json_d = json.dumps(data)
+    json_data = json.loads(json_d)
+    '''
 
-    historique = field_history.objects.values('serialized_data')
-        #list(FieldHistory.objects.values('serialized_data'))
-   # la deserialisation est un pb !!!!)
-
-    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date, 'pompe_ok': pompe_ok,
-               'pompe_stock': pompe_stock, 'pompe_hs': pompe_hs, 'pompe_rep': pompe_rep,
-               'historique': historique}
+    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date,
+               'pompe_ok': pompe_ok, 'pompe_stock': pompe_stock, 'pompe_hs': pompe_hs, 'pompe_rep': pompe_rep,
+               'pompe_all': pompe_all, 'pompe_e1': pompe_e1, 'pompe_e2': pompe_e2, 'pompe_e3': pompe_e3}
     return render(request, 'pompe/index.html', context)
-
 
 def ajout_pompe(request):
     if request.method == "POST":
