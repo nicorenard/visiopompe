@@ -42,9 +42,9 @@
       }
     }
     </script>
-    <button onclick="myFunction('dashboard')" class="w3-btn w3-block w3-red w3-left-align">Dashboard</button>
+    <button onclick="myFunction('dashboard')" class="w3-btn w3-block w3-red w3-left-align ">Dashboard</button>
         <br>
-        <div class="w3-container w3-padding-12 w3-hide" id="dashboard">
+        <div class="w3-container w3-padding-12 w3-hide w3-animate-zoom" id="dashboard">
             <div class="w3-row-padding">
                 <div class="w3-col m3 s3">
                     <div class="w3-card-2 w3-center w3-text-blue-gray">
@@ -67,8 +67,7 @@
                         </div>
                 </div>
                 <div class="w3-col m3 s3">
-
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
                             <header class="w3-container w3-red">
                                 <h4>EN PANNES</h4>
                             </header>
@@ -88,8 +87,7 @@
                         </div>
                 </div>
             </div>
-        <br>
-        <div class="w3-container w3-padding-12">
+                <br>
             <div class="w3-row-padding">
                 <div class="w3-col m3 s3">
                     <div class="w3-card-2 w3-center w3-text-blue-gray">
@@ -104,7 +102,7 @@
                 <div class="w3-col m3 s3">
                         <div class="w3-card-2 w3-center w3-text-blue-gray">
                             <header class="w3-container w3-sand">
-                                <h4>POMPES 1er ETAGE</h4>
+                                <h4>POMPES 1ER ETAGE</h4>
                             </header>
                             <div class="w3-container w3-xlarge">
                                 <p><strong>{{pompe_e1}}</strong></p>
@@ -112,29 +110,26 @@
                         </div>
                 </div>
                 <div class="w3-col m3 s3">
-
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-sand">
-                                <h4>POMPES 2e ETAGE</h4>
-                            </header>
-                            <div class="w3-container w3-xlarge">
-                                <p><strong>{{pompe_e2}}</strong></p>
-                            </div>
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4>POMPES 2EME ETAGE</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{pompe_e2}}</strong></p>
                         </div>
+                    </div>
                 </div>
                 <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-sand">
-                                <h4>POMPES 3e ETAGE</h4>
-                            </header>
-                            <div class="w3-container w3-xlarge">
-                                <p><strong>{{pompe_e3}}</strong></p>
-                            </div>
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4>POMPES 3EME ETAGE</h4></header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{pompe_e3}}</strong></p>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!----menu recherche par filtre---->
     <br>
@@ -209,8 +204,6 @@
         <div class="w3-container w3-border-top  w3-border-light-grey ">
             <h5 class="w3-border-bottom w3-border-light-grey"><u>&nbspHistorique :</u></h5>
                 <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
-            <p><img src="{% static 'pompe/img/icon_information.png' %}" >{{json_data}} </p>
-            <p><img src="{% static 'pompe/img/icon_information.png' %}" >{{data2}} </p>
             {% endfor %}
         </div>
     </section>

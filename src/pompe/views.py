@@ -1,12 +1,11 @@
 import datetime
-import json
-from django.core import serializers
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from field_history.models import FieldHistory
 from .models import Pompes, PiecesPompe, Kit, Huile, Doc, VersionApp
 from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
     ModifKitForm, DocForm
 from .filters import PompeFilter
+from .resource import PompeRessource
 
 
 def index(request):
@@ -38,6 +37,16 @@ def index(request):
                'pompe_ok': pompe_ok, 'pompe_stock': pompe_stock, 'pompe_hs': pompe_hs, 'pompe_rep': pompe_rep,
                'pompe_all': pompe_all, 'pompe_e1': pompe_e1, 'pompe_e2': pompe_e2, 'pompe_e3': pompe_e3}
     return render(request, 'pompe/index.html', context)
+
+def export(request):
+    pompe_resource = PompeRessource()
+    datapompe = pompe_resource.export()
+    response = HttpResponse(datapompe.csv, content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="datapompe.csv"'
+    return response
+
+
+
 
 def ajout_pompe(request):
     if request.method == "POST":

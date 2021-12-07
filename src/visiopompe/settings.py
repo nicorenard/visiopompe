@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'pompe.apps.PompeConfig',
     'django_filters',
     'field_history',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -138,4 +139,10 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuration for import_export
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+IMPORT_EXPORT_SKIP_ADMIN_LOG = False
+IMPORT_EXPORT_IMPORT_PERMISSION_CODE = None
+IMPORT_EXPORT_EXPORT_PERMISSION_CODE = None
 

@@ -14,7 +14,7 @@ class Pompes(models.Model):
         ('/pompe_img/vacuubrand_1.jpg', 'Vacuubrand pompe à palettes'),
         ('/pompe_img/vacuubrand_membrane.jpg', 'Vacuubrand pompe à membranes'),
         ('/pompe_img/vacuubrand_pompage.jpg', 'Vacuubrand groupe de pompages'),
-        ('/pompe_img/welch_pompe.jpg', 'Welch pompe à palettes'),
+        ('/pompe_img/welch_pompe.jpeg', 'Welch pompe à palettes'),
         ('/pompe_img/welch_pompe3.jpg', 'Welch groupe de pompages'),
         ('/pompe_img/welch_membrane.jpg', 'Welch pompe à membranes'),
         ('/pompe_img/noimage.jpg', 'Aucune image')
@@ -30,7 +30,7 @@ class Pompes(models.Model):
         ('Welch', 'Welch'),
         ('Autres', 'Autres'),
     ]
-    marque = models.CharField(max_length=50, choices=MARQUE, default='', verbose_name="Fabriquant")
+    marque = models.CharField(max_length=50, choices=MARQUE, verbose_name="Fabriquant")
     modele = models.CharField(max_length=20, default='', verbose_name="Modèle de la pompe")
     numero_serie = models.CharField(max_length=100, default='')
     PUISSANCE = [
@@ -65,7 +65,7 @@ class Pompes(models.Model):
     STATUT_POMPE = [
         ('A', 'Active'),
         ('S', 'Stockage'),
-        ('R', 'En Réparation'),
+        ('R', 'En réparation'),
         ('P', 'En panne'),
             ]
     statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='A', verbose_name="Etat de la pompe")
