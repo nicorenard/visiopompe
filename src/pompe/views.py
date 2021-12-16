@@ -1,6 +1,8 @@
 import datetime
+import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from field_history.models import FieldHistory
 from .models import Pompes, PiecesPompe, Kit, Huile, Doc, VersionApp
 from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
     ModifKitForm, DocForm
@@ -23,19 +25,25 @@ def index(request):
     pompe_e3 = pompes.filter(localisation_etage='3ème étage').count()
     pompe_all = pompes.count()
 
+
+    #RECUPERER LES DONNEES DE serialized_data dans la table Fieldhistory_fieldhistory
+    #sous forme de dictionnaire et ensuite les trier en fonction du "PK" et "fields".
     ''' 
-    RECUPERER LES DONNEES DE serialized_data dans la table Fieldhistory_fieldhistory
-    sous forme de dictionnaire et ensuite les trier en fonction du "PK" et "fields".
+    data = list(FieldHistory.objects.values('serialized_data').all())
+    data2 = data[0]['serialized_data']
+    data3 = json.loads(data2)
+    data4 = data3[0]['fields']
+    data4_type = type(data4)
     
-    data2 = FieldHistory.objects.values('serialized_data')
-    data = list(FieldHistory.objects.values('serialized_data'))
-    json_d = json.dumps(data)
-    json_data = json.loads(json_d)
+    infos = dict()
+    for pompe in pompes:
+        infos[pompe.pk] = FieldHistory.objects.get_from_model(pompe)
     '''
 
     context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date,
                'pompe_ok': pompe_ok, 'pompe_stock': pompe_stock, 'pompe_hs': pompe_hs, 'pompe_rep': pompe_rep,
-               'pompe_all': pompe_all, 'pompe_e1': pompe_e1, 'pompe_e2': pompe_e2, 'pompe_e3': pompe_e3}
+               'pompe_all': pompe_all, 'pompe_e1': pompe_e1, 'pompe_e2': pompe_e2, 'pompe_e3': pompe_e3,
+               }
     return render(request, 'pompe/index.html', context)
 
 def export(request):
@@ -44,9 +52,6 @@ def export(request):
     response = HttpResponse(datapompe.csv, content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="datapompe.csv"'
     return response
-
-
-
 
 def ajout_pompe(request):
     if request.method == "POST":

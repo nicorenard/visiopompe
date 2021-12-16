@@ -63,13 +63,13 @@ class Pompes(models.Model):
     localisation_emplacement = models.CharField(max_length=50, default='', verbose_name="Emplacement", blank=True)
     mise_en_service = models.DateField(auto_now=date.today)
     STATUT_POMPE = [
-        ('A', 'Active'),
-        ('S', 'Stockage'),
+        ('A', 'En Activité'),
+        ('S', 'En Stock'),
         ('R', 'En réparation'),
         ('P', 'En panne'),
             ]
     statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='A', verbose_name="Etat de la pompe")
-    date_vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange")
+    date_vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange", blank=True, null=True)
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
     information = models.CharField(max_length=100, blank=True, null=True)
     field_history = FieldHistoryTracker(['information'])
@@ -104,7 +104,6 @@ class Huile(models.Model):
         ('/huile_img/huile_welch.jpg', 'Welch'),
         ('/huile_img/huile_universelle.jpg', 'Huile universelle'),
         ('/pompe_img/noimage.jpg', 'Aucune image'),
-
     ]
     image = models.ImageField(choices=huile_image, max_length=254, blank=True, null=True)
     marque = models.CharField(max_length=50, default='', verbose_name="Fabriquant")

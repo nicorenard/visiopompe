@@ -145,7 +145,7 @@
     <section class="w3-container w3-padding-32 w3-mobile">
 
         {% for pompe in pompes %}
-        <div class="w3-container w3-border-top  w3-border-light-grey ">
+        <div class="w3-container ">
             <p class="w3-bottombar" style="font-size: 20px; "><strong>NOM</strong> : {{pompe.nom}}
                 - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.marque}}
                 - <strong style="font-size: 18px;">Modèle</strong> : {{pompe.modele}}
@@ -170,18 +170,20 @@
                 <div class="w3-container w3-cell w3-mobile">
                     <p style="font-size: 16px">
                         <img src="{% static 'pompe/img/icon_localisation2.png' %}"  >
-                            &nbsp;Localisation : {{pompe.localisation_etage}}&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_piece}}
+                            &nbsp;Localisation :<br> {{pompe.localisation_etage}}&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_piece}}
                             <i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_emplacement}} </p>
+                    <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Prochaine Vidange:
+                        {% if current_date > pompe.date_vidange %}<strong style="color:red;">{{pompe.date_vidange}}</strong>
+                        {% elif warning_date == pompe.date_vidange %}<strong style="color:yellow;">{{pompe.date_vidange}}</strong>
+                        {% else %} <strong>{{pompe.date_vidange}}</strong></p>
+                        {% endif %}
                     <!---genere l'image en fonction du statut pompe.statut---->
                     <p style="font-size: 16px; ">Statut actuel : {% if pompe.statut == 'A' %}<img src="{% static 'pompe/img/icon_statut_actif.png' %}" alt="pompe_ok">
                     {% elif pompe.statut == 'R' %}<img src="{% static 'pompe/img/icon_reparation.png' %}" alt="pompe_reparation">
                     {% elif pompe.statut == 'P' %}<img src="{% static 'pompe/img/icon_enpanne.png' %}" alt="pompe_pb">
                     {% else %}<img src="{% static 'pompe/img/icons_stockage.png'%}" alt="pompe_stock">
                     {% endif %}</p>
-                    <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Prochaine Vidange:
-                        {% if current_date > pompe.date_vidange %}<strong style="color:red;">{{pompe.date_vidange}}</strong>
-                        {% else %} <strong>{{pompe.date_vidange}}</strong></p>
-                        {% endif %}
+
                 </div>
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service}}</p>
@@ -201,9 +203,12 @@
             </div>
         </div>
         <!----section info supplementaire--->
-        <div class="w3-container w3-border-top  w3-border-light-grey ">
-            <h5 class="w3-border-bottom w3-border-light-grey"><u>&nbspHistorique :</u></h5>
+        <div class="w3-container w3-border-bottom w3-border-light-grey">
+            <h5 class=""><u>&nbspHistorique :</u></h5>
                 <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
+            <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{infos}}"</p>
+
+
             {% endfor %}
         </div>
     </section>
