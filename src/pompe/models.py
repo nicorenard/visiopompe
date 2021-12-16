@@ -71,7 +71,7 @@ class Pompes(models.Model):
     statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='A', verbose_name="Etat de la pompe")
     date_vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange", blank=True, null=True)
     huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
-    information = models.CharField(max_length=100, blank=True, null=True)
+    information = models.TextField(blank=True, null=True)
     field_history = FieldHistoryTracker(['information'])
 
     def __str__(self):
