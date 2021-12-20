@@ -15,6 +15,7 @@ def index(request):
     filterpompe = PompeFilter(request.GET, queryset=pompes)
     pompes = filterpompe.qs
     current_date = datetime.date.today()
+    warning_date = current_date + datetime.timedelta(days=7)
     #pour la dashboard
     pompe_ok = pompes.filter(statut='A').count()
     pompe_stock = pompes.filter(statut='S').count()
@@ -42,7 +43,7 @@ def index(request):
 
     context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date,
                'pompe_ok': pompe_ok, 'pompe_stock': pompe_stock, 'pompe_hs': pompe_hs, 'pompe_rep': pompe_rep,
-               'pompe_all': pompe_all, 'pompe_e1': pompe_e1, 'pompe_e2': pompe_e2, 'pompe_e3': pompe_e3,
+               'pompe_all': pompe_all, 'pompe_e1': pompe_e1, 'pompe_e2': pompe_e2, 'pompe_e3': pompe_e3, 'warning_date': warning_date
                }
     return render(request, 'pompe/index.html', context)
 

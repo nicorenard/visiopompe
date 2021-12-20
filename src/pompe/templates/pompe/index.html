@@ -174,9 +174,10 @@
                             &nbsp;Localisation :<br> {{pompe.localisation_etage}}&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_piece}}
                             <i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_emplacement}} </p>
                     <p class="w3-padding-16"><img src="{% static 'pompe/img/icon_vidange.png' %}" >&nbsp;Prochaine Vidange:
-                        {% if current_date > pompe.date_vidange %}<strong style="color:red;">{{pompe.date_vidange}}</strong>
-                        {% elif warning_date == pompe.date_vidange %}<strong style="color:yellow;">{{pompe.date_vidange}}</strong>
-                        {% else %} <strong>{{pompe.date_vidange}}</strong></p>
+                        {% if current_date > pompe.date_vidange %}<strong style="color:red;">{{pompe.date_vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                        {% elif current_date == pompe.date_vidange %}<strong style="color:yellow;">{{pompe.date_vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                        {% elif pompe.date_vidange <= warning_date %}<strong style="color:orange;">{{pompe.date_vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                        {% else %} <strong>{{pompe.date_vidange|date:"SHORT_DATE_FORMAT"}}</strong></p>
                         {% endif %}
                     <!---genere l'image en fonction du statut pompe.statut---->
                     <p style="font-size: 16px; ">Statut actuel : {% if pompe.statut == 'A' %}<img src="{% static 'pompe/img/icon_statut_actif.png' %}" alt="pompe_ok">
@@ -187,7 +188,7 @@
 
                 </div>
                 <div class="w3-container w3-cell w3-mobile">
-                    <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service}}</p>
+                    <p><img src="{% static 'pompe/img/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service|date:"SHORT_DATE_FORMAT"}}</p>
                     <p><img src="{% static 'pompe/img/icon_numeroserie.png' %}">&nbsp;N° de série : {{pompe.numero_serie}}</p>
                     <p><img src="{% static 'pompe/img/icon_code_umr.png' %}"> N° inventaire UMR : {{pompe.code_umr}}</p>
                 </div>
@@ -207,7 +208,7 @@
         <div class="w3-container w3-border-bottom w3-border-light-grey">
             <h5 class=""><u>&nbspHistorique :</u></h5>
                 <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{pompe.information}}"</p>
-            <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{infos}}"</p>
+            <p><img src="{% static 'pompe/img/icon_information.png' %}" >"{{infos|linenumbers}}"</p>
 
 
             {% endfor %}
