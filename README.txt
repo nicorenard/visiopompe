@@ -36,7 +36,7 @@ DATABASES = {
     }
 }
 
-Vous pourrez modifier et la configurer comme suit, par exemple pour PostgreSQL:
+Vous pourrez la modifier et la configurer comme suit, par exemple pour PostgreSQL:
 
 DATABASES = {
     'default': {
@@ -53,18 +53,17 @@ Note : le serveur de production de test a été utilisé avec MySQL.
 
 ### Installation
 
--Changez dans le fichier HTML : "pompe/templates/index.html" l'adresse mail du support et indiquez celui de l'administrateur en charge
+-Changez dans le fichier HTML : "pompe/templates/navbar.html" l'adresse mail du support et indiquez celui de l'administrateur en charge
 du projet.
 
-Ensuite vous pouvez montrer ce que vous obtenez au final...
 - Si vous souhaitez faire un import massif ou un export de votre fichier pompe, un compte administrateur est necessaire.
 Pour le créer faite :
 >>> python manage.py createsuperuser
 Entrez un login puis un mot de passe.
 /!\ Le mot de passe n'est pas visible.
-vous pouvez accéder à l'administration en faisant :
+Vous pouvez accéder à l'administration en faisant :
 >>> adresse_du_site_web/pompe/admin
-Il faut ensuite aller dans l'onglet "pompess" puis cliquez sur les boutons correspondant.
+Il faut ensuite aller dans l'onglet "ModelePompe" puis cliquez sur les boutons correspondant.
 l'import se fait via le template délivrée dans le dossier "import_template_xlsx"
 Ce dossier est a supprimer dès que vous avez récupérer le template.
 
@@ -72,9 +71,10 @@ Ce dossier est a supprimer dès que vous avez récupérer le template.
 
 Lorsque le site web est en place ainsi que l'accès établit. Il convient de créer un superuser qui aura
 accès en cas de problème au schéma complet des élements affichés dans le site web.
-Il pourra également supprimer massivement ou importer massivement dans la base de données, les parc de pompes.
+Il pourra également supprimer massivement ou importer massivement dans la base de données, les fiches ou stocks de
+parc de pompes.
 
-Par la suite, la navigation au sein du site web se fait grâce au menu.
+Par la suite, la navigation au sein du site web se fait grâce au menu à gauche.
 
 
 ## Projet fabriqué avec
@@ -86,7 +86,7 @@ Par la suite, la navigation au sein du site web se fait grâce au menu.
 
 ## Versions
 
-**Dernière version stable :** V.0.1
+**Dernière version stable :** V.1.0
 
 
 

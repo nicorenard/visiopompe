@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pompes, Huile, Kit, PiecesPompe, Doc
+from .models import *
 
 
 class Pompeform(forms.ModelForm):

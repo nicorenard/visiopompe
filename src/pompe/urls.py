@@ -5,9 +5,9 @@ from . import views
 app_name = 'pompe'
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path('', views.index, name="pompe"),
     path('versionapp', views.version, name="version"),
-    path('huiles/', views.huile, name="huiles"),
+'''    path('huiles/', views.huile, name="huiles"),
     path('pieces/', views.piece, name="pieces"),
     path('kit/', views.kit, name="kit"),
     path('doc/', views.doc, name="docs"),
@@ -23,6 +23,6 @@ urlpatterns = [
     path('forms4/', views.ajout_kit, name="ajout_kit"),
     path('kit_edit/<int:pk>/', views.modif_kit, name="kit_edit"),
     path('kit_suppression/<int:pk>/', views.suppression_kit, name="kit_suppression"),
-    path('forms5/', views.ajout_doc, name="ajout_doc"),
+    path('forms5/', views.ajout_doc, name="ajout_doc"),'''
 
 ]

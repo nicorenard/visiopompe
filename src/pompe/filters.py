@@ -4,10 +4,17 @@ from django_filters import CharFilter
 
 
 class PompeFilter(django_filters.FilterSet):
-    localisation_piece = CharFilter(field_name="localisation_piece", lookup_expr='icontains', label='Pièce')
-    localisation_emplacement = CharFilter(field_name="localisation_emplacement", lookup_expr='icontains', label='Place')
-    code_umr = CharFilter(field_name="code_umr", lookup_expr='icontains', label='Inventaire UMR')
+    #### If you need to search inside a bigger place, take off the # in front of Site.nom and Batiment.nom####
+    #### Add also in the fields [], 'Site.com' and 'Batiment.nom'#######
+
+    # Site.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Site')
+    # Batiment.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Batiment')
+
+    Etage.nom= CharFilter(field_name="nom", lookup_expr='icontains', label='Etage', label='Etage')
+    Piece.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Piece', label='Piece')
+    statut = CharFilter(field_name="status", lookup_expr='icontains', label='Statut')
+    num_inventaire = CharFilter(field_name="num_inventaire", lookup_expr='icontains', label='Inventaire UMR')
 
     class Meta:
-        model = Pompes
-        fields = ['marque', 'statut', 'localisation_etage', 'localisation_piece', 'localisation_emplacement', 'code_umr']
+        model = StockPompe
+        fields = ['Piece.nom', 'Etage.nom', 'statut', 'num_inventaire']
