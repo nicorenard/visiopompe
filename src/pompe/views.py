@@ -1,9 +1,9 @@
 import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import StockPompe, VersionApp, ModelePompe
-from .filters import PompeFilter
-from .resource import PompeRessource
+from .models import StockPompe, VersionApp
+# from .filters import PompeFilter
+#from .resource import PompeRessource
 
 
 def index(request):
@@ -19,7 +19,7 @@ def index(request):
                }
     return render(request, 'pompe/index.html', context)
 
-def dashboard(request):
+'''def dashboard(request):
     pompes = StockPompe.objects.all()
     pompes_mod = ModelePompe.objects.all()
     pompe_ok = pompes.filter(statut='A').count()
@@ -40,11 +40,8 @@ def export(request):
     response = HttpResponse(datapompe.csv, content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="datapompe.csv"'
     return response
-
+'''
 
 def version(request):
     versions = VersionApp.objects.all().order_by('-version')
     return render(request, 'pompe/versionapp.html', {'versions': versions})
-
-
-# definir API pour appli bureau ?

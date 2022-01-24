@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'pompe.apps.PompeConfig',
     'django_filters',
     'import_export',
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

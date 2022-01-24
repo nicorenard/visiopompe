@@ -70,7 +70,7 @@ class ModelePompe(models.Model):
         ('50 Hertz', '50 Hertz'),
         ('60 Hertz', '60 Hertz')
     ]
-    puissance = models.CharField(default='50', choices=PUISSANCE, max_length=2, verbose_name="Puissance du moteur")
+    puissance = models.CharField(default='50', choices=PUISSANCE, max_length=20, verbose_name="Puissance du moteur")
     TECHNOLOGIE = [
         ('Sèches - Membranes', 'Sèches - Membranes'),
         ('Sèches - Vis', 'Sèches - Vis'),
@@ -79,8 +79,8 @@ class ModelePompe(models.Model):
     ]
     technologie = models.CharField(max_length=30, choices=TECHNOLOGIE, verbose_name="Technologie du vide")
     vide_theo = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
-    fabriquant = models.ForeignKey(Fabriquant, null=False, blank=False, on_delete=models.SET_NULL)
-    documentation = models.ForeignKey(Doc, null=False, blank=False, on_delete=models.SET_NULL)
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+    documentation = models.ForeignKey(Doc, null=True, blank=False, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.nom
@@ -93,8 +93,19 @@ class Huile(models.Model):
     ref_fab = models.CharField(max_length=150, default='', verbose_name="Référence", blank=True, null=True)
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
     information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
-    piece = models.ForeignKey(Piece, null=False, blank=False, on_delete=models.SET_NULL)
-    fabriquant = models.ForeignKey(Fabriquant, null=False, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.nom
+
+class ModelEquipe(models.Model):
+    nom = models.CharField(default='', max_length=255, verbose_name="Nom complet de l'équipe")
+    sigle = models.CharField(default='', max_length=10, verbose_name="Abbreviation du nom", blank=True, null=True)
+    nom_responsable = models.CharField(default='', max_length=100, verbose_name="Responsable de l'équipe",blank=True, null=True)
+    email_responsable = models.CharField(default='', max_length=50,verbose_name="Email du Responsable",blank=True, null=True)
+    date = models.DateField(default=date.today,verbose_name="Date de création")
+    lieux = models.ForeignKey(Etage, null=True,blank=False, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.nom
@@ -116,9 +127,10 @@ class StockPompe(models.Model):
     ]
     statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='', verbose_name="Etat actuel de la pompe")
     historique = models.TextField(blank=True, null=True, max_length=500, verbose_name="historique de la pompe")
-    piece = models.ForeignKey(Piece, null=False, blank=False, on_delete=models.SET_NULL)
-    pompe = models.ForeignKey(ModelePompe, null=False, blank=False, on_delete=models.SET_NULL)
-    huile = models.ForeignKey(Huile, null=False, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
+    pompe = models.ForeignKey(ModelePompe, null=True, blank=False, on_delete=models.SET_NULL)
+    huile = models.ForeignKey(Huile, null=True, blank=False, on_delete=models.SET_NULL)
+    equipe = models.ForeignKey(ModelEquipe, null=True, blank=False, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.num_serie
@@ -134,8 +146,8 @@ class Kit(models.Model):
     ref_rev = models.CharField(max_length=50, default='', verbose_name="Référence Revendeur", blank=True, null=True)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
     information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
-    piece = models.ForeignKey(Piece, null=False, blank=False, on_delete=models.SET_NULL)
-    fabriquant = models.ForeignKey(Fabriquant, null=False, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.nom
@@ -147,8 +159,9 @@ class PiecesPompe(models.Model):
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
     information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
-    piece = models.ForeignKey(Piece, null=False, blank=False, on_delete=models.SET_NULL)
-    fabriquant = models.ForeignKey(Fabriquant, null=False, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.nom
+
