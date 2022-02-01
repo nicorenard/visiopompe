@@ -10,7 +10,7 @@
 <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left " style="width:200px;" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large w3-hide-large w3-right" onclick="w3_close()">&times;</button>
     <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar">
-    <a href="{% url 'homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i> Acceuil</a>
+    <a href="{% url 'pompe:homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i> Acceuil</a>
 
     <div class="w3-dropdown-hover">
     <button class="w3-button" onclick="myPumpFunc()"><i class="fa fa-arrow-right"></i> Pompes <i class="fa fa-caret-down"></i></button>
