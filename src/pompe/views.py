@@ -1,9 +1,13 @@
 import datetime
 from django.shortcuts import render
-from .models import StockPompe, VersionApp
+from .models import *
 
 def index(request):
    return render(request, 'pompe/index.html')
+
+def version(request):
+    versions = VersionApp.objects.all().order_by('-version')
+    return render(request, 'pompe/versionapp.html', {'versions': versions})
 
 def pompe(request):
     pompes = StockPompe.objects.all().order_by('mise_en_service')
@@ -15,7 +19,15 @@ def pompe(request):
                }
     return render(request, 'pompe/pompe.html', context)
 
+def fabriquant(request):
+    fabriquants = Fabriquant.objects.all().order_by('nom')
+    return render(request, 'pompe/dashboard.html', {'fabriquants' : fabriquants})
 
-def version(request):
-    versions = VersionApp.objects.all().order_by('-version')
-    return render(request, 'pompe/versionapp.html', {'versions': versions})
+def doc(request):
+    docs = Doc.objects.all().order_by('nom')
+    return render(request, 'pompe/dashboard.html', {'docs' : docs})
+
+
+
+
+

@@ -9,7 +9,7 @@ class VersionAppAdmin(admin.ModelAdmin):
     search_fields = ['version', 'date_version']
 
 
-@admin.register(ModelePompe, StockPompe)
+@admin.register(ModelePompe, StockPompe, Fabriquant, Doc, Site, Batiment, Etage, Piece, ModelEquipe, Huile, PiecesPompe)
 class PersonAdmin(ImportExportModelAdmin):
     pass
 
