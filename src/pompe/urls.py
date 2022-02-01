@@ -1,10 +1,11 @@
 from django.urls import path
-from src.pompe import views
+from . import views
 
 app_name = 'pompe'
 
 urlpatterns = [
-    path('', views.index, name="pompe"),
-    path('versionapp', views.version, name="version")
+    path('', views.index, name="homepage"),
+    path('pompe/', views.index, name="pompe"),
+    path('versionapp/', views.version, name="version")
 
 ]
