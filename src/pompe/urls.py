@@ -1,6 +1,5 @@
 from django.urls import path
-from . import views
-
+from src.pompe import views
 
 app_name = 'pompe'
 

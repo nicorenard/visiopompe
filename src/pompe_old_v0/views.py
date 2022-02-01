@@ -213,6 +213,3 @@ def ajout_doc(request):
 def version(request):
     versions = VersionApp.objects.all().order_by('-version')
     return render(request, 'pompe/versionapp.html', {'versions': versions})
-
-
-# definir API pour appli bureau ?

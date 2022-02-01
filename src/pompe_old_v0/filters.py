@@ -10,8 +10,8 @@ class PompeFilter(django_filters.FilterSet):
     # Site.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Site')
     # Batiment.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Batiment')
 
-    Etage.nom= CharFilter(field_name="nom", lookup_expr='icontains', label='Etage', label='Etage')
-    Piece.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Piece', label='Piece')
+    Etage.nom= CharFilter(field_name="nom", lookup_expr='icontains', label='Etage')
+    Piece.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Piece')
     statut = CharFilter(field_name="status", lookup_expr='icontains', label='Statut')
     num_inventaire = CharFilter(field_name="num_inventaire", lookup_expr='icontains', label='Inventaire UMR')
 

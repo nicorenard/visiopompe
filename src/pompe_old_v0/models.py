@@ -158,7 +158,7 @@ class PiecesPompe(models.Model):
     image = models.ImageField(upload_to='piecepompe_img/', max_length=254, blank=True, null=True)
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
-    information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
+    information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire(s)")
     piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
 
