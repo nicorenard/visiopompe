@@ -1,0 +1,116 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'pompe/font-awesome.min.css' %}">
+    <title>Dashboard</title>
+</head>
+<body>
+{% include 'pompe/navbar.html' %}
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Dashboard</h2>
+
+    </div>
+    <br>
+<!---- Dashboard : elle va me permettre de voir :
+    - nbre total de pompe par site, batiment, etage, equipe,
+    - nbre total par categorie de pompes
+    - nbre actif total, pannes total, reparation totale, stock et par categories aussi
+    - nbre total de pot d'huiles
+    - nbre total de pieces de rechange
+    - nbre total de kit de maintenance
+
+
+---->
+<div class="w3-container w3-padding-12">
+            <div class="w3-row-padding">
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-green">
+                                <h4>EN SERVICES</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_valide}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-sand">
+                                <h4>EN STOCKS</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_stock}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-red">
+                                <h4>EN PANNES</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_hs}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-blue">
+                                <h4>EN REPARATIONS</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_rep}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+                <br>
+            <div class="w3-row-padding">
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-sand">
+                                <h4>POMPES TOTAL UMR</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_all}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-sand">
+                                <h4>POMPES TOTAL PALETTES</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>#</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4>POMPES TOTAL MEMBRANES</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>#</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4>POMPES TOTAL SECHES</h4></header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>#</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>

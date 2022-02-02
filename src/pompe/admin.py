@@ -10,6 +10,7 @@ class VersionAppAdmin(admin.ModelAdmin):
 
 
 @admin.register(ModelePompe, StockPompe, Fabriquant, Doc, Site, Batiment, Etage, Piece, ModelEquipe, Huile, PiecesPompe)
+@admin.display(description='nom')
 class PersonAdmin(ImportExportModelAdmin):
     pass
 

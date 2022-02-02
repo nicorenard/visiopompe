@@ -6,12 +6,11 @@
     <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Page de démarrage</title>
+    <title>Acceuil</title>
 
 </head>
 <body>
 
-<!---------Contenu------->
 <div class="w3-main w3-mobile">
     <div class="w3-container w3-dark-grey">
         <h2><img style="margin: 10px 4px 10px 10px ; padding:4px;width:5%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar">Bienvenue sur Visiopompe</h2>
@@ -22,31 +21,37 @@
             <div class="w3-col l3 m5 w3-margin-bottom ">
                 <div class="w3-display-container w3-leftbar">
                   <div class="w3-display-topleft w3-black w3-padding">Pompes</div>
-                  <a href="#"><img src="{% static 'img/pompe2.png' %}" alt="pompes" style="width:100%"></a>
+                  <a href="{% url 'pompe:pompe' %}"><img src="{% static 'pompe/img/index/pompe2.png' %}" alt="pompes" style="width:100%"></a>
                 </div>
             </div>
             <div class="w3-col l3 m5 w3-margin-bottom ">
                 <div class="w3-display-container w3-leftbar ">
                   <div class="w3-display-topleft w3-black w3-padding">Pièces détachées</div>
-                  <a href="#"><img src="{% static 'img/piece_detache2.png' %}" alt="pièces détachées" style="width:100%"></a>
+                  <a href="#"><img src="{% static 'pompe/img/index/piece_detache2.png' %}" alt="pièces détachées" style="width:100%"></a>
                 </div>
             </div>
             <div class="w3-col l3 m5 w3-margin-bottom ">
                 <div class="w3-display-container w3-leftbar">
                   <div class="w3-display-topleft w3-black w3-padding">Huiles</div>
-                  <a href="#"><img src="{% static 'img/huile3.png' %}" alt="huile" style="width:100%"></a>
+                  <a href="#"><img src="{% static 'pompe/img/index/huile3.png' %}" alt="huile" style="width:100%"></a>
                 </div>
             </div>
             <div class="w3-col l3 m5 w3-margin-bottom">
                 <div class="w3-display-container w3-leftbar">
                   <div class="w3-display-topleft w3-black w3-padding">Kits de maintenance</div>
-                  <a href="#"><img src="{% static 'img/kit2.jpg' %}" alt="kit de maintenance" style="width:100%"></a>
+                  <a href="#"><img src="{% static 'pompe/img/index/kit2.jpg' %}" alt="kit de maintenance" style="width:100%"></a>
                 </div>
             </div>
             <div class="w3-col l3 m5 w3-margin-bottom">
                 <div class="w3-display-container w3-leftbar">
                   <div class="w3-display-topleft w3-black w3-padding">Documentations</div>
-                  <a href="#"><img src="{% static 'img/bg_doc.jpg' %}" alt="documentation" style="width:100%"></a>
+                  <a href="#"><img src="{% static 'pompe/img/index/bg_doc.jpg' %}" alt="documentation" style="width:100%"></a>
+                </div>
+            </div>
+            <div class="w3-col l3 m5 w3-margin-bottom">
+                <div class="w3-display-container w3-leftbar">
+                  <div class="w3-display-topleft w3-black w3-padding">Administration</div>
+                  <a href="{% url 'pompe:dashboard' %}"><img src="{% static 'pompe/img/index/admin.jpg' %}" alt="admin" style="width:100%"></a>
                 </div>
             </div>
         </div>

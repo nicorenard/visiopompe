@@ -5,7 +5,7 @@ from django_filters import CharFilter
 
 class PompeFilter(django_filters.FilterSet):
     #### If you need to search inside a bigger place, take off the # in front of Site.nom and Batiment.nom####
-    #### Add also in the fields [], 'Site.com' and 'Batiment.nom'#######
+    #### Add also in the fields [], 'Site.nom' and 'Batiment.nom'#######
 
     # Site.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Site')
     # Batiment.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Batiment')
