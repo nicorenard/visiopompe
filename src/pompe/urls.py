@@ -12,5 +12,7 @@ urlpatterns = [
     path('docs/', views.doc, name="doc"),
     path('versionapp/', views.version, name="version"),
     path('dashboard/', views.dashboard, name="dashboard"),
+    path('stock_add/', views.add_stockpompe, name="stock_pompe"),
+    path('stock_edit/<int:pk>/', views.update_stockpompe, name="pompe_edit"),
 
 ]

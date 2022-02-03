@@ -78,10 +78,35 @@ Vous pouvez accéder à l'administration en faisant :
 >>> adresse_du_site_web/admin  (ex : http://localhost/admin)
 
 Il faut ensuite aller dans l'onglet "ModelePompe" puis cliquez sur les boutons correspondant.
-l'import se fait via le template délivré dans le fichier "import_template_xlsx"
-Ce fichier est à ne pas laisser sur votre serveur.
+l'import se fait via le template délivré dans le dossier "importation"
+Ce fichier n'est pas à laisser sur votre serveur.
 
-Le dossier "docs_complémentaires" est informatif et ne doit pas être laissé sur le serveur de production (inutile).
+- Le dossier "documentations" est informatif et concernera plus un dev.
+Il ne doit pas être laissé sur le serveur de production (inutile).
+
+- Cas de la Dashboard. [Nécessite de l'aide d'un dev si besoin]
+L'application propose aux administrateurs locaux d'avoir la possibilité de voir un menu dashboard
+qui reprend les informations de suivis des stocks, accesoires et pompes présents.
+La format qui est proposé en prévu pour une utilisation "standard".
+Si vous souhaitez agrémenter la dashboard en fonction par exemple des stocks de pompes par étages, batiment, un site
+Vous devez pour cela modifier le fichier suivant : dashboard.html situé dans ".src/pompe/templates/pompe".
+Voici les codes pour rajouter en fonction des étages et qu'il faut rajouter si vous avez plusieurs étages.
+>>>>
+Encart pour les sites :
+>>>>
+Encart pour les batiments:
+>>>>
+Encart pour les étages:
+>>>>
+Encart pour les pièces:
+>>>>
+Encart par équipes :
+>>>>
+Encart par fabriquant :
+>>>>
+
+La dashboard est un élement modulable. A vous de voir si vous osuhaitez ou non l'agrémenter.
+
 
 ## Démarrage
 

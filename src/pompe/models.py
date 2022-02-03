@@ -88,7 +88,7 @@ class ModelePompe(models.Model):
 
 class Huile(models.Model):
     image = models.ImageField(upload_to='huile_img/', max_length=254, blank=True, null=True, verbose_name="Image")
-    nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pompe")
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom")
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
     ref_fab = models.CharField(max_length=150, default='', verbose_name="Référence", blank=True, null=True)
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
@@ -129,8 +129,8 @@ class StockPompe(models.Model):
     historique = models.TextField(blank=True, null=True, max_length=500, verbose_name="historique de la pompe")
     piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
     pompe = models.ForeignKey(ModelePompe, null=True, blank=False, on_delete=models.SET_NULL)
-    huile = models.ForeignKey(Huile, null=True, blank=False, on_delete=models.SET_NULL)
-    equipe = models.ForeignKey(ModelEquipe, null=True, blank=False, on_delete=models.SET_NULL)
+    huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
+    equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.num_serie

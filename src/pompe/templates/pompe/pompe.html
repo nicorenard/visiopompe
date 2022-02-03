@@ -18,13 +18,107 @@
     </div>
 <br>
     <section class="w3-container w3-light-gray w3-padding-12" >
-        <form action="" method="get">
+        <form action="templates/pompe/pompe.html" method="get">
             <br>
             {{filterpompe.form.as_table}}
             <button type="submit"><i class="fa fa-search"></i></button>
             </form>
     </section>
+    <section class="w3-container w3-padding-32 w3-mobile">
 
+        {% for pompe in model_pompe %}
+        <div class="w3-container ">
+            <p class="w3-bottombar" style="font-size: 20px; "><strong>NOM</strong> : {{pompe.nom}}
+                - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.fabriquant.nom}}
+                - <strong style="font-size: 18px;">MODELE</strong> : {{pompe.modele}}
+            </p>
+
+        </div>
+        <div class="w3-container w3-cell-row">
+            <!----section image--->
+            <div class ="w3-container w3-cell"  style="width: 15%">
+                {% if pompe.image %}
+                <img src="{{pompe.image.url}}" alt="{{pompe.nom}}" style="width: 100%; display: block; margin: auto;">
+                {% else %}
+                <img src="{% static 'pompe/img/noimage.jpg' %}" alt="no image" style="width: 50%">
+                {% endif %}
+
+            </div>
+            {% endfor %}
+            {% for pompe in stock_pompe %}
+             <p style="text-align: right;">
+            <a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
+            <a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
+            </p>
+            <!----section carateristiques--->
+            <div class="w3-container w3-cell-row w3-leftbar">
+                <div class="w3-container w3-cell w3-mobile">
+                    <p style="font-size: 16px">
+                        <img src="{% static 'pompe/img/menu_pompe/icon_localisation2.png' %}"  >
+                            &nbsp;Localisation :<br> {{pompe.etage}}&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;{{pompe.piece}}
+                            <i class="fa fa-chevron-right"></i>&nbsp;{{pompe.localisation_emplacement}} </p>
+                    <p class="w3-padding-16"><img src="{% static 'pompe/img/menu_pompe/icon_vidange.png' %}" >&nbsp;Prochaine Vidange:
+                        {% if current_date > pompe.vidange %}<strong style="color:red;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                        {% elif current_date == pompe.vidange %}<strong style="color:orange;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                        {% elif pompe.vidange <= warning_date %}<strong style="color:amber;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                        {% else %} <strong>{{pompe.date_vidange|date:"SHORT_DATE_FORMAT"}}</strong></p>
+                        {% endif %}
+                    <!---genere l'image en fonction du statut pompe.statut---->
+                    <p style="font-size: 16px; ">Statut actuel : {% if pompe.statut == 'A' %}<img src="{% static 'pompe/img/menu_pompe/icon_statut_actif.png' %}" alt="pompe_ok">
+                    {% elif pompe.statut == 'R' %}<img src="{% static 'pompe/img/menu_pompe/icon_reparation.png' %}" alt="pompe_reparation">
+                    {% elif pompe.statut == 'P' %}<img src="{% static 'pompe/img/menu_pompe/icon_enpanne.png' %}" alt="pompe_pb">
+                    {% else %}<img src="{% static 'pompe/img/menu_pompe/icons_stockage.png'%}" alt="pompe_stock">
+                    {% endif %}</p>
+
+                </div>
+                <div class="w3-container w3-cell w3-mobile">
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service|date:"SHORT_DATE_FORMAT"}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_numeroserie.png' %}">&nbsp;N° de série : {{pompe.num_serie}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_code_umr.png' %}"> N° inventaire UMR : {{pompe.num_inventaire}}</p>
+                </div>
+                {% endfor %}
+                {% for pompe in model_pompe %}
+                <div class="w3-container w3-cell w3-mobile">
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.phasage}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.puissance}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Technologie : {{pompe.technologie}}</p>
+                </div>
+                    {% endfor %}
+                    {% for pompe in stock_pompe %}
+                <div class="w3-container w3-cell w3-mobile">
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vidangeurgente.png' %}">&nbsp;Huile : {{pompe.huile}}</p>
+                    {% endfor %}
+                    {% for pompe in model_pompe %}
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" >&nbspVide théorique : {{pompe.vide_theo |stringformat:".0e"}} mbars</p>
+                    {% endfor %}
+                    {% for pompe in stock_pompe %}
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" > <strong>Vide testé </strong>: {{pompe.vide_user |stringformat:".0e"}} mbars</p>
+                </div>
+            </div>
+        </div>
+        <!----section info supplementaire--->
+        <div class="w3-container w3-border-bottom w3-border-light-grey">
+            <h5 class=""><u>&nbspHistorique :</u></h5>
+                <p><img src="{% static 'pompe/img/menu_pompe/icon_information.png' %}" >"{{pompe.historique}}"</p>
+
+
+            {% endfor %}
+        </div>
+    </section>
+</div>
+    <!----section citation--->
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <section>
+        <div class="w3-container" >
+            <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+                <p><i class="fa fa-quote-right w3-large"></i></p>
+                <p><i class="w3-serif w3-large">“Le son de la pompe qui grince est aussi nécessaire que la musique des sphères.”</i></p>
+                <p align="left">Henry David Thoreau</p>
+            </div>
+        </div>
+    </section>
+</div>
 </div>
 </body>
 </html>

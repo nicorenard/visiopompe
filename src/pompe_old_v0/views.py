@@ -1,10 +1,10 @@
 import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Pompes, PiecesPompe, Kit, Huile, Doc, VersionApp
-from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
+from .models import Pompes, PiecesPompe, Kit, Huile, Doc
+from src.pompe.forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
     ModifKitForm, DocForm
-from .filters import PompeFilter
+from src.pompe.filters import PompeFilter
 from .resource import PompeRessource
 
 
@@ -208,8 +208,3 @@ def ajout_doc(request):
     else:
         form = DocForm()
     return render(request, 'pompe/forms5.html', {'form': form})
-
-
-def version(request):
-    versions = VersionApp.objects.all().order_by('-version')
-    return render(request, 'pompe/versionapp.html', {'versions': versions})

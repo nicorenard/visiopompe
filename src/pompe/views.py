@@ -1,5 +1,7 @@
 import datetime
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from .filters import PompeStockFilter
+from .forms import *
 from .models import *
 
 def index(request):
@@ -28,14 +30,44 @@ def dashboard(request):
 
 
 def pompe(request):
-    pompes = StockPompe.objects.all().order_by('mise_en_service')
+    model_pompes = ModelePompe.objects.all().order_by('nom')
+    stock_pompes = StockPompe.objects.all().order_by('num_inventaire')
+    filterpompe = PompeStockFilter(request.GET, queryset=stock_pompes)
+    stock_pompes = filterpompe.qs
     current_date = datetime.date.today()
     warning_date = current_date + datetime.timedelta(days=7)
-    context = {'pompes': pompes,
+
+    context = {'model_pompe': model_pompes,
+               'stock_pompe' : stock_pompes,
                'current_date': current_date,
-               'warning_date': warning_date
+               'warning_date': warning_date,
+               'filterpompe': filterpompe,
                }
     return render(request, 'pompe/pompe.html', context)
+
+def add_stockpompe(request):
+    if request.method == "POST":
+        form = StockPompeform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('pompe/pompe')
+
+    else:
+        form = StockPompeform()
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def update_stockpompe(request, pk):
+    stock_pompes = get_object_or_404(StockPompe, pk=pk)
+
+    if request.method == "POST":
+        form = ModifStockPompeForm(request.POST, instance=stock_pompes)
+        if form.is_valid():
+            form.save()
+            return redirect('/pompe/pompe')
+    else:
+        form = ModifStockPompeForm(instance=stock_pompes)
+    return render(request, 'pompe/forms.html', {'form': form})
 
 def piece(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
