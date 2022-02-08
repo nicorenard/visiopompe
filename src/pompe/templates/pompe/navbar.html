@@ -37,7 +37,12 @@
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stock</a>
     </div></div>
-
+    <div class="w3-dropdown-hover">
+     <button class="w3-button" onclick="myDocFunc()"><i class="fa fa-arrow-right"></i> Documentations <i class="fa fa-caret-down"></i></button>
+        <div class="w3-dropdown-content w3-bar-block" id="DOC">
+        <a href="{% url 'pompe:doc' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Manuel</a>
+    </div></div>
     <div class="w3-dropdown-hover" onclick="myAdminFunc()">
     <button class="w3-button"><i class="fa fa-arrow-right"></i> Administration  <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block" id="ADMIN">
@@ -45,8 +50,7 @@
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Equipe</a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Lieux</a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Fabriquant</a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Fiche Pompe</a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Ajouter un manuel</a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Fiche Pompe</a>>
     </div></div>
 <br/>
     <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i> Support</a>
@@ -112,5 +116,15 @@ function myOilFunc() {
     x.previousElementSibling.className.replace(" w3-green", "");
   }
 }
-
+function myDocFunc() {
+  var x = document.getElementById("DOC");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-green";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+    x.previousElementSibling.className =
+    x.previousElementSibling.className.replace(" w3-green", "");
+  }
+}
 </script>

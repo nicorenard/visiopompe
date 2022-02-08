@@ -1,0 +1,73 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Documentations Technique</title>
+</head>
+<body>
+<!----menu--->
+{% include 'pompe/navbar.html' %}
+
+<!---------Contenu------->
+
+<div class="w3-main w3-mobile " style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Documentations Technique</h2>
+    </div>
+    <br>
+    <section class="w3-container w3-row">
+        {% for doc in docs %}
+        <table class="w3-table w3-centered w3-hover-light-grey w3-hover-opacity w3-cell" style="margin-left:50px">
+            <tr>
+                <th>
+                   <img src="{{doc.fabriquant.logo.url}}"alt="{{doc.fabriquant.nom}}" style="width: 50%; display: block; margin: auto;">
+                </th>
+                <th colspan="2">
+                    <p>{{doc.fabriquant.adresse}}<br>{{doc.fabriquant.code_postal}}<br>{{doc.fabriquant.ville}}</p>
+                </th>
+            </tr>
+            <tr class="W3-green w3-text-black">
+                <th>
+                   <p>Nom manuel</p>
+                </th>
+                <th>
+                    <p>Version</p>
+                </th>
+                <th>
+                    <p>Télécharger</p>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                   <p>{{doc.nom}}</p>
+                </td>
+                <td>
+                    <p>{{doc.version}}</p>
+                </td>
+                <td>
+                    <a href="/media/manuel/{{doc.manuel}}"></a><img src="{% static 'pompe/img/option/icons_download.png' %}" ><a></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+<!----citation---->
+    <section class="w3-container w3-mobile ">
+            <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+                <p><i class="fa fa-quote-right "></i></p>
+                <p><i class="w3-serif w3-large">“La documentation est comme une assurance-vie: le bénéficiaire n'est presque jamais celui qui l'a signée.”</i></p>
+                <p align="left">Alan Jay Perlis</p>
+            </div>
+    </section>
+
+</div>
+
+
+</body>
+
+</html>

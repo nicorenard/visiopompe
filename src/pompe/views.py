@@ -24,21 +24,18 @@ def dashboard(request):
 
     context = {'p_all': p_all,'p_valide': p_valide, 'p_stock': p_stock,'p_hs': p_hs,'p_rep': p_rep,
                'fabriquants': fabriquants, 'p_etage' : p_etage,
-
     }
     return render(request, 'pompe/dashboard.html', context)
 
 
 def pompe(request):
-    model_pompes = ModelePompe.objects.all().order_by('nom')
-    stock_pompes = StockPompe.objects.all().order_by('num_inventaire')
-    filterpompe = PompeStockFilter(request.GET, queryset=stock_pompes)
-    stock_pompes = filterpompe.qs
+    s_pompes = StockPompe.objects.all().order_by('mise_en_service')
+    filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
+    s_pompes = filterpompe.qs
     current_date = datetime.date.today()
     warning_date = current_date + datetime.timedelta(days=7)
 
-    context = {'model_pompe': model_pompes,
-               'stock_pompe' : stock_pompes,
+    context = {'s_pompe': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
                'filterpompe': filterpompe,
@@ -58,15 +55,15 @@ def add_stockpompe(request):
 
 
 def update_stockpompe(request, pk):
-    stock_pompes = get_object_or_404(StockPompe, pk=pk)
+    s_pompes = get_object_or_404(StockPompe, pk=pk)
 
     if request.method == "POST":
-        form = ModifStockPompeForm(request.POST, instance=stock_pompes)
+        form = ModifStockPompeForm(request.POST, instance=s_pompes)
         if form.is_valid():
             form.save()
             return redirect('/pompe/pompe')
     else:
-        form = ModifStockPompeForm(instance=stock_pompes)
+        form = ModifStockPompeForm(instance=s_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
 
 def piece(request):
@@ -83,7 +80,8 @@ def kit(request):
 
 def doc(request):
     docs = Doc.objects.all().order_by('nom')
-    return render(request, 'pompe/doc.html', {'docs' : docs})
+    context = {'docs': docs}
+    return render(request, 'pompe/doc.html', context)
 
 
 

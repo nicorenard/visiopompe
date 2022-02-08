@@ -9,12 +9,10 @@ class PompeStockFilter(django_filters.FilterSet):
 
     # Site.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Site')
     # Batiment.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Batiment')
-
-    # equipe : il faudrait si c'est en mode consultation, avoir tout et sinon avoir une page en mode juste equipe.
-    piece = CharFilter(field_name="nom", lookup_expr='icontains', label='Piece')
-    statut = CharFilter(field_name="status", lookup_expr='icontains', label='Statut')
-    num_inventaire = CharFilter(field_name="num_inventaire", lookup_expr='icontains', label='Inventaire UMR')
+    piece = CharFilter(field_name="piece.nom", lookup_expr='icontains', label='Piece')
+    statut = CharFilter(field_name="statut", lookup_expr='icontains', label='Statut')
+    inventaire = CharFilter(field_name="inventaire.numero", lookup_expr='icontains', label='Inventaire UMR')
 
     class Meta:
         model = StockPompe
-        fields = ['piece', 'statut', 'num_inventaire']
+        fields = ['pompe','equipe','etage','piece','inventaire']

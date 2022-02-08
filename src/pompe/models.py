@@ -19,20 +19,32 @@ class VersionApp(models.Model):
 class Site(models.Model):
     nom = models.CharField(default='', max_length=254, verbose_name="Site")
 
+    def __str__(self):
+        return self.nom
+
 
 class Batiment(models.Model):
     nom = models.CharField(default='', max_length=254, verbose_name="Batiment")
     site = models.ForeignKey(Site, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nom
 
 
 class Etage(models.Model):
     nom = models.CharField(default='', max_length=254, verbose_name="Etage")
     batiment = models.ForeignKey(Batiment, null=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nom
+
 
 class Piece(models.Model):
     nom = models.CharField(default='', max_length=254, verbose_name="Piece")
     etage = models.ForeignKey(Etage, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nom
 
 
 # pump tables #
@@ -49,6 +61,7 @@ class Fabriquant(models.Model):
 
 class Doc(models.Model):
     nom = models.CharField(default='', max_length=50, verbose_name="Nom de la doc technique")
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
     manuel = models.FileField(upload_to='manuel/', max_length=254, verbose_name="Télécharger le manuel")
     version = models.CharField(default='x.x.x', max_length=50, verbose_name="Version de la doc technique")
 
@@ -110,15 +123,30 @@ class ModelEquipe(models.Model):
     def __str__(self):
         return self.nom
 
+class Tutelle(models.Model):
+    nom = models.CharField(max_length=10, default='', verbose_name="Tutelle")
+
+    def __str__(self):
+        return self.nom
+
+class Inventaire(models.Model):
+    tutelle = models.ForeignKey(Tutelle, null=True, blank=False, on_delete=models.CASCADE)
+    numero = models.CharField(max_length=150, default='', verbose_name="Numéro d'inventaire")
+    date_inventaire = models.DateField(default=date.today, verbose_name="Date de création")
+
+    def __str__(self):
+        return self.numero
 
 class StockPompe(models.Model):
+    pompe = models.ForeignKey(ModelePompe, null=True, blank=False, on_delete=models.SET_NULL)
     mise_en_service = models.DateField(auto_now=date.today)
-    vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange", blank=True, null=True)
+    etage = models.ForeignKey(Etage, null=True, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
     place = models.CharField(default='', max_length=150, verbose_name="Emplacement dans la pièce",
                              blank=True, null=True)
     vide_user = models.FloatField(default=0, verbose_name="Vide limite testé", blank=True)
     num_serie = models.CharField(max_length=150, default='', verbose_name="Numéro de série")
-    num_inventaire = models.CharField(max_length=150, default='', verbose_name="Numéro d'inventaire")
+    inventaire = models.ForeignKey(Inventaire, null=True, blank=False, on_delete=models.SET_NULL)
     STATUT_POMPE = [
         ('A', 'Active'),
         ('S', 'En Stock'),
@@ -126,11 +154,10 @@ class StockPompe(models.Model):
         ('P', 'En panne'),
     ]
     statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='', verbose_name="Etat actuel de la pompe")
-    historique = models.TextField(blank=True, null=True, max_length=500, verbose_name="historique de la pompe")
-    piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
-    pompe = models.ForeignKey(ModelePompe, null=True, blank=False, on_delete=models.SET_NULL)
     huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
     equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)
+    vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange", blank=True, null=True)
+    historique = models.TextField(blank=True, null=True, max_length=500, verbose_name="historique de la pompe")
 
     def __str__(self):
         return self.num_serie
