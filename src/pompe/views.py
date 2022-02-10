@@ -27,7 +27,6 @@ def dashboard(request):
     }
     return render(request, 'pompe/dashboard.html', context)
 
-
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
     filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
@@ -52,7 +51,6 @@ def add_stockpompe(request):
     else:
         form = StockPompeform()
     return render(request, 'pompe/forms.html', {'form': form})
-
 
 def update_stockpompe(request, pk):
     s_pompes = get_object_or_404(StockPompe, pk=pk)

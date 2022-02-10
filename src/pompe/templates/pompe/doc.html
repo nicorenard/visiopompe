@@ -19,18 +19,14 @@
         <h2>Documentations Technique</h2>
     </div>
     <br>
-    <section class="w3-container w3-row">
-        {% for doc in docs %}
-        <table class="w3-table w3-centered w3-hover-light-grey w3-hover-opacity w3-cell" style="margin-left:50px">
+    <section>
+
+        <table class="w3-table-all w3-centered w3-striped " style="margin-left:10px">
             <tr>
-                <th>
-                   <img src="{{doc.fabriquant.logo.url}}"alt="{{doc.fabriquant.nom}}" style="width: 50%; display: block; margin: auto;">
-                </th>
-                <th colspan="2">
-                    <p>{{doc.fabriquant.adresse}}<br>{{doc.fabriquant.code_postal}}<br>{{doc.fabriquant.ville}}</p>
-                </th>
+
             </tr>
-            <tr class="W3-green w3-text-black">
+            <tr class="W3-green w3-text-black ">
+                <th> <p>Fabriquant</p></th>
                 <th>
                    <p>Nom manuel</p>
                 </th>
@@ -42,21 +38,25 @@
                 </th>
             </tr>
             <tr>
+                 {% for doc in docs %}
+                <td  style="width: 12%">
+                   <img src="{{doc.fabriquant.logo.url}}" alt="{{doc.fabriquant.nom}}" style="width: 100%; display: block; margin: auto;">
+                </td>
                 <td>
                    <p>{{doc.nom}}</p>
                 </td>
                 <td>
                     <p>{{doc.version}}</p>
                 </td>
-                <td>
-                    <a href="/media/manuel/{{doc.manuel}}"></a><img src="{% static 'pompe/img/option/icons_download.png' %}" ><a></a>
+                <td >
+                    <a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" ></a>
                 </td>
             </tr>
             {% endfor %}
         </table>
     </section>
 <!----citation---->
-    <section class="w3-container w3-mobile ">
+    <section class="w3-container w3-mobile">
             <div class="w3-panel w3-leftbar w3-display-container">
                 <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
                 <p><i class="fa fa-quote-right "></i></p>
@@ -66,8 +66,5 @@
     </section>
 
 </div>
-
-
 </body>
-
 </html>
