@@ -1,0 +1,75 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Pièces détachées</title>
+</head>
+<body>
+<!----menu--->
+{% include 'pompe/navbar.html' %}
+
+<!---------Contenu------->
+
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Pièces détachées</h2>
+    </div>
+    {% for piece in pieces %}
+    <section class="w3-container w3-padding-16 w3-mobile" >
+        <div class="w3-cell-row w3-border">
+            <div class="w3-col m3">
+               {% if piece.image %}
+                <img src="{{piece.image.url}}" class="w3-leftbar" alt="{{piece.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:50%">
+                {% else %}
+                <img src="{% static 'pompe/img/noimage.jpg' %}" class="w3-leftbar" alt="no image" style="width: 50%">
+                {% endif %}
+            </div>
+            <div class="w3-col m5">
+                <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{piece.nom}} </p>
+                <p class="w3-leftbar" style="font-size: 20px; "><strong>MARQUE</strong> : {{piece.fabriquant.nom}}</p>
+                <p style="font-size: 16px;">Date de mise à jour : <i>{{piece.date_maj}}</i></p>
+                <p style="font-size: 16px;">Informations complémentaires : <i>{{piece.information}}</i></p>
+            </div>
+            <div class="w3-col m3 w3-leftbar">
+                <br>
+                <p>&nbsp;<img src="{% static 'pompe/img/menu_pompe/icon_quantite.png' %}" alt="quantite" style="width: 15%">
+                <i class="fa fa-chevron-right" style="font-size : 18px">&nbsp;<strong>{{piece.quantite }}</strong></i></p>
+                <br>
+                <p>&nbsp;<img src="{% static 'pompe/img/menu_pompe/icon_localisation.png' %}" alt="geolocalisation" style="width: 13%">
+                <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{piece.piece.etage.nom}}</strong></i>&nbsp<i class="fa fa-chevron-right" style="font-size : 18px"><strong>&nbsp{{piece.piece}}</strong></i></p>
+            </div>
+            <div class="w3-col m1">
+                <p>
+                    <a href="#"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" ></a>
+                    <a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" ></a>
+                </p>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    <section class="w3-container w3-mobile">
+       <div class="w3-panel w3-display-container">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Réparateurs</h3>
+            <p><a href="http://www.sofintec.fr/"><img src="http://www.sofintec.fr/img/sofintec/logo-sofintec-2.jpg"></a>&nbsp
+            <a href="https://chaplain.fr/"><img src="https://chaplain.fr/wp-content/uploads/2019/04/CHAPLAINz.png" style="width: 12%"></a></p>
+       </div>
+    </section>
+    <section class="w3-container w3-mobile">
+            <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+                <p><i class="fa fa-quote-right w3-large"></i></p>
+                <p><i class="w3-serif w3-large">“On ne peut réparer ce qui est déjà en bonne santé...”</i></p>
+                <p align="left">Maoude Reboot</p>
+            </div>
+    </section>
+
+</div>
+
+
+</body>
+
+</html>

@@ -129,6 +129,7 @@ class Tutelle(models.Model):
     def __str__(self):
         return self.nom
 
+
 class Inventaire(models.Model):
     tutelle = models.ForeignKey(Tutelle, null=True, blank=False, on_delete=models.CASCADE)
     numero = models.CharField(max_length=150, default='', verbose_name="Numéro d'inventaire")
@@ -136,6 +137,7 @@ class Inventaire(models.Model):
 
     def __str__(self):
         return self.numero
+
 
 class StockPompe(models.Model):
     pompe = models.ForeignKey(ModelePompe, null=True, blank=False, on_delete=models.SET_NULL)
@@ -182,13 +184,14 @@ class Kit(models.Model):
 
 
 class PiecesPompe(models.Model):
-    nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pièce détachée")
     image = models.ImageField(upload_to='piecepompe_img/', max_length=254, blank=True, null=True)
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pièce détachée")
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
     information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire(s)")
-    piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
-    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+
 
     def __str__(self):
         return self.nom

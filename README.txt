@@ -93,7 +93,7 @@ L'import/export est possible pour les fiches suivante :
 --"les équipes","les fabriquants de pompes"
 --"sites, "bâtiments", "étages", "pièces"
 
-Pour accéder aà la partie administration, faite la commande suivante:
+Pour accéder à la partie administration, faite la commande suivante:
 
 >>> python manage.py createsuperuser
 
@@ -139,6 +139,11 @@ L'application est sans compte accessible en lecture seule (= consultation, reche
 
 VO - 2021/11
 
+## Features
+
+>> BDD : Ajouter une ou des tables "images" pour éviter les redondances d'images pour les duplications de stocks, accessoires,
+kits etc... => optimisation de la place mémoire.
+>> HTML : Ajouter un bouton "duplication" pour dupliquer un objet en base de données => gain de temps users
 
 ## Auteurs
 
