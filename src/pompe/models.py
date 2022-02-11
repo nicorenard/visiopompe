@@ -148,7 +148,7 @@ class StockPompe(models.Model):
                              blank=True, null=True)
     vide_user = models.FloatField(default=0, verbose_name="Vide limite testé", blank=True)
     num_serie = models.CharField(max_length=150, default='', verbose_name="Numéro de série")
-    inventaire = models.ForeignKey(Inventaire, null=True, blank=False, on_delete=models.SET_NULL)
+    inventaire = models.ForeignKey(Inventaire, null=True, blank=True, on_delete=models.SET_NULL)
     STATUT_POMPE = [
         ('A', 'Active'),
         ('S', 'En Stock'),

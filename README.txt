@@ -144,6 +144,8 @@ VO - 2021/11
 >> BDD : Ajouter une ou des tables "images" pour éviter les redondances d'images pour les duplications de stocks, accessoires,
 kits etc... => optimisation de la place mémoire.
 >> HTML : Ajouter un bouton "duplication" pour dupliquer un objet en base de données => gain de temps users
+>> HTML : Modifier le formulaire pour ajouter des stocks pas qu'avec des pieces mais également, un site/batiment.
+
 
 ## Auteurs
 
