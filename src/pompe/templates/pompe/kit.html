@@ -22,29 +22,29 @@
         <div class="w3-cell-row w3-border">
             <div class="w3-col m3">
                 {% if kit.image %}
-                <img src="{{kit.image.url}}" class="w3-leftbar" alt="{{kit.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:50%; ">
+                <img src="{{kit.image.url}}" class="w3-leftbar" alt="{{kit.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:80%; ">
                  {% else %}
                 <img src="{% static 'pompe/img/noimage.jpg' %}"  class="w3-leftbar" alt="no image" style="width: 50%">
                  {% endif %}
             </div>
             <div class="w3-col m5">
-                <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{kit.nom}} - <strong>MARQUE</strong> : {{kit.marque}}</p>
-                <p style="font-size: 14px;">Référence fabriquant : <i>{{kit.reference_marque}}</i></p>
-                <p style="font-size: 14px;">Revendeur : <i>{{kit.nom_revendeur}}</i> <strong>||</strong> Référence revendeur : <i>{{kit.reference_revendeur}}</i></p>
+                <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{kit.nom}} - <strong>MARQUE</strong> : {{kit.fabriquant.nom}}</p>
+                <p style="font-size: 14px;">Référence fabriquant : <i>{{kit.ref_fab}}</i></p>
+                <p style="font-size: 14px;">Revendeur : <i>{{kit.revendeur}}</i> <strong>||</strong> Référence revendeur : <i>{{kit.ref_rev}}</i></p>
                 <p style="font-size: 14px;">Informations du kit : <i>{{kit.information}}</i></p>
             </div>
             <div class="w3-col m3 w3-leftbar" >
-                <p>&nbsp;<img src="{% static 'pompe/img/icon_quantite.png' %}" alt="quantite" style="width: 15%">
+                <p>&nbsp;<img src="{% static 'pompe/img/menu_pompe/icon_quantite.png' %}" alt="quantite" style="width: 15%">
                     <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.quantite }}</strong></i></p>
                 <br>
-                <p>&nbsp;<img src="{% static 'pompe/img/icon_localisation.png' %}" alt="geolocalisation" style="width: 15%">
-                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.localisation}}</strong></i></p>
+                <p>&nbsp;<img src="{% static 'pompe/img/menu_pompe/icon_localisation.png' %}" alt="geolocalisation" style="width: 15%">
+                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.piece}}</strong></i></p>
                 <br>
             </div>
             <div class="w3-col m1">
                 <p>
-                    <a href="{% url 'pompe:kit_edit' pk=kit.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" ></a>
-                    <a href="{% url 'pompe:kit_suppression' pk=kit.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" ></a>
+                    <a href="#"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" ></a>
+                    <a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" ></a>
                 </p>
             </div>
         </div>

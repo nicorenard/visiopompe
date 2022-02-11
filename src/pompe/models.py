@@ -14,7 +14,6 @@ class VersionApp(models.Model):
     def __str__(self):
         return self.version
 
-
 # localisation tables #
 class Site(models.Model):
     nom = models.CharField(default='', max_length=254, verbose_name="Site")
@@ -165,16 +164,17 @@ class StockPompe(models.Model):
 
 class Kit(models.Model):
 
-    nom = models.CharField(default='', max_length=50, verbose_name="Nom du kit")
     image = models.ImageField(upload_to='kit_img/', max_length=254, blank=True, null=True)
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom du kit")
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, verbose_name='Fabriquant', related_name="Fabriquant", on_delete=models.SET_NULL)
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
     ref_fab = models.CharField(max_length=50, default='', verbose_name="Référence Fabriquant", blank=True, null=True)
-    nom_revendeur = models.CharField(max_length=50, default='', verbose_name="Revendeur", blank=True, null=True)
+    revendeur = models.ForeignKey(Fabriquant, null=True, blank=True,  verbose_name='Revendeur', related_name="Revendeur", on_delete=models.SET_NULL)
     ref_rev = models.CharField(max_length=50, default='', verbose_name="Référence Revendeur", blank=True, null=True)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
-    information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
     piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
-    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+    information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
+
 
     def __str__(self):
         return self.nom

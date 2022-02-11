@@ -70,11 +70,11 @@ def piece(request):
 
 def huile(request):
     huiles = Huile.objects.all().order_by('nom')
-    return render(request, 'pompe/piece.html', {'huiles': huiles})
+    return render(request, 'pompe/huile.html', {'huiles': huiles})
 
 def kit(request):
     kits = Kit.objects.all().order_by('nom')
-    return render(request, 'pompe/piece.html', {'kits': kits})
+    return render(request, 'pompe/kit.html', {'kits': kits})
 
 def doc(request):
     docs = Doc.objects.all().order_by('nom')
