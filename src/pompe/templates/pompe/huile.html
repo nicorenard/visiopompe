@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Pompes</title>
+</head>
+<body>
+<!----menu--->
+{% include 'pompe/navbar.html' %}
+
+<!---------Contenu------->
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Huiles</h2>
+    </div>
+    {% for huile in huiles %}
+    <section class="w3-panel w3-padding-12 w3-mobile ">
+        <div class="w3-cell-row w3-border">
+            <div class="w3-col m3">
+                 <img src="{{huile.image.url }}" class="w3-leftbar" alt="{{huile.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:30%">
+
+            </div>
+            <div class="w3-col m5">
+                <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{huile.nom}} - <strong>MARQUE</strong> : {{huile.fabriquant.nom}}</p>
+                <p style="font-size: 16px;">Référence fabriquant : <i>{{huile.ref_fab}}</i></p>
+                <p style="font-size: 16px;">Mise à jour du stock : <i>{{huile.date_maj}}</i></p>
+                <p style="font-size: 16px;">Informations : <i>{{huile.information}}</i></p>
+            </div>
+            <div class="w3-col m3 w3-leftbar">
+                <p>&nbsp;<img src="{% static 'pompe/img/menu_pompe/icon_quantite.png' %}" alt="quantite" style="width: 15%">
+                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{huile.quantite}} Litres</strong></i></p>
+                <br>
+                <p>&nbsp<img src="{% static 'pompe/img/menu_pompe/icon_localisation.png' %}" alt="geolocalisation" style="width: 15%">
+                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{huile.piece}}</strong></i></p>
+                <br>
+            </div>
+            <div class="w3-col m1">
+                <p>
+                    <a href="#"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" ></a>
+                    <a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" ></a>
+                </p>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    <section>
+          <div class="w3-container w3-mobile" >
+            <div class="w3-panel w3-leftbar">
+                <p><i class="fa fa-quote-right w3-large"></i></p>
+                <p><i class="w3-serif w3-large">“Afin qu'un lampe continue de brûler, il faut y ajouter de l'huile.”</i></p>
+                <p align="left">Mère Teresa</p>
+          </div>
+        </div>
+    </section>
+
+</div>
+</body>
+
+</html>
