@@ -1,0 +1,72 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Documentations Technique</title>
+</head>
+<body>
+<!----menu--->
+{% include 'pompe/navbar.html' %}
+
+<!---------Contenu------->
+
+<div class="w3-main w3-mobile " style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Modèles des pompes</h2>
+    </div>
+    <br>
+    <section>
+
+        <table class="w3-table-all w3-centered w3-striped w3-mobile" style="margin-left:10px">
+            <tr>
+
+            </tr>
+            <tr class="w3-green w3-text-black">
+                <th><p>Fabriquant</p></th>
+                <th><p>Nom</p></th>
+                <th><p>Modèle</p></th>
+                <th><p>Phasage</p></th>
+                <th><p>Puissance</p></th>
+                <th><p>Technologie vide</p></th>
+                <th><p>Vide fabriquant</p></th>
+                <th><p>Manuel</p></th>
+                <th><p></p></th>
+                <th><p>Créer</p></th>
+                <th><p>Modifier</p></th>
+                <th><p>Supprimer</p></th>
+            </tr>
+            <tr>
+                 {% for fichepompe in m_pompe %}
+                <td><p>{{fichepompe.fabriquant.nom}}</p> </td>
+                <td><p>{{fichepompe.nom}}</p></td>
+                <td><p>{{fichepompe.modele}}</p></td>
+                <td><p>{{fichepompe.phasage}}</p></td>
+                <td><p>{{fichepompe.puissance}}</p></td>
+                <td><p>{{fichepompe.technologie}}</p></td>
+                <td><p>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</p></td>
+                <td><a href="/media/{{fichepompe.documentation.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}"></a></td>
+                <td><p>||</p></td>
+                <td><a href="{% url 'pompe:add_fichepompe' %}" ><img src="{% static 'pompe/img/option/icons_ajout.png' %}" style="width:35px;"></a></td>
+                <td><a href="{% url 'pompe:fichepompe_edit' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                <td><a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+<!----citation---->
+    <section class="w3-container w3-mobile">
+            <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+                <p><i class="fa fa-quote-right "></i></p>
+                <p><i class="w3-serif w3-large">“Je pompe donc je suis.”</i></p>
+                <p align="left">Jacques Rouxel / Les Shadoks </p>
+            </div>
+    </section>
+
+</div>
+</body>
+</html>

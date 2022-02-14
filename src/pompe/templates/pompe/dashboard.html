@@ -8,7 +8,9 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <!-----navbar---->
 {% include 'pompe/navbar.html' %}
+    <!----contenu---->
 <div class="w3-main w3-mobile" style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
         <h2>Dashboard</h2>
@@ -26,6 +28,7 @@
 
 ---->
 <div class="w3-container w3-padding-12">
+    <section>
             <div class="w3-row-padding">
                 <div class="w3-col m3 s3">
                     <div class="w3-card-2 w3-center w3-text-blue-gray">
@@ -110,7 +113,18 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </section>
 </div>
+<!----citation---->
+    <section class="w3-container w3-mobile">
+            <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+                <p><i class="fa fa-quote-right "></i></p>
+                <p><i class="w3-serif w3-large">“Je pompe donc je suis.”</i></p>
+                <p align="left">Jacques Rouxel / Les Shadoks </p>
+            </div>
+    </section>
+</div>
+
 </body>
 </html>

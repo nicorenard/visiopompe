@@ -23,13 +23,13 @@
     <div class="w3-modal-content" >
             <div class="w3-center"><br>
 
-                <form action ="pompe/forms.html" method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <table>
                     {{ form.as_table }}
                     </table>
                     <button class="w3-button w3-green">Enregistrer</button>
-                    <button class="w3-button w3-red"><a href="{% url 'pompe:dashboard' %}">Annuler</a></button>
+                    <button class="w3-button w3-red"><a href="{% url 'pompe:pompe' %}">Annuler</a></button>
 
                 </form>
 

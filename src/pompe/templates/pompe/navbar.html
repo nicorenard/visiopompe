@@ -18,7 +18,7 @@
         <div class="w3-dropdown-content w3-bar-block" id="PUMP">
         <a href="{% url 'pompe:pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
         <a href="{% url 'pompe:add_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stock</a>
-        <a href="{% url 'pompe:add_fichepompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>Créer Fiche</a>
+        <a href="{% url 'pompe:fiche_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Fiche</a>
     </div></div>
     <div class="w3-dropdown-hover">
     <button class="w3-button" onclick="myPsdFunc()"><i class="fa fa-arrow-right"></i> Pièces détachées <i class="fa fa-caret-down"></i></button>
@@ -48,7 +48,7 @@
     <button class="w3-button"><i class="fa fa-arrow-right"></i> Administration  <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block" id="ADMIN">
         <a href="{% url 'pompe:dashboard' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Dashboard</a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Equipes</a>
+        <a href="{% url 'pompe:equipe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Equipes</a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Lieux</a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Fabriquants</a>
 

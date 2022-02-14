@@ -92,7 +92,7 @@ class ModelePompe(models.Model):
     technologie = models.CharField(max_length=30, choices=TECHNOLOGIE, verbose_name="Technologie du vide")
     vide_theo = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
-    documentation = models.ForeignKey(Doc, null=True, blank=False, on_delete=models.SET_NULL)
+    documentation = models.ForeignKey(Doc, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.nom
@@ -112,6 +112,7 @@ class Huile(models.Model):
     def __str__(self):
         return self.nom
 
+
 class ModelEquipe(models.Model):
     nom = models.CharField(default='', max_length=255, verbose_name="Nom complet de l'équipe")
     sigle = models.CharField(default='', max_length=10, verbose_name="Abbreviation du nom", blank=True, null=True)
@@ -122,6 +123,7 @@ class ModelEquipe(models.Model):
 
     def __str__(self):
         return self.nom
+
 
 class Tutelle(models.Model):
     nom = models.CharField(max_length=10, default='', verbose_name="Tutelle")
@@ -140,7 +142,7 @@ class Inventaire(models.Model):
 
 
 class StockPompe(models.Model):
-    pompe = models.ForeignKey(ModelePompe, null=True, blank=False, on_delete=models.SET_NULL)
+    pompe = models.ForeignKey(ModelePompe, verbose_name="Modèle de pompe", null=True, blank=False, on_delete=models.SET_NULL)
     mise_en_service = models.DateField(auto_now=date.today)
     etage = models.ForeignKey(Etage, null=True, blank=False, on_delete=models.SET_NULL)
     piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)

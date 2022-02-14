@@ -1,0 +1,66 @@
+{% load static %}
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Documentations Technique</title>
+</head>
+<body>
+<!----menu--->
+{% include 'pompe/navbar.html' %}
+
+<!---------Contenu------->
+
+<div class="w3-main w3-mobile " style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Equipes</h2>
+    </div>
+    <br>
+    <section>
+                <table class="w3-table-all w3-centered w3-striped w3-mobile" style="margin-left:10px">
+            <tr class="w3-green w3-text-black">
+                <th><p>Nom</p></th>
+                <th><p>Sigle</p></th>
+                <th><p>Nom responsable</p></th>
+                <th><p>Email responsable</p></th>
+                <th><p>Date de création</p></th>
+                <th><p>Localisation</p></th>
+                <th><p>Modifier Equipe</p></th>
+                <th><p>Supprimer Equipe</p></th>
+            </tr>
+            <tr>
+                 {% for equipe in equipes %}
+                <td><p>{{equipe.nom}}</p> </td>
+                <td><p>{{equipe.sigle}}</p></td>
+                <td><p>{{equipe.nom_responsable}}</p></td>
+                <td><p>{{equipe.email_responsable}}</p></td>
+                <td><p>{{equipe.date}}</p></td>
+                <td><p>{{equipe.lieux.nom}}</p></td>
+                <td><a href="#"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                <td><a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+    <section>
+    <div class="w3-center"><br>
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table>
+                    {{ add_equipe.form.as_table }}
+                    </table>
+                    <button class="w3-button w3-green">Enregistrer</button>
+                    <button class="w3-button w3-red"><a href="{% url 'pompe:equipe' %}">Annuler</a></button>
+
+                </form>
+
+            </div>
+    </section>
+</div>
+</body>
+</html>

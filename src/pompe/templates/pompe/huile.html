@@ -22,8 +22,11 @@
     <section class="w3-panel w3-padding-12 w3-mobile ">
         <div class="w3-cell-row w3-border">
             <div class="w3-col m3">
+                {% if huile.image %}
                  <img src="{{huile.image.url }}" class="w3-leftbar" alt="{{huile.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:30%">
-
+                {% else %}
+                <img src="{% static 'pompe/img/noimage.jpg' %}"class="w3-leftbar" alt="no image" style="width: 50% ;margin: 10px 4px 10px 10px; padding:4px;">
+                {% endif %}
             </div>
             <div class="w3-col m5">
                 <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{huile.nom}} - <strong>MARQUE</strong> : {{huile.fabriquant.nom}}</p>

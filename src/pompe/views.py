@@ -26,12 +26,16 @@ def dashboard(request):
     }
     return render(request, 'pompe/dashboard.html', context)
 
+def equipe(request):
+    equipes = ModelEquipe.objects.all().order_by('nom')
+    return render(request, 'pompe/equipe.html', {'equipes': equipes})
+
 def add_equipe(request):
     if request.method == "POST":
         form = Equipeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/dashboard')
+        return redirect('pompe/equipe')
     else:
         form = Equipeform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -86,7 +90,7 @@ def add_piece(request):
         form = Pieceform()
     return render(request, 'pompe/forms.html', {'form': form})
 
-# fiche pompes
+# fiche stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
     filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
@@ -106,7 +110,7 @@ def add_stockpompe(request):
         form = StockPompeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/pompe')
+        return redirect('/pompes')
     else:
         form = StockPompeform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -118,39 +122,16 @@ def update_stockpompe(request, pk):
         form = ModifStockPompeForm(request.POST, instance=s_pompes)
         if form.is_valid():
             form.save()
-            return redirect('/pompe/pompe')
+        return redirect('/pompes')
     else:
         form = ModifStockPompeForm(instance=s_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
 
-#stock des pompes
+#fiche modele des pompes
 def fichepompe(request):
     m_pompes = ModelePompe.objects.all().order_by('nom')
     context = {'m_pompe': m_pompes}
     return render(request, 'pompe/fiche_pompe.html', context)
-
-def add_inventaire(request):
-    if request.method == "POST":
-        form = Inventaireform(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        return redirect('pompe/pompe')
-    else:
-        form = Inventaireform()
-    return render(request, 'pompe/forms.html', {'form': form})
-
-def update_inventaire(request, pk):
-    inventaires = get_object_or_404(StockPompe, pk=pk)
-
-    if request.method == "POST":
-        form = ModifInventaireForm(request.POST, instance=inventaires)
-        if form.is_valid():
-            form.save()
-            return redirect('/pompe/pompe')
-    else:
-        form = ModifInventaireForm(instance=inventaires)
-    return render(request, 'pompe/forms.html', {'form': form})
-
 
 def add_fichepompe(request):
     if request.method == "POST":
@@ -169,11 +150,37 @@ def update_fichepompe(request, pk):
         form = ModifModelPompeForm(request.POST, instance=m_pompes)
         if form.is_valid():
             form.save()
-            return redirect('/pompe/fiche_pompe')
+            return redirect('/fiche_pompe')
     else:
         form = ModifModelPompeForm(instance=m_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
+#inventaire
+def inventaire(request):
+    inventaires = ModelePompe.objects.all().order_by('nom')
+    context = {'inventaires': inventaires}
+    return render(request, 'pompe/fiche_pompe.html', context)
 
+def add_inventaire(request):
+    if request.method == "POST":
+        form = Inventaireform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('pompe/')
+    else:
+        form = Inventaireform()
+    return render(request, 'pompe/forms.html', {'form': form})
+
+def update_inventaire(request, pk):
+    inventaires = get_object_or_404(StockPompe, pk=pk)
+
+    if request.method == "POST":
+        form = ModifInventaireForm(request.POST, instance=inventaires)
+        if form.is_valid():
+            form.save()
+            return redirect('/pompe/pompe')
+    else:
+        form = ModifInventaireForm(instance=inventaires)
+    return render(request, 'pompe/forms.html', {'form': form})
 #pieces detachées
 def pdetache(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
