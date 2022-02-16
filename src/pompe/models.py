@@ -68,6 +68,11 @@ class Doc(models.Model):
         return self.nom
 
 
+class TechnologiePompe(models.Model):
+    nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie")
+    cara_1 = models.CharField(default='', max_length=50, null= False, blank= True, verbose_name="Détail de la technologie")
+    cara_2 = models.CharField(default='', max_length=50, null= True, blank= True, verbose_name="Détail secondaire")
+
 class ModelePompe(models.Model):
     image = models.ImageField(upload_to='pompe_img/', max_length=254, blank=True, null=True)
     nom = models.CharField(default='', max_length=50, verbose_name="Famille du modèle de la pompe")
@@ -83,13 +88,7 @@ class ModelePompe(models.Model):
         ('60 Hertz', '60 Hertz')
     ]
     puissance = models.CharField(default='50', choices=PUISSANCE, max_length=20, verbose_name="Puissance du moteur")
-    TECHNOLOGIE = [
-        ('Sèches - Membranes', 'Sèches - Membranes'),
-        ('Sèches - Vis', 'Sèches - Vis'),
-        ('Palettes - 1 étage', 'Palettes - 1 étage'),
-        ('Palettes - 2 étages', 'Palettes - 2 étages')
-    ]
-    technologie = models.CharField(max_length=30, choices=TECHNOLOGIE, verbose_name="Technologie du vide")
+    technologie = models.ForeignKey(TechnologiePompe, null=False, blank=False, on_delete=models.CASCADE)
     vide_theo = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
     documentation = models.ForeignKey(Doc, null=True, blank=True, on_delete=models.SET_NULL)

@@ -149,7 +149,7 @@ def add_fichepompe(request):
         form = ModelPompeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/fiche_pompe')
+        return redirect('/fichepompe')
     else:
         form = ModelPompeform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -177,7 +177,7 @@ def add_inventaire(request):
         form = Inventaireform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/')
+        return redirect('/inventaire')
     else:
         form = Inventaireform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -189,7 +189,7 @@ def update_inventaire(request, pk):
         form = ModifInventaireForm(request.POST, instance=inventaires)
         if form.is_valid():
             form.save()
-            return redirect('/pompe/pompe')
+            return redirect('/inventaire')
     else:
         form = ModifInventaireForm(instance=inventaires)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -203,7 +203,7 @@ def add_pdetache(request):
         form = PiecePompeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/piece')
+        return redirect('/pieces_detaches')
     else:
         form = PiecePompeform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -215,7 +215,7 @@ def update_pdetache(request, pk):
         form = ModifPiecePompeForm(request.POST, instance=pdetaches)
         if form.is_valid():
             form.save()
-            return redirect('/pompe/piece')
+            return redirect('/pieces_detaches')
     else:
         form = ModifPiecePompeForm(instance=pdetaches)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -230,7 +230,7 @@ def add_huile(request):
         form = Huileform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/huile')
+        return redirect('/huiles')
     else:
         form = Huileform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -242,7 +242,7 @@ def update_huile(request, pk):
         form = ModifHuileForm(request.POST, instance=huiles)
         if form.is_valid():
             form.save()
-            return redirect('/pompe/huile')
+            return redirect('/huiles')
     else:
         form = ModifHuileForm(instance=huiles)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -257,7 +257,7 @@ def add_kit(request):
         form = Kitform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/kit')
+        return redirect('/kits')
     else:
         form = Kitform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -268,7 +268,7 @@ def update_kit(request, pk):
         form = ModifKitForm(request.POST, instance=kits)
         if form.is_valid():
             form.save()
-            return redirect('/pompe/kit')
+            return redirect('/kits')
     else:
         form = ModifKitForm(instance=kits)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -284,7 +284,7 @@ def add_doc(request):
         form = Docform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/doc')
+        return redirect('/docs')
     else:
         form = Docform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -296,7 +296,7 @@ def update_doc(request, pk):
         form = ModifDocForm(request.POST, instance=docs)
         if form.is_valid():
             form.save()
-            return redirect('/pompe/doc')
+            return redirect('/docs')
     else:
         form = ModifDocForm(instance=docs)
     return render(request, 'pompe/forms.html', {'form': form})

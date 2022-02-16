@@ -46,7 +46,7 @@
                 <td><p>{{fichepompe.modele}}</p></td>
                 <td><p>{{fichepompe.phasage}}</p></td>
                 <td><p>{{fichepompe.puissance}}</p></td>
-                <td><p>{{fichepompe.technologie}}</p></td>
+                <td><p>{{fichepompe.technologie.nom}} - {{fichepompe.technologie.cara_1}} - {{fichepompe.technologie.cara_2}}</p></td>
                 <td><p>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</p></td>
                 <td><a href="/media/{{fichepompe.documentation.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}"></a></td>
                 <td><p>||</p></td>
