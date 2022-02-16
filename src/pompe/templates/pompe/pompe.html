@@ -36,6 +36,10 @@
             <p class="w3-bottombar" style="font-size: 20px; "><strong>NOM</strong> : {{pompe.pompe.nom}}
                 - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.pompe.fabriquant.nom}}
                 - <strong style="font-size: 18px;">MODELE</strong> : {{pompe.pompe.modele}}
+                {% if pompe.atex %}
+                <img src="{% static 'pompe/img/menu_pompe/icon_atex.png' %}" alt="pompe atex?" style="width: 3%; text-align: right;">
+                {% else %}
+                {% endif %}
             </p>
 
         </div>

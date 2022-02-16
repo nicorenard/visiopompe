@@ -70,7 +70,7 @@ class Doc(models.Model):
 
 class ModelePompe(models.Model):
     image = models.ImageField(upload_to='pompe_img/', max_length=254, blank=True, null=True)
-    nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pompe")
+    nom = models.CharField(default='', max_length=50, verbose_name="Famille du modèle de la pompe")
     modele = models.CharField(default='', max_length=50, verbose_name="Modèle de la pompe")
     PHASAGE = [
         ('Monophasé', 'Monophasé'),
@@ -158,6 +158,7 @@ class StockPompe(models.Model):
         ('P', 'En panne'),
     ]
     statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='', verbose_name="Etat actuel de la pompe")
+    atex = models.BooleanField(default=False, verbose_name="Pompe Atex ?")
     huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
     equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)
     vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange", blank=True, null=True)
