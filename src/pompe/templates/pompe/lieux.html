@@ -20,82 +20,102 @@
     </div>
     <br><br>
     <section>
-        <table class="w3-table w3-centered w3-mobile" style="margin-left:10px; margin-right:10px;">
+        <table class="w3-table-all w3-centered w3-striped w3-mobile" style="margin-left:10px">
+            <tr class="w3-grey w3-text-black">
+                <th><p>Site</p></th>
+                <th><p>Bâtiment</p></th>
+                <th><p>Etage</p></th>
+                <th><p>Pièces</p></th>
+            </tr>
             <tr>
-            <th>
+                 {% for piece in pieces %}
+                <td><p>{{piece.etage.batiment.site.nom}}</p> </td>
+                <td><p>{{piece.etage.batiment.nom}}</p></td>
+                <td><p>{{piece.etage.nom}}</p></td>
+                <td><p>{{piece.nom}}</p></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <tr><p></p></tr>
+            <tr>
                 <div class="w3-row-padding">
                     <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center">
-                            <header class="w3-container w3-grey">
-                                <h3>Sites </h3>
-                            </header>
-                            {% for lieux in sites %}
-                            <footer>
-                                <h3>{{lieux.nom}}<p class="w3-small w3-tag w3-round w3-right">{{lieux.id}}</p> </h3>
-                            </footer>
-                            {% endfor%}
-                        </div>
-                    </div>
-                    <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-grey">
-                                <h3>Bâtiments </h3>
-                            </header>
-                            {% for lieux in batiments %}
-                            <footer>
-                                 <h3>{{lieux.nom}}<p class="w3-small w3-tag w3-round w3-right">{{lieux.id}}</p> </h3>
-                            </footer>
-                            {% endfor%}
-                        </div>
-                    </div>
-                    <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-grey">
-                                <h3>Etages </h3>
-                            </header>
-                            {% for lieux in etages %}
-                            <footer>
-                                 <h3>{{lieux.nom}}<p class="w3-small w3-tag w3-round w3-right">{{lieux.id}}</p> </h3>
-                            </footer>
-                            {% endfor%}
-                        </div>
-                    </div>
-                    <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-grey">
-                                <h3>Pièces </h3>
-                            </header>
-                            {% for lieux in pieces %}
-                            <footer>
-                                 <h3>{{lieux.nom}}<p class="w3-small w3-tag w3-round w3-right">{{lieux.id}}</p> </h3>
-                            </footer>
-                            {% endfor%}
-                        </div>
-                    </div>
-                </div>
-            </th>
-                </tr>
-            <tr>
-            <th>
-                <div class="w3-row-padding">
-                    <div class="w3-col">
                         <div class="w3-card-2 w3-center w3-text-blue-gray">
                             <header class="w3-container w3-red">
-                                <h4>Formulaires</h4>
+                                <h4>Site</h4>
                             </header>
+                            <div class="w3-container">
+                                <p>ajout</p>
+                            </div>
                             <div class="w3-container">
                                 <p>modifier</p>
                             </div>
-                            <div>
-                                <p> </p>
+                            <div class="w3-container">
+                                <p>supprimer</p>
                             </div>
                             <footer>
-                                <p>Suppression</p>
+                                <p></p>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-red">
+                                <h4>Bâtiments</h4>
+                            </header>
+                            <div class="w3-container">
+                                <p>ajout</p>
+                            </div>
+                            <div class="w3-container">
+                                <p>modifier</p>
+                            </div>
+                            <div class="w3-container">
+                                <p>supprimer</p>
+                            </div>
+                            <footer>
+                                <p></p>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-red">
+                                <h4>Etages</h4>
+                            </header>
+                            <div class="w3-container">
+                                <p>ajout</p>
+                            </div>
+                            <div class="w3-container">
+                                <p>modifier</p>
+                            </div>
+                            <div class="w3-container">
+                                <p>supprimer</p>
+                            </div>
+                            <footer>
+                                <p></p>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-red">
+                                <h4>Pieces</h4>
+                            </header>
+                            <div class="w3-container">
+                                <p>ajout</p>
+                            </div>
+                            <div class="w3-container">
+                                <p>modifier</p>
+                            </div>
+                            <div class="w3-container">
+                                <p>supprimer</p>
+                            </div>
+                            <footer>
+                                <p></p>
                             </footer>
                         </div>
                     </div>
                 </div>
-            </th>
             </tr>
         </table>
     </section>

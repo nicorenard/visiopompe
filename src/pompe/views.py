@@ -56,12 +56,9 @@ def add_fabriquant(request):
     return render(request, 'pompe/forms.html', {'form': form})
 
 ## lieux
-def lieux(request):
-    sites = Site.objects.all().order_by('nom')
-    batiments = Batiment.objects.all().order_by('nom')
-    etages = Etage.objects.all().order_by('nom')
+def piece(request):
     pieces = Piece.objects.all().order_by('nom')
-    context = {'sites': sites, 'batiments': batiments, 'etages': etages, 'pieces': pieces}
+    context = {'pieces': pieces}
     return render(request, 'pompe/lieux.html', context)
 
 def add_site(request):
