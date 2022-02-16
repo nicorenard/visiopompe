@@ -26,8 +26,9 @@ def dashboard(request):
     }
     return render(request, 'pompe/dashboard.html', context)
 
+## equipe
 def equipe(request):
-    equipes = ModelEquipe.objects.all().order_by('nom')
+    equipes = ModelEquipe.objects.all().order_by('sigle')
     return render(request, 'pompe/equipe.html', {'equipes': equipes})
 
 def add_equipe(request):
@@ -39,6 +40,10 @@ def add_equipe(request):
     else:
         form = Equipeform()
     return render(request, 'pompe/forms.html', {'form': form})
+## fabriquant
+def fabriquant(request):
+    fabriquants = Fabriquant.objects.all().order_by('nom')
+    return render(request, 'pompe/fabriquant.html', {'fabriquants': fabriquants})
 
 def add_fabriquant(request):
     if request.method == "POST":
@@ -50,12 +55,21 @@ def add_fabriquant(request):
         form = Fabriquantform()
     return render(request, 'pompe/forms.html', {'form': form})
 
+## lieux
+def lieux(request):
+    sites = Site.objects.all().order_by('nom')
+    batiments = Batiment.objects.all().order_by('nom')
+    etages = Etage.objects.all().order_by('nom')
+    pieces = Piece.objects.all().order_by('nom')
+    context = {'sites': sites, 'batiments': batiments, 'etages': etages, 'pieces': pieces}
+    return render(request, 'pompe/lieux.html', context)
+
 def add_site(request):
     if request.method == "POST":
         form = Siteform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/dashboard')
+        return redirect('pompe/lieux')
     else:
         form = Siteform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -65,7 +79,7 @@ def add_batiment(request):
         form = Batimentform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/dashboard')
+        return redirect('pompe/lieux')
     else:
         form = Batimentform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -75,7 +89,7 @@ def add_etage(request):
         form = Etageform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/dashboard')
+        return redirect('pompe/lieux')
     else:
         form = Etageform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -85,7 +99,7 @@ def add_piece(request):
         form = Pieceform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/dashboard')
+        return redirect('pompe/lieux')
     else:
         form = Pieceform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -154,11 +168,12 @@ def update_fichepompe(request, pk):
     else:
         form = ModifModelPompeForm(instance=m_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
-#inventaire
+#inventaire et tutelle
 def inventaire(request):
-    inventaires = ModelePompe.objects.all().order_by('nom')
-    context = {'inventaires': inventaires}
-    return render(request, 'pompe/fiche_pompe.html', context)
+    inventaires = Inventaire.objects.all().order_by('numero')
+    tutelles = Tutelle.objects.all().order_by('nom')
+    context = {'inventaires': inventaires, 'tutelles': tutelles }
+    return render(request, 'pompe/inventaire.html', context)
 
 def add_inventaire(request):
     if request.method == "POST":
