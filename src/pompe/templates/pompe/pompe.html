@@ -19,7 +19,7 @@
     <section class="w3-container w3-light-gray w3-padding-12" >
         <form action="templates/pompe/pompe.html" method="get">
             <br>
-            {{filterpompe.form.as_table}}
+            {{filterpompe.as_table}}
             <button type="submit"><i class="fa fa-search"></i></button>
             </form>
     </section>
@@ -31,21 +31,20 @@
     <!---Stock pompe--->
     <section class="w3-container w3-padding-32 w3-mobile">
 
-        {% for pompe in s_pompe %}
-        <div class="w3-container ">
+        {% for pompe in s_pompes %}
+        <div class="w3-container w3-display-container ">
             <p class="w3-bottombar" style="font-size: 20px; "><strong>NOM</strong> : {{pompe.pompe.nom}}
-                - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.pompe.fabriquant.nom}}
                 - <strong style="font-size: 18px;">MODELE</strong> : {{pompe.pompe.modele}}
+                - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.pompe.fabriquant.nom}}
                 {% if pompe.atex %}
-                <img src="{% static 'pompe/img/menu_pompe/icon_atex.png' %}" alt="pompe atex?" style="width: 3%; text-align: right;">
+                <img src="{% static 'pompe/img/menu_pompe/icon_atex.png' %}" alt="pompe atex?" style="width: 3%;" class="w3-display-topright">
                 {% else %}
                 {% endif %}
             </p>
-
         </div>
         <div class="w3-container w3-cell-row">
             <!----section image--->
-            <div class ="w3-container w3-cell"  style="width: 15%">
+            <div class ="w3-container w3-cell"  style="width: 13%">
                 {% if pompe.pompe.image %}
                 <img src="{{pompe.pompe.image.url}}" alt="{{pompe.nom}}" style="width: 100%; display: block; margin: auto;">
                 {% else %}
@@ -55,7 +54,7 @@
             </div>
             <p style="text-align: right;">
             <a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
-            <a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
+            <a href="{% url 'pompe:pompe_delete' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
             </p>
             <!----section carateristiques--->
             <div class="w3-container w3-cell-row w3-leftbar">
@@ -86,7 +85,7 @@
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.pompe.phasage}}</p>
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.pompe.puissance}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Technologie : {{pompe.pompe.technologie}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Technologie : {{pompe.pompe.technologie.nom}} ({{pompe.pompe.technologie.cara_1}}-{{pompe.pompe.technologie.cara_2}})</p>
                 </div>
 
                 <div class="w3-container w3-cell w3-mobile">
@@ -118,7 +117,6 @@
             </div>
         </div>
     </section>
-</div>
 </div>
 </body>
 </html>

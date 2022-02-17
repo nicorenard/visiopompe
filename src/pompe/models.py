@@ -73,6 +73,9 @@ class TechnologiePompe(models.Model):
     cara_1 = models.CharField(default='', max_length=50, null= False, blank= True, verbose_name="Détail de la technologie")
     cara_2 = models.CharField(default='', max_length=50, null= True, blank= True, verbose_name="Détail secondaire")
 
+    def __str__(self):
+        return self.nom
+
 class ModelePompe(models.Model):
     image = models.ImageField(upload_to='pompe_img/', max_length=254, blank=True, null=True)
     nom = models.CharField(default='', max_length=50, verbose_name="Famille du modèle de la pompe")

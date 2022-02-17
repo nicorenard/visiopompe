@@ -70,7 +70,7 @@ def suppression_pompe(request, pk):
         return redirect('/pompe')
 
     context = {'item': pompe}
-    return render(request, 'pompe/suppression.html', context)
+    return render(request, 'pompe/forms_suppression.html', context)
 
 
 def piece(request):

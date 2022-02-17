@@ -4,14 +4,10 @@ from django_filters import CharFilter
 
 
 class PompeStockFilter(django_filters.FilterSet):
-    #### If you need to search inside a bigger place, take off the # in front of Site.nom and Batiment.nom####
-    #### Add also in the fields [], 'Site.nom' and 'Batiment.nom'#######
 
-    # Site.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Site')
-    # Batiment.nom = CharFilter(field_name="nom", lookup_expr='icontains', label='Batiment')
-    piece = CharFilter(field_name="piece.nom", lookup_expr='icontains', label='Piece')
+    piece = CharFilter(field_name="piece", lookup_expr='icontains', label='Piece')
     statut = CharFilter(field_name="statut", lookup_expr='icontains', label='Statut')
-    inventaire = CharFilter(field_name="inventaire.numero", lookup_expr='icontains', label='Inventaire UMR')
+    inventaire = CharFilter(field_name="inventaire", lookup_expr='icontains', label='Inventaire UMR')
 
     class Meta:
         model = StockPompe

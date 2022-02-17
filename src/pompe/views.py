@@ -109,7 +109,7 @@ def pompe(request):
     current_date = datetime.date.today()
     warning_date = current_date + datetime.timedelta(days=7)
 
-    context = {'s_pompe': s_pompes,
+    context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
                'filterpompe': filterpompe,
@@ -128,7 +128,6 @@ def add_stockpompe(request):
 
 def update_stockpompe(request, pk):
     s_pompes = get_object_or_404(StockPompe, pk=pk)
-
     if request.method == "POST":
         form = ModifStockPompeForm(request.POST, instance=s_pompes)
         if form.is_valid():
@@ -137,6 +136,12 @@ def update_stockpompe(request, pk):
     else:
         form = ModifStockPompeForm(instance=s_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
+
+def delete_stockpompe(request, pk):
+    s_pompes = get_object_or_404(StockPompe, pk=pk)
+    s_pompes.delete()
+    return redirect('/pompes')
+
 
 #fiche modele des pompes
 def fichepompe(request):
