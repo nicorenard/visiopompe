@@ -29,17 +29,16 @@ def dashboard(request):
 ## equipe
 def equipe(request):
     equipes = ModelEquipe.objects.all().order_by('sigle')
-    return render(request, 'pompe/equipe.html', {'equipes': equipes})
+    form = Equipeform()
 
-def add_equipe(request):
     if request.method == "POST":
         form = Equipeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('pompe/equipe')
+        return redirect('/dashboard/equipe')
     else:
         form = Equipeform()
-    return render(request, 'pompe/forms.html', {'form': form})
+    return render(request, 'pompe/equipe.html', {'equipes': equipes, 'form': form})
 
 def update_equipe(request, pk):
     equipes = get_object_or_404(ModelEquipe, pk=pk)
@@ -90,10 +89,11 @@ def delete_fabriquant(request, pk):
 ## lieux
 def piece(request):
     pieces = Piece.objects.all().order_by('nom')
-    context = {'pieces': pieces}
-    return render(request, 'pompe/lieux.html', context)
+    form = Siteform()
+    form2 = Batimentform()
+    form3 = Etageform()
+    form4 = Pieceform()
 
-def add_site(request):
     if request.method == "POST":
         form = Siteform(request.POST, request.FILES)
         if form.is_valid():
@@ -101,38 +101,49 @@ def add_site(request):
         return redirect('pompe/lieux')
     else:
         form = Siteform()
-    return render(request, 'pompe/forms.html', {'form': form})
 
-def add_batiment(request):
     if request.method == "POST":
-        form = Batimentform(request.POST, request.FILES)
+        form2 = Batimentform(request.POST, request.FILES)
+        if form2.is_valid():
+            form2.save()
+        return redirect('pompe/lieux')
+    else:
+        form2 = Batimentform()
+
+    if request.method == "POST":
+        form3 = Etageform(request.POST, request.FILES)
+        if form3.is_valid():
+            form3.save()
+        return redirect('pompe/lieux')
+    else:
+        form3 = Etageform()
+
+    if request.method == "POST":
+        form4 = Pieceform(request.POST, request.FILES)
+        if form4.is_valid():
+            form4.save()
+        return redirect('pompe/lieux')
+    else:
+        form4 = Pieceform()
+
+    context = {'pieces': pieces, 'form': form, 'form2':form2, 'form3':form3, 'form4':form4}
+    return render(request, 'pompe/lieux.html', context)
+
+def update_piece(request, pk):
+    pieces = get_object_or_404(Fabriquant, pk=pk)
+    if request.method == "POST":
+        form = ModifPieceForm(request.POST, instance=pieces)
         if form.is_valid():
             form.save()
         return redirect('pompe/lieux')
     else:
-        form = Batimentform()
+        form = ModifPieceForm(instance=pieces)
     return render(request, 'pompe/forms.html', {'form': form})
 
-def add_etage(request):
-    if request.method == "POST":
-        form = Etageform(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        return redirect('pompe/lieux')
-    else:
-        form = Etageform()
-    return render(request, 'pompe/forms.html', {'form': form})
-
-def add_piece(request):
-    if request.method == "POST":
-        form = Pieceform(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        return redirect('pompe/lieux')
-    else:
-        form = Pieceform()
-    return render(request, 'pompe/forms.html', {'form': form})
-
+def delete_piece(request, pk):
+    queryset = get_object_or_404(Piece, pk=pk)
+    queryset.delete()
+    return redirect('/pompe/lieux')
 # fiche stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')

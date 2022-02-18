@@ -57,13 +57,17 @@
                         <h4>Formulaire d'ajout d'équipe</h4>
                     </header>
                     <div class="w3-container">
-                        <p><form method="POST" enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                     <table>
+                    {{ form.as_table}}
+                    </table>
 
-                    <button class="w3-button w3-green">Enregistrer</button>
+                    <button class="w3-button w3-green" type="submit" >Enregistrer</button>
                     <button class="w3-button w3-red"><a href="{% url 'pompe:equipe' %}">Annuler</a></button>
 
-                        </form></p></div>
+                        </form>
+                    </div>
 
                 </div>
             </div>

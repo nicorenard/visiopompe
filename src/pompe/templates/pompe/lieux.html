@@ -26,6 +26,9 @@
                 <th><p>Bâtiment</p></th>
                 <th><p>Etage</p></th>
                 <th><p>Pièces</p></th>
+                <th></th>
+                <th><p>Modifier </p></th>
+                <th><p>Supprimer </p></th>
             </tr>
             <tr>
                  {% for piece in pieces %}
@@ -33,6 +36,9 @@
                 <td><p>{{piece.etage.batiment.nom}}</p></td>
                 <td><p>{{piece.etage.nom}}</p></td>
                 <td><p>{{piece.nom}}</p></td>
+                <td><p>||</p></td>
+                <td><a href="{% url 'pompe:piece_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                <td><a href="{% url 'pompe:piece_delete' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
             </tr>
             {% endfor %}
         </table>
@@ -45,13 +51,21 @@
                                 <h4>Sites</h4>
                             </header>
                             <div class="w3-container">
-                                <p>ajout</p>
+                                <p>Formulaire d'ajout</p>
+                            <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>
+                            {{form}}
+                            </table>
+                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
+                            </form>
                             </div>
                             <div class="w3-container">
-                                <p>modifier</p>
+                                <p>Formulaire de modification</p>
                             </div>
                             <div class="w3-container">
-                                <p>supprimer</p>
+                                <p>Formulaire de suppression</p>
                             </div>
                             <footer>
                                 <p></p>
@@ -64,7 +78,15 @@
                                 <h4>Bâtiments</h4>
                             </header>
                             <div class="w3-container">
-                                <p>ajout</p>
+                                <p>Formulaire d'ajout</p>
+                            <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>
+                            {{form2}}
+                            </table>
+                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
+                            </form>
                             </div>
                             <div class="w3-container">
                                 <p>modifier</p>
@@ -83,7 +105,15 @@
                                 <h4>Etages</h4>
                             </header>
                             <div class="w3-container">
-                                <p>ajout</p>
+                                <p>Formulaire d'ajout</p>
+                            <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>
+                            {{form3}}
+                            </table>
+                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
+                            </form>
                             </div>
                             <div class="w3-container">
                                 <p>modifier</p>
@@ -102,17 +132,17 @@
                                 <h4>Pieces</h4>
                             </header>
                             <div class="w3-container">
-                                <p>ajout</p>
+                                <p>Formulaire d'ajout</p>
+                            <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>
+                            {{form4}}
+                            </table>
+                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
+                            </form>
                             </div>
-                            <div class="w3-container">
-                                <p>modifier</p>
-                            </div>
-                            <div class="w3-container">
-                                <p>supprimer</p>
-                            </div>
-                            <footer>
-                                <p></p>
-                            </footer>
+
                         </div>
                     </div>
                 </div>

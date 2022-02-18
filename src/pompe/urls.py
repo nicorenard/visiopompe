@@ -40,17 +40,13 @@ urlpatterns = [
     path('doc_delete/<int:pk>/', views.delete_doc, name="doc_delete"),
     path('dashboard/equipe', views.equipe, name="equipe"),
     path('dashboard/lieux', views.piece, name="lieux"),
-    path('dashboard/equipe_add/', views.add_equipe, name="add_equipe"),
     path('dashboard/equipe_edit/<int:pk>/', views.update_equipe, name="equipe_edit"),
     path('dashboard/equipe_delete/<int:pk>/', views.delete_equipe, name="equipe_delete"),
-    path('site_add/', views.add_site, name="add_site"),
-    #path('site_edit/<int:pk>/', views.update_site, name="site_edit"),
-    path('batiment_add/', views.add_batiment, name="add_batiment"),
+    # path('site_edit/<int:pk>/', views.update_site, name="site_edit"),
     # path('batiment_edit/<int:pk>/', views.update_batiment, name="batiment_edit"),
-    path('etage_add/', views.add_piece, name="add_etage"),
     # path('etage_edit/<int:pk>/', views.update_etage, name="etage_edit"),
-    path('piece_add/', views.add_piece, name="add_piece"),
-    # path('piece_edit/<int:pk>/', views.update_piece, name="piece_edit"),
+    path('dashboard/piece_edit/<int:pk>/', views.update_piece, name="piece_edit"),
+    path('dashboard/piece_delete/<int:pk>/', views.delete_piece, name="piece_delete"),
 
 
 ]
