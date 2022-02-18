@@ -36,6 +36,15 @@
                 <th>
                     <p>Télécharger</p>
                 </th>
+                <th>
+                    <p></p>
+                </th>
+                <th>
+                    <p>Modifier</p>
+                </th>
+                                <th>
+                    <p>Supprimer</p>
+                </th>
             </tr>
             <tr>
                  {% for doc in docs %}
@@ -51,6 +60,10 @@
                 <td >
                     <a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" ></a>
                 </td>
+                <td><p>||</p></td>
+                <td><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                <td><a href="{% url 'pompe:doc_delete' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+
             </tr>
             {% endfor %}
         </table>

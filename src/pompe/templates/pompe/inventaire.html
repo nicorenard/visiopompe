@@ -21,8 +21,8 @@
     <br>
     <section>
         <table class="w3-table w3-centered  w3-mobile" style="margin-left:10px; margin-right:10px;">
-          <th class="w3-red">
-                <tr class="w3-green w3-text-black w3-striped">
+          <th>
+                <tr class=" w3-green w3-text-black w3-striped">
                     <th><p>Tutelle</p></th>
                     <th><p>Numéro d'inventaire de pompes</p></th>
                     <th><p>Date de création</p></th>
@@ -36,49 +36,48 @@
                     <td><p>{{inventaire.numero}}</p></td>
                     <td><p>{{inventaire.date_inventaire}}</p></td>
                     <td><p>||</p></td>
-                    <td><a href="#"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
-                    <td><a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+                    <td><a href="{% url 'pompe:inventaire_edit' pk=inventaire.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                    <td><a href="{% url 'pompe:inventaire_delete' pk=inventaire.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
                 </tr>
                 {% endfor %}
           </th>
-          <td class="w3-yellow">
-              <div class="w3-row-padding">
-                    <div class="w3-col">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-red">
-                                <h4>Formulaire d'ajout</h4>
-                            </header>
-                            <div class="w3-container">
-                                <p>ajout</p>
-                            </div>
-                            <div>
-                                <p> </p>
-                            </div>
-                            <footer>
-                                <p>Suppression</p>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-          </td>
-
         </table>
     </section>
-
+    <br><br>
     <section>
     <div class="w3-row-padding">
-                <div class="w3-col m4 s4">
-                    <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-green">
-                                <h4>Tutelles</h4>
-                            </header>
-                            <div class="w3-container">
-                                {% for inventaire in tutelles %}
-                                <p>{{inventaire.nom}}</p>
-                                  {% endfor %}
-                            </div>
-                    </div>
+        <div class="w3-col m4 s4 ">
+            <div class="w3-card-2 w3-center w3-text-blue-gray">
+                <header class="w3-container w3-red">
+                    <h4>Formulaires</h4>
+                </header>
+                <div class="w3-container">
+                    <p>formulaire ajout d'équipe</p>
                 </div>
+            </div>
+        </div>
+        <div class="w3-col m4 s4">
+            <div class="w3-card-2 w3-center w3-text-blue-gray">
+                <header class="w3-container w3-green">
+                    <h4>Tutelles</h4>
+                </header>
+                <div class="w3-container">
+                    {% for inventaire in tutelles %}
+                    <p>{{inventaire.nom}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="w3-col m4 s4 ">
+            <div class="w3-card-2 w3-center w3-text-blue-gray">
+                <header class="w3-container w3-red">
+                    <h4>Formulaires</h4>
+                </header>
+                <div class="w3-container">
+                    <p>formulaire ajout de tutelles</p>
+                </div>
+            </div>
+        </div>
     </div>
     </section>
 </div>

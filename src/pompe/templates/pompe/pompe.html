@@ -23,11 +23,7 @@
             <button type="submit"><i class="fa fa-search"></i></button>
             </form>
     </section>
-    <!----Fiche pompe--->
-    <section class="w3-container w3-light-gray w3-padding-12" >
-    <!---- Il faut un tableau qui affiche les fiches + modification comme dans le document
-    et qui permet d'ajouter un numero d'inventaire dans le stock--->
-    </section>
+
     <!---Stock pompe--->
     <section class="w3-container w3-padding-32 w3-mobile">
 
@@ -55,6 +51,7 @@
             <p style="text-align: right;">
             <a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
             <a href="{% url 'pompe:pompe_delete' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
+
             </p>
             <!----section carateristiques--->
             <div class="w3-container w3-cell-row w3-leftbar">
@@ -80,7 +77,12 @@
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_miseenservice.png' %}" >&nbsp;Mise en service :{{pompe.mise_en_service|date:"SHORT_DATE_FORMAT"}}</p>
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_numeroserie.png' %}">&nbsp;N° de série : {{pompe.num_serie}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_code_umr.png' %}"> N° inventaire UMR : {{pompe.inventaire.numero}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_code_umr.png' %}"> N° d'inventaire :
+                        {% if pompe.inventaire.id  %}
+                            {{pompe.inventaire.numero}}
+                        {% else %}
+                        <span class="w3-tag w3-padding w3-round-large w3-red w3-center"><i class="fa fa-exclamation-triangle "></i></span>
+                        {% endif %}</p>
                 </div>
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.pompe.phasage}}</p>

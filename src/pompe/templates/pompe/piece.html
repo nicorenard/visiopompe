@@ -44,8 +44,8 @@
             </div>
             <div class="w3-col m1">
                 <p>
-                    <a href="#"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" ></a>
-                    <a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" ></a>
+                    <a href="{% url 'pompe:pdetache_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" ></a>
+                    <a href="{% url 'pompe:pdetache_delete' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" ></a>
                 </p>
             </div>
         </div>
