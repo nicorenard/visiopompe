@@ -42,8 +42,8 @@
                 <td><p>{{equipe.date}}</p></td>
                 <td><p>{{equipe.lieux.batiment.nom}} - {{equipe.lieux.nom}}</p></td>
                 <td><p>||</p></td>
-                <td><a href="#"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
-                <td><a href="#"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+                <td><a href="{% url 'pompe:equipe_edit' pk=equipe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                <td><a href="{% url 'pompe:equipe_delete' pk=equipe.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
             </tr>
             {% endfor %}
         </table>
@@ -63,12 +63,8 @@
                     <button class="w3-button w3-green">Enregistrer</button>
                     <button class="w3-button w3-red"><a href="{% url 'pompe:equipe' %}">Annuler</a></button>
 
-                </form>
-                        </p>
-                    </div>
-                    <div>
-                        <p> </p>
-                    </div>
+                        </form></p></div>
+
                 </div>
             </div>
         </div>

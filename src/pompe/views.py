@@ -40,6 +40,22 @@ def add_equipe(request):
     else:
         form = Equipeform()
     return render(request, 'pompe/forms.html', {'form': form})
+
+def update_equipe(request, pk):
+    equipes = get_object_or_404(ModelEquipe, pk=pk)
+    if request.method == "POST":
+        form = ModifEquipeForm(request.POST, instance=equipes)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/equipe')
+    else:
+        form = ModifEquipeForm(instance=equipes)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+def delete_equipe(request, pk):
+    queryset = get_object_or_404(ModelEquipe, pk=pk)
+    queryset.delete()
+    return redirect('/dashboard/equipe')
 ## fabriquant
 def fabriquant(request):
     fabriquants = Fabriquant.objects.all().order_by('nom')
