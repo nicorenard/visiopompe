@@ -50,8 +50,15 @@
                                 <h4>Formulaires</h4>
                             </header>
                             <div class="w3-container">
-                                <p>formulaire ajout</p>
+                                <p>formulaire d'ajout</p>
                             </div>
+                            <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>{{form}}</table>
+                    <button class="w3-button w3-green" type="submit" name="fabriquant_form">Enregistrer</button>
+                    <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
+                    <br>
+                </form>
                             <div class="w3-container">
                                 <p>formulaire modification</p>
                             </div>

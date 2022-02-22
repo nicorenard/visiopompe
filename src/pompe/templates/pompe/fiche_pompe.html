@@ -31,7 +31,7 @@
                 <th><p>Modèle</p></th>
                 <th><p>Phasage</p></th>
                 <th><p>Puissance</p></th>
-                <th><p>Technologie vide</p></th>
+                <th><p>Technologie  du vide</p></th>
                 <th><p>Vide fabriquant</p></th>
                 <th><p>Manuel</p></th>
                 <th><p></p></th>
@@ -66,7 +66,7 @@
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <table>
-                    {{form}}
+                    {{form.as_p}}
                     </table>
                     <button class="w3-button w3-green" type="submit" name="fiche_form">Enregistrer</button>
                     <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>

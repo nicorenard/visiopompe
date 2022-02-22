@@ -58,17 +58,17 @@ def delete_equipe(request, pk):
 ## fabriquant
 def fabriquant(request):
     fabriquants = Fabriquant.objects.all().order_by('nom')
-    return render(request, 'pompe/fabriquant.html', {'fabriquants': fabriquants})
 
-def add_fabriquant(request):
     if request.method == "POST":
         form = Fabriquantform(request.POST, request.FILES)
-        if form.is_valid():
+        if form.is_valid() and 'fabriquant_form' in request.POST:
             form.save()
         return redirect('/fabriquants')
     else:
         form = Fabriquantform()
-    return render(request, 'pompe/forms.html', {'form': form})
+    return render(request, 'pompe/fabriquant.html', {'fabriquants': fabriquants, 'form':form})
+
+
 
 def update_fabriquant(request, pk):
     fabriquants = get_object_or_404(Fabriquant, pk=pk)
@@ -184,7 +184,7 @@ def fichepompe(request):
         if form.is_valid() and 'fiche_form' in request.POST:
             form.save()
 
-        elif form2.is_valid() and 'tehcno_form' in request.POST:
+        elif form2.is_valid() and 'techno_form' in request.POST:
             form2.save()
 
         return redirect('/fichepompe')
@@ -192,7 +192,7 @@ def fichepompe(request):
         form = ModelPompeform()
         form2 = Technologieform()
 
-    context = {'m_pompe': m_pompes, 'form':form, 'form2': form2}
+    context = {'m_pompe': m_pompes, 'form': form, 'form2': form2}
     return render(request, 'pompe/fiche_pompe.html', context)
 
 def update_fichepompe(request, pk):
