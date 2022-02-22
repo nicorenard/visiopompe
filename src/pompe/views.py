@@ -89,44 +89,31 @@ def delete_fabriquant(request, pk):
 ## lieux
 def piece(request):
     pieces = Piece.objects.all().order_by('nom')
-    form = Siteform()
-    form2 = Batimentform()
-    form3 = Etageform()
-    form4 = Pieceform()
 
     if request.method == "POST":
         form = Siteform(request.POST, request.FILES)
-        if form.is_valid():
+        form2 = Batimentform(request.POST, request.FILES)
+        form3 = Etageform(request.POST, request.FILES)
+        form4 = Pieceform(request.POST, request.FILES)
+        if form.is_valid() and 'site_form' in request.POST:
             form.save()
-        return redirect('pompe/lieux')
+
+        elif form2.is_valid() and 'batiment_form' in request.POST:
+            form2.save()
+
+        elif form3.is_valid() and 'etage_form' in request.POST:
+            form3.save()
+
+        elif form4.is_valid() and 'piece_form' in request.POST:
+            form4.save()
+        return redirect('/dashboard/lieux')
     else:
         form = Siteform()
-
-    if request.method == "POST":
-        form2 = Batimentform(request.POST, request.FILES)
-        if form2.is_valid():
-            form2.save()
-        return redirect('pompe/lieux')
-    else:
         form2 = Batimentform()
-
-    if request.method == "POST":
-        form3 = Etageform(request.POST, request.FILES)
-        if form3.is_valid():
-            form3.save()
-        return redirect('pompe/lieux')
-    else:
         form3 = Etageform()
-
-    if request.method == "POST":
-        form4 = Pieceform(request.POST, request.FILES)
-        if form4.is_valid():
-            form4.save()
-        return redirect('pompe/lieux')
-    else:
         form4 = Pieceform()
 
-    context = {'pieces': pieces, 'form': form, 'form2':form2, 'form3':form3, 'form4':form4}
+    context = {'pieces': pieces, 'form': form, 'form2': form2, 'form3': form3, 'form4': form4}
     return render(request, 'pompe/lieux.html', context)
 
 def update_piece(request, pk):
@@ -135,7 +122,7 @@ def update_piece(request, pk):
         form = ModifPieceForm(request.POST, instance=pieces)
         if form.is_valid():
             form.save()
-        return redirect('pompe/lieux')
+        return redirect('/dashboard/lieux')
     else:
         form = ModifPieceForm(instance=pieces)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -143,7 +130,8 @@ def update_piece(request, pk):
 def delete_piece(request, pk):
     queryset = get_object_or_404(Piece, pk=pk)
     queryset.delete()
-    return redirect('/pompe/lieux')
+    return redirect('/dashboard/lieux')
+
 # fiche stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')

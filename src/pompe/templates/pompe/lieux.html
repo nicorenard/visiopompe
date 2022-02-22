@@ -57,7 +57,7 @@
                             <table>
                             {{form}}
                             </table>
-                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-green" name="site_form" type="submit" >Enregistrer</button>
                             <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                             </form>
                             </div>
@@ -84,7 +84,7 @@
                             <table>
                             {{form2}}
                             </table>
-                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-green" type="submit" name="batiment_form">Enregistrer</button>
                             <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                             </form>
                             </div>
@@ -111,7 +111,7 @@
                             <table>
                             {{form3}}
                             </table>
-                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-green" type="submit" name="etage_form">Enregistrer</button>
                             <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                             </form>
                             </div>
@@ -138,7 +138,7 @@
                             <table>
                             {{form4}}
                             </table>
-                            <button class="w3-button w3-green" type="submit" >Enregistrer</button>
+                            <button class="w3-button w3-green" type="submit" name="piece_form">Enregistrer</button>
                             <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                             </form>
                             </div>
@@ -147,7 +147,6 @@
                     </div>
                 </div>
             </tr>
-        </table>
     </section>
 </div>
 </body>
