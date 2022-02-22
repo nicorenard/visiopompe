@@ -63,7 +63,8 @@
                     <p class="w3-padding-16"><img src="{% static 'pompe/img/menu_pompe/icon_vidange.png' %}" >&nbsp;Prochaine Vidange:<br>
                         {% if current_date > pompe.vidange %}<strong style="color:red;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
                         {% elif current_date == pompe.vidange %}<strong style="color:orange;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
-                        {% elif pompe.vidange <= warning_date %}<strong style="color:amber;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                        {% elif pompe.vidange <= warning_date %}<strong style="color:amber;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}
+                            </strong>
                         {% else %} <strong>{{pompe.date_vidange|date:"SHORT_DATE_FORMAT"}}</strong></p>
                         {% endif %}
                     <!---genere l'image en fonction du statut pompe.statut---->

@@ -43,6 +43,19 @@ class ModifModelPompeForm(forms.ModelForm):
         model = ModelePompe
         fields = '__all__'
 
+
+class Technologieform(forms.ModelForm):
+
+    class Meta:
+        model = TechnologiePompe
+        fields = '__all__'
+
+
+class ModifTechnoForm(forms.ModelForm):
+
+    class Meta:
+        model = TechnologiePompe
+        fields = '__all__'
 # documentations
 class Docform(forms.ModelForm):
 

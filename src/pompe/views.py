@@ -117,7 +117,7 @@ def piece(request):
     return render(request, 'pompe/lieux.html', context)
 
 def update_piece(request, pk):
-    pieces = get_object_or_404(Fabriquant, pk=pk)
+    pieces = get_object_or_404(Piece, pk=pk)
     if request.method == "POST":
         form = ModifPieceForm(request.POST, instance=pieces)
         if form.is_valid():
@@ -132,7 +132,7 @@ def delete_piece(request, pk):
     queryset.delete()
     return redirect('/dashboard/lieux')
 
-# fiche stocks pompes
+# stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
     filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
@@ -176,18 +176,24 @@ def delete_stockpompe(request, pk):
 #fiche modele des pompes
 def fichepompe(request):
     m_pompes = ModelePompe.objects.all().order_by('nom')
-    context = {'m_pompe': m_pompes}
-    return render(request, 'pompe/fiche_pompe.html', context)
 
-def add_fichepompe(request):
     if request.method == "POST":
         form = ModelPompeform(request.POST, request.FILES)
-        if form.is_valid():
+        form2 = Technologieform(request.POST, request.FILES)
+
+        if form.is_valid() and 'fiche_form' in request.POST:
             form.save()
+
+        elif form2.is_valid() and 'tehcno_form' in request.POST:
+            form2.save()
+
         return redirect('/fichepompe')
     else:
         form = ModelPompeform()
-    return render(request, 'pompe/forms.html', {'form': form})
+        form2 = Technologieform()
+
+    context = {'m_pompe': m_pompes, 'form':form, 'form2': form2}
+    return render(request, 'pompe/fiche_pompe.html', context)
 
 def update_fichepompe(request, pk):
     m_pompes = get_object_or_404(StockPompe, pk=pk)

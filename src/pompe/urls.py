@@ -20,7 +20,6 @@ urlpatterns = [
     path('stock_add/', views.add_stockpompe, name="add_pompe"),
     path('stock_edit/<int:pk>/', views.update_stockpompe, name="pompe_edit"),
     path('stock_delete/<int:pk>/', views.delete_stockpompe, name="pompe_delete"),
-    path('fichepompe_add/', views.add_fichepompe, name="add_fichepompe"),
     path('fichepompe_edit/<int:pk>/', views.update_fichepompe, name="fichepompe_edit"),
     path('fichepompe_delete/<int:pk>/', views.delete_fichepompe, name="fichepompe_delete"),
     path('inventaire/', views.inventaire, name="inventaire"),
