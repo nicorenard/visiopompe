@@ -29,6 +29,19 @@ class ModifInventaireForm(forms.ModelForm):
         model = Inventaire
         fields = '__all__'
 
+
+class Tutelleform(forms.ModelForm):
+
+    class Meta:
+        model = Tutelle
+        fields = '__all__'
+
+
+class ModifTutelleForm(forms.ModelForm):
+
+    class Meta:
+        model = Tutelle
+        fields = '__all__'
 #fiche pompes
 class ModelPompeform(forms.ModelForm):
 

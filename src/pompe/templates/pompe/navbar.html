@@ -18,9 +18,8 @@
         <div class="w3-dropdown-content w3-bar-block" id="PUMP">
         <a href="{% url 'pompe:pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter Stocks</a>
         <a href="{% url 'pompe:add_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-        <a href="{% url 'pompe:fiche_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Fiches</a>
-        <a href="{% url 'pompe:fabriquant' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Fabriquants</a>
-        <a href="{% url 'pompe:inventaire' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Inventaires</a>
+        <a href="{% url 'pompe:inventaire' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Inventaires Stocks</a>
+
 
     </div></div>
     <div class="w3-dropdown-click">
@@ -51,8 +50,10 @@
     <button class="w3-button" onclick="myAdminFunc()"><i class="fa fa-arrow-right"></i> Administration  <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block" id="ADMIN">
             <a href="{% url 'pompe:dashboard' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Dashboard</a>
-            <a href="{% url 'pompe:equipe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Equipes</a>
-            <a href="{% url 'pompe:lieux' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Lieux</a>
+                    <a href="{% url 'pompe:fiche_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Modèles de Pompes</a>
+        <a href="{% url 'pompe:fabriquant' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Fabriquants</a>
+        <a href="{% url 'pompe:equipe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Equipes</a>
+        <a href="{% url 'pompe:lieux' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Lieux</a>
 
     </div></div>
     <br><br><br>
@@ -112,6 +113,18 @@ function myDocFunc() {
   } else {
     x.className = x.className.replace(" w3-show", "");
   }
+}
+
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "180px";
+  document.getElementById("mySidebar").style.width = "180px";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
 }
 </script>
 </body>

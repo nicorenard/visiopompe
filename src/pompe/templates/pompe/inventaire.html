@@ -16,7 +16,7 @@
 <!---------Contenu------->
 <div class="w3-main w3-mobile" style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
-        <h2> Gestions des Inventaires</h2>
+        <h2> Gestions des Inventaires de stocks de pompes</h2>
     </div>
     <br>
     <section>
@@ -24,7 +24,7 @@
           <th>
                 <tr class=" w3-green w3-text-black w3-striped">
                     <th><p>Tutelle</p></th>
-                    <th><p>Numéro d'inventaire de pompes</p></th>
+                    <th><p>Numéro d'inventaire </p></th>
                     <th><p>Date de création</p></th>
                     <th><p></p></th>
                     <th><p>Modifier </p></th>
@@ -45,20 +45,25 @@
     </section>
     <br><br>
     <section>
-    <div class="w3-row-padding">
+    <div class="w3-row-padding w3-mobile">
         <div class="w3-col m4 s4 ">
             <div class="w3-card-2 w3-center w3-text-blue-gray">
-                <header class="w3-container w3-red">
-                    <h4>Formulaires</h4>
+                <header class="w3-container w3-light-blue">
+                    <h4>Formulaire d'ajout d'inventaire</h4>
                 </header>
                 <div class="w3-container">
-                    <p>formulaire ajout d'équipe</p>
+                    <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>{{form}}</table>
+                    <button class="w3-button w3-green" type="submit" name="inventaire_form">Enregistrer</button>
+                    <button class="w3-button w3-red"><a href="{% url 'pompe:inventaire' %}">Annuler</a></button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="w3-col m4 s4">
             <div class="w3-card-2 w3-center w3-text-blue-gray">
-                <header class="w3-container w3-green">
+                <header class="w3-container w3-light-green">
                     <h4>Tutelles</h4>
                 </header>
                 <div class="w3-container">
@@ -70,11 +75,16 @@
         </div>
         <div class="w3-col m4 s4 ">
             <div class="w3-card-2 w3-center w3-text-blue-gray">
-                <header class="w3-container w3-red">
-                    <h4>Formulaires</h4>
+                <header class="w3-container w3-light-blue">
+                    <h4>Formulaire d'ajout de tutelles</h4>
                 </header>
                 <div class="w3-container">
-                    <p>formulaire ajout de tutelles</p>
+                    <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>{{form2}}</table>
+                    <button class="w3-button w3-green" type="submit" name="tutelle_form">Enregistrer</button>
+                    <button class="w3-button w3-red"><a href="{% url 'pompe:inventaire' %}">Annuler</a></button>
+                    </form>
                 </div>
             </div>
         </div>

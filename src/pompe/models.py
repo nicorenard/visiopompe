@@ -155,11 +155,11 @@ class StockPompe(models.Model):
     inventaire = models.ForeignKey(Inventaire, null=True, blank=True, on_delete=models.SET_NULL)
     STATUT_POMPE = [
         ('A', 'Active'),
-        ('S', 'En Stock'),
-        ('R', 'En réparation'),
         ('P', 'En panne'),
+        ('R', 'En réparation'),
+        ('S', 'En Stock'),
     ]
-    statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='', verbose_name="Etat actuel de la pompe")
+    statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='A', verbose_name="Etat actuel de la pompe")
     atex = models.BooleanField(default=False, verbose_name="Pompe Atex ?")
     huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
     equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)

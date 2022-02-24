@@ -69,7 +69,6 @@ def fabriquant(request):
     return render(request, 'pompe/fabriquant.html', {'fabriquants': fabriquants, 'form':form})
 
 
-
 def update_fabriquant(request, pk):
     fabriquants = get_object_or_404(Fabriquant, pk=pk)
     if request.method == "POST":
@@ -215,18 +214,24 @@ def delete_fichepompe(request, pk):
 def inventaire(request):
     inventaires = Inventaire.objects.all().order_by('numero')
     tutelles = Tutelle.objects.all().order_by('nom')
-    context = {'inventaires': inventaires, 'tutelles': tutelles }
-    return render(request, 'pompe/inventaire.html', context)
 
-def add_inventaire(request):
     if request.method == "POST":
-        form = Inventaireform(request.POST, request.FILES)
-        if form.is_valid():
+        form = Inventaireform(request.POST)
+        form2 = Tutelleform(request.POST)
+
+        if form2.is_valid() and 'tutelle_form' in request.POST:
+            form2.save()
+
+        elif form.is_valid() and 'inventaire_form' in request.POST:
             form.save()
+
         return redirect('/inventaire')
     else:
         form = Inventaireform()
-    return render(request, 'pompe/forms.html', {'form': form})
+        form2 = Tutelleform()
+
+    context = {'inventaires': inventaires, 'tutelles': tutelles, 'form': form, 'form2': form2 }
+    return render(request, 'pompe/inventaire.html', context)
 
 def update_inventaire(request, pk):
     inventaires = get_object_or_404(StockPompe, pk=pk)
