@@ -58,7 +58,7 @@
     <br><br>
     <section>
     <div class="w3-row-padding w3-mobile">
-        <div class="w3-col m4 s4 ">
+        <div class="w3-col m5 s5 ">
             <div class="w3-card-2 w3-center w3-text-blue-gray">
                 <header class="w3-container w3-cyan">
                     <h4>Formulaire d'ajout de fiches</h4>
@@ -74,8 +74,8 @@
                 </form>
             </div>
         </div>
-        <div class="w3-col m4 s4 ">
-            <div class="w3-card-2 w3-center w3-text-blue-gray">
+        <div class="w3-col m5 s5 ">
+            <div class="w3-card-2 w3-center ">
                 <header class="w3-container w3-amber">
                     <h4>Formulaire d'ajout de technologie de pompes</h4>
                 </header>
@@ -88,6 +88,14 @@
                     <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                     <br>
                 </form>
+                <div class="w3-container w3-amber">
+                    <h4>Technologie de pompes enregistrées</h4>
+                </div>
+                <div class="w3-container">
+                    {% for fiche_pompe in tutelles %}
+                    <p>{{inventaire.nom}}</p>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

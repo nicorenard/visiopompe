@@ -175,6 +175,7 @@ def delete_stockpompe(request, pk):
 #fiche modele des pompes
 def fichepompe(request):
     m_pompes = ModelePompe.objects.all().order_by('nom')
+    technos = TechnologiePompe.objects.all().order_by('nom')
 
     if request.method == "POST":
         form = ModelPompeform(request.POST, request.FILES)
