@@ -167,8 +167,8 @@ def update_stockpompe(request, pk):
     return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_stockpompe(request, pk):
-    s_pompes = get_object_or_404(StockPompe, pk=pk)
-    s_pompes.delete()
+    queryset = get_object_or_404(StockPompe, pk=pk)
+    queryset.delete()
     return redirect('/pompes')
 
 #fiche modele des pompes
@@ -206,8 +206,24 @@ def update_fichepompe(request, pk):
     return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_fichepompe(request, pk):
-    fiches = get_object_or_404(ModelePompe, pk=pk)
-    fiches.delete()
+    queryset = get_object_or_404(ModelePompe, pk=pk)
+    queryset.delete()
+    return redirect('/fichepompe')
+
+def update_techno(request, pk):
+    technos = get_object_or_404(TechnologiePompe, pk=pk)
+    if request.method == "POST":
+        form = ModifTechnoForm(request.POST, instance=technos)
+        if form.is_valid():
+            form.save()
+            return redirect('/fichepompe')
+    else:
+        form = ModifTechnoForm(instance=technos)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+def delete_techno(request, pk):
+    queryset = get_object_or_404(TechnologiePompe, pk=pk)
+    queryset.delete()
     return redirect('/fichepompe')
 
 #inventaire et tutelle
