@@ -29,7 +29,6 @@ def dashboard(request):
 ## equipe
 def equipe(request):
     equipes = ModelEquipe.objects.all().order_by('sigle')
-    form = Equipeform()
 
     if request.method == "POST":
         form = Equipeform(request.POST, request.FILES)
@@ -187,27 +186,27 @@ def fichepompe(request):
         elif form2.is_valid() and 'techno_form' in request.POST:
             form2.save()
 
-        return redirect('/fichepompe')
+        return redirect('/fiche_pompe')
     else:
         form = ModelPompeform()
         form2 = Technologieform()
 
-    context = {'m_pompe': m_pompes, 'form': form, 'form2': form2}
+    context = {'m_pompe': m_pompes, 'technos': technos,'form': form, 'form2': form2}
     return render(request, 'pompe/fiche_pompe.html', context)
 
 def update_fichepompe(request, pk):
-    m_pompes = get_object_or_404(StockPompe, pk=pk)
+    m_pompes = get_object_or_404(ModelePompe, pk=pk)
     if request.method == "POST":
         form = ModifModelPompeForm(request.POST, instance=m_pompes)
         if form.is_valid():
             form.save()
-            return redirect('/fiche_pompe')
+            return redirect('/fichepompe')
     else:
         form = ModifModelPompeForm(instance=m_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_fichepompe(request, pk):
-    fiches = get_object_or_404(StockPompe, pk=pk)
+    fiches = get_object_or_404(ModelePompe, pk=pk)
     fiches.delete()
     return redirect('/fichepompe')
 
@@ -235,7 +234,7 @@ def inventaire(request):
     return render(request, 'pompe/inventaire.html', context)
 
 def update_inventaire(request, pk):
-    inventaires = get_object_or_404(StockPompe, pk=pk)
+    inventaires = get_object_or_404(Inventaire, pk=pk)
 
     if request.method == "POST":
         form = ModifInventaireForm(request.POST, instance=inventaires)
@@ -261,7 +260,7 @@ def add_pdetache(request):
         form = PiecePompeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/pdetache')
+        return redirect('/pieces_detaches')
     else:
         form = PiecePompeform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -273,7 +272,7 @@ def update_pdetache(request, pk):
         form = ModifPiecePompeForm(request.POST, instance=pdetaches)
         if form.is_valid():
             form.save()
-            return redirect('/pdetache')
+            return redirect('/pieces_detaches')
     else:
         form = ModifPiecePompeForm(instance=pdetaches)
     return render(request, 'pompe/forms.html', {'form': form})

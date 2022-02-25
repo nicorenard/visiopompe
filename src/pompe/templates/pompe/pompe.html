@@ -88,7 +88,11 @@
                 <div class="w3-container w3-cell w3-mobile">
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.pompe.phasage}}</p>
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.pompe.puissance}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Technologie : {{pompe.pompe.technologie.nom}} ({{pompe.pompe.technologie.cara_1}}-{{pompe.pompe.technologie.cara_2}})</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Technologie :
+                        {{pompe.pompe.technologie.nom}} ({{pompe.pompe.technologie.cara_1}}
+                        {% if pompe.pompe.technologie.cara_2 %}
+                            -{{pompe.pompe.technologie.cara_2}}
+                        {% endif%})</p>
                 </div>
 
                 <div class="w3-container w3-cell w3-mobile">
