@@ -42,76 +42,86 @@
             </tr>
             {% endfor %}
         </table>
-        <tr><br></tr>
-            <tr>
-                <div class="w3-row-padding">
-                    <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-amber">
-                                <h4>Sites</h4>
-                            </header>
-                            <div class="w3-container">
-                                <p>Formulaire d'ajout</p>
-                            <form method="POST" enctype="multipart/form-data">
+
+        <br>
+        <div class="w3-row-padding">
+            <div class="w3-col m5 s5">
+                <div class="w3-card-2 w3-center w3-text-blue-gray">
+                    <header class="w3-container w3-amber">
+                        <h4>Sites</h4>
+                    </header>
+                <div class="w3-container">
+                    <p>Formulaire d'ajout</p>
+                        <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <table>
                             {{form.as_p}}
                             </table>
                             <button class="w3-button w3-green" name="site_form" type="submit" >Enregistrer</button>
                             <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
-                            </form>
-                            </div>
-                            <div class="w3-container w3-amber">
-                            <h5>Sites enregistrés</h5>
-                            </div>
-                        <div class="w3-container">
-                            <table class="w3-table w3-centered w3-mobile">
-                            <tr>
-                                 {% for sites in pieces %}
-                                <td><p>{{sites.nom}}</p> </td>
-                                <td><p>||</p></td>
-                                <td><a href="{% url 'pompe:site_edit' pk=sites.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
-                                <td><a href="{% url 'pompe:site_delete' pk=sites.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
-                            </tr>
+                        </form>
+                </div>
+                <div class="w3-container w3-amber">
+                    <h5>Sites enregistrés</h5>
+                </div>
+                <div class="w3-container">
+                    <table class="w3-table w3-centered w3-mobile">
+                        <tr>{% for piece in sites %}
+                            <td><p>{{piece.nom}}</p> </td>
+                            <td><p>||</p></td>
+                            <td><a href="{% url 'pompe:site_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                            <td><a href="{% url 'pompe:site_delete' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+                        </tr>
                             {% endfor %}
-                            </table>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-amber">
-                                <h4>Bâtiments</h4>
-                            </header>
-                            <div class="w3-container">
-                                <p>Formulaire d'ajout</p>
-                            <form method="POST" enctype="multipart/form-data">
+                    </table>
+                    <br>
+                </div>
+            </div>
+        </div>
+            <div class="w3-col m5 s5">
+                <div class="w3-card-2 w3-center w3-text-blue-gray">
+                    <header class="w3-container w3-amber">
+                        <h4>Bâtiments</h4>
+                    </header>
+                    <div class="w3-container">
+                        <p>Formulaire d'ajout</p>
+                        <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <table>
+                        <table>
                             {{form2.as_p}}
-                            </table>
-                            <button class="w3-button w3-green" type="submit" name="batiment_form">Enregistrer</button>
-                            <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
-                            </form>
-                            </div>
-                            <div class="w3-container">
-                                <p>modifier</p>
-                            </div>
-                            <div class="w3-container">
-                                <p>supprimer</p>
-                            </div>
-                            <footer>
-                                <p></p>
-                            </footer>
-                        </div>
+                        </table>
+                        <button class="w3-button w3-green" type="submit" name="batiment_form">Enregistrer</button>
+                        <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
+                        </form>
                     </div>
-                    <div class="w3-col m3 s3">
-                        <div class="w3-card-2 w3-center w3-text-blue-gray">
-                            <header class="w3-container w3-amber">
-                                <h4>Etages</h4>
-                            </header>
-                            <div class="w3-container">
-                                <p>Formulaire d'ajout</p>
+                    <div class="w3-container w3-amber">
+                        <h5>Batiments enregistrés</h5>
+                    </div>
+                    <div class="w3-container">
+                         <table class="w3-table w3-centered w3-mobile">
+                            <tr>
+                                {% for piece in batiments %}
+                                <td><p>{{piece.nom}}</p> </td>
+                                <td><p>{{piece.site.nom}}</p> </td>
+                                <td><p>||</p></td>
+                                <td><a href="{% url 'pompe:batiment_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                                <td><a href="{% url 'pompe:batiment_delete' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+                            </tr>
+                                {% endfor %}
+                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="w3-row-padding">
+            <div class="w3-col m5 s5">
+                <div class="w3-card-2 w3-center w3-text-blue-gray">
+                    <header class="w3-container w3-amber">
+                        <h4>Etages</h4>
+                    </header>
+                    <div class="w3-container">
+                        <p>Formulaire d'ajout</p>
                             <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <table>
@@ -121,19 +131,26 @@
                             <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                             </form>
                             </div>
-                            <div class="w3-container">
-                                <p>modifier</p>
-                            </div>
-                            <div class="w3-container">
-                                <p>supprimer</p>
-                            </div>
-                            <footer>
-                                <p></p>
-                            </footer>
+                        <div class="w3-container w3-amber">
+                            <h5>Batiments enregistrés</h5>
                         </div>
-                    </div>
-                    <div class="w3-col m3 s3">
-                        <div class="w3-card-2">
+                    <div class="w3-container">
+                    <table class="w3-table w3-centered w3-mobile">
+                                <tr>
+                                     {% for piece in etages %}
+                                    <td><p>{{piece.nom}}</p></td>
+                                    <td><p>{{piece.site.nom}}</p></td>
+                                    <td><p>{{piece.site.batiment.nom}}</p></td>
+                                    <td><p>||</p></td>
+                                    <td><a href="{% url 'pompe:etage_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
+                                    <td><a href="{% url 'pompe:etage_delete' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+                                </tr>
+                                {% endfor %}
+                                </table>
+                        </div>
+                </div>
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <div class="w3-col m5 s5">
                             <header class="w3-container w3-amber">
                                 <h4>Pièces</h4>
                             </header>
@@ -147,11 +164,11 @@
                             <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                             </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </tr>
+            </div>
+        </div>
     </section>
 </div>
 </body>
