@@ -79,19 +79,19 @@ Encart pour les pièces:
 >>>>
 Encart par équipes :
 >>>>
-Encart par fabriquant :
+Encart par fabriquants :
 >>>>
 
 La dashboard est un élement modulable. A vous de voir si vous souhaitez ou non l'agrémenter.
 
 [ ADMIN ]
-- Si vous souhaitez faire un import massif ou un export . il existe cette option dans la partie admin
-L'import/export est possible pour les fiches suivante :
---"modèles de pompes",
---"stocks","huiles","pièces détachées","documentations techniques"
+- Si vous souhaitez faire un import massif ou un export . il existe cette option dans la partie administration du site.
+L'import/export est possible pour les fiches suivantes :
+--"modèles de pompes","stocks"
+--"huiles","pièces détachées","documentations techniques"
 --"tutelles","les codes inventaires"
 --"les équipes","les fabriquants de pompes"
---"sites, "bâtiments", "étages", "pièces"
+--"sites", "bâtiments", "étages", "pièces"
 
 Pour accéder à la partie administration, faite la commande suivante:
 
@@ -99,17 +99,17 @@ Pour accéder à la partie administration, faite la commande suivante:
 
 Entrez un login puis un mot de passe. /!\ Le mot de passe n'est pas visible.
 
-Vous pouvez accéder à l'administration en faisant :
+Vous pouvez accéder à l'administration de la sorte :
 
 >>> adresse_du_site_web/admin  (ex : http://localhost/admin)
 
 Il faut ensuite aller dans l'onglet "ModelePompe" par exemple puis cliquer sur les boutons correspondant.
 l'import se fait via le template délivré dans le dossier "importation".
 Il est conseillé d'importer au format CSV.
-Note : Ce fichier n'est pas à laisser sur votre serveur.
+Note : Ce fichier csv et le dossier "importation" ne sont pas à laisser sur votre serveur.
 
 [ DIVERS ]
-- Le dossier "documentations" est informatif et concernera plus un dev.
+- Le dossier "documentations" est informatif et concernera un developpeur et sysadmin.
 Il ne doit pas être laissé sur le serveur de production (inutile).
 
 ## Démarrage
@@ -127,10 +127,7 @@ L'application est sans compte accessible en lecture seule (= consultation, reche
 
 ## Projet fabriqué avec :
 
-* [Python 3] - langage de programmation
-* [W3.css] - Framework front-end
-* [Django] - Framework Back-end
-* [Pycharm]- IDE
+* [Python 3] - [W3.css] - [Django] - [Pycharm]
 
 ## Changelog
 
