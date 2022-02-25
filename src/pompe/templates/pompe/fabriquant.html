@@ -23,11 +23,16 @@
         <table class="w3-table w3-centered w3-mobile" style="margin-left:10px; margin-right:10px;">
             <th>
                 <div class="w3-row-padding">
-                    <div class="w3-col">
+                    <div class="w3-col ">
                         {% for fabriquant in fabriquants %}
                         <div class="w3-card-2 w3-center w3-text-blue-gray">
                             <header class="w3-container w3-grey">
-                                <h3>{{fabriquant.nom}}<p class="w3-small w3-tag w3-round w3-right">{{fabriquant.id}}</p>
+                                <h3>{{fabriquant.nom}}<p class="w3-small w3-right">
+                                    <a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
+                                        <img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:30px;"></a>
+                                    <a href="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}">
+                                        <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:30px;"></a>
+                                </p>
                                 </h3>
                             </header>
                             <div class="w3-container">
@@ -47,24 +52,16 @@
                     <div class="w3-col">
                         <div class="w3-card-2 w3-center ">
                             <header class="w3-container w3-amber">
-                                <h4>Formulaires</h4>
+                                <h4>Ajout de Fabriquant</h4>
                             </header>
-                            <div class="w3-container">
-                                <p>Ajouter un fabriquant</p>
-                            </div>
                             <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <table>{{form.as_p}}</table>
-                    <button class="w3-button w3-green" type="submit" name="fabriquant_form">Enregistrer</button>
-                    <button class="w3-button w3-red"><a href="{% url 'pompe:fabriquant' %}">Annuler</a></button>
-                    <br>
-                </form>
-                            <div class="w3-container">
-                                <p>Modifier un fabriquant</p>
-                            </div>
-                            <div class="w3-container">
-                                <p>Supprimer un fabriquant</p>
-                            </div>
+                            <button class="w3-button w3-green" type="submit" name="fabriquant_form">Enregistrer</button>
+                            <button class="w3-button w3-red"><a href="{% url 'pompe:fabriquant' %}">Annuler</a></button>
+
+                            </form>
+                            <br>
                         </div>
                     </div>
                 </div>

@@ -58,14 +58,16 @@ def delete_equipe(request, pk):
 def fabriquant(request):
     fabriquants = Fabriquant.objects.all().order_by('nom')
 
-    if request.method == "POST":
+    if request.method == "POST"  and 'fabriquant_form' in request.POST:
         form = Fabriquantform(request.POST, request.FILES)
-        if form.is_valid() and 'fabriquant_form' in request.POST:
+        if form.is_valid():
             form.save()
         return redirect('/fabriquants')
     else:
         form = Fabriquantform()
-    return render(request, 'pompe/fabriquant.html', {'fabriquants': fabriquants, 'form':form})
+
+    context = {'fabriquants': fabriquants, 'form':form}
+    return render(request, 'pompe/fabriquant.html', context)
 
 
 def update_fabriquant(request, pk):
@@ -87,6 +89,9 @@ def delete_fabriquant(request, pk):
 ## lieux
 def piece(request):
     pieces = Piece.objects.all().order_by('nom')
+    sites = Site.objects.all().order_by('nom')
+    batiments = Batiment.objects.all().order_by('nom')
+    etages = Etage.objects.all().order_by('nom')
 
     if request.method == "POST":
         form = Siteform(request.POST, request.FILES)
@@ -111,7 +116,11 @@ def piece(request):
         form3 = Etageform()
         form4 = Pieceform()
 
-    context = {'pieces': pieces, 'form': form, 'form2': form2, 'form3': form3, 'form4': form4}
+    context = {'pieces': pieces,
+               'sites': sites,
+               'batiments' : batiments,
+               'etages' : etages,
+               'form': form, 'form2': form2, 'form3': form3, 'form4': form4}
     return render(request, 'pompe/lieux.html', context)
 
 def update_piece(request, pk):
@@ -130,18 +139,35 @@ def delete_piece(request, pk):
     queryset.delete()
     return redirect('/dashboard/lieux')
 
+def update_site(request):
+    pass
+
+def delete_site(request,pk):
+    pass
+
+def update_batiment(request):
+    pass
+
+def delete_batiment(request,pk):
+    pass
+
+def update_etage(request):
+    pass
+
+def delete_etage(request,pk):
+    pass
 # stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
-    filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
-    s_pompes = filterpompe.qs
+    #filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
+    #s_pompes = filterpompe.qs
     current_date = datetime.date.today()
     warning_date = current_date + datetime.timedelta(days=7)
 
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
-               'filterpompe': filterpompe,
+               #'filterpompe': filterpompe,
                }
     return render(request, 'pompe/pompe.html', context)
 

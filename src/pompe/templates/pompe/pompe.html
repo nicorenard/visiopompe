@@ -17,9 +17,10 @@
     </div>
 <br>
     <section class="w3-container w3-light-gray w3-padding-12" >
-        <form action="templates/pompe/pompe.html" method="get">
+        <form action="/pompe.html" method="GET">
             <br>
-            {{filterpompe.as_table}}
+            {{filterpompe}}
+            <!----https://github.com/carltongibson/django-filter/issues/1023--->
             <button type="submit"><i class="fa fa-search"></i></button>
             </form>
     </section>
