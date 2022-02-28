@@ -27,16 +27,20 @@
                         {% for fabriquant in fabriquants %}
                         <div class="w3-card-2 w3-center w3-text-blue-gray">
                             <header class="w3-container w3-grey">
-                                <h3>{{fabriquant.nom}}<p class="w3-small w3-right">
-                                    <a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
+                                <h2  >{%if fabriquant.logo_mini%}
+                                    <img src="/media/{{fabriquant.logo_mini}}" class="w3-left" style="width:5%; margin-bottom: 10px;">
+                                    {% endif %}
+                                    {{fabriquant.nom}}
+                                    <p class="w3-small w3-right">
+                                        <a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
                                         <img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:30px;"></a>
-                                    <a href="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}">
+                                        <a href="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}">
                                         <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:30px;"></a>
-                                </p>
-                                </h3>
+                                    </p>
+                                </h2>
                             </header>
-                            <div class="w3-container">
-                                <p>{{fabriquant.adresse}}</p>
+                            <div class="w3-container" >
+                                <p >{{fabriquant.adresse}}</p>
                                 <p>{{fabriquant.code_postal}} - {{fabriquant.ville}}</p>
                             </div>
                             <footer>
@@ -51,12 +55,12 @@
                 <div class="w3-row-padding">
                     <div class="w3-col">
                         <div class="w3-card-2 w3-center ">
-                            <header class="w3-container w3-amber">
-                                <h4>Ajout de Fabriquant</h4>
+                            <header class="w3-container w3-brown">
+                                <h4>Ajoutez un fabriquant</h4>
                             </header>
                             <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <table>{{form.as_p}}</table>
+                            <table>{{form.as_table}}</table>
                             <button class="w3-button w3-green" type="submit" name="fabriquant_form">Enregistrer</button>
                             <button class="w3-button w3-red"><a href="{% url 'pompe:fabriquant' %}">Annuler</a></button>
 

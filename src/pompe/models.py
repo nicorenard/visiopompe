@@ -49,7 +49,8 @@ class Piece(models.Model):
 # pump tables #
 class Fabriquant(models.Model):
     nom = models.CharField(max_length=50, blank=True)
-    logo = models.ImageField(upload_to='logo_fabriquant/', max_length=254, blank=True, null=True)
+    logo_max = models.ImageField(upload_to='logo_fabriquant/', max_length=254, blank=True, null=True, verbose_name='Logotype')
+    logo_mini = models.ImageField(upload_to='logo_fabriquant/miniature/', max_length=254, blank=True, null=True, verbose_name='Logo miniature')
     adresse = models.CharField(max_length=250, blank=True, null=True)
     code_postal = models.CharField(max_length=5, blank=True, null=True)
     ville = models.CharField(max_length=30, blank=True, null=True)
@@ -75,6 +76,7 @@ class TechnologiePompe(models.Model):
 
     def __str__(self):
         return self.nom
+
 
 class ModelePompe(models.Model):
     image = models.ImageField(upload_to='pompe_img/', max_length=254, blank=True, null=True)

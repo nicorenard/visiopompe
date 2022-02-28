@@ -23,21 +23,22 @@ def dashboard(request):
     p_rep = dash_pompes.filter(statut='R').count()
     p_atex = dash_pompes.filter(atex='1').count()
 
-    # special to UMR 6521. Base on technologie of pump.
+    ##### special to UMR 6521. Base on technologie of pump. ####
     p_palette = dash_pompes.filter(pompe__technologie='1').count()
     p_membrane = dash_pompes.filter(pompe__technologie='3').count()
     p_seche = dash_pompes.filter(pompe__technologie='2').count()
 
-    # special to UMR 6521 by stair.
+    ##### special to UMR 6521 by stair. #####
     p_etage_1 = dash_pompes.filter(etage='1').count()
     p_etage_2 = dash_pompes.filter(etage='2').count()
     p_etage_3 = dash_pompes.filter(etage='3').count()
 
 
     context = {'p_all': p_all,'p_valide': p_valide, 'p_stock': p_stock,'p_hs': p_hs,'p_rep': p_rep,
-               'p_atex': p_atex, 'p_palette': p_palette,'p_membrane':p_membrane, 'p_seche':p_seche,
+               'p_atex': p_atex,
+                'p_palette': p_palette, 'p_membrane':p_membrane, 'p_seche':p_seche,
                'p_etage_1':p_etage_1, 'p_etage_2': p_etage_2, 'p_etage_3':p_etage_3,
-    }
+               }
     return render(request, 'pompe/dashboard.html', context)
 
 ## equipe
