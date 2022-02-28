@@ -139,23 +139,53 @@ def delete_piece(request, pk):
     queryset.delete()
     return redirect('/dashboard/lieux')
 
-def update_site(request):
-    pass
+def update_site(request, pk):
+    sites = get_object_or_404(Site, pk=pk)
+    if request.method == "POST":
+        form = ModifSiteForm(request.POST, instance=sites)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/lieux')
+    else:
+        form = ModifSiteForm(instance=sites)
+    return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_site(request,pk):
-    pass
+    queryset = get_object_or_404(Site, pk=pk)
+    queryset.delete()
+    return redirect('/dashboard/lieux')
 
-def update_batiment(request):
-    pass
+def update_batiment(request, pk):
+    batiments = get_object_or_404(Batiment, pk=pk)
+    if request.method == "POST":
+        form = ModifBatimentForm(request.POST, instance=batiments)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/lieux')
+    else:
+        form = ModifBatimentForm(instance=batiments)
+    return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_batiment(request,pk):
-    pass
+    queryset = get_object_or_404(Batiment, pk=pk)
+    queryset.delete()
+    return redirect('/dashboard/lieux')
 
-def update_etage(request):
-    pass
+def update_etage(request, pk):
+    etages = get_object_or_404(Etage, pk=pk)
+    if request.method == "POST":
+        form = ModifEtageForm(request.POST, instance=etages)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/lieux')
+    else:
+        form = ModifEtageForm(instance=etages)
+    return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_etage(request,pk):
-    pass
+    queryset = get_object_or_404(Etage, pk=pk)
+    queryset.delete()
+    return redirect('/dashboard/lieux')
 # stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')

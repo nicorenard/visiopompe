@@ -160,7 +160,7 @@ class Batimentform(forms.ModelForm):
         model = Batiment
         fields = '__all__'
 
-class ModiBatimentForm(forms.ModelForm):
+class ModifBatimentForm(forms.ModelForm):
     class Meta:
         model = Batiment
         fields = '__all__'
