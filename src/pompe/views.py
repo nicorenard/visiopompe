@@ -14,15 +14,29 @@ def version(request):
 # dashboard
 def dashboard(request):
     dash_pompes = StockPompe.objects.all()
+    # general setting for dashboard
+
     p_all = dash_pompes.count()
     p_valide = dash_pompes.filter(statut='A').count()
     p_stock = dash_pompes.filter(statut='S').count()
     p_hs = dash_pompes.filter(statut='P').count()
     p_rep = dash_pompes.filter(statut='R').count()
-    p_etage = dash_pompes.filter(piece_id= 0).count()
+    p_atex = dash_pompes.filter(atex='1').count()
+
+    # special to UMR 6521. Base on technologie of pump.
+    p_palette = dash_pompes.filter(pompe__technologie='1').count()
+    p_membrane = dash_pompes.filter(pompe__technologie='3').count()
+    p_seche = dash_pompes.filter(pompe__technologie='2').count()
+
+    # special to UMR 6521 by stair.
+    p_etage_1 = dash_pompes.filter(etage='1').count()
+    p_etage_2 = dash_pompes.filter(etage='2').count()
+    p_etage_3 = dash_pompes.filter(etage='3').count()
+
 
     context = {'p_all': p_all,'p_valide': p_valide, 'p_stock': p_stock,'p_hs': p_hs,'p_rep': p_rep,
-               'p_etage' : p_etage,
+               'p_atex': p_atex, 'p_palette': p_palette,'p_membrane':p_membrane, 'p_seche':p_seche,
+               'p_etage_1':p_etage_1, 'p_etage_2': p_etage_2, 'p_etage_3':p_etage_3,
     }
     return render(request, 'pompe/dashboard.html', context)
 
@@ -54,6 +68,7 @@ def delete_equipe(request, pk):
     queryset = get_object_or_404(ModelEquipe, pk=pk)
     queryset.delete()
     return redirect('/dashboard/equipe')
+
 ## fabriquant
 def fabriquant(request):
     fabriquants = Fabriquant.objects.all().order_by('nom')
@@ -68,7 +83,6 @@ def fabriquant(request):
 
     context = {'fabriquants': fabriquants, 'form':form}
     return render(request, 'pompe/fabriquant.html', context)
-
 
 def update_fabriquant(request, pk):
     fabriquants = get_object_or_404(Fabriquant, pk=pk)
@@ -186,6 +200,7 @@ def delete_etage(request,pk):
     queryset = get_object_or_404(Etage, pk=pk)
     queryset.delete()
     return redirect('/dashboard/lieux')
+
 # stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
@@ -242,7 +257,7 @@ def fichepompe(request):
         elif form2.is_valid() and 'techno_form' in request.POST:
             form2.save()
 
-        return redirect('/fiche_pompe')
+        return redirect('/fichepompe')
     else:
         form = ModelPompeform()
         form2 = Technologieform()
