@@ -121,7 +121,7 @@ class ModelEquipe(models.Model):
     nom_responsable = models.CharField(default='', max_length=100, verbose_name="Responsable de l'équipe",blank=True, null=True)
     email_responsable = models.CharField(default='', max_length=50,verbose_name="Email du Responsable",blank=True, null=True)
     date = models.DateField(default=date.today,verbose_name="Date de création")
-    lieux = models.ForeignKey(Etage, null=True,blank=False, on_delete=models.SET_NULL)
+    localisation = models.ForeignKey(Etage, null=True,blank=False, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.nom
