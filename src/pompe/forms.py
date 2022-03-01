@@ -69,6 +69,7 @@ class ModifTechnoForm(forms.ModelForm):
     class Meta:
         model = TechnologiePompe
         fields = '__all__'
+
 # documentations
 class Docform(forms.ModelForm):
 
@@ -149,6 +150,7 @@ class Siteform(forms.ModelForm):
         model = Site
         fields = '__all__'
 
+
 class ModifSiteForm(forms.ModelForm):
     class Meta:
         model = Site
@@ -160,10 +162,12 @@ class Batimentform(forms.ModelForm):
         model = Batiment
         fields = '__all__'
 
+
 class ModifBatimentForm(forms.ModelForm):
     class Meta:
         model = Batiment
         fields = '__all__'
+
 
 class Etageform(forms.ModelForm):
     class Meta:
@@ -181,6 +185,7 @@ class Pieceform(forms.ModelForm):
     class Meta:
         model = Piece
         fields = '__all__'
+
 
 class ModifPieceForm(forms.ModelForm):
     class Meta:

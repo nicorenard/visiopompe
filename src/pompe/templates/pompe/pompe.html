@@ -17,9 +17,9 @@
     </div>
 <br>
     <section class="w3-container w3-light-gray w3-padding-12" >
-        <form action="/pompe.html" method="GET">
+        <form action="{% url 'pompe:pompe' %}" method="GET">
             <br>
-            {{filterpompe}}
+            {{filterpompe.form.as_table}}
             <!----https://github.com/carltongibson/django-filter/issues/1023--->
             <button type="submit"><i class="fa fa-search"></i></button>
             </form>

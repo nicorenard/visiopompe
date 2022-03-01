@@ -88,7 +88,7 @@ def fabriquant(request):
 def update_fabriquant(request, pk):
     fabriquants = get_object_or_404(Fabriquant, pk=pk)
     if request.method == "POST":
-        form = ModifFabriquantForm(request.POST, instance=fabriquants)
+        form = ModifFabriquantForm(request.POST, request.FILES, instance=fabriquants)
         if form.is_valid():
             form.save()
         return redirect('/fabriquants')
@@ -205,15 +205,15 @@ def delete_etage(request,pk):
 # stocks pompes
 def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
-    #filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
-    #s_pompes = filterpompe.qs
+    filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
+    s_pompes = filterpompe.qs
     current_date = datetime.date.today()
     warning_date = current_date + datetime.timedelta(days=7)
 
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
-               #'filterpompe': filterpompe,
+               'filterpompe': filterpompe,
                }
     return render(request, 'pompe/pompe.html', context)
 
@@ -230,7 +230,7 @@ def add_stockpompe(request):
 def update_stockpompe(request, pk):
     s_pompes = get_object_or_404(StockPompe, pk=pk)
     if request.method == "POST":
-        form = ModifStockPompeForm(request.POST, instance=s_pompes)
+        form = ModifStockPompeForm(request.POST,  instance=s_pompes)
         if form.is_valid():
             form.save()
         return redirect('/pompes')
@@ -269,7 +269,7 @@ def fichepompe(request):
 def update_fichepompe(request, pk):
     m_pompes = get_object_or_404(ModelePompe, pk=pk)
     if request.method == "POST":
-        form = ModifModelPompeForm(request.POST, instance=m_pompes)
+        form = ModifModelPompeForm(request.POST, request.FILES, instance=m_pompes)
         if form.is_valid():
             form.save()
             return redirect('/fichepompe')
@@ -357,7 +357,7 @@ def update_pdetache(request, pk):
     pdetaches = get_object_or_404(PiecesPompe, pk=pk)
 
     if request.method == "POST":
-        form = ModifPiecePompeForm(request.POST, instance=pdetaches)
+        form = ModifPiecePompeForm(request.POST, request.FILES, instance=pdetaches)
         if form.is_valid():
             form.save()
             return redirect('/pieces_detaches')
@@ -389,7 +389,7 @@ def update_huile(request, pk):
     huiles = get_object_or_404(Huile, pk=pk)
 
     if request.method == "POST":
-        form = ModifHuileForm(request.POST, instance=huiles)
+        form = ModifHuileForm(request.POST, request.FILES, instance=huiles)
         if form.is_valid():
             form.save()
             return redirect('/huiles')
@@ -420,7 +420,7 @@ def add_kit(request):
 def update_kit(request, pk):
     kits = get_object_or_404(Kit, pk=pk)
     if request.method == "POST":
-        form = ModifKitForm(request.POST, instance=kits)
+        form = ModifKitForm(request.POST, request.FILES, instance=kits)
         if form.is_valid():
             form.save()
             return redirect('/kits')
@@ -453,7 +453,7 @@ def update_doc(request, pk):
     docs = get_object_or_404(Doc, pk=pk)
 
     if request.method == "POST":
-        form = ModifDocForm(request.POST, instance=docs)
+        form = ModifDocForm(request.POST, request.FILES, instance=docs)
         if form.is_valid():
             form.save()
             return redirect('/docs')
