@@ -130,7 +130,7 @@ class ModelEquipe(models.Model):
 
 
 class Tutelle(models.Model):
-    nom = models.CharField(max_length=10, default='', verbose_name="Tutelle")
+    nom = models.CharField(max_length=30, default='', verbose_name="Tutelle")
 
     def __str__(self):
         return self.nom

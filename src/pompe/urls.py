@@ -26,6 +26,7 @@ urlpatterns = [
     path('inventaire/', views.inventaire, name="inventaire"),
     path('inventaire_edit/<int:pk>/', views.update_inventaire, name="inventaire_edit"),
     path('inventaire_delete/<int:pk>/', views.delete_inventaire, name="inventaire_delete"),
+    path('tutelle_delete/<int:pk>/', views.delete_tutelle, name="tutelle_delete"),
     path('pdetache_add/', views.add_pdetache, name="add_pdetache"),
     path('pdetache_edit/<int:pk>/', views.update_pdetache, name="pdetache_edit"),
     path('pdetache/<int:pk>/', views.delete_pdetache, name="pdetache_delete"),

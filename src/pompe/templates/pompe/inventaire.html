@@ -62,13 +62,15 @@
             </div>
         </div>
         <div class="w3-col m4 s4">
-            <div class="w3-card-2 w3-center w3-text-blue-gray">
+            <div class="w3-card-2 w3-center w3-text-black">
                 <header class="w3-container w3-light-green">
                     <h4>Tutelles</h4>
                 </header>
                 <div class="w3-container">
                     {% for inventaire in tutelles %}
-                    <p>{{inventaire.nom}}</p>
+                    <p>{{inventaire.nom}}
+                    <a href="{% url 'pompe:tutelle_delete' pk=inventaire.pk %}">
+                        <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:8%;" class="w3-right" /></a></p>
                     {% endfor %}
                 </div>
             </div>

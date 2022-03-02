@@ -1,5 +1,6 @@
 - correction page equipe : version mobile et petit ecran.
-- historique sur champs information dans stock pompe; a nenerer pdf par exemple.
+- historique sur champs information dans stock pompe; a generer pdf par exemple.
+- "inventaire" : ajouter un bouton export des numero d'inventaire.
 - creation de compte user ou groupe pour modifier et supprimer.
 - rajout dans "delete" la confirmation ou non de l'action.
 - suppression du dossier pompe_old

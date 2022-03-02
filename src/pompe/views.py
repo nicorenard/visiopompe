@@ -338,6 +338,11 @@ def delete_inventaire(request, pk):
     queryset.delete()
     return redirect('/inventaire')
 
+def delete_tutelle(request, pk):
+    queryset = get_object_or_404(Tutelle, pk=pk)
+    queryset.delete()
+    return redirect('/inventaire')
+
 #pieces detachées
 def pdetache(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
