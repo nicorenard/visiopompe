@@ -1,8 +1,12 @@
+
 from datetime import date, datetime
 from django.db import models
 
 
 # apps version #
+from django.utils import timezone
+
+
 class VersionApp(models.Model):
     version = models.CharField(default='x.x.x', max_length=10, verbose_name="Version")
     maj_maj = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour majeur")
@@ -149,8 +153,8 @@ class Inventaire(models.Model):
 ## ref : https://stackoverflow.com/questions/10540111/store-versioned-history-of-field-in-django-model
 class StockHistory(models.Model):
     version = models.IntegerField(editable=False)
-    stockpump = models.ForeignKey('StockPompe', on_delete=models.SET_DEFAULT)
-    date_historique = models.DateTimeField(default=datetime.today)
+    stockpump = models.ForeignKey('StockPompe', on_delete=models.DO_NOTHING)
+    date_historique = models.DateTimeField(default=datetime.now(timezone.utc))
     historique = models.TextField()
 
     class Meta:

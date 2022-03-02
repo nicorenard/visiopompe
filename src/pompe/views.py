@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from .filters import PompeStockFilter
 from .forms import *
@@ -207,8 +207,9 @@ def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
     filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
     s_pompes = filterpompe.qs
-    current_date = datetime.date.today()
-    warning_date = current_date + datetime.timedelta(days=7)
+    current_date = datetime.now()
+    dt = timedelta(days=7)
+    warning_date = current_date + dt
 
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
