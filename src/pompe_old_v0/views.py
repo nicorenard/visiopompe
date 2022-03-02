@@ -5,7 +5,7 @@ from .models import Pompes, PiecesPompe, Kit, Huile, Doc
 from src.pompe.forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
     ModifKitForm, DocForm
 from src.pompe.filters import PompeFilter
-from .resource import PompeRessource
+from src.pompe.resource import PompeRessource
 
 
 def index(request):
