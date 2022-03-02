@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from django.db import models
 
 
@@ -145,6 +145,24 @@ class Inventaire(models.Model):
         return self.numero
 
 
+### historique on stock pump
+## ref : https://stackoverflow.com/questions/10540111/store-versioned-history-of-field-in-django-model
+class StockHistory(models.Model):
+    version = models.IntegerField(editable=False)
+    stockpump = models.ForeignKey('StockPompe', on_delete=models.SET_DEFAULT)
+    date_historique = models.DateTimeField(default=datetime.today)
+    historique = models.TextField()
+
+    class Meta:
+        unique_together = ('version', 'stockpump')
+
+    def save(self, *args, **kwargs):
+        current_version = StockHistory.objects.filter(stockpump=self.stockpump).order_by('-version')[:1]
+        self.version = current_version[0].version + 1 if current_version else 1
+        super(StockHistory, self).save(*args, **kwargs)
+###
+
+
 class StockPompe(models.Model):
     pompe = models.ForeignKey(ModelePompe, verbose_name="Modèle de pompe", null=True, blank=False, on_delete=models.SET_NULL)
     mise_en_service = models.DateField(auto_now=date.today)
@@ -170,6 +188,16 @@ class StockPompe(models.Model):
 
     def __str__(self):
         return self.num_serie
+
+    def stock_history(self):
+        return StockHistory.objects.filter(historique=self).order_by('-version')
+
+    def save(self, *args, **kwargs):
+        super(StockPompe, self).save(*args, **kwargs)
+        stock_history = self.stock_history()
+        if not stock_history or self.historique != stock_history[0].text:
+            newHistory = StockHistory(historique=self, text= self.historique)
+            newHistory.save()
 
 
 class Kit(models.Model):
