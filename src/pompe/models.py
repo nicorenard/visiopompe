@@ -1,10 +1,7 @@
-
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from django.db import models
 
-
 # apps version #
-from django.utils import timezone
 
 
 class VersionApp(models.Model):
@@ -154,7 +151,7 @@ class Inventaire(models.Model):
 class StockHistory(models.Model):
     version = models.IntegerField(editable=False)
     stockpump = models.ForeignKey('StockPompe', on_delete=models.DO_NOTHING)
-    date_historique = models.DateTimeField(default=datetime.now(timezone.utc))
+    date_historique = models.DateTimeField(default=datetime.now())
     historique = models.TextField()
 
     class Meta:
@@ -200,7 +197,7 @@ class StockPompe(models.Model):
         super(StockPompe, self).save(*args, **kwargs)
         stock_history = self.stock_history()
         if not stock_history or self.historique != stock_history[0].text:
-            newHistory = StockHistory(historique=self, text= self.historique)
+            newHistory = StockHistory(historique=self, text=self.historique)
             newHistory.save()
 
 
