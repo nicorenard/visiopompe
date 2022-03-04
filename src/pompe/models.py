@@ -1,4 +1,4 @@
-from datetime import date, datetime, timezone
+from datetime import date, datetime
 from django.db import models
 
 # apps version #
@@ -150,9 +150,9 @@ class Inventaire(models.Model):
 ## ref : https://stackoverflow.com/questions/10540111/store-versioned-history-of-field-in-django-model
 class StockHistory(models.Model):
     version = models.IntegerField(editable=False)
-    stockpump = models.ForeignKey('StockPompe', on_delete=models.DO_NOTHING)
+    stockpump = models.ForeignKey('StockPompe', on_delete=models.CASCADE)
     date_historique = models.DateTimeField(default=datetime.now())
-    historique = models.TextField()
+    history = models.TextField()
 
     class Meta:
         unique_together = ('version', 'stockpump')
@@ -184,20 +184,20 @@ class StockPompe(models.Model):
     atex = models.BooleanField(default=False, verbose_name="Pompe Atex ?")
     huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
     equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)
-    vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange", blank=True, null=True)
-    historique = models.TextField(blank=True, null=True, max_length=500, verbose_name="historique de la pompe")
+    vidange = models.DateTimeField(default=datetime.now(), verbose_name="Date de la prochaine vidange", blank=True, null=True)
+    historique = models.TextField(blank=True, null=False, max_length=500, verbose_name="historique de la pompe")
 
     def __str__(self):
         return self.num_serie
 
     def stock_history(self):
-        return StockHistory.objects.filter(historique=self).order_by('-version')
+        return StockHistory.objects.filter(stockpump=self).order_by('-version')
 
     def save(self, *args, **kwargs):
         super(StockPompe, self).save(*args, **kwargs)
         stock_history = self.stock_history()
-        if not stock_history or self.historique != stock_history[0].text:
-            newHistory = StockHistory(historique=self, text=self.historique)
+        if not stock_history or self.historique != stock_history[0].history:
+            newHistory = StockHistory(stockpump=self, history=self.historique)
             newHistory.save()
 
 

@@ -68,7 +68,7 @@
                         {% elif current_date == pompe.vidange %}<strong style="color:orange;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
                         {% elif pompe.vidange <= warning_date %}<strong style="color:amber;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}
                             </strong>
-                        {% else %} <strong>{{pompe.date_vidange|date:"SHORT_DATE_FORMAT"}}</strong></p>
+                        {% else %} <strong>{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong></p>
                         {% endif %}
                     <!---genere l'image en fonction du statut pompe.statut---->
                     <p style="font-size: 16px; ">Statut actuel : {% if pompe.statut == 'A' %}<img src="{% static 'pompe/img/menu_pompe/icon_statut_actif.png' %}" alt="pompe_ok">
@@ -109,8 +109,9 @@
         <div class="w3-container w3-border-bottom w3-border-light-grey">
             <h5 class=""><u>&nbspHistorique :</u></h5>
                 <p><img src="{% static 'pompe/img/menu_pompe/icon_information.png' %}" >"{{pompe.historique}}"</p>
-
-
+            {% endfor %}
+            {% for pompe in historic %}
+            <p>{{pompe.version}}</p>
             {% endfor %}
         </div>
     </section>

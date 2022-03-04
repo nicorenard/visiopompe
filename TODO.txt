@@ -9,3 +9,4 @@
 - installer Vagrant pour connecter sur BDD mariadB
 - corriger le fichier fontawesome pas en mode remote mais dans l'application
 - V1.2 : extraire le code du template pour la partie de l'affiche du titre et du css.
+- bug de date et coloration de nouveau.

@@ -208,13 +208,14 @@ def pompe(request):
     filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
     s_pompes = filterpompe.qs
     current_date = datetime.now()
-    dt = timedelta(days=7)
-    warning_date = current_date + dt
+    warning_date = current_date + timedelta(days=7)
+    historic = StockHistory.objects.all()
 
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
                'filterpompe': filterpompe,
+               'historic': historic
                }
     return render(request, 'pompe/pompe.html', context)
 
