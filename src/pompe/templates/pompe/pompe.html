@@ -109,9 +109,10 @@
         <div class="w3-container w3-border-bottom w3-border-light-grey">
             <h5 class=""><u>&nbspHistorique :</u></h5>
                 <p><img src="{% static 'pompe/img/menu_pompe/icon_information.png' %}" >"{{pompe.historique}}"</p>
-            {% endfor %}
-            {% for pompe in historic %}
-            <p>{{pompe.version}}</p>
+            
+            <!----bug---->
+
+            <p><a href="{% url 'pompe:historic' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_duplicate.png' %}" class="w3-hover-opacity" style="width: 10%;" alt="bouton" /></a></p>
             {% endfor %}
         </div>
     </section>

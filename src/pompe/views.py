@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from .filters import PompeStockFilter
 from .forms import *
@@ -209,15 +209,18 @@ def pompe(request):
     s_pompes = filterpompe.qs
     current_date = datetime.now()
     warning_date = current_date + timedelta(days=7)
-    historic = StockHistory.objects.all()
 
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
                'filterpompe': filterpompe,
-               'historic': historic
                }
     return render(request, 'pompe/pompe.html', context)
+
+def historique(request, pk):
+    historic = StockHistory.objects.filter(stockpump=pk)
+
+    return render(request, 'pompe/historique.html', {'historic':historic})
 
 def add_stockpompe(request):
     if request.method == "POST":
