@@ -18,6 +18,11 @@ class TechnologieRessource(resources.ModelResource):
     class Meta:
         model = TechnologiePompe
 
+class HistoriqueRessource(resources.ModelResource):
+    class Meta:
+        model = StockHistory
+        exclude = ('id')
+
 ##Accessoire pompes
 
 class HuileRessource(resources.ModelResource):

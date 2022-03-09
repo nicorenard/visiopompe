@@ -8,6 +8,7 @@ urlpatterns = [
     path('versionapp/', views.version, name="version"),
     path('pompes/', views.pompe, name="pompe"),
     path('historique/<int:pk>/', views.historique, name="historic"),
+    path('export_pompe/', views.pompe, name="export"),
     path('fichepompe/', views.fichepompe, name="fiche_pompe"),
     path('pieces_detaches/', views.pdetache, name="pdetache"),
     path('kits/', views.kit, name="kit"),

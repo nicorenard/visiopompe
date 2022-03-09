@@ -1,8 +1,12 @@
 from datetime import timedelta
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .filters import PompeStockFilter
 from .forms import *
 from .models import *
+from .resource import HistoriqueRessource
+
 
 def index(request):
    return render(request, 'pompe/index.html')
@@ -97,9 +101,13 @@ def update_fabriquant(request, pk):
     return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_fabriquant(request, pk):
-    queryset = get_object_or_404(Fabriquant, pk=pk)
-    queryset.delete()
-    return redirect('/fabriquants')
+    fabriquants = get_object_or_404(Fabriquant, pk=pk)
+    if request.method == "POST":
+        fabriquants.delete()
+        return redirect("/fabriquants")
+
+    context = {'item': fabriquants}
+    return render(request, 'pompe/delete_forms.html', context)
 
 ## lieux
 def piece(request):
@@ -210,6 +218,7 @@ def pompe(request):
     current_date = datetime.now()
     warning_date = current_date + timedelta(days=7)
 
+
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
@@ -218,7 +227,7 @@ def pompe(request):
     return render(request, 'pompe/pompe.html', context)
 
 def historique(request, pk):
-    historic = StockHistory.objects.filter(stockpump=pk)
+    historic = StockHistory.objects.filter(stockpump=pk).order_by('-date_historique')
 
     return render(request, 'pompe/historique.html', {'historic':historic})
 

@@ -16,7 +16,9 @@
 
 <div class="w3-main w3-mobile " style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
-        <h2>Historique</h2>
+        {% for historique in historic %}
+        <h2>Historique des actions sur la pompe</h2>
+        {% endfor %}
     </div>
     <br>
     <section>
@@ -24,18 +26,18 @@
             <tr class="w3-green w3-text-black">
                 <th><p>Date</p></th>
                 <th><p>Historique</p></th>
-                <th><p>Utilisateur</p></th>
+                <!--<th><p>Utilisateur</p></th>-->
             </tr>
             {% for historique in historic %}
             <tr>
                 <td><p>{{historique.date_historique}}</p></td>
                 <td><p>{{historique.history}}</p></td>
-                <td><p>...</p></td>
+               <!-- <td><p>...</p></td>-->
             {% endfor %}
             </tr>
         </table>
     </section>
-
+    <a href="{% url 'pompe:pompe' %}" class="w3-bar-item w3-button w3-padding-16 w3-margin-left" style=>Retour</a>
 </div>
 </body>
 </html>

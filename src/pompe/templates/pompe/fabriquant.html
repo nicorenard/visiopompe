@@ -16,12 +16,13 @@
 <!---------Contenu------->
 <div class="w3-main w3-mobile" style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
-        <h2>Fabriquants</h2>
+        <h2>Gestion des fabriquants</h2>
     </div>
-    <br><br>
+    <br />
     <section>
         <table class="w3-table w3-centered w3-mobile" style="margin-left:10px; margin-right:10px;">
-            <th>
+            <tr>
+            <td>
                 <div class="w3-row-padding">
                     <div class="w3-col ">
                         {% for fabriquant in fabriquants %}
@@ -34,7 +35,7 @@
                                     <p class="w3-small w3-right">
                                         <a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
                                         <img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:30px;"></a>
-                                        <a href="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}">
+                                        <a href="{% url 'pompe:fabriquant_delete' fabriquant.pk %}">
                                         <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:30px;"></a>
                                     </p>
                                 </h2>
@@ -50,8 +51,8 @@
                         {% endfor%}
                     </div>
                 </div>
-            </th>
-            <th>
+            </td>
+            <td>
                 <div class="w3-row-padding">
                     <div class="w3-col">
                         <div class="w3-card-2 w3-center ">
@@ -69,8 +70,10 @@
                         </div>
                     </div>
                 </div>
-            </th>
+            </td>
+            </tr> 
         </table>
+
     </section>
 </div>
 </body>
