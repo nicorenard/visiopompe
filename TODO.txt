@@ -1,11 +1,17 @@
-- correction page equipe : version mobile et petit ecran.
-- "inventaire" : ajouter un bouton export des numero d'inventaire.
+*V1.0
 - creation de compte user ou groupe pour modifier et supprimer.
 - rajout dans "delete" la confirmation ou non de l'action.
 - suppression du dossier pompe_old
-- dans le filtre : ajouter le filtre par batiment avec un nom correcte.
-- corriger le JS du menu qui s'ouvre pas en mode mobile. ou qui ne peut pas etre supprimer.
 - installer Vagrant pour connecter sur BDD mariadB
-- corriger le fichier fontawesome pas en mode remote mais dans l'application
-- V1.2 : extraire le code du template pour la partie de l'affiche du titre et du css.
+- corriger les valeurs "none" qui apparaissent quand la données n'est pas obligatoire.
+*v1.1
+- dans le filtre : ajouter le filtre par batiment avec un nom correcte.
+- importer le fichier fontawesome et non un serveur distant.
 - bug de date et coloration de nouveau.
+- remettre au norme W3C le HTML.
+
+*V1.2 :
+- extraire le code du template pour la partie de l'affiche du titre et du css.
+- "inventaire" : ajouter un bouton export des numero d'inventaire.
+- correction page equipe : version mobile et petit ecran.
+- corriger le JS du menu qui s'ouvre pas en mode mobile. ou qui ne peut pas etre supprimer.

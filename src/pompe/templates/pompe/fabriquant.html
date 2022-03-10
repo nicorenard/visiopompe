@@ -28,21 +28,25 @@
                         {% for fabriquant in fabriquants %}
                         <div class="w3-card-2 w3-center w3-text-blue-gray">
                             <header class="w3-container w3-grey">
-                                <h2  >{%if fabriquant.logo_mini%}
+                                <h2 >{%if fabriquant.logo_mini%}
                                     <img src="/media/{{fabriquant.logo_mini}}" class="w3-left" style="width:5%; margin-bottom: 10px;">
                                     {% endif %}
                                     {{fabriquant.nom}}
-                                    <p class="w3-small w3-right">
-                                        <a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
-                                        <img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:30px;"></a>
-                                        <a href="{% url 'pompe:fabriquant_delete' fabriquant.pk %}">
-                                        <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:30px;"></a>
-                                    </p>
+                                    <i class="w3-small w3-right"><button class="w3-button w3-right" type="submit"><a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
+                                       <img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:30px;"></a></button>
+                                        <form method="POST" action="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer ce fabriquant ?')">
+                                        {% csrf_token %}
+                                        <button class="w3-button w3-right" type="submit">
+                                            <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:30px;"/></button>
+                                        </form>
+                                    </i>
                                 </h2>
                             </header>
                             <div class="w3-container" >
-                                <p >{{fabriquant.adresse}}</p>
-                                <p>{{fabriquant.code_postal}} - {{fabriquant.ville}}</p>
+
+                                {%if fabriquant.adresse%}<p >{{fabriquant.adresse}}</p>{% endif %}
+                                {%if fabriquant.code_postal%}<p>{{fabriquant.code_postal}}{% endif %}
+                               {%if fabriquant.ville%} - {{fabriquant.ville}}</p>{% endif %}
                             </div>
                             <footer>
                                 <p> </p>

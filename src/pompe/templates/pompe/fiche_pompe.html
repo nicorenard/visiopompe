@@ -51,8 +51,10 @@
                 <td><p>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</p></td>
                 <td><a href="/media/{{fichepompe.documentation.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}"></a></td>
                 <td><p>||</p></td>
-                <td><a href="{% url 'pompe:fichepompe_edit' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
-                <td><a href="{% url 'pompe:fichepompe_delete' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+                <td> <button class="w3-button" type="submit"><a href="{% url 'pompe:fichepompe_edit' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"/></a></button></td>
+                <td><form method="POST" action="{% url 'pompe:fichepompe_delete' pk=fichepompe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette fiche ?')">
+                                        {% csrf_token %}
+                    <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"/></button></form></td>
             </tr>
             {% endfor %}
         </table>
@@ -104,8 +106,10 @@
                             {% endif %}
                         </p></td>
                         <td><p>||</p></td>
-                        <td><a href="{% url 'pompe:techno_edit' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
-                        <td><a href="{% url 'pompe:techno_delete' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
+                        <td> <button class="w3-button" type="submit"><a href="{% url 'pompe:techno_edit' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;" /></a></button></td>
+                        <td><form method="POST" action="{% url 'pompe:techno_delete' pk=fichepompe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette technologie ?')">
+                                        {% csrf_token %}
+                            <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></button></td>
                     </tr>
                     {% endfor %}
                     </table>

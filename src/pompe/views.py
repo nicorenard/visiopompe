@@ -71,8 +71,11 @@ def update_equipe(request, pk):
 
 def delete_equipe(request, pk):
     queryset = get_object_or_404(ModelEquipe, pk=pk)
-    queryset.delete()
-    return redirect('/dashboard/equipe')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/dashboard/equipe')
+
+    return render(request, 'pompe/equipe.html', {'queryset' : queryset})
 
 ## fabriquant
 def fabriquant(request):
@@ -106,8 +109,8 @@ def delete_fabriquant(request, pk):
         fabriquants.delete()
         return redirect("/fabriquants")
 
-    context = {'item': fabriquants}
-    return render(request, 'pompe/delete_forms.html', context)
+    context = {'fabriquants': fabriquants}
+    return render(request, 'pompe/fabriquant.html', context)
 
 ## lieux
 def piece(request):
@@ -254,8 +257,11 @@ def update_stockpompe(request, pk):
 
 def delete_stockpompe(request, pk):
     queryset = get_object_or_404(StockPompe, pk=pk)
-    queryset.delete()
-    return redirect('/pompes')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/pompes')
+
+    return render(request,'pompe/pompe.html', {'queryset':queryset})
 
 #fiche modele des pompes
 def fichepompe(request):
@@ -293,8 +299,12 @@ def update_fichepompe(request, pk):
 
 def delete_fichepompe(request, pk):
     queryset = get_object_or_404(ModelePompe, pk=pk)
-    queryset.delete()
-    return redirect('/fichepompe')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/fichepompe')
+
+    context = {'queryset': queryset}
+    return render(request, 'pompe/fiche_pompe.html', context)
 
 def update_techno(request, pk):
     technos = get_object_or_404(TechnologiePompe, pk=pk)
@@ -309,8 +319,12 @@ def update_techno(request, pk):
 
 def delete_techno(request, pk):
     queryset = get_object_or_404(TechnologiePompe, pk=pk)
-    queryset.delete()
-    return redirect('/fichepompe')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/fichepompe')
+
+    context = {'queryset': queryset}
+    return render(request, 'pompe/fiche_pompe.html', context)
 
 #inventaire et tutelle
 def inventaire(request):
@@ -349,13 +363,19 @@ def update_inventaire(request, pk):
 
 def delete_inventaire(request, pk):
     queryset = get_object_or_404(Inventaire, pk=pk)
-    queryset.delete()
-    return redirect('/inventaire')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/inventaire')
+
+    return render(request, 'pompe/inventaire.html', {'queryset':queryset})
 
 def delete_tutelle(request, pk):
     queryset = get_object_or_404(Tutelle, pk=pk)
-    queryset.delete()
-    return redirect('/inventaire')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/inventaire')
+
+    return render(request, 'pompe/inventaire.html', {'queryset':queryset})
 
 #pieces detachées
 def pdetache(request):
@@ -386,6 +406,7 @@ def update_pdetache(request, pk):
 
 def delete_pdetache(request, pk):
     pieces = get_object_or_404(PiecesPompe, pk=pk)
+
     pieces.delete()
     return redirect('/pieces_detaches')
 

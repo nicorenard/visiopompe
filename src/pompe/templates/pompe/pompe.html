@@ -35,25 +35,24 @@
                 - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.pompe.fabriquant.nom}}
                 {% if pompe.atex %}
                 <img src="{% static 'pompe/img/menu_pompe/icon_atex.png' %}" alt="pompe atex?" style="width: 3%;" class="w3-display-topright">
-                {% else %}
                 {% endif %}
             </p>
         </div>
-        <div class="w3-container w3-cell-row">
+        <div class="w3-container w3-cell">
             <!----section image--->
-            <div class ="w3-container w3-cell"  style="width: 13%">
+            <div class ="w3-container  w3-cell-row"  style="width: 20%">
                 {% if pompe.pompe.image %}
                 <img src="{{pompe.pompe.image.url}}" alt="{{pompe.nom}}" style="width: 100%; display: block; margin: auto;">
                 {% else %}
                 <img src="{% static 'pompe/img/noimage.jpg' %}" alt="no image" style="width: 100%">
                 {% endif %}
-
+                <form method="POST" action="{% url 'pompe:pompe_delete' pk=pompe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette pompe ?')">
+                {% csrf_token %}
+                <button class="w3-button" value="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity w3-right" style="width: 80%; " /></button></form>
+                <button class="w3-button"><a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity w3-right" style="width: 80%;" /></a></button>
             </div>
-            <p style="text-align: right;">
-            <a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
-            <a href="{% url 'pompe:pompe_delete' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity" style="width: 3%; "></a>
 
-            </p>
+
             <!----section carateristiques--->
             <div class="w3-container w3-cell-row w3-leftbar">
                 <div class="w3-container w3-cell w3-mobile">
@@ -108,7 +107,7 @@
         <!----section info supplementaire--->
         <div class="w3-container w3-border-bottom w3-border-light-grey">
             <h5 class=""><img src="{% static 'pompe/img/menu_pompe/icon_information.png' %}"/> <u>Dernier historique en date :</u>
-                <a href="{% url 'pompe:historic' pk=pompe.pk %}" class="w3-hover-opacity w3-right" style="width: 30px;" alt="bouton" >
+                <a href="{% url 'pompe:historic' pk=pompe.pk %}" class="w3-hover-opacity w3-right" style="width: 30px;" >
                     <i class="fa fa-book"></i></a></h5>
                 <p>{{pompe.historique}}</p>
             {% endfor %}
