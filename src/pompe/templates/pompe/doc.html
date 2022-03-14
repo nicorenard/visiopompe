@@ -18,7 +18,7 @@
     <div class="w3-container w3-dark-grey">
         <h2>Documentations Technique</h2>
     </div>
-    <br>
+    <br/>
     <section>
 
         <table class="w3-table-all w3-centered w3-striped " style="margin-left:10px">
@@ -48,8 +48,8 @@
             </tr>
             <tr>
                  {% for doc in docs %}
-                <td  style="width: 12%">
-                   <img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}" style="width: 100%; display: block; margin: auto;">
+                <td  >
+                   <img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}" style="width: 20%; display: block; margin: auto;" />
                 </td>
                 <td>
                    <p>{{doc.nom}}</p>
@@ -58,12 +58,14 @@
                     <p>{{doc.version}}</p>
                 </td>
                 <td >
-                    <a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" ></a>
+                    <a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="picture download"/></a>
                 </td>
                 <td><p>||</p></td>
-                <td><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></td>
-                <td><a href="{% url 'pompe:doc_delete' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></a></td>
-
+                <td><button class="w3-button"><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button></td>
+                <form method="POST" action="{% url 'pompe:doc_delete' pk=doc.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette référence ?')">
+                {% csrf_token %}
+                    <td><button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button></td>
+                </form>
             </tr>
             {% endfor %}
         </table>

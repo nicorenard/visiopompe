@@ -1,11 +1,8 @@
 from datetime import timedelta
-from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .filters import PompeStockFilter
 from .forms import *
 from .models import *
-from .resource import HistoriqueRessource
 
 
 def index(request):
@@ -162,8 +159,11 @@ def update_piece(request, pk):
 
 def delete_piece(request, pk):
     queryset = get_object_or_404(Piece, pk=pk)
-    queryset.delete()
-    return redirect('/dashboard/lieux')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/dashboard/lieux')
+
+    return render(request, 'pompe/lieux.html', {'queryset': queryset})
 
 def update_site(request, pk):
     sites = get_object_or_404(Site, pk=pk)
@@ -178,8 +178,11 @@ def update_site(request, pk):
 
 def delete_site(request,pk):
     queryset = get_object_or_404(Site, pk=pk)
-    queryset.delete()
-    return redirect('/dashboard/lieux')
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/dashboard/lieux')
+
+    return render(request, 'pompe/lieux.html', {'queryset': queryset})
 
 def update_batiment(request, pk):
     batiments = get_object_or_404(Batiment, pk=pk)
@@ -193,9 +196,12 @@ def update_batiment(request, pk):
     return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_batiment(request,pk):
-    queryset = get_object_or_404(Batiment, pk=pk)
-    queryset.delete()
-    return redirect('/dashboard/lieux')
+    queryset2 = get_object_or_404(Batiment, pk=pk)
+    if request.method == "POST":
+        queryset2.delete()
+        return redirect('/dashboard/lieux')
+
+    return render(request, 'pompe/lieux.html', {'queryset2': queryset2})
 
 def update_etage(request, pk):
     etages = get_object_or_404(Etage, pk=pk)
@@ -209,9 +215,12 @@ def update_etage(request, pk):
     return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_etage(request,pk):
-    queryset = get_object_or_404(Etage, pk=pk)
-    queryset.delete()
-    return redirect('/dashboard/lieux')
+    queryset3 = get_object_or_404(Etage, pk=pk)
+    if request.method == "POST":
+        queryset3.delete()
+        return redirect('/dashboard/lieux')
+
+    return render(request, 'pompe/lieux.html', {'queryset3': queryset3})
 
 # stocks pompes
 def pompe(request):
@@ -318,12 +327,12 @@ def update_techno(request, pk):
     return render(request, 'pompe/forms.html', {'form': form})
 
 def delete_techno(request, pk):
-    queryset = get_object_or_404(TechnologiePompe, pk=pk)
+    queryset1 = get_object_or_404(TechnologiePompe, pk=pk)
     if request.method == "POST":
-        queryset.delete()
+        queryset1.delete()
         return redirect('/fichepompe')
 
-    context = {'queryset': queryset}
+    context = {'queryset1': queryset1}
     return render(request, 'pompe/fiche_pompe.html', context)
 
 #inventaire et tutelle
@@ -370,12 +379,12 @@ def delete_inventaire(request, pk):
     return render(request, 'pompe/inventaire.html', {'queryset':queryset})
 
 def delete_tutelle(request, pk):
-    queryset = get_object_or_404(Tutelle, pk=pk)
+    queryset1 = get_object_or_404(Tutelle, pk=pk)
     if request.method == "POST":
-        queryset.delete()
+        queryset1.delete()
         return redirect('/inventaire')
 
-    return render(request, 'pompe/inventaire.html', {'queryset':queryset})
+    return render(request, 'pompe/inventaire.html', {'queryset1':queryset1})
 
 #pieces detachées
 def pdetache(request):
@@ -406,9 +415,10 @@ def update_pdetache(request, pk):
 
 def delete_pdetache(request, pk):
     pieces = get_object_or_404(PiecesPompe, pk=pk)
-
-    pieces.delete()
-    return redirect('/pieces_detaches')
+    if request.method == "POST":
+        pieces.delete()
+        return redirect('/pieces_detaches')
+    return render(request, 'pompe/piece.html', {'pieces': pieces})
 
 #huile
 def huile(request):
@@ -439,8 +449,10 @@ def update_huile(request, pk):
 
 def delete_huile(request, pk):
     huiles = get_object_or_404(Huile, pk=pk)
-    huiles.delete()
-    return redirect('/huiles')
+    if request.method == "POST":
+        huiles.delete()
+        return redirect('/huiles')
+    return render(request, 'pompe/huile.html', {'huiles': huiles})
 
 #kit de maintenance
 def kit(request):
@@ -470,9 +482,10 @@ def update_kit(request, pk):
 
 def delete_kit(request, pk):
     kits = get_object_or_404(Kit, pk=pk)
-    kits.delete()
-    return redirect('/kits')
-
+    if request.method == "POST":
+        kits.delete()
+        return redirect('/kits')
+    return render(request, 'pompe/kit.html', {'kits': kits})
 # Documentations
 def doc(request):
     docs = Doc.objects.all().order_by('nom')
@@ -503,7 +516,8 @@ def update_doc(request, pk):
 
 def delete_doc(request, pk):
     docs = get_object_or_404(Doc, pk=pk)
-    docs.delete()
-    return redirect('/docs')
-
+    if request.method == "POST":
+        docs.delete()
+        return redirect('/docs')
+    return render(request, 'pompe/kit.html', {'kits': kits})
 
