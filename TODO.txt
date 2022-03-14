@@ -1,12 +1,11 @@
 *V1.0
 - creation de compte user ou groupe pour modifier et supprimer.
-- suppression du dossier pompe_old
 - installer Vagrant pour connecter sur BDD mariadB
 - corriger les valeurs "none" qui apparaissent quand la donnée n'est pas obligatoire.(kit,pompe,huile,inventaire,piecedetache)
+- bug de date et coloration de nouveau.
 *v1.1
 - dans le filtre : ajouter le filtre par batiment avec un nom correcte.
 - importer le fichier fontawesome et non un serveur distant.
-- bug de date et coloration de nouveau.
 - remettre au norme W3C le HTML.
 
 *V1.2 :

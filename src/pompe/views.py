@@ -519,5 +519,5 @@ def delete_doc(request, pk):
     if request.method == "POST":
         docs.delete()
         return redirect('/docs')
-    return render(request, 'pompe/kit.html', {'kits': kits})
+    return render(request, 'pompe/doc.html', {'docs': docs})
 
