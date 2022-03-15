@@ -7,7 +7,7 @@
     <div class="w3-container w3-dark-grey">
         <h2>Modèles des pompes</h2>
     </div>
-    <br>
+    <br />
     <section>
 
         <table class="w3-table-all w3-centered w3-striped w3-mobile" style="margin-left:10px">
@@ -98,7 +98,7 @@
                         <td> <button class="w3-button" type="submit"><a href="{% url 'pompe:techno_edit' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;" /></a></button></td>
                         <td><form method="POST" action="{% url 'pompe:techno_delete' pk=fichepompe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette technologie ?')">
                                         {% csrf_token %}
-                            <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"></button></form></td>
+                            <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;" /></button></form></td>
                     </tr>
                     {% endfor %}
                     </table>

@@ -33,7 +33,7 @@
                                         <td><p>{{piece.etage.nom}}</p></td>
                                         <td><p><strong>{{piece.nom}}</strong></p></td>
                                         <td><p>||</p></td>
-                                        <td><button class="w3-button"><a href="{% url 'pompe:piece_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;"></a></button></td>
+                                        <td><button class="w3-button"><a href="{% url 'pompe:piece_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;"/></a></button></td>
                                         <td><form method="POST" action="{% url 'pompe:piece_delete' pk=piece.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette pièce ?')">
                                         {% csrf_token %}
                                         <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button>
@@ -131,7 +131,7 @@
                                         <td><p>{{piece.nom}}</p> </td>
                                         <td><p>{{piece.site.nom}}</p> </td>
                                         <td><p>||</p></td>
-                                         <td><button class="w3-button"><a href="{% url 'pompe:batiment_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;"></a></button></td>
+                                         <td><button class="w3-button"><a href="{% url 'pompe:batiment_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button></td>
                                         <td><form method="POST" action="{% url 'pompe:batiment_delete' pk=piece.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer ce bâtiment ?')">
                                         {% csrf_token %}
                                         <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button>
@@ -183,7 +183,7 @@
                                         <td><p>{{piece.batiment.nom}}</p></td>
                                         <td><p>{{piece.batiment.site.nom}}</p></td>
                                         <td><p>||</p></td>
-                                        <td><button class="w3-button"><a href="{% url 'pompe:etage_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;"></a></button></td>
+                                        <td><button class="w3-button"><a href="{% url 'pompe:etage_edit' pk=piece.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button></td>
                                         <td><form method="POST" action="{% url 'pompe:etage_delete' pk=piece.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cet étage ?')">
                                         {% csrf_token %}
                                         <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button>

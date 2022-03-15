@@ -8,7 +8,7 @@
     <div class="w3-container w3-dark-grey">
         <h2>Gestions des équipes</h2>
     </div>
-    <br>
+    <br />
     <section class="w3-mobile">
         <table class="w3-table w3-centered w3-mobile" style="margin-left:10px; margin-right:10px;">
             <tr>
@@ -37,7 +37,7 @@
                                     <td><p>{{equipe.date}}</p></td>
                                     <td><p>{{equipe.localisation.batiment.nom}} - {{equipe.localisation.nom}}</p></td>
                                     <td><p>||</p></td>
-                                    <td><button class="w3-button" type="submit"><a href="{% url 'pompe:equipe_edit' pk=equipe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"></a></button></td>
+                                    <td><button class="w3-button" type="submit"><a href="{% url 'pompe:equipe_edit' pk=equipe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;" /></a></button></td>
                                     <td><form method="POST" action="{% url 'pompe:equipe_delete' pk=equipe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette équipe ?')">
                                         {% csrf_token %}
                                         <button class="w3-button" type="submit">

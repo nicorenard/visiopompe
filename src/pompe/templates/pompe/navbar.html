@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
-    <title>{% block title %}Visiopompe v1.0{% endblock%}</title>
+    <link rel="stylesheet" href="{% static 'pompe/css/font-awesome.min.css' %}">
 </head>
-
 <body>
-<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left " style="width:200px;" id="mySidebar">
+    <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left " style="width:200px;" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large w3-hide-large w3-right" onclick="w3_close()">&times;</button>
-    <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar">
+    <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar" />
     <a href="{% url 'pompe:homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i> Acceuil</a>
 
     <div class="w3-dropdown-click">
@@ -21,33 +19,36 @@
         <a href="{% url 'pompe:pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter Stocks</a>
         <a href="{% url 'pompe:add_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
         <a href="{% url 'pompe:inventaire' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Inventaires Stocks</a>
-
-
-    </div></div>
+        </div>
+    </div>
     <div class="w3-dropdown-click">
     <button class="w3-button" onclick="myPsdFunc()"><i class="fa fa-arrow-right"></i> Pièces détachées <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block" id="PSD">
         <a href="{% url 'pompe:pdetache' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
         <a href="{% url 'pompe:add_pdetache' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-    </div></div>
+        </div>
+    </div>
     <div class="w3-dropdown-click">
     <button class="w3-button" onclick="myKitFunc()"><i class="fa fa-arrow-right"></i> Kits maintenance <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block" id="KIT">
         <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
         <a href="{% url 'pompe:add_kit' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-    </div></div>
+        </div>
+    </div>
     <div class="w3-dropdown-click">
      <button class="w3-button" onclick="myOilFunc()"><i class="fa fa-arrow-right"></i> Huiles <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block" id="OIL">
         <a href="{% url 'pompe:huile' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
         <a href="{% url 'pompe:add_huile' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-    </div></div>
+        </div>
+    </div>
     <div class="w3-dropdown-click">
      <button class="w3-button" onclick="myDocFunc()"><i class="fa fa-arrow-right"></i> Documentations <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block " id="DOC">
             <a href="{% url 'pompe:doc' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
             <a href="{% url 'pompe:add_doc' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Manuel</a>
-    </div></div>
+        </div>
+    </div>
     <div class="w3-dropdown-click" >
     <button class="w3-button" onclick="myAdminFunc()"><i class="fa fa-arrow-right"></i> Administration  <i class="fa fa-caret-down"></i></button>
         <div class="w3-dropdown-content w3-bar-block" id="ADMIN">
@@ -56,14 +57,11 @@
         <a href="{% url 'pompe:fabriquant' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Fabriquants</a>
         <a href="{% url 'pompe:equipe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Equipes</a>
         <a href="{% url 'pompe:lieux' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Lieux</a>
-
-    </div></div>
-    <br><br><br>
+        </div>
+    </div>
+    <br/><br/><br/>
     <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button "><i class="fa fa-envelope"></i> Support</a>
     <a href="{% url 'pompe:version' %}" class="w3-button w3-small w3-mobile w3-right">Version</a>
-
-    </div>
-
 </div>
 <button class="w3-button w3-grey w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 

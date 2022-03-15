@@ -14,7 +14,7 @@
                {% if piece.image %}
                 <img src="{{piece.image.url}}" class="w3-leftbar" alt="{{piece.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:50%">
                 {% else %}
-                <img src="{% static 'pompe/img/noimage.jpg' %}" class="w3-leftbar" alt="no image" style="width: 50%">
+                <img src="{% static 'pompe/img/noimage.jpg' %}" class="w3-leftbar" alt="no image" style="width: 50%"/>
                 {% endif %}
             </div>
             <div class="w3-col m5">
@@ -44,8 +44,8 @@
     <section class="w3-container w3-mobile">
        <div class="w3-panel w3-display-container">
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Réparateurs</h3>
-            <p><a href="http://www.sofintec.fr/"><img src="http://www.sofintec.fr/img/sofintec/logo-sofintec-2.jpg"></a>&nbsp
-            <a href="https://chaplain.fr/"><img src="https://chaplain.fr/wp-content/uploads/2019/04/CHAPLAINz.png" style="width: 12%"></a></p>
+            <p><a href="http://www.sofintec.fr/"><img src="http://www.sofintec.fr/img/sofintec/logo-sofintec-2.jpg" alt="logo_sofintec"></a>&nbsp
+            <a href="https://chaplain.fr/"><img src="https://chaplain.fr/wp-content/uploads/2019/04/CHAPLAINz.png" style="width: 12%" alt="logo_chapelain"/></a></p>
        </div>
     </section>
     <section class="w3-container w3-mobile">
@@ -56,6 +56,5 @@
                 <p align="left">Maoude Reboot</p>
             </div>
     </section>
-
 </div>
 {% endblock %}

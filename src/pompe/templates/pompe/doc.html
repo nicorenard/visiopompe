@@ -1,7 +1,5 @@
+{% extends 'pompe/base.html' %}
 {% load static %}
-<{% extends 'pompe/base.html' %}
-{% load static %}
-
 {% block title %}Documentation des pompes{% endblock %}
 {% block content %}
 <div class="w3-main w3-mobile " style="margin-left:200px">
@@ -10,46 +8,22 @@
     </div>
     <br/>
     <section>
-
-        <table class="w3-table-all w3-centered w3-striped " style="margin-left:10px">
-            <tr>
-
-            </tr>
-            <tr class="W3-green w3-text-black ">
-                <th> <p>Fabriquant</p></th>
-                <th>
-                   <p>Nom manuel</p>
-                </th>
-                <th>
-                    <p>Version</p>
-                </th>
-                <th>
-                    <p>Télécharger</p>
-                </th>
-                <th>
-                    <p></p>
-                </th>
-                <th>
-                    <p>Modifier</p>
-                </th>
-                                <th>
-                    <p>Supprimer</p>
-                </th>
+        <table class="w3-table-all w3-centered w3-striped" style="margin-left:10px">
+            <tr class="w3-green w3-text-black">
+                <th><p>Fabriquant</p></th>
+                <th><p>Nom manuel</p></th>
+                <th><p>Version</p></th>
+                <th><p>Télécharger</p></th>
+                <th><p></p></th>
+                <th><p>Modifier</p></th>
+                <th><p>Supprimer</p></th>
             </tr>
             <tr>
                  {% for doc in docs %}
-                <td  >
-                   <img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}" style="width: 20%; display: block; margin: auto;" />
-                </td>
-                <td>
-                   <p>{{doc.nom}}</p>
-                </td>
-                <td>
-                    <p>{{doc.version}}</p>
-                </td>
-                <td >
-                    <a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="picture download"/></a>
-                </td>
+                <td><img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}" style="width: 20%; display: block; margin: auto;" /></td>
+                <td><p>{{doc.nom}}</p></td>
+                <td><p>{{doc.version}}</p></td>
+                <td><a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="picture download"/></a></td>
                 <td><p>||</p></td>
                 <td><button class="w3-button"><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button></td>
                 <form method="POST" action="{% url 'pompe:doc_delete' pk=doc.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette référence ?')">

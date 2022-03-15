@@ -11,7 +11,7 @@
 <br />
     <div class="w3-container w3-light-gray w3-padding-12" >
         <form action="{% url 'pompe:pompe' %}" method="GET">
-            <br>
+            <br />
             {{filterpompe.form.as_table}}
             <!----https://github.com/carltongibson/django-filter/issues/1023--->
             <button type="submit"><i class="fa fa-search"></i></button>
@@ -26,7 +26,7 @@
                 - <strong style="font-size: 18px;">MODELE</strong> : {{pompe.pompe.modele}}
                 - <strong style="font-size: 18px;">MARQUE</strong> : {{pompe.pompe.fabriquant.nom}}
                 {% if pompe.atex %}
-                <img src="{% static 'pompe/img/menu_pompe/icon_atex.png' %}" alt="pompe atex?" style="width: 3%;" class="w3-display-topright" />
+                <img src="{% static 'pompe/img/menu_pompe/icon_atex.png' %}" alt="pompe atex" style="width: 3%;" class="w3-display-topright" />
                 {% endif %}
             </p>
         </div>
@@ -52,14 +52,14 @@
                             {% endif %}</span>
                         </td>
                         <td>
-                             <img src="{% static 'pompe/img/menu_pompe/icon_localisation2.png' %}" />
+                             <img src="{% static 'pompe/img/menu_pompe/icon_localisation2.png' %}" alt="icon localisation" />
                             &nbsp;Localisation :<br/>
                             {{pompe.etage.batiment.nom }} <i class="fa fa-chevron-right"></i> {{pompe.etage.nom}}&nbsp;<i class="fa fa-chevron-right"></i>&nbsp;{{pompe.piece.nom}}
                              {% if pompe.place %}<i class="fa fa-chevron-right"></i>{{pompe.place}}
                              {% endif %}
                         </td>
                         <td>
-                            <img src="{% static 'pompe/img/menu_pompe/icon_vidange.png' %}" />&nbsp;Prochaine Vidange:
+                            <img src="{% static 'pompe/img/menu_pompe/icon_vidange.png' %}" alt="icon date de vidange"/>&nbsp;Prochaine Vidange:
                             {% if current_date > pompe.vidange %}<strong style="color:red;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
                             {% elif current_date == pompe.vidange %}<strong style="color:orange;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
                             {% elif pompe.vidange <= warning_date %}<strong style="color:amber;">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
@@ -70,10 +70,10 @@
                         </table>
                     </td>
                     <td class="w3-col m1 s1 w3-right">
-                        <button class="w3-button"><a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity w3-right" style="width: 80%;" /></a></button>
+                        <button class="w3-button"><a href="{% url 'pompe:pompe_edit' pk=pompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" class="w3-hover-opacity w3-right" style="width: 80%;" alt="icon editer"/></a></button>
                         <form method="POST" action="{% url 'pompe:pompe_delete' pk=pompe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette pompe ?')">
                         {% csrf_token %}
-                        <button class="w3-button" value="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity w3-right" style="width: 80%; " /></button></form>
+                        <button class="w3-button" value="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" class="w3-hover-opacity w3-right" style="width: 80%; " alt="icon supprimer"/></button></form>
                     </td>
                 </tr>
             </table>
@@ -81,9 +81,9 @@
             <!----section caracteristiques--->
         <div class="w3-container w3-cell-row w3-leftbar">
             <div class="w3-container w3-cell w3-mobile">
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_miseenservice.png' %}" />&nbsp;Mise en service :{{pompe.mise_en_service|date:"SHORT_DATE_FORMAT"}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_numeroserie.png' %}" />&nbsp;N° de série : {{pompe.num_serie}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_code_umr.png' %}" /> N° d'inventaire :
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_miseenservice.png' %}" alt="icon  date mise en service"/>&nbsp;Mise en service :{{pompe.mise_en_service|date:"SHORT_DATE_FORMAT"}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_numeroserie.png' %}" alt="icon numero de série"/>&nbsp;N° de série : {{pompe.num_serie}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_code_umr.png' %}" alt="icon code umr" /> N° d'inventaire :
                         {% if pompe.inventaire.id  %}
                         {{pompe.inventaire.numero}}
                         {% else %}
@@ -91,26 +91,25 @@
                         {% endif %}</p>
             </div>
             <div class="w3-container w3-cell w3-mobile">
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_phasage.png' %}" >&nbsp;Phase : {{pompe.pompe.phasage}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_puissance.png' %}" >&nbsp;Puissance : {{pompe.pompe.puissance}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage">&nbsp;Technologie :
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_phasage.png' %}" alt="icon phasage pompe" />&nbsp;Phase : {{pompe.pompe.phasage}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_puissance.png' %}" alt="icon puissance pompe"/>&nbsp;Puissance : {{pompe.pompe.puissance}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage"/>&nbsp;Technologie :
                         {{pompe.pompe.technologie.nom}} ({{pompe.pompe.technologie.cara_1}}
                         {% if pompe.pompe.technologie.cara_2 %}
                             -{{pompe.pompe.technologie.cara_2}}
                         {% endif%})</p>
             </div>
             <div class="w3-container w3-cell w3-mobile">
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vidangeurgente.png' %}" />&nbsp;Huile : {{pompe.huile}}</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" />&nbspVide théorique : {{pompe.pompe.vide_theo |stringformat:".0e"}} mbars</p>
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" /> <strong>Vide testé </strong>: {{pompe.vide_user |stringformat:".0e"}} mbars</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vidangeurgente.png' %}" alt="icon huile" />&nbsp;Huile : {{pompe.huile}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" alt="icon vide" />&nbspVide théorique : {{pompe.pompe.vide_theo |stringformat:".0e"}} mbars</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" alt="icon vide" /> <strong>Vide testé </strong>: {{pompe.vide_user |stringformat:".0e"}} mbars</p>
             </div>
         </div>
                 <!----section info supplementaire--->
             <div class="w3-container w3-cell-row w3-leftbar ">
-                    <h5><img src="{% static 'pompe/img/menu_pompe/icon_information.png' %}" style="width: 30px;"/> <u> Historique :</u>
-                        </h5>
+                    <h5><img src="{% static 'pompe/img/menu_pompe/icon_information.png' %}" style="width: 30px;" alt="icone point information"/> <u> Historique :</u></h5>
                 <p> <i>Dernier enregistrement :</i>  {{pompe.historique}} <a href="{% url 'pompe:historic' pk=pompe.pk %}" class="w3-hover-opacity w3-right" >
-                    <img src="{% static 'pompe/img/option/icons_history.png' %}" style="width: 70%;"/></a></p>
+                    <img src="{% static 'pompe/img/option/icons_history.png' %}" style="width: 70%;" alt="icon historique"/></a></p>
 
             </div>
             {% endfor %}
