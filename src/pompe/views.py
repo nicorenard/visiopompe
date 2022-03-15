@@ -229,7 +229,9 @@ def pompe(request):
     s_pompes = filterpompe.qs
     current_date = datetime.now()
     warning_date = current_date + timedelta(days=7)
-
+    print(current_date)
+    print(warning_date)
+    print(s_pompes.values('vidange'))
 
     context = {'s_pompes': s_pompes,
                'current_date': current_date,

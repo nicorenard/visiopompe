@@ -184,7 +184,7 @@ class StockPompe(models.Model):
     atex = models.BooleanField(default=False, verbose_name="Pompe Atex ?")
     huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
     equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)
-    vidange = models.DateTimeField(default=datetime.now(), verbose_name="Date de la prochaine vidange", blank=True, null=True)
+    vidange = models.DateTimeField(verbose_name="Date de la prochaine vidange", blank=True, null=True)
     historique = models.TextField(blank=True, null=False, max_length=500, verbose_name="historique de la pompe")
 
     def __str__(self):
