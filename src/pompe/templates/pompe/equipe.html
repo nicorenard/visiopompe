@@ -31,9 +31,9 @@
                                     <tr>
                                      {% for equipe in equipes %}
                                     <td><p>{{equipe.nom}}</p> </td>
-                                    <td><p>{{equipe.sigle}}</p></td>
-                                    <td><p>{{equipe.nom_responsable}}</p></td>
-                                    <td><p>{{equipe.email_responsable}}</p></td>
+                                    <td><p>{% if equipe.sigle %}{{equipe.sigle}}{% endif %}</p></td>
+                                    <td><p>{% if equipe.nom_responsable %}{{equipe.nom_responsable}}{% endif %}</p></td>
+                                    <td><p>{% if equipe.email_responsable %}{{equipe.email_responsable}}{% endif %}</p></td>
                                     <td><p>{{equipe.date}}</p></td>
                                     <td><p>{{equipe.localisation.batiment.nom}} - {{equipe.localisation.nom}}</p></td>
                                     <td><p>||</p></td>

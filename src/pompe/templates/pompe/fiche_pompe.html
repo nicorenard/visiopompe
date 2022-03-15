@@ -33,12 +33,18 @@
                 <td><p>{{fichepompe.modele}}</p></td>
                 <td><p>{{fichepompe.phasage}}</p></td>
                 <td><p>{{fichepompe.puissance}}</p></td>
-                <td><p>{{fichepompe.technologie.nom}} ({{fichepompe.technologie.cara_1}}
+                <td><p>{{fichepompe.technologie.nom}}
+                    {% if fichepompe.technologie.cara_1 %}
+                    - {{fichepompe.technologie.cara_1}}
+                    {% endif %}
                     {% if fichepompe.technologie.cara_2 %}
-                           - {{fichepompe.technologie.cara_2}}
-                    {% endif %})</p></td>
+                           - {{fichepompe.technologie.cara_2}}{% endif %}</p></td>
                 <td><p>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</p></td>
-                <td><a href="/media/{{fichepompe.documentation.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}"></a></td>
+                <td>{% if fichepompe.documentation.manuel %}
+                    <a href="/media/{{fichepompe.documentation.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="manuel" class="w3-hover"/></a>
+                    {% else %}<i class="fa fa-close w3-xxlarge"></i>
+                    {% endif %}
+                </td>
                 <td><p>||</p></td>
                 <td> <button class="w3-button" type="submit"><a href="{% url 'pompe:fichepompe_edit' pk=fichepompe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;"/></a></button></td>
                 <td><form method="POST" action="{% url 'pompe:fichepompe_delete' pk=fichepompe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette fiche ?')">

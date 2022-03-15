@@ -19,7 +19,7 @@
             </div>
             <div class="w3-col m5">
                 <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{huile.nom}} - <strong>MARQUE</strong> : {{huile.fabriquant.nom}}</p>
-                <p style="font-size: 16px;">Référence fabriquant : <i>{{huile.ref_fab}}</i></p>
+                <p style="font-size: 16px;">Référence fabriquant : {% if huile.ref_fab %}<i>{{huile.ref_fab}}</i>{% endif %}</p>
                 <p style="font-size: 16px;">Mise à jour du stock : <i>{{huile.date_maj}}</i></p>
                 <p style="font-size: 16px;">Informations : <i>{{huile.information}}</i></p>
             </div>

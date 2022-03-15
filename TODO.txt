@@ -1,8 +1,7 @@
 *V1.0
 - installer Vagrant pour connecter sur BDD mariadB
-- corriger les valeurs "none" qui apparaissent quand la donnée n'est pas obligatoire.(kit,pompe,huile,inventaire,piecedetache)
 - bug de date et coloration de nouveau.
-- remettre au norme W3C le HTML.
+- dashoard a compléter
 *v1.1
 - dans le filtre : ajouter le filtre par batiment avec un nom correcte.
 - creation de compte user ou groupe pour modifier et supprimer.

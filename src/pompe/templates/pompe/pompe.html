@@ -100,7 +100,7 @@
                         {% endif%})</p>
             </div>
             <div class="w3-container w3-cell w3-mobile">
-                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vidangeurgente.png' %}" alt="icon huile" />&nbsp;Huile : {{pompe.huile}}</p>
+                    <p><img src="{% static 'pompe/img/menu_pompe/icon_vidangeurgente.png' %}" alt="icon huile" />&nbsp;Huile : {% if pompe.huile %}{{pompe.huile}}{% endif %}</p>
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" alt="icon vide" />&nbspVide théorique : {{pompe.pompe.vide_theo |stringformat:".0e"}} mbars</p>
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_vide.png' %}" alt="icon vide" /> <strong>Vide testé </strong>: {{pompe.vide_user |stringformat:".0e"}} mbars</p>
             </div>
