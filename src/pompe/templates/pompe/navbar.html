@@ -1,12 +1,14 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
+    <title>{% block title %}Visiopompe v1.0{% endblock%}</title>
 </head>
+
 <body>
 <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left " style="width:200px;" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large w3-hide-large w3-right" onclick="w3_close()">&times;</button>

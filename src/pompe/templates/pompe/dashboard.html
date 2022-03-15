@@ -1,16 +1,10 @@
+{% extends 'pompe/base.html' %}
 {% load static %}
-<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
-    <link rel="stylesheet" href="{% static 'pompe/font-awesome.min.css' %}">
-    <title>Dashboard</title>
-</head>
-<body>
-    <!-----navbar---->
-{% include 'pompe/navbar.html' %}
-    <!----contenu---->
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+
 <div class="w3-main w3-mobile" style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
         <h2>Dashboard</h2>
@@ -18,15 +12,9 @@
     </div>
     <br>
 <!---- Dashboard : elle va me permettre de voir :
-    - nbre total de pompe par site, batiment, etage, equipe,
-    - nbre total par categorie de pompes
-    - nbre actif total, pannes total, reparation totale, stock et par categories aussi
     - nbre total de pot d'huiles
     - nbre total de pieces de rechange
-    - nbre total de kit de maintenance
-
-
----->
+    - nbre total de kit de maintenance---->
 <div class="w3-container w3-padding-12">
     <section>
             <div class="w3-row-padding">
@@ -168,6 +156,4 @@
             </div>
     </section>
 </div>
-
-</body>
-</html>
+{% endblock %}

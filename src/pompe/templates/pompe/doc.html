@@ -1,19 +1,9 @@
 {% load static %}
-<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<{% extends 'pompe/base.html' %}
+{% load static %}
 
-    <title>Documentations Technique</title>
-</head>
-<body>
-<!----menu--->
-{% include 'pompe/navbar.html' %}
-
-<!---------Contenu------->
-
+{% block title %}Documentation des pompes{% endblock %}
+{% block content %}
 <div class="w3-main w3-mobile " style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
         <h2>Documentations Technique</h2>
@@ -81,5 +71,4 @@
     </section>
 
 </div>
-</body>
-</html>
+{% endblock %}
