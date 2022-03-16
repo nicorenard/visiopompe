@@ -63,7 +63,7 @@
                             {% if current_date > pompe.vidange %}<strong class="w3-tag w3-padding w3-round-large w3-red w3-center w3-text-black">{{pompe.vidange}}</strong>
                             {% elif current_date == pompe.vidange %}<strong class="w3-tag w3-padding w3-round-large w3-yellow w3-center w3-text-black">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
                             {% elif pompe.vidange <= warning_date %}<strong class="w3-center w3-text-orange">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
-                            {% else %} <strong class="w3-center w3-text-green">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}</strong>
+                            {% else %} <strong class="w3-center w3-text-green">{{pompe.vidange|date:"SHORT_DATE_FORMAT"}}  - {{date_format}}</strong>
                             {% endif %}
                         </td>
                             </tr>

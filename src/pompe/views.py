@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, date
 from django.shortcuts import render, get_object_or_404, redirect
 from .filters import PompeStockFilter
 from .forms import *
@@ -8,11 +8,13 @@ from .models import *
 def index(request):
    return render(request, 'pompe/index.html')
 
+
 def version(request):
     versions = VersionApp.objects.all().order_by('-version')
     return render(request, 'pompe/versionapp.html', {'versions': versions})
 
 # dashboard
+
 def dashboard(request):
     dash_pompes = StockPompe.objects.all()
     # general setting for dashboard
@@ -72,7 +74,7 @@ def delete_equipe(request, pk):
         queryset.delete()
         return redirect('/dashboard/equipe')
 
-    return render(request, 'pompe/equipe.html', {'queryset' : queryset})
+    return render(request, 'pompe/equipe.html', {'queryset': queryset})
 
 ## fabriquant
 def fabriquant(request):
@@ -176,7 +178,7 @@ def update_site(request, pk):
         form = ModifSiteForm(instance=sites)
     return render(request, 'pompe/forms.html', {'form': form})
 
-def delete_site(request,pk):
+def delete_site(request, pk):
     queryset = get_object_or_404(Site, pk=pk)
     if request.method == "POST":
         queryset.delete()
@@ -195,7 +197,7 @@ def update_batiment(request, pk):
         form = ModifBatimentForm(instance=batiments)
     return render(request, 'pompe/forms.html', {'form': form})
 
-def delete_batiment(request,pk):
+def delete_batiment(request, pk):
     queryset2 = get_object_or_404(Batiment, pk=pk)
     if request.method == "POST":
         queryset2.delete()
@@ -214,7 +216,7 @@ def update_etage(request, pk):
         form = ModifEtageForm(instance=etages)
     return render(request, 'pompe/forms.html', {'form': form})
 
-def delete_etage(request,pk):
+def delete_etage(request, pk):
     queryset3 = get_object_or_404(Etage, pk=pk)
     if request.method == "POST":
         queryset3.delete()
@@ -227,23 +229,24 @@ def pompe(request):
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
     filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
     s_pompes = filterpompe.qs
-    current_date = datetime.now()
+    current_date = datetime.now().date()
     warning_date = current_date + timedelta(days=7)
     print(current_date)
     print(warning_date)
-    print(s_pompes.values('vidange'))
+    essai = s_pompes.values('vidange')
+    print(essai)
 
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
                'filterpompe': filterpompe,
-               }
+                }
     return render(request, 'pompe/pompe.html', context)
 
 def historique(request, pk):
     historic = StockHistory.objects.filter(stockpump=pk).order_by('-date_historique')
 
-    return render(request, 'pompe/historique.html', {'historic':historic})
+    return render(request, 'pompe/historique.html', {'historic': historic})
 
 def add_stockpompe(request):
     if request.method == "POST":
@@ -337,7 +340,7 @@ def delete_techno(request, pk):
     context = {'queryset1': queryset1}
     return render(request, 'pompe/fiche_pompe.html', context)
 
-#inventaire et tutelle
+# inventaire et tutelle
 def inventaire(request):
     inventaires = Inventaire.objects.all().order_by('numero')
     tutelles = Tutelle.objects.all().order_by('nom')
@@ -357,7 +360,7 @@ def inventaire(request):
         form = Inventaireform()
         form2 = Tutelleform()
 
-    context = {'inventaires': inventaires, 'tutelles': tutelles, 'form': form, 'form2': form2 }
+    context = {'inventaires': inventaires, 'tutelles': tutelles, 'form': form, 'form2': form2}
     return render(request, 'pompe/inventaire.html', context)
 
 def update_inventaire(request, pk):
@@ -378,7 +381,7 @@ def delete_inventaire(request, pk):
         queryset.delete()
         return redirect('/inventaire')
 
-    return render(request, 'pompe/inventaire.html', {'queryset':queryset})
+    return render(request, 'pompe/inventaire.html', {'queryset': queryset})
 
 def delete_tutelle(request, pk):
     queryset1 = get_object_or_404(Tutelle, pk=pk)
@@ -386,9 +389,9 @@ def delete_tutelle(request, pk):
         queryset1.delete()
         return redirect('/inventaire')
 
-    return render(request, 'pompe/inventaire.html', {'queryset1':queryset1})
+    return render(request, 'pompe/inventaire.html', {'queryset1': queryset1})
 
-#pieces detachées
+# pieces detachées
 def pdetache(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
     return render(request, 'pompe/piece.html', {'pieces': pieces})
@@ -422,7 +425,7 @@ def delete_pdetache(request, pk):
         return redirect('/pieces_detaches')
     return render(request, 'pompe/piece.html', {'pieces': pieces})
 
-#huile
+# huile
 def huile(request):
     huiles = Huile.objects.all().order_by('nom')
     return render(request, 'pompe/huile.html', {'huiles': huiles})
@@ -456,7 +459,7 @@ def delete_huile(request, pk):
         return redirect('/huiles')
     return render(request, 'pompe/huile.html', {'huiles': huiles})
 
-#kit de maintenance
+# kit de maintenance
 def kit(request):
     kits = Kit.objects.all().order_by('nom')
     return render(request, 'pompe/kit.html', {'kits': kits})
@@ -488,7 +491,9 @@ def delete_kit(request, pk):
         kits.delete()
         return redirect('/kits')
     return render(request, 'pompe/kit.html', {'kits': kits})
+
 # Documentations
+
 def doc(request):
     docs = Doc.objects.all().order_by('nom')
     context = {'docs': docs}

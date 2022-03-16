@@ -1,8 +1,7 @@
 from datetime import date, datetime
 from django.db import models
-
+from django.utils import timezone
 # apps version #
-
 
 class VersionApp(models.Model):
     version = models.CharField(default='x.x.x', max_length=10, verbose_name="Version")
@@ -50,7 +49,7 @@ class Piece(models.Model):
 # pump tables #
 class Fabriquant(models.Model):
     nom = models.CharField(max_length=50)
-    logo_max = models.ImageField(upload_to='logo_fabriquant/', max_length=254, blank=True, null=True, verbose_name='Logo')
+    logo_max = models.ImageField(upload_to='logo_fabriquant/', max_length=254, verbose_name='Logo')
     logo_mini = models.ImageField(upload_to='logo_fabriquant/miniature/', max_length=254, blank=True, null=True, verbose_name='miniature')
     adresse = models.CharField(max_length=250, blank=True, null=True)
     code_postal = models.CharField(max_length=5, blank=True, null=True)
@@ -184,7 +183,7 @@ class StockPompe(models.Model):
     atex = models.BooleanField(default=False, verbose_name="Pompe Atex ?")
     huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
     equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)
-    vidange = models.DateTimeField(verbose_name="Date de la prochaine vidange", blank=True, null=True)
+    vidange = models.DateField(default=timezone.now, verbose_name="Date de la prochaine vidange", blank=True, null=True)
     historique = models.TextField(blank=True, null=False, max_length=500, verbose_name="historique de la pompe")
 
     def __str__(self):
