@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 # apps version #
 
+
 class VersionApp(models.Model):
     version = models.CharField(default='x.x.x', max_length=10, verbose_name="Version")
     maj_maj = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour majeur")
@@ -49,8 +50,10 @@ class Piece(models.Model):
 # pump tables #
 class Fabriquant(models.Model):
     nom = models.CharField(max_length=50)
-    logo_max = models.ImageField(upload_to='logo_fabriquant/', max_length=254, verbose_name='Logo')
-    logo_mini = models.ImageField(upload_to='logo_fabriquant/miniature/', max_length=254, blank=True, null=True, verbose_name='miniature')
+    logo_max = models.ImageField(upload_to='logo_fabriquant/', default="noimage.jpg",
+                                 max_length=254, verbose_name='Logo')
+    logo_mini = models.ImageField(upload_to='logo_fabriquant/miniature/', max_length=254,
+                                  blank=True, null=True, verbose_name='miniature')
     adresse = models.CharField(max_length=250, blank=True, null=True)
     code_postal = models.CharField(max_length=5, blank=True, null=True)
     ville = models.CharField(max_length=30, blank=True, null=True)
@@ -71,8 +74,9 @@ class Doc(models.Model):
 
 class TechnologiePompe(models.Model):
     nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie")
-    cara_1 = models.CharField(default='', max_length=50, null= False, blank= True, verbose_name="Détail de la technologie")
-    cara_2 = models.CharField(default='', max_length=50, null= True, blank= True, verbose_name="Information")
+    cara_1 = models.CharField(default='', max_length=50, null=False, blank=True,
+                              verbose_name="Détail de la technologie")
+    cara_2 = models.CharField(default='', max_length=50, null=True, blank=True, verbose_name="Information")
 
     def __str__(self):
         return self.nom
@@ -120,10 +124,12 @@ class Huile(models.Model):
 class ModelEquipe(models.Model):
     nom = models.CharField(default='', max_length=255, verbose_name="Nom complet de l'équipe")
     sigle = models.CharField(default='', max_length=10, verbose_name="Abbreviation du nom", blank=True, null=True)
-    nom_responsable = models.CharField(default='', max_length=100, verbose_name="Responsable de l'équipe",blank=True, null=True)
-    email_responsable = models.CharField(default='', max_length=50,verbose_name="Email du Responsable",blank=True, null=True)
-    date = models.DateField(default=date.today,verbose_name="Date de création")
-    localisation = models.ForeignKey(Etage, null=True,blank=False, on_delete=models.SET_NULL)
+    nom_responsable = models.CharField(default='', max_length=100, verbose_name="Responsable de l'équipe",
+                                       blank=True, null=True)
+    email_responsable = models.CharField(default='', max_length=50, verbose_name="Email du Responsable",
+                                         blank=True, null=True)
+    date = models.DateField(default=date.today, verbose_name="Date de création")
+    localisation = models.ForeignKey(Etage, null=True, blank=False, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.nom
@@ -145,8 +151,8 @@ class Inventaire(models.Model):
         return self.numero
 
 
-### historique on stock pump
-## ref : https://stackoverflow.com/questions/10540111/store-versioned-history-of-field-in-django-model
+## historique on stock pump
+# ref : https://stackoverflow.com/questions/10540111/store-versioned-history-of-field-in-django-model
 class StockHistory(models.Model):
     version = models.IntegerField(editable=False)
     stockpump = models.ForeignKey('StockPompe', on_delete=models.CASCADE)
@@ -162,9 +168,9 @@ class StockHistory(models.Model):
         super(StockHistory, self).save(*args, **kwargs)
 ###
 
-
 class StockPompe(models.Model):
-    pompe = models.ForeignKey(ModelePompe, verbose_name="Modèle de pompe", null=True, blank=False, on_delete=models.SET_NULL)
+    pompe = models.ForeignKey(ModelePompe, verbose_name="Modèle de pompe", null=True, blank=False,
+                              on_delete=models.SET_NULL)
     mise_en_service = models.DateField(auto_now=date.today)
     etage = models.ForeignKey(Etage, null=True, blank=False, on_delete=models.SET_NULL)
     piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
@@ -204,10 +210,12 @@ class Kit(models.Model):
 
     image = models.ImageField(upload_to='kit_img/', max_length=254, blank=True, null=True)
     nom = models.CharField(default='', max_length=50, verbose_name="Nom du kit")
-    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, verbose_name='Fabriquant', related_name="Fabriquant", on_delete=models.SET_NULL)
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, verbose_name='Fabriquant',
+                                   related_name="Fabriquant", on_delete=models.SET_NULL)
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
     ref_fab = models.CharField(max_length=50, default='', verbose_name="Référence Fabriquant", blank=True, null=True)
-    revendeur = models.ForeignKey(Fabriquant, null=True, blank=True,  verbose_name='Revendeur', related_name="Revendeur", on_delete=models.SET_NULL)
+    revendeur = models.ForeignKey(Fabriquant, null=True, blank=True,  verbose_name='Revendeur',
+                                  related_name="Revendeur", on_delete=models.SET_NULL)
     ref_rev = models.CharField(max_length=50, default='', verbose_name="Référence Revendeur", blank=True, null=True)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
     piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
@@ -225,9 +233,8 @@ class PiecesPompe(models.Model):
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
     piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
-    information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire(s)")
-
+    information = models.TextField(blank=True, null=True, max_length=200,
+                                   verbose_name="Information(s) complémentaire(s)")
 
     def __str__(self):
         return self.nom
-

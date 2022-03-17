@@ -12,16 +12,31 @@ lié au fonctionnement de ces appareillages.
 
 ### Pré-requis
 
-- Le projet est developpé pour fonctionner avec un serveur linux avec un accès internet. (Evitez les WAMP ou XAMP)
->>>> Le serveur de production en fonctionnement est sous : debian 11 avec Mariadb.
-- Configurez ensuite le serveur pour recevoir python 3.9.
-- Puis installez avant de commencer un environnement virtuel qui contiendra les dépendances de l'application.
+- Installez un serveur linux avec un accès internet (prod testée : debian 11).
+- Configurez le serveur pour recevoir python 3.9.
+- Installez avant de commencer un environnement virtuel:
 
->>>>> sudo apt-get install python3-virtualenv
+>>>>> sudo apt install python3-venv
+>>>>> # Créez un nouveau 'virtualenv' dédié au projet visiopompe dans
+>>>>> # eg. /opt/local/virtualenvs/visiopompe
+>>>>> sudo mkdir -p /opt/local/virtualenvs/
+>>>>> python3 -m venv /opt/local/virtualenvs/visiopompe
 
-- Installez les dépendances contenus dans le fichier "requierement.txt" contenu dans le dossier source "src"
+- Installez les dépendances Python tierces, décrites dans le fichier "requirements.txt"
+  du projet, dans ce nouveau virtualenv, à l'aide du logiciel 'pip' fourni dans ce virtualenv:
 
->>>>> pip install -r requirements.txt
+>>>>> /opt/local/virtualenvs/visiopompe/bin/pip install -r path/to/visiopompe/requirements.txt
+>>>>> # NB: Si vous développez sous Windows, vous pourriez également avoir besoin
+>>>>> # des dépendances additionnelles listées dans "requirements-win32.txt"!
+
+- Placez les sources Python du projet 'visiopompe' dans un répertoire dédié,
+  par ex. /opt/local/visiopompe/0.1:
+
+>>>>> sudo mkdir -p /opt/local/visiopompe/0.1
+>>>>> sudo cp -R path/to/visiopompe/src/* /opt/local/visiopompe/0.1/
+
+Vous pouvez maintenant créer un nouveau "projet" 'visiopompe', une nouvelle instance,
+avec ses propres configuration, base de données, fichiers uploadés, etc.!
 
 - Créer un fichier .env et placez le dans le dossier "src" avant de l'uploader sur votre serveur :
 >>>>> Structure du fichier.:

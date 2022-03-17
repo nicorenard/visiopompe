@@ -93,7 +93,8 @@
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_phasage.png' %}" alt="icon phasage pompe" />&nbsp;Phase : {{pompe.pompe.phasage}}</p>
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_puissance.png' %}" alt="icon puissance pompe"/>&nbsp;Puissance : {{pompe.pompe.puissance}}</p>
                     <p><img src="{% static 'pompe/img/menu_pompe/icon_etage.png'%}" alt="pompe_nb_etage"/>&nbsp;Technologie :
-                        {{pompe.pompe.technologie.nom}} ({{pompe.pompe.technologie.cara_1}}
+                        {{pompe.pompe.technologie.nom}}
+                        {% if pompe.pompe.technologie.cara_1%}|{{pompe.pompe.technologie.cara_1}}{% endif%})
                         {% if pompe.pompe.technologie.cara_2 %}
                             -{{pompe.pompe.technologie.cara_2}}
                         {% endif%})</p>

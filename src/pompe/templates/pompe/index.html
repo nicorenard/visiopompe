@@ -1,8 +1,14 @@
-{% extends 'pompe/base.html' %}
 {% load static %}
-
-{% block content %}
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'pompe/css/font-awesome.min.css' %}">
+    <title>Index</title>
+</head>
+<body>
 <div class="w3-main w3-mobile">
     <div class="w3-container w3-dark-grey">
         <h2><img style="margin: 10px 4px 10px 10px ; padding:4px;width:5%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar" />Bienvenue sur Visiopompe</h2>
@@ -64,5 +70,6 @@
     </div>
     </footer>
 </div>
-{% endblock %}
+</body>
+</html>
 
