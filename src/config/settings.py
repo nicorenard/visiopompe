@@ -29,7 +29,8 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.getenv('DJANGO_DEBUG'))
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(' ')
+ALLOWED_HOSTS = []
+    #os.getenv("ALLOWED_HOSTS").split(' ')
 
 
 # Application definition
@@ -82,13 +83,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'visiopompe',
-        'USER': 'visiopompe',
-        'PASSWORD': 'visiopompe',
-        'HOST': '127.0.0.1',
-        'PORT': '22',
+   'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
