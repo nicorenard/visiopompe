@@ -85,10 +85,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'visiopompe',
-        'USER': 'admin',
-        'PASSWORD': '*toto*',
+        'USER': 'visiopompe',
+        'PASSWORD': 'visiopompe',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '22',
     }
 }
 

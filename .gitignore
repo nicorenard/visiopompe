@@ -1,5 +1,6 @@
 
 /src/media/upload/
 /src/db.sqlite3
+/src/.vagrant
 
 .env
