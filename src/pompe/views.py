@@ -36,11 +36,18 @@ def dashboard(request):
     p_etage_2 = dash_pompes.filter(etage='2').count()
     p_etage_3 = dash_pompes.filter(etage='3').count()
 
+    #### special to UMR6521 by teams. ####
+    p_ciel = dash_pompes.filter(equipe='1').count()
+    p_spectre = dash_pompes.filter(equipe='2').count()
+    p_cosm = dash_pompes.filter(equipe='3').count()
+    p_umr = dash_pompes.filter(equipe='4').count()
+
 
     context = {'p_all': p_all,'p_valide': p_valide, 'p_stock': p_stock,'p_hs': p_hs,'p_rep': p_rep,
                'p_atex': p_atex,
                 'p_palette': p_palette, 'p_membrane':p_membrane, 'p_seche':p_seche,
                'p_etage_1':p_etage_1, 'p_etage_2': p_etage_2, 'p_etage_3':p_etage_3,
+               'p_ciel':p_ciel, 'p_spectre':p_spectre, 'p_cosm':p_cosm, 'p_umr': p_umr,
                }
     return render(request, 'pompe/dashboard.html', context)
 
