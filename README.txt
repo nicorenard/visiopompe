@@ -118,8 +118,8 @@ parc de pompes ou les autres éléments necessaires au fonctionnement de l'appli
 pompe et un stock.
 
 1- [Menu] Administration / Lieux
-1.1 - Site
-1.2 - Bâtiment
+1.1 - Sites
+1.2 - Bâtiments
 1.3 - Etages
 1.4 - Pièces
 2 - [Menu] Administration / Fabriquants
@@ -128,7 +128,7 @@ pompe et un stock.
 3.2 - Fiches de pompe
 4 - [Menu] Pompes / Créer un stock
 
-/!\ Un stock a besoin pour être créée à minima de ces informations là.
+/!\ Un stock a besoin pour être créé, à minima, de ces informations là.
 Il est rudement conseillé de compléter les autres élements pour un meilleur suivi de vos machines.
 Se référer à la documentation utilisateur pour plus de détail.
 
@@ -140,11 +140,11 @@ Par la suite, la navigation au sein du site web se fait grâce au menu à gauche
 
 ****[Nécessite de l'aide d'un dev **Evaluez selon votre besoin**]****
 
-L'application propose aux administrateurs locaux d'avoir la possibilité de voir un menu dashboard
+L'application propose d'avoir la possibilité de voir un menu dashboard
 qui reprend les informations de suivis des stocks, accessoires et pompes présentes.
-La format qui est proposé en prévu pour une utilisation "standard".
-Si vous souhaitez agrémenter la dashboard en fonction de vos besoin par exemple des stocks de pompes par étages, batiment, un site
-Vous devez pour cela modifier le fichier suivant : dashboard.html situé dans ".src/pompe/templates/pompe".
+Le format qui est proposé en prévu pour une utilisation "standard".
+Si vous souhaitez agrémenter la dashboard en fonction de vos besoins par exemple des stocks de pompes par étages, batiments, un site,
+vous devez pour cela modifier le fichier suivant : dashboard.html situé dans ".src/pompe/templates/pompe".
 Vous devez aussi modifier le fichier de l'application : views.py.
 
 # VIEW.py
@@ -194,6 +194,7 @@ La dashboard est un élement modulable. A vous de voir si vous souhaitez ou non 
 Pour plus d'info sur les couleurs disponible à mettre dans la balise <header> à l'emplacement
  >> <header class="w3-couleur">
  Allez sur ce site : https://www.w3schools.com/w3css/w3css_colors.asp
+
 ## Projet fabriqué avec :
 
 * [Python 3] - [W3.css] - [Django]
@@ -222,7 +223,7 @@ kits etc... => optimisation de la place mémoire.
 
 ## License
 
-Ce projet est sous licence ```` -  pour plus d'informations
+Ce projet est sous licence [EN COURS] -  pour plus d'informations
 
 
 
