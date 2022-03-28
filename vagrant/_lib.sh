@@ -12,22 +12,22 @@ declare -r FILES="${LIB_DIR}/files"
 # Functions  -----------------------------------------------------------------
 
 copy () {
-    ### Copy a file from $FILES in system dir. tree.
-    ###
-    ### Params:
-    ### - $1 (string) Absolute filepath to copy from $FILES
-    ###
-    ### If parent directory of $1 file does not exist, this function will
-    ### create all of its needed and imbricated parents.
+### Copy a file from $FILES in system dir. tree.
+###
+### Params:
+### - $1 (string) Absolute filepath to copy from $FILES
+###
+### If parent directory of $1 file does not exist, this function will
+### create all of its needed and imbricated parents.
 
-    local -r filepath="${1}"
-    local -r dirpath="$( dirname "${filepath}" )"
+local -r filepath="${1}"
+local -r dirpath="$( dirname "${filepath}" )"
 
-    if [ ! -d "${dirpath}" ]; then
-        echo ">>>     Creating directories tree for '${dirpath}'..."
-        mkdir -p "${dirpath}"
-    fi
-    echo ">>>     Copy file '${filepath}'..."
-    cp "${FILES}/${filepath}" "${filepath}"
+if [ ! -d "${dirpath}" ]; then
+echo ">>>     Creating directories tree for '${dirpath}'..."
+mkdir -p "${dirpath}"
+fi
+echo ">>>     Copy file '${filepath}'..."
+cp "${FILES}/${filepath}" "${filepath}"
 }
 

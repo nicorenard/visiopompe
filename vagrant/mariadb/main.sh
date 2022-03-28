@@ -26,58 +26,58 @@ declare -r GRANT_DB_USER_SQL="GRANT ALL ON ${DB_NAME}.* TO ${DB_USER}"
 # Functions  -----------------------------------------------------------------
 
 _install_mariadb_packages () {
-    echo ">>>     Install packages for MariaDB ${MARIADB_VERSION} server and client..."
-    apt install --yes ${MARIADB_PKGS}
+echo ">>>     Install packages for MariaDB ${MARIADB_VERSION} server and client..."
+apt install --yes ${MARIADB_PKGS}
 
-    echo ">>>     Grant default '${VAGRANT_USER}' Vagrant user all rights on all MariaDB databases..."
-    # See /usr/share/doc/mariadb-server-*/README.txt.gz
-    "${MARIADB_BIN}" -e "${GRANT_VAGRANT_USER_SQL}"
+echo ">>>     Grant default '${VAGRANT_USER}' Vagrant user all rights on all MariaDB databases..."
+# See /usr/share/doc/mariadb-server-*/README.txt.gz
+"${MARIADB_BIN}" -e "${GRANT_VAGRANT_USER_SQL}"
 
-    echo ">>>     Shutdown (temporarly) MariaDB server"
-    # Stop service via systemd
-    systemctl stop "${MARIADB_SERVICE}"
-    # Disable service autostart at system start, via systemd
-    systemctl disable "${MARIADB_SERVICE}"
+echo ">>>     Shutdown (temporarly) MariaDB server"
+# Stop service via systemd
+systemctl stop "${MARIADB_SERVICE}"
+# Disable service autostart at system start, via systemd
+systemctl disable "${MARIADB_SERVICE}"
 }
 
 _set_mariadb_encodings () {
-    local -r charset_pattern="^character-set-server[[:space:]]+=[[:space:]]+([[:alpha:][:digit:]_]+)$"
-    local -r new_charset="character-set-server = ${MARIADB_CHARSET}"
+local -r charset_pattern="^character-set-server[[:space:]]+=[[:space:]]+([[:alpha:][:digit:]_]+)$"
+local -r new_charset="character-set-server = ${MARIADB_CHARSET}"
 
-    local -r collation_pattern="^collation-server[[:space:]]+=[[:space:]]+([[:alpha:][:digit:]_]+)$"
-    local -r new_collation="collation-server = ${MARIADB_COLLATION}"
+local -r collation_pattern="^collation-server[[:space:]]+=[[:space:]]+([[:alpha:][:digit:]_]+)$"
+local -r new_collation="collation-server = ${MARIADB_COLLATION}"
 
-    echo ">>>     Set default MariaDB server character set and encoding..."
-    sed -E -i "s/${charset_pattern}/${new_charset}/" "${MARIADB_SERVER_MAIN_CONF}"
-    sed -E -i "s/${collation_pattern}/${new_collation}/" "${MARIADB_SERVER_MAIN_CONF}"
+echo ">>>     Set default MariaDB server character set and encoding..."
+sed -E -i "s/${charset_pattern}/${new_charset}/" "${MARIADB_SERVER_MAIN_CONF}"
+sed -E -i "s/${collation_pattern}/${new_collation}/" "${MARIADB_SERVER_MAIN_CONF}"
 }
 
 
 _start_mariadb_service () {
-    echo ">>>     Start MariaDB server"
-    # Enable service autostart at system start, via systemd
-    systemctl enable "${MARIADB_SERVICE}"
-    # Start service via systemd
-    systemctl start "${MARIADB_SERVICE}"
+echo ">>>     Start MariaDB server"
+# Enable service autostart at system start, via systemd
+systemctl enable "${MARIADB_SERVICE}"
+# Start service via systemd
+systemctl start "${MARIADB_SERVICE}"
 }
 
 
 _create_database () {
-    echo ">>>     Create '${DB_NAME}' database (if not exists)..."
-    "${MARIADB_BIN}" -e "${DB_CREATION_SQL}"
-    echo ">>>     Create '${DB_USERNAME}' database user (if not exists)..."
-    "${MARIADB_BIN}" -e "${DB_USER_CREATION_SQL}"
-    "${MARIADB_BIN}" -e "${GRANT_DB_USER_SQL}"
+echo ">>>     Create '${DB_NAME}' database (if not exists)..."
+"${MARIADB_BIN}" -e "${DB_CREATION_SQL}"
+echo ">>>     Create '${DB_USERNAME}' database user (if not exists)..."
+"${MARIADB_BIN}" -e "${DB_USER_CREATION_SQL}"
+"${MARIADB_BIN}" -e "${GRANT_DB_USER_SQL}"
 }
 
 
 # Main  ----------------------------------------------------------------------
 
 mariadb_main () {
-    echo ">>> Install MariaDB server and client..."
-    _install_mariadb_packages
-    _set_mariadb_encodings
-    _start_mariadb_service
-    _create_database
+echo ">>> Install MariaDB server and client..."
+_install_mariadb_packages
+_set_mariadb_encodings
+_start_mariadb_service
+_create_database
 }
 

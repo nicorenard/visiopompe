@@ -11,22 +11,22 @@ declare -r SETUPTOOLS_PACKAGES="python3-setuptools python3-pip python3-wheel pyt
 # Functions  -----------------------------------------------------------------
 
 _install_python3 () {
-    echo ">>> Install 'python3' packages..."
+echo ">>> Install 'python3' packages..."
 
-    local pkg;
+local pkg;
 
-    for pkg in ${PYTHON_PACKAGES}; do
-        apt install -y "${pkg}"
-    done
-    for pkg in ${SETUPTOOLS_PACKAGES}; do
-        apt install -y "${pkg}"
-    done
+for pkg in ${PYTHON_PACKAGES}; do
+apt install -y "${pkg}"
+done
+for pkg in ${SETUPTOOLS_PACKAGES}; do
+apt install -y "${pkg}"
+done
 }
 
 
 # Main  ----------------------------------------------------------------------
 
 python3_main () {
-    _install_python3
+_install_python3
 }
 

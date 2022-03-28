@@ -11,15 +11,15 @@ declare -r VIM_PACKAGES="vim vim-doc"
 # Functions  -----------------------------------------------------------------
 
 _install_utils_packages () {
-    echo ">>> Install some common system utilities packages..."
-    apt install -y ${APTITUDE_PACKAGES}
-    apt install -y ${VIM_PACKAGES}
+echo ">>> Install some common system utilities packages..."
+apt install -y ${APTITUDE_PACKAGES}
+apt install -y ${VIM_PACKAGES}
 }
 
 
 # Main  ----------------------------------------------------------------------
 
 utils_main () {
-    _install_utils_packages
+_install_utils_packages
 }
 
