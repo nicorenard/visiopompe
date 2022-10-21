@@ -75,7 +75,7 @@
         </div>
         <div class="w3-col m6 s6 ">
             <div class="w3-card-2 w3-center ">
-                <header class="w3-container w3-amber">
+                <header class="w3-container w3-amber ">
                     <h4>Formulaire d'ajout de technologie de pompes</h4>
                 </header>
                 <form method="POST" enctype="multipart/form-data">
@@ -87,11 +87,11 @@
                     <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
                     <br>
                 </form>
-                <div class="w3-container w3-amber">
+                <div class="w3-container w3-amber w3-margin-top">
                     <h4>Technologie de pompes enregistrées</h4>
                 </div>
                 <div class="w3-container">
-                    <table class="w3-table w3-centered w3-mobile">
+                    <table class="w3-table w3-centered w3-mobile ">
                     <tr>
                          {% for fichepompe in technos %}
                         <td><p>{{fichepompe.nom}}</p> </td>
