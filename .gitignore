@@ -2,5 +2,7 @@
 /src/media/upload/
 /src/db.sqlite3
 /src/.vagrant
-
+Vagrantfile
+TODO.txt
+visiopompe2.rar
 .env
