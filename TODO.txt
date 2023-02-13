@@ -1,5 +1,3 @@
-*V1.0
-- installer Vagrant pour connecter sur BDD mariadB
 *v1.1
 - dans le filtre : ajouter le filtre par batiment avec un nom correcte.
 - creation de compte user ou groupe pour modifier et supprimer.

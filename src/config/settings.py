@@ -29,7 +29,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.getenv('DJANGO_DEBUG'))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
     #os.getenv("ALLOWED_HOSTS").split(' ')
 
 
@@ -88,8 +88,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
         #'ENGINE': 'django.db.backends.mysql',
         #'NAME': 'visiopompe',
-        #'USER': 'visiopompe',
-        #'PASSWORD': 'visiopompe',
+        #'USER': 'admin',
+        #'PASSWORD': 'ItsH@rdtob3th3adm1n!',
         #'HOST': 'localhost',
         #'PORT': '',
     }

@@ -15,11 +15,11 @@
             </tr>
             <tr class="w3-green w3-text-black">
                 <th><p>Fabriquant</p></th>
+                <th><p>Série</p></th>
                 <th><p>Nom</p></th>
-                <th><p>Modèle</p></th>
                 <th><p>Phasage</p></th>
                 <th><p>Puissance</p></th>
-                <th><p>Technologie  du vide</p></th>
+                <th><p>Technologie du vide</p></th>
                 <th><p>Vide fabriquant</p></th>
                 <th><p>Manuel</p></th>
                 <th><p></p></th>
@@ -29,8 +29,8 @@
             <tr>
                  {% for fichepompe in m_pompe %}
                 <td><p>{{fichepompe.fabriquant.nom}}</p> </td>
-                <td><p>{{fichepompe.nom}}</p></td>
                 <td><p>{{fichepompe.modele}}</p></td>
+                <td><p>{{fichepompe.nom}}</p></td>
                 <td><p>{{fichepompe.phasage}}</p></td>
                 <td><p>{{fichepompe.puissance}}</p></td>
                 <td><p>{{fichepompe.technologie.nom}}

@@ -84,8 +84,8 @@ class TechnologiePompe(models.Model):
 
 class ModelePompe(models.Model):
     image = models.ImageField(upload_to='pompe_img/', max_length=254, blank=True, null=True)
-    nom = models.CharField(default='', max_length=50, verbose_name="Modèle de la pompe")
-    modele = models.CharField(default='', max_length=50, verbose_name="Famille du modèle de la pompe")
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom du modèle")
+    modele = models.CharField(default='', max_length=50, verbose_name="Série ou famille ")
     PHASAGE = [
         ('Monophasé', 'Monophasé'),
         ('Triphasé', 'Triphasé')

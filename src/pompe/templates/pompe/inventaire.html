@@ -50,7 +50,6 @@
                             <table>{{form.as_p}}</table>
                     <button class="w3-button w3-green" type="submit" name="inventaire_form">Enregistrer</button>
                     <button class="w3-button w3-red"><a href="{% url 'pompe:inventaire' %}">Annuler</a></button>
-
                     </form>
                 </div>
             </div>
@@ -61,7 +60,7 @@
                     <h4>Tutelles</h4>
                 </header>
                 <div class="w3-container ">
-                    <table class="w3-table ">
+                    <table class="w3-table w3-padding-small">
                         {% for inventaire in tutelles %}
                         <tr>
                             <td class="w3-padding-16 w3-right">{{inventaire.nom}}</td>
@@ -70,9 +69,7 @@
                             <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:50%;" /></button>
                             </form>
                         </td>
-
                              {% endfor %}
-
                         </tr>
                     </table>
                 </div>
