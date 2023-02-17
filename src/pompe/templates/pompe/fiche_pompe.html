@@ -34,11 +34,11 @@
                 <td><p>{{fichepompe.phasage}}</p></td>
                 <td><p>{{fichepompe.puissance}}</p></td>
                 <td><p>{{fichepompe.technologie.nom}}
-                    {% if fichepompe.technologie.cara_1 %}
-                    - {{fichepompe.technologie.cara_1}}
+                    {% if fichepompe.technologie.cara1 %}
+                    - {{fichepompe.technologie.cara1}}
                     {% endif %}
-                    {% if fichepompe.technologie.cara_2 %}
-                           - {{fichepompe.technologie.cara_2}}{% endif %}</p></td>
+                    {% if fichepompe.technologie.cara2 %}
+                           - {{fichepompe.technologie.cara2}}{% endif %}</p></td>
                 <td><p>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</p></td>
                 <td>{% if fichepompe.documentation.manuel %}
                     <a href="/media/{{fichepompe.documentation.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="manuel" class="w3-hover"/></a>
@@ -95,9 +95,9 @@
                     <tr>
                          {% for fichepompe in technos %}
                         <td><p>{{fichepompe.nom}}</p> </td>
-                        <td><p>{{fichepompe.cara_1}}</p></td>
-                        <td><p>{% if fichepompe.cara_2 %}
-                            {{fichepompe.cara_2}}
+                        <td><p>{{fichepompe.cara1}}</p></td>
+                        <td><p>{% if fichepompe.cara2 %}
+                            {{fichepompe.cara2}}
                             {% endif %}
                         </p></td>
                         <td><p>||</p></td>

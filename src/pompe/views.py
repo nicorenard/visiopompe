@@ -28,9 +28,9 @@ def dashboard(request):
 
     ############################################################
     ##### special to UMR 6521. Base on technologie of pump. ####
-    p_palette = dash_pompes.filter(pompe__technologie__nom__icontains='palette').count()
-    p_membrane = dash_pompes.filter(pompe__technologie__nom__icontains='membrane').count()
-    p_seche = dash_pompes.filter(pompe__technologie__nom__icontains='seche').count()
+    p_palette = dash_pompes.filter(pompe__technologie__cara2__icontains='palette').count()
+    p_membrane = dash_pompes.filter(pompe__technologie__cara2__icontains='membrane').count()
+    p_seche = dash_pompes.filter(pompe__technologie__cara2__icontains='seche').count()
 
     ##### special to UMR 6521 by stair. #####
     p_etage_1 = dash_pompes.filter(etage__nom__icontains='1').count()
