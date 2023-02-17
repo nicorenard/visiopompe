@@ -97,7 +97,7 @@ class ModelePompe(models.Model):
         ('60 Hertz', '60 Hertz')
     ]
     puissance = models.CharField(default='50', choices=PUISSANCE, max_length=20, verbose_name="Puissance du moteur")
-    technologie = models.ForeignKey(TechnologiePompe, null=False, blank=False, on_delete=models.CASCADE)
+    technologie = models.ForeignKey(TechnologiePompe, null=False, blank=False, on_delete=models.DO_NOTHING)
     vide_theo = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
     documentation = models.ForeignKey(Doc, null=True, blank=True, on_delete=models.SET_NULL)
