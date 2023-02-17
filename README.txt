@@ -165,11 +165,16 @@ x = valeur en base de données en référence à l'id de la pièce en BDD .
 Encart par équipes :
 >>>> variable = dash_pompes.filter(equipe='x').count()
 x = valeur en base de données en référence à l'id de l'équipe' en BDD .
+(ex : equipe__sigle__icontains='CEMCA')
 Encart par fabriquants :
->>>> var = dash_pompes.filter(pompe__fabriquant__='x').count()
+>>>> var = dash_pompes.filter(pompe__fabriquant='x').count()
 Encart par pompes et technologie associée :
 >>>> var = dash_pompes.filter(pompe__technologie='x').count()
 x = valeur en base de données en référence à la technologie créée.
+
+Pour une valeur autre via le nom ou le sigle pour l'équipe 
+-> utiliser le parametre "icontains" qui case-insensitive. 
+Plus d'infos voir la django doc.
 
 Lorsque vous avez créé une variable et un filtre, il faut l'ajouter à la variable "context" pour la déclarer
 et l'utiliser dans le template dashboard.html.

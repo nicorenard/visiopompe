@@ -74,9 +74,9 @@ class Doc(models.Model):
 
 class TechnologiePompe(models.Model):
     nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie")
-    cara_1 = models.CharField(default='', max_length=50, null=False, blank=True,
+    cara1 = models.CharField(default='', max_length=50, null=False, blank=True,
                               verbose_name="Détail de la technologie")
-    cara_2 = models.CharField(default='', max_length=50, null=True, blank=True, verbose_name="Information")
+    cara2 = models.CharField(default='', max_length=50, null=True, blank=True, verbose_name="Information")
 
     def __str__(self):
         return self.nom
