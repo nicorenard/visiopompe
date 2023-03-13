@@ -106,7 +106,7 @@
                 <!----section info supplementaire--->
             <div class="w3-container w3-cell-row w3-leftbar ">
                     <h5><img src="{% static 'pompe/img/menu_pompe/icon_information.png' %}" style="width: 30px;" alt="icone point information"/> <u> Historique :</u></h5>
-                <p><i>Dernier enregistrement :</i>  {{pompe.historique}} <a href="{% url 'pompe:historic' pk=pompe.pk %}" class="w3-hover-opacity w3-right" >
+                <p><i>Dernier enregistrement :</i>  {{pompe.historique|linebreaksbr}} <a href="{% url 'pompe:historic' pk=pompe.pk %}" class="w3-hover-opacity w3-right" >
                     <img src="{% static 'pompe/img/option/icons_history.png' %}" style="width: 70%;" alt="icon historique"/></a></p>
 
             </div>
