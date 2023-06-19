@@ -1,5 +1,5 @@
 *v1.1
-- dans le filtre : ajouter le filtre par batiment avec un nom correcte.
+- dans le filtre : ajouter le filtre par batiment avec un nom correct.
 - creation de compte user ou groupe pour modifier et supprimer.
 
 *V1.2 :

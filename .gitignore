@@ -6,3 +6,4 @@ Vagrantfile
 TODO.txt
 visiopompe2.rar
 .env
+/vagrant/

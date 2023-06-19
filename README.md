@@ -16,32 +16,33 @@ lié au fonctionnement de ces appareillages.
 - Configurez le serveur pour recevoir python 3.9.
 - Installez avant de commencer un environnement virtuel:
 
->>>>> sudo apt install python3-venv
->>>>> # Créez un nouveau 'virtualenv' dédié au projet visiopompe dans
->>>>> # eg. /opt/local/virtualenvs/visiopompe
->>>>> sudo mkdir -p /opt/local/virtualenvs/
->>>>> python3 -m venv /opt/local/virtualenvs/visiopompe
+> sudo apt install python3-venv
+- Créez un nouveau 'virtualenv' dédié au projet visiopompe dans
+- eg. /opt/local/virtualenvs/visiopompe
+> sudo mkdir -p /opt/local/virtualenvs/
+> python3 -m venv /opt/local/virtualenvs/visiopompe
 
-- Installez les dépendances Python tierces, décrites dans le fichier "requirements.txt"
+- Installez les dépendances Python tierces, décrites dans le fichier "requierements-prod.txt"
   du projet, dans ce nouveau virtualenv, à l'aide du logiciel 'pip' fourni dans ce virtualenv:
 
->>>>> /opt/local/virtualenvs/visiopompe/bin/pip install -r path/to/visiopompe/requirements.txt
->>>>> # NB: Si vous développez sous Windows, vous pourriez également avoir besoin
->>>>> # des dépendances additionnelles listées dans "requirements-win32.txt"!
+<code> /opt/local/virtualenvs/visiopompe/bin/pip install -r path/to/visiopompe/requirements.txt</code>
+# des dépendances additionnelles listées dans "requirements-dev.txt" si vous voulez participer au projet.
 
 - Placez les sources Python du projet 'visiopompe' dans un répertoire dédié,
-  par ex. /opt/local/visiopompe/0.1:
+  par ex. /opt/local/visiopompe/v1.0:
 
->>>>> sudo mkdir -p /opt/local/visiopompe/0.1
->>>>> sudo cp -R path/to/visiopompe/src/* /opt/local/visiopompe/0.1/
+> sudo mkdir -p /opt/local/visiopompe/v1.0
+> sudo cp -R path/to/visiopompe/src/* /opt/local/visiopompe/v1.0/
 
 Vous pouvez maintenant créer un nouveau "projet" 'visiopompe', une nouvelle instance,
 avec ses propres configuration, base de données, fichiers uploadés, etc.!
 
-- Créer un fichier .env et placez le dans le dossier "src" avant de l'uploader sur votre serveur :
->>>>> Structure du fichier.:
+- Créer un fichier .env basé sur le fochier .env-example et placez le dans le dossier racine du projet :
 
-    SECRET_KEY = **Introduisez une clé secrète**
+Structure du fichier:
+>   clef_secrete : https://codinggear.blog/django-generate-secret-key
+> 
+    SECRET_KEY = **Introduisez une clé secrète** 
     DJANGO_DEBUG = False
     ALLOWED_HOSTS = **mettre l'adresse IP**
 
@@ -197,7 +198,7 @@ Pour créer un block de 4 nouveaux encarts, il faut copier ce code à la suite e
 
 La dashboard est un élement modulable. A vous de voir si vous souhaitez ou non l'agrémenter.
 Pour plus d'info sur les couleurs disponible à mettre dans la balise <header> à l'emplacement
- >> <header class="w3-couleur">
+>> <header class="w3-couleur"></header>
  Allez sur ce site : https://www.w3schools.com/w3css/w3css_colors.asp
 
 ## Projet fabriqué avec :
