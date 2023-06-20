@@ -4,43 +4,19 @@ Paquet CONFIG
 "CONFIG" est le paquet qui permet la configuration des différents élements du framework Django.
 
 
-Module ASGI
-***********
-
-.. automodule:: config.asgi
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 Module SETTING
 **************
 
-.. automodule:: src.config.settings
+.. automodule:: config.settings
    :members:
    :inherited-members:
    :show-inheritance:
 
-Module URL
-**********
-
-.. automodule:: src.config.urls
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module WSGI
+Module URLS
 ***********
 
-.. autoclass:: src.config.wsgi
+.. automodule:: config.urls
    :members:
    :undoc-members:
    :show-inheritance:
 
-
-Contenus
-********
-
-.. automodule:: src.config
-   :members:
-   :undoc-members:
-   :show-inheritance:

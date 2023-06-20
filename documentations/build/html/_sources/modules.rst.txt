@@ -4,5 +4,6 @@ Documentation Technique
 .. toctree::
    :maxdepth: 4
 
-   src
+   src.pompe
+   src.config
 

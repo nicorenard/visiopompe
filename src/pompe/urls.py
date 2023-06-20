@@ -1,6 +1,7 @@
 """
 Road of url in Visiopompe project
 """
+
 from django.urls import path
 from . import views
 
@@ -56,6 +57,5 @@ urlpatterns = [
     path('dashboard/etage_delete/<int:pk>/', views.delete_etage, name="etage_delete"),
     path('dashboard/piece_edit/<int:pk>/', views.update_piece, name="piece_edit"),
     path('dashboard/piece_delete/<int:pk>/', views.delete_piece, name="piece_delete"),
-
 
 ]
