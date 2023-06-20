@@ -1,3 +1,6 @@
+"""
+Filter function for pump search
+"""
 import django_filters
 from .models import *
 

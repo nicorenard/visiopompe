@@ -1,3 +1,7 @@
+"""
+Database classes and functions
+"""
+
 from datetime import date, datetime
 from django.db import models
 from django.utils import timezone

@@ -1,3 +1,7 @@
+"""
+View of Visiopompe project centralized in views.py
+"""
+
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from .filters import PompeStockFilter
@@ -16,7 +20,18 @@ def version(request):
 # dashboard
 
 def dashboard(request):
+    """
+    Fonction qui permet l'affichage de compteurs d'états généraux des pompes, de leurs types et leurs natures.
+    Une option a été ajoutée pour un affichage spécifique en fonction des étages de l'UMR 6521.
+
+    Args:
+        request: la requête d'affichage des pompes
+
+    Returns:
+          dashboard.html : la page de la dashboard avec les différents objets filtrés pour l'affichage des compteurs
+    """
     dash_pompes = StockPompe.objects.all()
+
     # general setting for dashboard
 
     p_all = dash_pompes.count()
@@ -26,23 +41,22 @@ def dashboard(request):
     p_rep = dash_pompes.filter(statut='R').count()
     p_atex = dash_pompes.filter(atex='1').count()
 
-    ############################################################
-    ##### special to UMR 6521. Base on technologie of pump. ####
+    #: special to UMR 6521. Base on technologie of pump. #
+
     p_palette = dash_pompes.filter(pompe__technologie__nom__icontains='palette').count()
     p_membrane = dash_pompes.filter(pompe__technologie__nom__icontains='membrane').count()
     p_seche = dash_pompes.filter(pompe__technologie__cara2__icontains='seche').count()
 
-    ##### special to UMR 6521 by stair. #####
+    # special to UMR 6521 by stair. #
     p_etage_1 = dash_pompes.filter(etage__nom__icontains='1').count()
     p_etage_2 = dash_pompes.filter(etage__nom__icontains='2').count()
     p_etage_3 = dash_pompes.filter(etage__nom__icontains='3').count()
 
-    #### special to UMR6521 by teams. ####
+    # special to UMR6521 by teams. #
     p_ciel = dash_pompes.filter(equipe__sigle__icontains='ciel').count()
     p_spectre = dash_pompes.filter(equipe__sigle__icontains='spectre').count()
     p_cosm = dash_pompes.filter(equipe__sigle__icontains='cosm').count()
     p_umr = dash_pompes.filter(equipe__sigle__icontains='umr').count()
-
 
     context = {'p_all': p_all,'p_valide': p_valide, 'p_stock': p_stock,'p_hs': p_hs,'p_rep': p_rep,
                'p_atex': p_atex,
@@ -52,8 +66,16 @@ def dashboard(request):
                }
     return render(request, 'pompe/dashboard.html', context)
 
-## equipe
+
 def equipe(request):
+    """
+    Fonction d'affichage des équipes et du formulaire de soumission de création d'un nouvelle équipe
+    Args:
+        request: l'élément soumis pour l'execution du formulaire de création d'une équipe
+
+    Returns:
+        equipe/html : la page d'affichage des équipes enregistrées et le formulaire vide.
+    """
     equipes = ModelEquipe.objects.all().order_by('sigle')
 
     if request.method == "POST":
@@ -65,7 +87,20 @@ def equipe(request):
         form = Equipeform()
     return render(request, 'pompe/equipe.html', {'equipes': equipes, 'form': form})
 
+
 def update_equipe(request, pk):
+    """
+    Fonction de mise à jour d'un équipe existante.
+
+    Args:
+        request : l'objet soumis en requête post
+        pk : l'identifiant de l'équipe en base de données
+
+    Returns:
+          equipe.html : la page équipe avec les informations mise à jour sinon la page du formulaire de
+          soumission avec les erreurs.
+
+    """
     equipes = get_object_or_404(ModelEquipe, pk=pk)
     if request.method == "POST":
         form = ModifEquipeForm(request.POST, instance=equipes)
@@ -76,7 +111,19 @@ def update_equipe(request, pk):
         form = ModifEquipeForm(instance=equipes)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_equipe(request, pk):
+    """
+    Fonction de suppression d'une équipe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de l'équipe à supprimer.
+
+    Returns:
+        equipe.html : la page équipe mise à jour.
+
+    """
     queryset = get_object_or_404(ModelEquipe, pk=pk)
     if request.method == "POST":
         queryset.delete()
