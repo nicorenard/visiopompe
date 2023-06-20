@@ -58,7 +58,7 @@ Il y a également d'autres informations disponible.
     3. Bouton carnet de recherche avec l'icône *loupe et feuille* pou voir son historique complet
 
 
-2. Créer Stocks :
+2. Créer Stock :
 -----------------
 
 3. Inventaires Stocks :
@@ -70,19 +70,88 @@ Menu Pièces détachées
 1. Consulter :
 --------------
 
-2. Créer Stocks :
+2. Créer Stock :
 -----------------
 
 Menu Kits maintenance
 *********************
 
+1. Consulter :
+--------------
+
+2. Créer Stock :
+-----------------
+
 Menu Huiles
 ***********
+
+1. Consulter :
+--------------
+
+2. Créer Stock :
+-----------------
 
 Menu Documentations
 *******************
 
+1. Consulter :
+--------------
+
+2. Créer Manuel :
+-----------------
+
 Menu Administration
 *******************
 
+1. Dashboard :
+--------------
 
+2. Modèles de Pompes :
+----------------------
+
+3. Fabriquants :
+----------------
+
+Dans ce sous-panneau, vous pourrez créer et manager les fabriquants dont les stocks de pompes sont relatés.
+
+> Il faut au moins un fabriquant pour créer un **Modèle de pompe**.
+
+L' information suivante est obligatoire pour la création d'un fabriquant : 
+
++ Nom 
+
+
+4. Equipes :
+------------
+
+Dans ce sous-panneau, vous pourrez créer et manager les équipes dont les stocks devront appartenir.
+
+> Il faut au moins une équipe pour créer un **stock de pompe**.
+
+Les informations suivantes sont obligatoires pour la création d'une équipe : 
+
++ Nom complet
++ Abbreviation
++ Localisation
+
+
+5.Lieux : 
+---------
+
+Dans ce sous-panneau, vous pourrez effectuer une gestion des lieux pour désigner l'emplacement de chaque stocks et accessoires au sein de l'application.
+
+Les différentes possibilitées sont les suivantes : 
+
++ Consultation 
++ Création via un formulaire dédiés présent sur le panneau de gestion.
++ Edition via l'icône *feuille et stylo*
++ Suppression via l'icône *poubelle*
+
+Cela concerne les niveaux suivant de lieux : 
+
+> Sites, 
+    |_____Bâtiments, 
+            |_______Etages, 
+                        |____Pièces.
+
+Ces lieux sont obligatoires à établir avant de créer tous **stocks quelconques** comme **d'équipes** !

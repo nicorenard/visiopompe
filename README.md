@@ -13,7 +13,7 @@ lié au fonctionnement de ces appareillages.
 ### Pré-requis
 
 - Installez un serveur linux avec un accès internet (prod testée : debian 11).
-- Configurez le serveur pour recevoir python 3.9.
+- Configurez le serveur pour recevoir python 3.10.
 - Installez avant de commencer un environnement virtuel:
 
 > sudo apt install python3-venv
@@ -25,7 +25,7 @@ lié au fonctionnement de ces appareillages.
 - Installez les dépendances Python tierces, décrites dans le fichier "requierements-prod.txt"
   du projet, dans ce nouveau virtualenv, à l'aide du logiciel 'pip' fourni dans ce virtualenv:
 
-<code> /opt/local/virtualenvs/visiopompe/bin/pip install -r path/to/visiopompe/requirements.txt</code>
+<code> /opt/local/virtualenvs/visiopompe/bin/pip install -r path/to/visiopompe/requirements-prod.txt</code>
 # des dépendances additionnelles listées dans "requirements-dev.txt" si vous voulez participer au projet.
 
 - Placez les sources Python du projet 'visiopompe' dans un répertoire dédié,
