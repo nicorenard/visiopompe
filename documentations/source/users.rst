@@ -26,7 +26,7 @@ Il permet aussi d'accéder à la gestion des numéros d'inventaires.
 1. Consulter stocks :
 ---------------------
 
-Les informationx en consultation sont les suivantes :
+Les informations en consultation sont les suivantes :
 
 + Nom de la pompe
 + Modèle de la pompe
@@ -57,7 +57,7 @@ Il y a également d'autres informations disponible.
 + 3 boutons sont disponibles également:
     1. Bouton édition avec l'icone du *feuille et stylo* pour éditer le stock
     2. Bouton suppression avec l'icone de la *poubelle* pour supprimer le stock
-    3. Bouton carnet de recherche avec l'icône *loupe et feuille* pou voir son historique complet
+    3. Bouton carnet de recherche avec l'icône *loupe et feuille* pour voir l'historique complet du stock
 
 
 2. Créer Stock :
@@ -74,7 +74,7 @@ Voici les informations obligatoires pour en créer :
 
 Par validation, la mise en service, la puissance, la technologie, la date de la prochaine vidange seront enregistrées et le statut "en activité" sera inclu.
 
-> Il est a noter que **sans** *numéro d'inventaire* , *d'équipe* ou d'autres informations comme *l'historique*, amoindri le suivi et la gestion du stock créé dans le temps.
+-- Il est à noter que **sans** *numéro d'inventaire* , *d'équipe* ou d'autres informations comme *l'historique*, amoindri le suivi et la gestion du stock créé dans le temps.
 
 
 
