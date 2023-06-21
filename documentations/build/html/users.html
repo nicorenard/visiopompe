@@ -50,19 +50,38 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#menu-pompes">Menu Pompes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#consulter-stocks">1. Consulter stocks :</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creer-stocks">2. Créer Stocks :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creer-stock">2. Créer Stock :</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inventaires-stocks">3. Inventaires Stocks :</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#menu-pieces-detachees">Menu Pièces détachées</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#consulter">1. Consulter :</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">2. Créer Stocks :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2. Créer Stock :</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#menu-kits-maintenance">Menu Kits maintenance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#menu-huiles">Menu Huiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#menu-documentations">Menu Documentations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#menu-administration">Menu Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#menu-kits-maintenance">Menu Kits maintenance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1. Consulter :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2. Créer Stock :</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#menu-huiles">Menu Huiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1. Consulter :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2. Créer Stock :</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#menu-documentations">Menu Documentations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1. Consulter :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creer-manuel">2. Créer Manuel :</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#menu-administration">Menu Administration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard">1. Dashboard :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modeles-de-pompes">2. Modèles de Pompes :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fabriquants">3. Fabriquants :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#equipes">4. Equipes :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lieux">5.Lieux :</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Documentation Technique</a></li>
@@ -94,6 +113,7 @@
              
   <section id="documentation-utilisateur">
 <h1>Documentation Utilisateur<a class="headerlink" href="#documentation-utilisateur" title="Lien permanent vers cette rubrique"></a></h1>
+<p>Version : 1.0</p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers cette rubrique"></a></h2>
 <p>l’application <strong>Visiopompe</strong> propose 6 panneaux de gestion pour gérer votre parcs de pompes à vide.</p>
@@ -109,8 +129,8 @@
 </section>
 <section id="menu-pompes">
 <h2>Menu Pompes<a class="headerlink" href="#menu-pompes" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Le menu <strong>pompes</strong> permet de consulter les stocks de pompes répertoriés au sein de l’application, d’en créer ou
-d’accéder à la gestion des inventaires.</p>
+<p>Le menu <strong>pompes</strong> permet de consulter les stocks de pompes et d’en effectuer la gestion (création, édition, suppression).
+Il permet aussi d’accéder à la gestion des numéros d’inventaires.</p>
 <section id="consulter-stocks">
 <h3>1. Consulter stocks :<a class="headerlink" href="#consulter-stocks" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Les informationx en consultation sont les suivantes :</p>
@@ -166,33 +186,193 @@ d’accéder à la gestion des inventaires.</p>
 </li>
 </ul>
 </section>
-<section id="creer-stocks">
-<h3>2. Créer Stocks :<a class="headerlink" href="#creer-stocks" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="creer-stock">
+<h3>2. Créer Stock :<a class="headerlink" href="#creer-stock" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce formulaire permet la création d’un stock de pompe.</p>
+<p>Voici les informations obligatoires pour en créer :</p>
+<ul class="simple">
+<li><p>Modèle de pompe</p></li>
+<li><p>Etage</p></li>
+<li><p>Pièce</p></li>
+<li><p>Numéro de série</p></li>
+</ul>
+<p>Par validation, la mise en service, la puissance, la technologie, la date de la prochaine vidange seront enregistrées et le statut « en activité » sera inclu.</p>
+<p>&gt; Il est a noter que <strong>sans</strong> <em>numéro d’inventaire</em> , <em>d’équipe</em> ou d’autres informations comme <em>l’historique</em>, amoindri le suivi et la gestion du stock créé dans le temps.</p>
 </section>
 <section id="inventaires-stocks">
 <h3>3. Inventaires Stocks :<a class="headerlink" href="#inventaires-stocks" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce sous panneau permet la gestion des numéros d’inventaires pour les stocks de pompes.</p>
+<p>Deux formulaires sont présents :</p>
+<ul class="simple">
+<li><p>L’ajout d’une tutelle budgétaire</p></li>
+<li><p>L’ajout d’un numéro d’inventoriat</p></li>
+</ul>
+<p>&gt; L’ajout d’une tutelle est obligatoire avant de pouvoir créer un numéro.</p>
+<p>Il y a également un tableau de consultation des numéros créés triés par tutelle budgétaire.</p>
+<p>L’édition et la suppression des différents numéros sont possibles.</p>
+<p>Pour effectuer ces actions, différentes icônes sont présentes :</p>
+<ul class="simple">
+<li><p>Icône <em>page avec crayon</em> : permet l’édition complète du numéro d’inventaire.</p></li>
+<li><p>Icône <em>poubelle</em> : permet la suppression d’un numéro.</p></li>
+</ul>
 </section>
 </section>
 <section id="menu-pieces-detachees">
 <h2>Menu Pièces détachées<a class="headerlink" href="#menu-pieces-detachees" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Le panneau de gestion des pièces détachées permet d’indiquer des stocks de pièces réutilisables avec d’autres pompes.</p>
 <section id="consulter">
 <h3>1. Consulter :<a class="headerlink" href="#consulter" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce sous-panneau permet la consultation, l’édition et la suppression des stocks de pièces détachées.
+L’édition et la suppression des différents stocks sont possibles.</p>
+<p>Pour effectuer ces actions, différentes icônes sont présentes :</p>
+<ul class="simple">
+<li><p>Icône <em>page avec crayon</em> : permet l’édition complète du stock.</p></li>
+<li><p>Icône <em>poubelle</em> : permet la suppression d’un stock.</p></li>
+</ul>
 </section>
 <section id="id1">
-<h3>2. Créer Stocks :<a class="headerlink" href="#id1" title="Lien permanent vers cette rubrique"></a></h3>
+<h3>2. Créer Stock :<a class="headerlink" href="#id1" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce formulaire de création permet d’ajouter une nouvelle pièce détachées.</p>
+<p>&gt; Seul le champ de saisie <strong>informations complémentaires</strong> n’est pas obligatoire.</p>
 </section>
 </section>
 <section id="menu-kits-maintenance">
 <h2>Menu Kits maintenance<a class="headerlink" href="#menu-kits-maintenance" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Les kits de réparation et de maintenance des pompes sont disposés dans ce panneau de gestion.</p>
+<section id="id2">
+<h3>1. Consulter :<a class="headerlink" href="#id2" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce sous-panneau permet de consulter les stocks disponibles de kit de réparations pour les pompes.
+Des informations sur le kit et à quel type de famille de pompe il est utilisable sont présentes.
+L’édition et la suppression des différents kits sont possibles.</p>
+<p>Pour effectuer ces actions, différentes icônes sont présentes :</p>
+<ul class="simple">
+<li><p>Icône <em>page avec crayon</em> : permet l’édition complète du kit.</p></li>
+<li><p>Icône <em>poubelle</em> : permet la suppression d’un kit.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>2. Créer Stock :<a class="headerlink" href="#id3" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce formulaire de création permet d’ajouter un nouveau kit.</p>
+<p>Voici les informations obligatoires pour un nouvel ajout :</p>
+<ul class="simple">
+<li><p>Nom</p></li>
+<li><p>Un fabriquant</p></li>
+</ul>
+<p>&gt; Il est possible d’ajouter une référence <em>vide</em> d’un kit.</p>
+</section>
 </section>
 <section id="menu-huiles">
 <h2>Menu Huiles<a class="headerlink" href="#menu-huiles" title="Lien permanent vers cette rubrique"></a></h2>
+<p>La gestion des huiles pour pompe se font par ce panneau. Il y a également la possibilité d’éditer un stocks ou de le supprimer.</p>
+<section id="id4">
+<h3>1. Consulter :<a class="headerlink" href="#id4" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce sous-panneau permet de consulter les stocks disponibles d’huiles et leur emplacement au niveau des pièces.
+Des informations complémentaires sur la mise à jour du stocks ou le cas d’utilisation de l’huile peuvent y figurer.
+L’édition et la suppression des différents stocks sont possibles.</p>
+<p>Pour effectuer ces actions, différentes icônes sont présentes :</p>
+<ul class="simple">
+<li><p>Icône <em>page avec crayon</em> : permet l’édition complète du stock d’huile.</p></li>
+<li><p>Icône <em>poubelle</em> : permet la suppression d’un stock.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>2. Créer Stock :<a class="headerlink" href="#id5" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce formulaire de création permet d’ajouter un nouveau stock d’huile.</p>
+<p>Voici les informations obligatoires pour un nouvel ajout :</p>
+<ul class="simple">
+<li><p>Nom</p></li>
+<li><p>Un fabriquant</p></li>
+<li><p>Une pièce</p></li>
+</ul>
+<p>&gt; Il est possible d’ajouter une référence <em>vide</em> d’un stock d’huile.</p>
+</section>
 </section>
 <section id="menu-documentations">
 <h2>Menu Documentations<a class="headerlink" href="#menu-documentations" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Les documentations technique des accessoires et des pompes figurent dans ce panneau de gestion.</p>
+<section id="id6">
+<h3>1. Consulter :<a class="headerlink" href="#id6" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce sous-panneau permet la consultation, le téléchargement, l’édition et la suppression des différentes documentations techniques de fabriquant.
+Pour effectuer ces actions, différentes icônes sont présentes :</p>
+<ul class="simple">
+<li><p>Icône <em>flèche vers le bas dans un carré</em> : Permet de télécharger une copie de la documentation en PDF sur votre pc.</p></li>
+<li><p>Icône <em>page avec crayon</em> : permet l’édition complète de la documentation.</p></li>
+<li><p>Icône <em>poubelle</em> : permet la suppression d’une documentation.</p></li>
+</ul>
+</section>
+<section id="creer-manuel">
+<h3>2. Créer Manuel :<a class="headerlink" href="#creer-manuel" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ce formulaire permet de créer une nouvelle documentation technique.</p>
+<p>&gt; Le champs de saisie « Version de la doc technique » est le seul élément non obligatoire.</p>
+</section>
 </section>
 <section id="menu-administration">
 <h2>Menu Administration<a class="headerlink" href="#menu-administration" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="dashboard">
+<h3>1. Dashboard :<a class="headerlink" href="#dashboard" title="Lien permanent vers cette rubrique"></a></h3>
+<p>La dashboard est une récapitulatif généralisées sous forme de compteurs, des pompes en stocks référencées avec leur état actuel, leur localisation générale, leur rattachement aux équipes et également le type présent.</p>
+<p>&gt; D’autres possibilités de compteurs sont envisageable, ce panneau est modulable mais demande l’intervention d’un développeur.</p>
+</section>
+<section id="modeles-de-pompes">
+<h3>2. Modèles de Pompes :<a class="headerlink" href="#modeles-de-pompes" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Dans ce sous-panneau, vous pouvez créer, éditer et consulter les modèles de pompes suivant les fabriquants. Un modèle de pompe permet de définir des stocks de pompe qui y sont relatifs.</p>
+<p>Egalement, vous pouvez effectuer la gestion des technologies du vide inhérente à ces modèles de pompes.</p>
+<p>&gt; Pour créer un modèle de pompe, il faut obligatoirement un <strong>technologie</strong> associée !</p>
+<p>La technologie de pompe ne demande que l’information suivante obligatoire :</p>
+<ul class="simple">
+<li><p>type de technologie</p></li>
+</ul>
+<p>Pour un modèle de pompe, voici les informations obligatoires :</p>
+<ul class="simple">
+<li><p>Nom du modèle : Cela peut être un code parfois comme <em>1005 SD</em> pour la série <em>Pascal</em> de chez <em>Pfeiffer Vacuum</em></p></li>
+<li><p>Série ou famille de pompe</p></li>
+<li><p>Une technologie de vide</p></li>
+<li><p>Un fabriquant</p></li>
+</ul>
+</section>
+<section id="fabriquants">
+<h3>3. Fabriquants :<a class="headerlink" href="#fabriquants" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Dans ce sous-panneau, vous pourrez créer et manager les fabriquants dont les stocks de pompes et accessoires sont relatés.</p>
+<p>&gt; Il faut au moins un fabriquant pour créer un <strong>Modèle de pompe</strong>.</p>
+<p>L” information suivante est obligatoire pour la création d’un fabriquant :</p>
+<ul class="simple">
+<li><p>Nom</p></li>
+</ul>
+</section>
+<section id="equipes">
+<h3>4. Equipes :<a class="headerlink" href="#equipes" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Dans ce sous-panneau, vous pourrez créer et manager les équipes dont les stocks devront appartenir.</p>
+<p>&gt; Il faut au moins une équipe pour créer un <strong>stock de pompe</strong>.</p>
+<p>Les informations suivantes sont obligatoires pour la création d’une équipe :</p>
+<ul class="simple">
+<li><p>Nom complet</p></li>
+<li><p>Abbreviation</p></li>
+<li><p>Localisation</p></li>
+</ul>
+</section>
+<section id="lieux">
+<h3>5.Lieux :<a class="headerlink" href="#lieux" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Dans ce sous-panneau, vous pourrez effectuer une gestion des lieux pour désigner l’emplacement de chaque stocks et accessoires au sein de l’application.</p>
+<p>Les différentes possibilitées sont les suivantes :</p>
+<ul class="simple">
+<li><p>Consultation des lieux enregistrés</p></li>
+<li><p>Création d’un lieu via un formulaire dédié présent sur le panneau de gestion.</p></li>
+<li><p>Edition d’un lieu via l’icône <em>feuille et stylo</em></p></li>
+<li><p>Suppression d’un lieu via l’icône <em>poubelle</em></p></li>
+</ul>
+<p>Cela concerne les niveaux suivant de lieux :</p>
+<dl class="simple">
+<dt>&gt; Sites,</dt><dd><dl class="simple">
+<dt><a href="#id7"><span class="problematic" id="id8">|</span></a>_____Bâtiments,</dt><dd><dl class="simple">
+<dt><a href="#id9"><span class="problematic" id="id10">|</span></a>_______Etages,</dt><dd><p><a href="#id11"><span class="problematic" id="id12">|</span></a>____Pièces.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>&gt; Ces lieux sont obligatoires à établir avant de créer tous <strong>stocks quelconques</strong> comme une <strong>équipe</strong> !</p>
+</section>
 </section>
 </section>
 
