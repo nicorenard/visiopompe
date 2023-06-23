@@ -1,8 +1,0 @@
-*v1.1
-- dans le filtre : ajouter le filtre par batiment avec un nom correct.
-- creation de compte user ou groupe pour modifier et supprimer.
-
-*V1.2 :
-- "inventaire" : ajouter un bouton export des numeros d'inventaire.
-- correction page equipe : version mobile et petit ecran.
-- corriger le JS du menu qui s'ouvre pas en mode mobile.
