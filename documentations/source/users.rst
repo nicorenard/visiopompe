@@ -74,7 +74,7 @@ Voici les informations obligatoires pour en créer :
 
 Par validation, la mise en service, la puissance, la technologie, la date de la prochaine vidange seront enregistrées et le statut "en activité" sera inclu.
 
--- Il est à noter que **sans** *numéro d'inventaire* , *d'équipe* ou d'autres informations comme *l'historique*, amoindri le suivi et la gestion du stock créé dans le temps.
+ ``Il est à noter que **sans** *numéro d'inventaire* , *d'équipe* ou d'autres informations comme *l'historique*, amoindri le suivi et la gestion du stock créé dans le temps.``
 
 
 
@@ -216,7 +216,7 @@ Menu Administration
 1. Dashboard :
 --------------
 
-La dashboard est une récapitulatif généralisées sous forme de compteurs, des pompes en stocks référencées avec leur état actuel, leur localisation générale, leur rattachement aux équipes et également le type présent. 
+La dashboard est un récapitulatif généralisé sous forme de compteurs, des pompes en stocks référencées avec leur état actuel, leur localisation générale, leur rattachement aux équipes et également le type présent.
 
 > D'autres possibilités de compteurs sont envisageable, ce panneau est modulable mais demande l'intervention d'un développeur. 
 

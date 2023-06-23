@@ -11,13 +11,6 @@ Module ADMIN
    :undoc-members:
    :show-inheritance:
 
-Module APPS
-***********
-
-.. automodule:: pompe.apps
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 Module FILTERS
 **************

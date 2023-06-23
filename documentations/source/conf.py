@@ -11,6 +11,8 @@ from pathlib import Path
 
 import django
 
+
+
 # django path directory
 # sys.path.insert(0, os.path.abspath("../src")) # path relatif
 
@@ -35,6 +37,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
+    'rinoh.frontend.sphinx',
 
 ]
 

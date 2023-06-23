@@ -6,13 +6,6 @@
 Bienvenue sur la documentation de Visiopompe.
 =============================================
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Menu:
-
-   users
-   modules
-
 Introduction
 ============
 ``Visiopompe`` est un mini projet développé via python 3 avec le Framework ``Django``.
@@ -38,3 +31,10 @@ Sommaire
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Menu :
+
+   users
+   modules
