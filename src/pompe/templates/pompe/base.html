@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
     <link rel="stylesheet" href="{% static 'pompe/css/font-awesome.min.css' %}">
-    <title>{% block title %}Visiopompe v1.0{% endblock%}</title>
+
+    <!--favicon-->
+    <link rel="shortcut icon" type="image/favicon.ico" href="{% static 'pompe/img/logo_app.png' %}">
+    <title>{% block title %}Visiopompe {% endblock%}</title>
 </head>
 
 <body>
@@ -17,4 +20,5 @@
 
 {% endblock %}
 </body>
+
 </html>

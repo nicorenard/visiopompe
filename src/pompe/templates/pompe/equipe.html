@@ -4,77 +4,69 @@
 {% block title %}Gestion des équipes{% endblock %}
 {% block content %}
 
-<div class="w3-main w3-mobile " style="margin-left:200px">
+<div class="w3-main w3-mobile " style="margin-left:200px ;">
     <div class="w3-container w3-dark-grey">
         <h2>Gestions des équipes</h2>
     </div>
-    <br />
-    <section class="w3-mobile">
-        <table class="w3-table w3-centered w3-mobile" style="margin-left:10px; margin-right:10px;">
-            <tr>
-                <td>
-                    <div class="w3-row-padding w3-mobile">
-                        <div class="w3-col ">
-                            <div class="w3-card w3-text-black">
-                                <table class="w3-table-all w3-centered w3-striped w3-mobile ">
-                                    <tr class="w3-green w3-text-black">
-                                        <th><p>Nom</p></th>
-                                        <th><p>Sigle</p></th>
-                                        <th><p>Nom responsable</p></th>
-                                        <th><p>Email responsable</p></th>
-                                        <th><p>Date de création</p></th>
-                                        <th><p>Localisation</p></th>
-                                        <th></th>
-                                        <th><p>Modifier </p></th>
-                                        <th><p>Supprimer </p></th>
-                                    </tr>
-                                    <tr>
-                                     {% for equipe in equipes %}
-                                    <td><p>{{equipe.nom}}</p> </td>
-                                    <td><p>{% if equipe.sigle %}{{equipe.sigle}}{% endif %}</p></td>
-                                    <td><p>{% if equipe.nom_responsable %}{{equipe.nom_responsable}}{% endif %}</p></td>
-                                    <td><p>{% if equipe.email_responsable %}{{equipe.email_responsable}}{% endif %}</p></td>
-                                    <td><p>{{equipe.date}}</p></td>
-                                    <td><p>{{equipe.localisation.batiment.nom}} - {{equipe.localisation.nom}}</p></td>
-                                    <td><p>||</p></td>
-                                    <td><button class="w3-button" type="submit"><a href="{% url 'pompe:equipe_edit' pk=equipe.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:40px;" /></a></button></td>
-                                    <td><form method="POST" action="{% url 'pompe:equipe_delete' pk=equipe.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette équipe ?')">
-                                        {% csrf_token %}
-                                        <button class="w3-button" type="submit">
-                                            <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"/></button>
-                                        </form></td>
-                                    </tr>
-                                        {% endfor %}
-                                </table>
-                            </div>
-                        </div>
+    <br/>
+    <section class="w3-mobile" style="margin-left:50px ; margin-right:50px">
+        <div class="w3-card w3-text-black">
+            <table class="w3-table-all w3-centered w3-striped w3-mobile ">
+                <tr class="w3-green w3-text-black">
+                    <th><p>Nom</p></th>
+                    <th><p>Sigle</p></th>
+                    <th><p>Nom responsable</p></th>
+                    <th><p>Email responsable</p></th>
+                    <th><p>Date de création</p></th>
+                    <th><p>Localisation</p></th>
+
+                    <th><p>Actions</p></th>
+                </tr>
+                <tr>
+                    {% for equipe in equipes %}
+                    <td><p>{{equipe.nom}}</p></td>
+                    <td><p>{% if equipe.sigle %}{{equipe.sigle}}{% endif %}</p></td>
+                    <td><p>{% if equipe.nom_responsable %}{{equipe.nom_responsable}}{% endif %}</p></td>
+                    <td><p>{% if equipe.email_responsable %}{{equipe.email_responsable}}{% endif %}</p>
+                    </td>
+                    <td><p>{{equipe.date}}</p></td>
+                    <td><p>{{equipe.localisation.batiment.nom}} - {{equipe.localisation.nom}}</p></td>
+
+                    <td>
+                        <button class="w3-button" type="submit"><a
+                                href="{% url 'pompe:equipe_edit' pk=equipe.pk %}"><img
+                                src="{% static 'pompe/img/option/icons_edit.png' %}"
+                                style="width:50%;"/></a></button>
+                        <form method="POST" action="{% url 'pompe:equipe_delete' pk=equipe.pk %}"
+                              onsubmit="return confirm('Etes-vous sur de vouloir effacer cette équipe ?')">
+                            {% csrf_token %}
+                            <button class="w3-button" type="submit">
+                                <img src="{% static 'pompe/img/option/icons_delete.png' %}"
+                                     style="width:50%;"/></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+    <section class="w3-mobile w3-padding-32" style="margin-left:200px ; margin-right:200px">
+        <div class="w3-card w3-text-black ">
+            <header class="w3-container w3-grey w3-center">
+                <h4>Formulaire d'ajout d'équipe</h4>
+            </header>
+            <div class="w3-container w3-padding-small">
+                <form method="POST" enctype="multipart/form-data" class="w3-container">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <div class="w3-padding-small w3-center">
+                        <button class="w3-button w3-green w3-round" type="submit">Enregistrer</button>
+                        <button class="w3-button w3-red w3-round"><a href="{% url 'pompe:equipe' %}"
+                                                                     style="text-decoration:none">Annuler</a></button>
                     </div>
-                </td>
-                <td>
-                    <div class="w3-row-padding w3-mobile">
-                        <div class="w3-col ">
-                            <div class="w3-card w3-text-black">
-                                <div class=" w3-center ">
-                                    <header class="w3-container w3-grey">
-                                        <h4>Formulaire d'ajout d'équipe</h4>
-                                    </header>
-                                    <div class="w3-container w3-padding-small">
-                                        <form method="POST" enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                             <table>
-                                            {{ form}}
-                                            </table>
-                                        <button class="w3-button w3-green" type="submit" >Enregistrer</button>
-                                        <button class="w3-button w3-red"><a href="{% url 'pompe:equipe' %}">Annuler</a></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
+                </form>
+            </div>
+        </div>
     </section>
 </div>
 {% endblock %}

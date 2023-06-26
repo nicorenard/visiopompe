@@ -4,88 +4,81 @@ Forms of the project Visiopompe
 from django import forms
 from .models import *
 
-#stock pompes
-class StockPompeform(forms.ModelForm):
 
+# stock pompes
+class StockPompeform(forms.ModelForm):
     class Meta:
         model = StockPompe
         fields = '__all__'
 
 
 class ModifStockPompeForm(forms.ModelForm):
-
     class Meta:
         model = StockPompe
         exclude = ['mise_en_service']
 
 
 class Inventaireform(forms.ModelForm):
-
     class Meta:
         model = Inventaire
         fields = '__all__'
 
 
 class ModifInventaireForm(forms.ModelForm):
-
     class Meta:
         model = Inventaire
         fields = '__all__'
 
 
 class Tutelleform(forms.ModelForm):
-
     class Meta:
         model = Tutelle
         fields = '__all__'
 
 
 class ModifTutelleForm(forms.ModelForm):
-
     class Meta:
         model = Tutelle
         fields = '__all__'
-#fiche pompes
-class ModelPompeform(forms.ModelForm):
 
+
+# fiche pompes
+class ModelPompeform(forms.ModelForm):
     class Meta:
         model = ModelePompe
         fields = '__all__'
 
 
 class ModifModelPompeForm(forms.ModelForm):
-
     class Meta:
         model = ModelePompe
         fields = '__all__'
 
 
 class Technologieform(forms.ModelForm):
-
     class Meta:
         model = TechnologiePompe
         fields = '__all__'
 
 
 class ModifTechnoForm(forms.ModelForm):
-
     class Meta:
         model = TechnologiePompe
         fields = '__all__'
 
+
 # documentations
 class Docform(forms.ModelForm):
-
     class Meta:
         model = Doc
         fields = '__all__'
 
 
 class ModifDocForm(forms.ModelForm):
-
     class Meta:
         model = Doc
         fields = '__all__'
+
 
 # pieces detachées
 class PiecePompeform(forms.ModelForm):
@@ -99,6 +92,7 @@ class ModifPiecePompeForm(forms.ModelForm):
         model = PiecesPompe
         fields = '__all__'
 
+
 # kit de maintenance
 class Kitform(forms.ModelForm):
     class Meta:
@@ -110,6 +104,7 @@ class ModifKitForm(forms.ModelForm):
     class Meta:
         model = Kit
         fields = '__all__'
+
 
 # huile
 class Huileform(forms.ModelForm):
@@ -123,18 +118,44 @@ class ModifHuileForm(forms.ModelForm):
         model = Huile
         fields = '__all__'
 
-#dashboard
+
+# dashboard
 ## equipe
 class Equipeform(forms.ModelForm):
+    """
+    Formulaire de création d'une équipe.
+    Args:
+        forms : l'attribut basé sur ModelForm de DjangO
+
+
+    """
+
     class Meta:
         model = ModelEquipe
         fields = '__all__'
+        widgets = {
+            'nom': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'sigle': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'nom_responsable': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'email_responsable': forms.EmailInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'date': forms.DateInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'localisation': forms.Select(attrs={'class': 'w3-input w3-round w3-border'}),
+        }
 
 
 class ModifEquipeForm(forms.ModelForm):
     class Meta:
         model = ModelEquipe
         fields = '__all__'
+        widgets = {
+            'nom': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'sigle': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'nom_responsable': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'email_responsable': forms.EmailInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'date': forms.DateInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'localisation': forms.Select(attrs={'class': 'w3-input w3-round w3-border'}),
+        }
+
 
 ## Fabriquant
 class Fabriquantform(forms.ModelForm):
@@ -147,6 +168,8 @@ class ModifFabriquantForm(forms.ModelForm):
     class Meta:
         model = Fabriquant
         fields = '__all__'
+
+
 ## Lieux
 class Siteform(forms.ModelForm):
     class Meta:

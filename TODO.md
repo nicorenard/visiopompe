@@ -1,11 +1,11 @@
 *v1.1
 - dans le filtre : ajouter le filtre par batiment avec un nom correct.
-- Ajouter la suppression automatique des documents ( média) lors d'une suppression
+- Ajouter la suppression automatique des documents (média) lors d'une suppression
     - Concerne : documentations, modèles de pompe, les fabricants, les huiles, les kits et les pièces détachées
--MODELE POMPE : Déplacer le formulaire en haut et mettres les consulations cote à cote
--FABRIQUANTS : Faire des encarts plutôt qu'un tableau.
--EQUIPES : Correction du formulaire.
--LIEUX : Mettre le formulaire en haut et déplacer le reste en dessous.
+- MODELE POMPE : Déplacer le formulaire en haut et mettres les consulations cote à cote
+- FABRIQUANTS : Faire des encarts plutôt qu'un tableau.
+- EQUIPES : Correction du formulaire. [x]
+- LIEUX : Mettre le formulaire en haut et déplacer le reste en dessous.
 - faire du rezising des images et les stocker par date.
 
 
