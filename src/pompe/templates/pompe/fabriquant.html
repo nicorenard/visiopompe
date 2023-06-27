@@ -42,6 +42,7 @@
                             <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit">
                                 <img src="{% static 'pompe/img/option/icons_delete.png' %}"
                                      style="width:30px;" alt="icon delete"/></button>
+                        </form>
                 </span>
                 {% if fabriquant.logo_mini %}
                 <img src="/media/{{fabriquant.logo_mini}}" class="w3-bar-item w3-hide-small" style="width:10%" alt="
@@ -60,6 +61,7 @@
                 </div>
             </li>
              {% endfor %}
+        </ul>
     </section>
 </div>
 {% endblock %}

@@ -8,130 +8,77 @@
     <link rel="stylesheet" href="{% static 'pompe/css/font-awesome.min.css' %}">
 </head>
 <body>
-    <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left " style="width:200px;" id="mySidebar">
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left " style="width:200px;" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large w3-hide-large w3-right" onclick="w3_close()">&times;</button>
-    <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar" />
-    <a href="{% url 'pompe:homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i> Accueil</a>
-    <button class="w3-button" onclick="myPumpFunc()"><i class="fa fa-arrow-right"></i> Pompes <i class="fa fa-caret-down"></i></button>
-        <div class="w3-white w3-hide w3-card" id="PUMP">
-        <a href="{% url 'pompe:pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter Stocks</a>
-        <a href="{% url 'pompe:add_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-        <a href="{% url 'pompe:inventaire' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Inventaires Stocks</a>
-        </div>
-    <button class="w3-button" onclick="myPsdFunc()"><i class="fa fa-arrow-right"></i> Pièces détachées <i class="fa fa-caret-down"></i></button>
-        <div class="w3-white w3-hide w3-card" id="PSD">
-        <a href="{% url 'pompe:pdetache' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
-        <a href="{% url 'pompe:add_pdetache' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-        </div>
-    <button class="w3-button" onclick="myKitFunc()"><i class="fa fa-arrow-right"></i> Kits maintenance <i class="fa fa-caret-down"></i></button>
-        <div class="w3-white w3-hide w3-card" id="KIT">
+    <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}"
+         alt="logo_appavatar"/>
+    <a href="{% url 'pompe:homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i>
+        Accueil</a>
+    <button class="w3-button" onclick="myPumpFunc()"><i class="fa fa-arrow-right"></i> Pompes <i
+            class="fa fa-caret-down"></i></button>
+    <div class="w3-white w3-hide w3-card" id="PUMP">
+        <a href="{% url 'pompe:pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Consulter Stocks</a>
+        <a href="{% url 'pompe:add_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Créer Stocks</a>
+        <a href="{% url 'pompe:inventaire' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Inventaires Stocks</a>
+    </div>
+    <button class="w3-button" onclick="myPsdFunc()"><i class="fa fa-arrow-right"></i> Pièces détachées <i
+            class="fa fa-caret-down"></i></button>
+    <div class="w3-white w3-hide w3-card" id="PSD">
+        <a href="{% url 'pompe:pdetache' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Consulter</a>
+        <a href="{% url 'pompe:add_pdetache' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Créer Stocks</a>
+    </div>
+    <button class="w3-button" onclick="myKitFunc()"><i class="fa fa-arrow-right"></i> Kits maintenance <i
+            class="fa fa-caret-down"></i></button>
+    <div class="w3-white w3-hide w3-card" id="KIT">
         <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
-        <a href="{% url 'pompe:add_kit' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-        </div>
-      <button class="w3-button" onclick="myOilFunc()"><i class="fa fa-arrow-right"></i> Huiles <i class="fa fa-caret-down"></i></button>
-        <div class="w3-white w3-hide w3-card" id="OIL">
-        <a href="{% url 'pompe:huile' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
-        <a href="{% url 'pompe:add_huile' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Stocks</a>
-        </div>
-     <button class="w3-button" onclick="myDocFunc()"><i class="fa fa-arrow-right"></i> Documentations <i class="fa fa-caret-down"></i></button>
-        <div class="w3-white w3-hide w3-card" id="DOC">
-            <a href="{% url 'pompe:doc' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
-            <a href="{% url 'pompe:add_doc' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer Manuel</a>
-        </div>
-    <button class="w3-button" onclick="myAdminFunc()"><i class="fa fa-arrow-right"></i> Administration  <i class="fa fa-caret-down"></i></button>
-        <div class="w3-white w3-hide w3-card" id="ADMIN">
-            <a href="{% url 'pompe:dashboard' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Dashboard</a>
-            <a href="{% url 'pompe:fiche_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Modèles de Pompes</a>
-        <a href="{% url 'pompe:fabriquant' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Fabriquants</a>
-        <a href="{% url 'pompe:equipe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Equipes</a>
-        <a href="{% url 'pompe:lieux' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Lieux</a>
-        </div>
+        <a href="{% url 'pompe:add_kit' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer
+            Stocks</a>
+    </div>
+    <button class="w3-button" onclick="myOilFunc()"><i class="fa fa-arrow-right"></i> Huiles <i
+            class="fa fa-caret-down"></i></button>
+    <div class="w3-white w3-hide w3-card" id="OIL">
+        <a href="{% url 'pompe:huile' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Consulter</a>
+        <a href="{% url 'pompe:add_huile' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Créer Stocks</a>
+    </div>
+    <button class="w3-button" onclick="myDocFunc()"><i class="fa fa-arrow-right"></i> Documentations <i
+            class="fa fa-caret-down"></i></button>
+    <div class="w3-white w3-hide w3-card" id="DOC">
+        <a href="{% url 'pompe:doc' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Consulter</a>
+        <a href="{% url 'pompe:add_doc' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i> Créer
+            Manuel</a>
+    </div>
+    <button class="w3-button" onclick="myAdminFunc()"><i class="fa fa-arrow-right"></i> Administration <i
+            class="fa fa-caret-down"></i></button>
+    <div class="w3-white w3-hide w3-card" id="ADMIN">
+        <a href="{% url 'pompe:dashboard' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Dashboard</a>
+        <a href="{% url 'pompe:fiche_pompe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Modèles de Pompes</a>
+        <a href="{% url 'pompe:fabriquant' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Fabriquants</a>
+        <a href="{% url 'pompe:equipe' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Equipes</a>
+        <a href="{% url 'pompe:lieux' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-circle-right"></i>
+            Lieux</a>
+    </div>
 
     <br/><br/><br/>
-    <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button "><i class="fa fa-envelope"></i> Support</a>
+    <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*"
+       class="w3-bar-item w3-button "><i class="fa fa-envelope"></i> Support</a>
     <a href="{% url 'pompe:version' %}" class="w3-button w3-small w3-mobile w3-right">Version</a>
 </div>
 <button class="w3-button w3-grey w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 
-<script>
-function myAdminFunc() {
-  var x = document.getElementById("ADMIN");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-green";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-    x.previousElementSibling.className =
-    x.previousElementSibling.className.replace(" w3-green", "");
-  }
-}
-function myPumpFunc() {
-  var x = document.getElementById("PUMP");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-green";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-    x.previousElementSibling.className =
-    x.previousElementSibling.className.replace(" w3-green", "");
-  }
-}
-function myPsdFunc() {
-  var x = document.getElementById("PSD");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-green";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-    x.previousElementSibling.className =
-    x.previousElementSibling.className.replace(" w3-green", "");
-    }
-}
-function myKitFunc() {
-  var x = document.getElementById("KIT");
- if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-green";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-    x.previousElementSibling.className =
-    x.previousElementSibling.className.replace(" w3-green", "");
-  }
-}
-function myOilFunc() {
-  var x = document.getElementById("OIL");
-if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-green";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-    x.previousElementSibling.className =
-    x.previousElementSibling.className.replace(" w3-green", "");
-  }
-}
-function myDocFunc() {
-  var x = document.getElementById("DOC");
-if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-green";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-    x.previousElementSibling.className =
-    x.previousElementSibling.className.replace(" w3-green", "");
-  }
-}
+{% block js_script %}
+<script src="{% static 'pompe/js/navbar.js' %}"></script>
+{% endblock %}
 
-function w3_open() {
-  document.getElementById("mySidebar").style.marginLeft = "180px";
-  document.getElementById("mySidebar").style.width = "180px";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("mySidebar").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("mySidebar").style.marginLeft = "0";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("mySidebar").style.display = "inline-block";
-}
-</script>
 </body>
 </html>

@@ -7,29 +7,27 @@
         <h2>Documentations Technique</h2>
     </div>
     <br/>
-    <section>
-        <table class="w3-table-all w3-centered w3-striped" style="margin-left:10px">
+    <section class="w3-mobile" style="margin-left:20px ; margin-right:20px">
+        <table class="w3-table-all w3-centered w3-striped" >
             <tr class="w3-green w3-text-black">
-                <th><p>Fabriquant</p></th>
-                <th><p>Nom manuel</p></th>
-                <th><p>Version</p></th>
-                <th><p>Télécharger</p></th>
-                <th><p></p></th>
-                <th><p>Modifier</p></th>
-                <th><p>Supprimer</p></th>
+                <th>Fabriquant</th>
+                <th>Nom manuel</th>
+                <th>Version</th>
+                <th>Télécharger ?</th>
+                <th>Actions</th>
             </tr>
             <tr>
                  {% for doc in docs %}
                 <td><img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}" style="width: 20%; display: block; margin: auto;" /></td>
-                <td><p>{{doc.nom}}</p></td>
-                <td><p>{{doc.version}}</p></td>
+                <td>{{doc.nom}}</td>
+                <td>{{doc.version}}</td>
                 <td><a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="picture download"/></a></td>
-                <td><p>||</p></td>
-                <td><button class="w3-button"><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button></td>
+                <td><button class="w3-button"><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button>
                 <form method="POST" action="{% url 'pompe:doc_delete' pk=doc.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette référence ?')">
                 {% csrf_token %}
-                    <td><button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button></td>
+                    <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button>
                 </form>
+                </td>
             </tr>
             {% endfor %}
         </table>
