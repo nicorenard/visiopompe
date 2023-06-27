@@ -1,12 +1,24 @@
 """
-Filter function for pump search
+Classes de filtres pour les recherches de stocks de pompes
 """
 import django_filters
-from .models import *
+from .models import StockPompe, Batiment, Inventaire, ModelePompe
 
 
 class PompeStockFilter(django_filters.FilterSet):
 
-   class Meta:
+    etage__batiment = django_filters.ModelChoiceFilter(queryset=Batiment.objects.all(), label='Bâtiment')
+    pompe = django_filters.ModelChoiceFilter(queryset=ModelePompe.objects.all(), label='Pompe')
+    inventaire = django_filters.ModelChoiceFilter(queryset=Inventaire.objects.all(), label='N° d\'inventaire')
+
+    class Meta:
         model = StockPompe
-        fields = ['pompe', 'equipe', 'etage__batiment','etage', 'piece', 'inventaire', 'statut']
+        fields = [
+              'equipe',
+              'etage__batiment',
+              'etage',
+              'piece',
+              'pompe',
+              'inventaire',
+              'statut'
+              ]
