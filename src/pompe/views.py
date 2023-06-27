@@ -1,7 +1,7 @@
 """
 View of Visiopompe project centralized in views.py
 """
-
+import os.path
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from .filters import PompeStockFilter
@@ -151,7 +151,11 @@ def fabriquant(request):
     if request.method == "POST" and 'fabriquant_form' in request.POST:
         form = Fabriquantform(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            fabriquant = form.save(commit=False)
+            cleaned_data = form.cleaned_data
+            # redimensionnement des 2 logos
+
+            fabriquant.save()
         return redirect('/fabriquants')
     else:
         form = Fabriquantform()
@@ -173,12 +177,21 @@ def update_fabriquant(request, pk):
 
 
 def delete_fabriquant(request, pk):
-    fabriquants = get_object_or_404(Fabriquant, pk=pk)
+    queryset = get_object_or_404(Fabriquant, pk=pk)
     if request.method == "POST":
-        fabriquants.delete()
+
+        # suppression des médias = logos
+        logomax_path = queryset.logo_max.path
+        logomini_path = queryset.logo_mini.path
+        if os.path.exists(logomax_path):
+            os.remove(logomax_path)
+        if os.path.exists(logomini_path):
+            os.remove(logomini_path)
+
+        queryset.delete()
         return redirect("/fabriquants")
 
-    context = {'fabriquants': fabriquants}
+    context = {'fabriquants': queryset}
     return render(request, 'pompe/fabriquant.html', context)
 
 
@@ -368,10 +381,14 @@ def fichepompe(request):
         form2 = Technologieform(request.POST, request.FILES)
 
         if form.is_valid() and 'fiche_form' in request.POST:
-            form.save()
+            cleaned_data = form.cleaned_data
+            if cleaned_data:
+                form.save()
 
         elif form2.is_valid() and 'techno_form' in request.POST:
-            form2.save()
+            cleaned_data2 = form2.cleaned_data
+            if cleaned_data2:
+                form2.save()
 
         return redirect('/fichepompe')
     else:
@@ -387,7 +404,9 @@ def update_fichepompe(request, pk):
     if request.method == "POST":
         form = ModifModelPompeForm(request.POST, request.FILES, instance=m_pompes)
         if form.is_valid():
-            form.save()
+            cleaned_data = form.cleaned_data
+            if cleaned_data:
+                form.save()
             return redirect('/fichepompe')
     else:
         form = ModifModelPompeForm(instance=m_pompes)
@@ -397,7 +416,10 @@ def update_fichepompe(request, pk):
 def delete_fichepompe(request, pk):
     queryset = get_object_or_404(ModelePompe, pk=pk)
     if request.method == "POST":
-        queryset.delete()
+        image_path = queryset.image.path
+        if os.path.exists(image_path):
+            os.remove(image_path)
+            queryset.delete()
         return redirect('/fichepompe')
 
     context = {'queryset': queryset}
@@ -409,7 +431,9 @@ def update_techno(request, pk):
     if request.method == "POST":
         form = ModifTechnoForm(request.POST, instance=technos)
         if form.is_valid():
-            form.save()
+            cleaned_data = form.cleaned_data
+            if cleaned_data:
+                form.save()
             return redirect('/fichepompe')
     else:
         form = ModifTechnoForm(instance=technos)
@@ -514,7 +538,10 @@ def update_pdetache(request, pk):
 def delete_pdetache(request, pk):
     pieces = get_object_or_404(PiecesPompe, pk=pk)
     if request.method == "POST":
-        pieces.delete()
+        pieces_image = pieces.image.path
+        if os.path.exists(pieces_image):
+            os.remove(pieces_image)
+            pieces.delete()
         return redirect('/pieces_detaches')
     return render(request, 'pompe/piece.html', {'pieces': pieces})
 
@@ -552,7 +579,10 @@ def update_huile(request, pk):
 def delete_huile(request, pk):
     huiles = get_object_or_404(Huile, pk=pk)
     if request.method == "POST":
-        huiles.delete()
+        huile_path = huiles.image.path
+        if os.path.exists(huile_path):
+            os.remove(huile_path)
+            huiles.delete()
         return redirect('/huiles')
     return render(request, 'pompe/huile.html', {'huiles': huiles})
 
@@ -589,7 +619,10 @@ def update_kit(request, pk):
 def delete_kit(request, pk):
     kits = get_object_or_404(Kit, pk=pk)
     if request.method == "POST":
-        kits.delete()
+        kit_image = kits.image.path
+        if os.path.exists(kit_image):
+            os.remove(kit_image)
+            kits.delete()
         return redirect('/kits')
     return render(request, 'pompe/kit.html', {'kits': kits})
 
@@ -629,6 +662,10 @@ def update_doc(request, pk):
 def delete_doc(request, pk):
     docs = get_object_or_404(Doc, pk=pk)
     if request.method == "POST":
-        docs.delete()
+        #: Suppression du fichier sur le serveur
+        doc_file = docs.manuel.path
+        if os.path.exists(doc_file):
+            os.remove(doc_file)
+            docs.delete()
         return redirect('/docs')
     return render(request, 'pompe/doc.html', {'docs': docs})

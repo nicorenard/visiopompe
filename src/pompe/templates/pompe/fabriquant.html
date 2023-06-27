@@ -34,14 +34,14 @@
                     <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit"><a
                                 href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
                             <img src="{% static 'pompe/img/option/icons_edit.png' %}"
-                                 style="width:30px;" alt="icon editer"/></a></button>
+                                 style="width:30%;" alt="icon editer"/></a></button>
                         <form method="POST"
                               action="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}"
                               onsubmit="return confirm('Etes-vous sur de vouloir effacer ce fabriquant ?')">
                             {% csrf_token %}
                             <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit">
                                 <img src="{% static 'pompe/img/option/icons_delete.png' %}"
-                                     style="width:30px;" alt="icon delete"/></button>
+                                     style="width:30%;" alt="icon delete"/></button>
                         </form>
                 </span>
                 {% if fabriquant.logo_mini %}
