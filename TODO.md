@@ -3,9 +3,9 @@
 - Ajouter la suppression automatique des documents (média) lors d'une suppression
     - Concerne : documentations, modèles de pompe, les fabricants, les huiles, les kits et les pièces détachées
 - MODELE POMPE : Déplacer le formulaire en haut et mettres les consulations cote à cote
-- FABRIQUANTS : Faire des encarts plutôt qu'un tableau.
+- FABRIQUANTS : Faire des encarts plutôt qu'un tableau. [x]
 - EQUIPES : Correction du formulaire. [x]
-- LIEUX : Mettre le formulaire en haut et déplacer le reste en dessous.
+- LIEUX : Mettre le formulaire en haut et déplacer le reste en dessous. [x]
 - faire du rezising des images et les stocker par date.
 
 
