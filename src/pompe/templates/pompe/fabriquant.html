@@ -7,63 +7,59 @@
     <div class="w3-container w3-dark-grey">
         <h2>Gestion des fabriquants</h2>
     </div>
-    <br />
-    <section>
-        <table class="w3-table w3-centered w3-mobile" style="margin-left:10px; margin-right:10px;">
-            <tr>
-                <td>
-                    <div class="w3-row-padding">
-                        <div class="w3-col ">
-                            {% for fabriquant in fabriquants %}
-                            <div class="w3-card-2 w3-center w3-text-blue-gray">
-                                <header class="w3-container w3-grey">
-                                    <h2 >{%if fabriquant.logo_mini%}
-                                        <img src="/media/{{fabriquant.logo_mini}}" class="w3-left" style="width:5%; margin-bottom: 10px;" alt="miniature logo"/>
-                                        {% endif %}
-                                        {{fabriquant.nom}}
-                                        <i class="w3-small w3-right"><button class="w3-button w3-right" type="submit"><a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
-                                           <img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:30px;" alt="icon editer"/></a></button>
-                                            <form method="POST" action="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer ce fabriquant ?')">
-                                            {% csrf_token %}
-                                            <button class="w3-button w3-right" type="submit">
-                                                <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:30px;" alt="icon delete"/></button>
-                                            </form>
-                                        </i>
-                                    </h2>
-                                </header>
-                                <div class="w3-container" >
-                                    {%if fabriquant.adresse%}<p >{{fabriquant.adresse}}</p>{% endif %}
-                                    {%if fabriquant.code_postal%}<p>{{fabriquant.code_postal}}{% endif %}
-                                   {%if fabriquant.ville%} - {{fabriquant.ville}}</p>{% endif %}
-                                </div>
-                                <footer>
-                                    <p> </p>
-                                </footer>
-                            </div>
-                            {% endfor%}
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="w3-row-padding">
-                        <div class="w3-col">
-                            <div class="w3-card-2 w3-center w3-padding-small">
-                                <header class="w3-container w3-brown">
-                                    <h4>Ajoutez un fabriquant</h4>
-                                </header>
-                                <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <table>{{form.as_table}}</table>
-                                <button class="w3-button w3-green" type="submit" name="fabriquant_form">Enregistrer</button>
-                                <button class="w3-button w3-red"><a href="{% url 'pompe:fabriquant' %}">Annuler</a></button>
-                                </form>
-                                <br/>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr> 
-        </table>
+    <br/>
+
+    <!---forms---->
+    <section class="w3-mobile w3-padding-12" style="margin-left:200px ; margin-right:200px; width:50%">
+        <div class="w3-card">
+            <header class="w3-container w3-brown w3-center">
+                <h4>Ajouter un fabriquant</h4>
+            </header>
+            <form method="POST" enctype="multipart/form-data" class="w3-container">
+                {% csrf_token %}
+                {{form.as_table}}
+                <div class="w3-padding-small w3-center">
+                    <button class="w3-button w3-green w3-round" type="submit" name="fabriquant_form">Enregistrer
+                    </button>
+                    <button class="w3-button w3-red w3-round">Effacer la saisie</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="w3-container w3-padding-24" style="margin-left:50px; margin-right:50px;">
+        {% for fabriquant in fabriquants %}
+        <ul class="w3-ul w3-card ">
+            <li class="w3-bar">
+                <span>
+                    <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit"><a
+                                href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
+                            <img src="{% static 'pompe/img/option/icons_edit.png' %}"
+                                 style="width:30px;" alt="icon editer"/></a></button>
+                        <form method="POST"
+                              action="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}"
+                              onsubmit="return confirm('Etes-vous sur de vouloir effacer ce fabriquant ?')">
+                            {% csrf_token %}
+                            <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit">
+                                <img src="{% static 'pompe/img/option/icons_delete.png' %}"
+                                     style="width:30px;" alt="icon delete"/></button>
+                </span>
+                {% if fabriquant.logo_mini %}
+                <img src="/media/{{fabriquant.logo_mini}}" class="w3-bar-item w3-hide-small" style="width:10%" alt="
+                     miniature logo"/>
+                {% else %}
+                <img src="{% static 'pompe/img/noimage.jpg' %}" class="w3-bar-item w3-hide-small" style="width:10%" alt="
+                     miniature logo"/>
+                {% endif %}
+                <div class="w3-bar-item">
+                    <span class="w3-large">{{ fabriquant.nom }}</span><br>
+                    <span>{% if fabriquant.adresse and fabriquant.code_postal and fabriquant.ville %}
+                        {{ fabriquant.adresse }} - {{ fabriquant.code_postal }} - {{ fabriquant.ville }}
+                        {% else %}
+                        Aucune adresse enregistrée.
+                        {% endif %}</span>
+                </div>
+            </li>
+             {% endfor %}
     </section>
 </div>
 {% endblock %}

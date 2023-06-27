@@ -170,7 +170,7 @@ class StockHistory(models.Model):
         current_version = StockHistory.objects.filter(stockpump=self.stockpump).order_by('-version')[:1]
         self.version = current_version[0].version + 1 if current_version else 1
         super(StockHistory, self).save(*args, **kwargs)
-###
+
 
 class StockPompe(models.Model):
     pompe = models.ForeignKey(ModelePompe, verbose_name="Modèle de pompe", null=True, blank=False,
@@ -224,7 +224,6 @@ class Kit(models.Model):
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
     piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
     information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
-
 
     def __str__(self):
         return self.nom

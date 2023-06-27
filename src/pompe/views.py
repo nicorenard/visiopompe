@@ -10,12 +10,24 @@ from .models import *
 
 
 def index(request):
-   return render(request, 'pompe/index.html')
+    """
+    Fonction d'affichage de la page d'accueil du site.
+    Args:
+        request: l'objet POST reçu en paramètre pour afficher la page dédiée.
+
+    Returns
+        index.html : la page renvoyée après traitement.
+    """
+    return render(request, 'pompe/index.html')
 
 
 def version(request):
+    """
+    Fonction qui permet l'affichage des versions actuelles de l'application.
+    """
     versions = VersionApp.objects.all().order_by('-version')
     return render(request, 'pompe/versionapp.html', {'versions': versions})
+
 
 # dashboard
 
@@ -58,11 +70,11 @@ def dashboard(request):
     p_cosm = dash_pompes.filter(equipe__sigle__icontains='cosm').count()
     p_umr = dash_pompes.filter(equipe__sigle__icontains='umr').count()
 
-    context = {'p_all': p_all,'p_valide': p_valide, 'p_stock': p_stock,'p_hs': p_hs,'p_rep': p_rep,
+    context = {'p_all': p_all, 'p_valide': p_valide, 'p_stock': p_stock, 'p_hs': p_hs, 'p_rep': p_rep,
                'p_atex': p_atex,
-                'p_palette': p_palette, 'p_membrane':p_membrane, 'p_seche':p_seche,
-               'p_etage_1':p_etage_1, 'p_etage_2': p_etage_2, 'p_etage_3':p_etage_3,
-               'p_ciel':p_ciel, 'p_spectre': p_spectre, 'p_cosm':p_cosm, 'p_umr': p_umr,
+               'p_palette': p_palette, 'p_membrane': p_membrane, 'p_seche': p_seche,
+               'p_etage_1': p_etage_1, 'p_etage_2': p_etage_2, 'p_etage_3': p_etage_3,
+               'p_ciel': p_ciel, 'p_spectre': p_spectre, 'p_cosm': p_cosm, 'p_umr': p_umr,
                }
     return render(request, 'pompe/dashboard.html', context)
 
@@ -131,11 +143,12 @@ def delete_equipe(request, pk):
 
     return render(request, 'pompe/equipe.html', {'queryset': queryset})
 
+
 ## fabriquant
 def fabriquant(request):
     fabriquants = Fabriquant.objects.all().order_by('nom')
 
-    if request.method == "POST"  and 'fabriquant_form' in request.POST:
+    if request.method == "POST" and 'fabriquant_form' in request.POST:
         form = Fabriquantform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
@@ -143,8 +156,9 @@ def fabriquant(request):
     else:
         form = Fabriquantform()
 
-    context = {'fabriquants': fabriquants, 'form':form}
+    context = {'fabriquants': fabriquants, 'form': form}
     return render(request, 'pompe/fabriquant.html', context)
+
 
 def update_fabriquant(request, pk):
     fabriquants = get_object_or_404(Fabriquant, pk=pk)
@@ -157,6 +171,7 @@ def update_fabriquant(request, pk):
         form = ModifFabriquantForm(instance=fabriquants)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_fabriquant(request, pk):
     fabriquants = get_object_or_404(Fabriquant, pk=pk)
     if request.method == "POST":
@@ -165,6 +180,7 @@ def delete_fabriquant(request, pk):
 
     context = {'fabriquants': fabriquants}
     return render(request, 'pompe/fabriquant.html', context)
+
 
 ## lieux
 def piece(request):
@@ -198,10 +214,11 @@ def piece(request):
 
     context = {'pieces': pieces,
                'sites': sites,
-               'batiments' : batiments,
-               'etages' : etages,
+               'batiments': batiments,
+               'etages': etages,
                'form': form, 'form2': form2, 'form3': form3, 'form4': form4}
     return render(request, 'pompe/lieux.html', context)
+
 
 def update_piece(request, pk):
     pieces = get_object_or_404(Piece, pk=pk)
@@ -214,6 +231,7 @@ def update_piece(request, pk):
         form = ModifPieceForm(instance=pieces)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_piece(request, pk):
     queryset = get_object_or_404(Piece, pk=pk)
     if request.method == "POST":
@@ -221,6 +239,7 @@ def delete_piece(request, pk):
         return redirect('/dashboard/lieux')
 
     return render(request, 'pompe/lieux.html', {'queryset': queryset})
+
 
 def update_site(request, pk):
     sites = get_object_or_404(Site, pk=pk)
@@ -233,6 +252,7 @@ def update_site(request, pk):
         form = ModifSiteForm(instance=sites)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_site(request, pk):
     queryset = get_object_or_404(Site, pk=pk)
     if request.method == "POST":
@@ -240,6 +260,7 @@ def delete_site(request, pk):
         return redirect('/dashboard/lieux')
 
     return render(request, 'pompe/lieux.html', {'queryset': queryset})
+
 
 def update_batiment(request, pk):
     batiments = get_object_or_404(Batiment, pk=pk)
@@ -252,6 +273,7 @@ def update_batiment(request, pk):
         form = ModifBatimentForm(instance=batiments)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_batiment(request, pk):
     queryset2 = get_object_or_404(Batiment, pk=pk)
     if request.method == "POST":
@@ -259,6 +281,7 @@ def delete_batiment(request, pk):
         return redirect('/dashboard/lieux')
 
     return render(request, 'pompe/lieux.html', {'queryset2': queryset2})
+
 
 def update_etage(request, pk):
     etages = get_object_or_404(Etage, pk=pk)
@@ -271,6 +294,7 @@ def update_etage(request, pk):
         form = ModifEtageForm(instance=etages)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_etage(request, pk):
     queryset3 = get_object_or_404(Etage, pk=pk)
     if request.method == "POST":
@@ -278,6 +302,7 @@ def delete_etage(request, pk):
         return redirect('/dashboard/lieux')
 
     return render(request, 'pompe/lieux.html', {'queryset3': queryset3})
+
 
 # stocks pompes
 def pompe(request):
@@ -291,13 +316,15 @@ def pompe(request):
                'current_date': current_date,
                'warning_date': warning_date,
                'filterpompe': filterpompe,
-                }
+               }
     return render(request, 'pompe/pompe.html', context)
+
 
 def historique(request, pk):
     historic = StockHistory.objects.filter(stockpump=pk).order_by('-date_historique')
 
     return render(request, 'pompe/historique.html', {'historic': historic})
+
 
 def add_stockpompe(request):
     if request.method == "POST":
@@ -309,10 +336,11 @@ def add_stockpompe(request):
         form = StockPompeform()
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def update_stockpompe(request, pk):
     s_pompes = get_object_or_404(StockPompe, pk=pk)
     if request.method == "POST":
-        form = ModifStockPompeForm(request.POST,  instance=s_pompes)
+        form = ModifStockPompeForm(request.POST, instance=s_pompes)
         if form.is_valid():
             form.save()
         return redirect('/pompes')
@@ -320,15 +348,17 @@ def update_stockpompe(request, pk):
         form = ModifStockPompeForm(instance=s_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_stockpompe(request, pk):
     queryset = get_object_or_404(StockPompe, pk=pk)
     if request.method == "POST":
         queryset.delete()
         return redirect('/pompes')
 
-    return render(request,'pompe/pompe.html', {'queryset':queryset})
+    return render(request, 'pompe/pompe.html', {'queryset': queryset})
 
-#fiche modele des pompes
+
+# fiche modele des pompes
 def fichepompe(request):
     m_pompes = ModelePompe.objects.all().order_by('nom')
     technos = TechnologiePompe.objects.all().order_by('nom')
@@ -348,8 +378,9 @@ def fichepompe(request):
         form = ModelPompeform()
         form2 = Technologieform()
 
-    context = {'m_pompe': m_pompes, 'technos': technos,'form': form, 'form2': form2}
+    context = {'m_pompe': m_pompes, 'technos': technos, 'form': form, 'form2': form2}
     return render(request, 'pompe/fiche_pompe.html', context)
+
 
 def update_fichepompe(request, pk):
     m_pompes = get_object_or_404(ModelePompe, pk=pk)
@@ -362,6 +393,7 @@ def update_fichepompe(request, pk):
         form = ModifModelPompeForm(instance=m_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_fichepompe(request, pk):
     queryset = get_object_or_404(ModelePompe, pk=pk)
     if request.method == "POST":
@@ -370,6 +402,7 @@ def delete_fichepompe(request, pk):
 
     context = {'queryset': queryset}
     return render(request, 'pompe/fiche_pompe.html', context)
+
 
 def update_techno(request, pk):
     technos = get_object_or_404(TechnologiePompe, pk=pk)
@@ -382,6 +415,7 @@ def update_techno(request, pk):
         form = ModifTechnoForm(instance=technos)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_techno(request, pk):
     queryset1 = get_object_or_404(TechnologiePompe, pk=pk)
     if request.method == "POST":
@@ -390,6 +424,7 @@ def delete_techno(request, pk):
 
     context = {'queryset1': queryset1}
     return render(request, 'pompe/fiche_pompe.html', context)
+
 
 # inventaire et tutelle
 def inventaire(request):
@@ -414,6 +449,7 @@ def inventaire(request):
     context = {'inventaires': inventaires, 'tutelles': tutelles, 'form': form, 'form2': form2}
     return render(request, 'pompe/inventaire.html', context)
 
+
 def update_inventaire(request, pk):
     inventaires = get_object_or_404(Inventaire, pk=pk)
 
@@ -426,6 +462,7 @@ def update_inventaire(request, pk):
         form = ModifInventaireForm(instance=inventaires)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_inventaire(request, pk):
     queryset = get_object_or_404(Inventaire, pk=pk)
     if request.method == "POST":
@@ -433,6 +470,7 @@ def delete_inventaire(request, pk):
         return redirect('/inventaire')
 
     return render(request, 'pompe/inventaire.html', {'queryset': queryset})
+
 
 def delete_tutelle(request, pk):
     queryset1 = get_object_or_404(Tutelle, pk=pk)
@@ -442,10 +480,12 @@ def delete_tutelle(request, pk):
 
     return render(request, 'pompe/inventaire.html', {'queryset1': queryset1})
 
+
 # pieces detachées
 def pdetache(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
     return render(request, 'pompe/piece.html', {'pieces': pieces})
+
 
 def add_pdetache(request):
     if request.method == "POST":
@@ -456,6 +496,7 @@ def add_pdetache(request):
     else:
         form = PiecePompeform()
     return render(request, 'pompe/forms.html', {'form': form})
+
 
 def update_pdetache(request, pk):
     pdetaches = get_object_or_404(PiecesPompe, pk=pk)
@@ -469,6 +510,7 @@ def update_pdetache(request, pk):
         form = ModifPiecePompeForm(instance=pdetaches)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_pdetache(request, pk):
     pieces = get_object_or_404(PiecesPompe, pk=pk)
     if request.method == "POST":
@@ -476,10 +518,12 @@ def delete_pdetache(request, pk):
         return redirect('/pieces_detaches')
     return render(request, 'pompe/piece.html', {'pieces': pieces})
 
+
 # huile
 def huile(request):
     huiles = Huile.objects.all().order_by('nom')
     return render(request, 'pompe/huile.html', {'huiles': huiles})
+
 
 def add_huile(request):
     if request.method == "POST":
@@ -490,6 +534,7 @@ def add_huile(request):
     else:
         form = Huileform()
     return render(request, 'pompe/forms.html', {'form': form})
+
 
 def update_huile(request, pk):
     huiles = get_object_or_404(Huile, pk=pk)
@@ -503,6 +548,7 @@ def update_huile(request, pk):
         form = ModifHuileForm(instance=huiles)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_huile(request, pk):
     huiles = get_object_or_404(Huile, pk=pk)
     if request.method == "POST":
@@ -510,10 +556,12 @@ def delete_huile(request, pk):
         return redirect('/huiles')
     return render(request, 'pompe/huile.html', {'huiles': huiles})
 
+
 # kit de maintenance
 def kit(request):
     kits = Kit.objects.all().order_by('nom')
     return render(request, 'pompe/kit.html', {'kits': kits})
+
 
 def add_kit(request):
     if request.method == "POST":
@@ -524,6 +572,7 @@ def add_kit(request):
     else:
         form = Kitform()
     return render(request, 'pompe/forms.html', {'form': form})
+
 
 def update_kit(request, pk):
     kits = get_object_or_404(Kit, pk=pk)
@@ -536,6 +585,7 @@ def update_kit(request, pk):
         form = ModifKitForm(instance=kits)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_kit(request, pk):
     kits = get_object_or_404(Kit, pk=pk)
     if request.method == "POST":
@@ -543,12 +593,14 @@ def delete_kit(request, pk):
         return redirect('/kits')
     return render(request, 'pompe/kit.html', {'kits': kits})
 
+
 # Documentations
 
 def doc(request):
     docs = Doc.objects.all().order_by('nom')
     context = {'docs': docs}
     return render(request, 'pompe/doc.html', context)
+
 
 def add_doc(request):
     if request.method == "POST":
@@ -559,6 +611,7 @@ def add_doc(request):
     else:
         form = Docform()
     return render(request, 'pompe/forms.html', {'form': form})
+
 
 def update_doc(request, pk):
     docs = get_object_or_404(Doc, pk=pk)
@@ -572,10 +625,10 @@ def update_doc(request, pk):
         form = ModifDocForm(instance=docs)
     return render(request, 'pompe/forms.html', {'form': form})
 
+
 def delete_doc(request, pk):
     docs = get_object_or_404(Doc, pk=pk)
     if request.method == "POST":
         docs.delete()
         return redirect('/docs')
     return render(request, 'pompe/doc.html', {'docs': docs})
-

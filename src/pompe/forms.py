@@ -119,15 +119,14 @@ class ModifHuileForm(forms.ModelForm):
         fields = '__all__'
 
 
-# dashboard
-## equipe
 class Equipeform(forms.ModelForm):
     """
     Formulaire de création d'une équipe.
     Args:
-        forms : l'attribut basé sur ModelForm de DjangO
+        ModelForm : l'attribut basé sur Form de Django
 
-
+    Returns:
+        Le formulaire généré pour créer une équipe
     """
 
     class Meta:
@@ -144,6 +143,14 @@ class Equipeform(forms.ModelForm):
 
 
 class ModifEquipeForm(forms.ModelForm):
+    """
+    Classe de modification d'une formulaire d'une équipe.
+    Args:
+        ModelForm : l'attribut basé sur Form de Django
+
+    Returns:
+          Le formulaire avec les informations pré-remplies
+    """
     class Meta:
         model = ModelEquipe
         fields = '__all__'
@@ -162,13 +169,28 @@ class Fabriquantform(forms.ModelForm):
     class Meta:
         model = Fabriquant
         fields = '__all__'
+        widgets = {
+            'nom': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'logo_max': forms.ClearableFileInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'logo_mini': forms.ClearableFileInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'adresse': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'code_postal': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'ville': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+        }
 
 
 class ModifFabriquantForm(forms.ModelForm):
     class Meta:
         model = Fabriquant
         fields = '__all__'
-
+        widgets = {
+            'nom': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'logo_max': forms.ClearableFileInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'logo_mini': forms.ClearableFileInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'adresse': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'code_postal': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+            'ville': forms.TextInput(attrs={'class': 'w3-input w3-round w3-border'}),
+        }
 
 ## Lieux
 class Siteform(forms.ModelForm):
