@@ -1,5 +1,5 @@
 """
-Road of url in Visiopompe project
+Routes (urls) du module pompe
 """
 
 from django.urls import path

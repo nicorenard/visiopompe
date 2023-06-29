@@ -630,7 +630,7 @@ def delete_kit(request, pk):
 # Documentations
 
 def doc(request):
-    docs = Doc.objects.all().order_by('nom')
+    docs = Document.objects.all().order_by('nom')
     context = {'docs': docs}
     return render(request, 'pompe/doc.html', context)
 
@@ -647,7 +647,7 @@ def add_doc(request):
 
 
 def update_doc(request, pk):
-    docs = get_object_or_404(Doc, pk=pk)
+    docs = get_object_or_404(Document, pk=pk)
 
     if request.method == "POST":
         form = ModifDocForm(request.POST, request.FILES, instance=docs)
@@ -660,7 +660,7 @@ def update_doc(request, pk):
 
 
 def delete_doc(request, pk):
-    docs = get_object_or_404(Doc, pk=pk)
+    docs = get_object_or_404(Document, pk=pk)
     if request.method == "POST":
         #: Suppression du fichier sur le serveur
         doc_file = docs.manuel.path

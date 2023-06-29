@@ -29,11 +29,12 @@ class HistoryAdmin(admin.ModelAdmin):
     search_fields = ['date_historique']
 
 
-@admin.register(ModelePompe, StockPompe, Fabriquant, Doc, Site, Batiment, Etage, Piece, ModelEquipe, Huile, PiecesPompe,
-                Tutelle, Inventaire, Kit, TechnologiePompe)
+@admin.register(ModelePompe, StockPompe, Fabriquant, Document, Site, Batiment, Etage, Piece, ModelEquipe, Huile,
+                PiecesPompe, Tutelle, Inventaire, Kit, TechnologiePompe)
 @admin.display(description= 'nom')
 class PersonAdmin(ImportExportModelAdmin):
     pass
+
 
 admin.site.register(VersionApp, VersionAppAdmin),
 admin.site.register(StockHistory, HistoryAdmin)

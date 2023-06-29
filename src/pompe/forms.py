@@ -70,13 +70,13 @@ class ModifTechnoForm(forms.ModelForm):
 # documentations
 class Docform(forms.ModelForm):
     class Meta:
-        model = Doc
+        model = Document
         fields = '__all__'
 
 
 class ModifDocForm(forms.ModelForm):
     class Meta:
-        model = Doc
+        model = Document
         fields = '__all__'
 
 

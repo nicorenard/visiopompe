@@ -23,18 +23,15 @@
             </tr>
             <tr>
                 {% for fichepompe in m_pompe %}
-                <td><p>{{fichepompe.fabriquant.nom}}</p></td>
-                <td><p>{{fichepompe.modele}}</p></td>
-                <td><p>{{fichepompe.nom}}</p></td>
-                <td><p>{{fichepompe.phasage}}</p></td>
-                <td><p>{{fichepompe.puissance}}</p></td>
-                <td><p>{{fichepompe.technologie.nom}}
+                <td>{{fichepompe.fabriquant.nom}}</td>
+                <td>{{fichepompe.modele}}</td>
+                <td>{{fichepompe.nom}}</td>
+                <td>{{fichepompe.phasage}}</td>
+                <td>{{fichepompe.puissance}}</td>
+                <td>{{fichepompe.technologie.nom}}
                     {% if fichepompe.technologie.cara1 %}
-                    - {{fichepompe.technologie.cara1}}
-                    {% endif %}
-                    {% if fichepompe.technologie.cara2 %}
-                    - {{fichepompe.technologie.cara2}}{% endif %}</p></td>
-                <td><p>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</p></td>
+                </td>
+                <td>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</td>
                 <td>{% if fichepompe.documentation.manuel %}
                     <a href="/media/{{fichepompe.documentation.manuel}}"><img
                             src="{% static 'pompe/img/option/icons_download.png' %}" alt="manuel" class="w3-hover"/></a>
@@ -98,19 +95,12 @@
                             <tr>
                                 {% for fichepompe in technos %}
                                 <td><p>{{fichepompe.nom}}</p></td>
-                                <td><p>{{fichepompe.cara1}}</p></td>
-                                <td><p>{% if fichepompe.cara2 %}
-                                    {{fichepompe.cara2}}
-                                    {% endif %}
-                                </p></td>
-                                <td><p>||</p></td>
+                                <td><p>{{fichepompe.info}}</p></td>
                                 <td>
                                     <button class="w3-button" type="submit"><a
                                             href="{% url 'pompe:techno_edit' pk=fichepompe.pk %}"><img
                                             src="{% static 'pompe/img/option/icons_edit.png' %}"
                                             style="width:40px;"/></a></button>
-                                </td>
-                                <td>
                                     <form method="POST" action="{% url 'pompe:techno_delete' pk=fichepompe.pk %}"
                                           onsubmit="return confirm('Etes-vous sur de vouloir effacer cette technologie ?')">
                                         {% csrf_token %}

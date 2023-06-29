@@ -52,7 +52,7 @@ class KitRessource(resources.ModelResource):
 
 class DocRessource(resources.ModelResource):
     class Meta:
-        model = Doc
+        model = Document
 
 
 class EquipeResource(resources.ModelResource):
