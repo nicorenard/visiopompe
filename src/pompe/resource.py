@@ -7,7 +7,7 @@ from import_export import resources
 from .models import *
 
 
-## pompes
+#: ModelePompeRessource for
 class ModelePompeRessource(resources.ModelResource):
     class Meta:
         model = ModelePompe

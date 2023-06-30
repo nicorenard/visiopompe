@@ -34,7 +34,8 @@ def version(request):
 def dashboard(request):
     """
     Fonction qui permet l'affichage de compteurs d'états généraux des pompes, de leurs types et leurs natures.
-    Une option a été ajoutée pour un affichage spécifique en fonction des étages de l'UMR 6521.
+    Une option a été ajoutée pour un affichage spécifique en fonction des étages de l'UMR 6521, aux équipes et aux types
+    de technologie de vide.
 
     Args:
         request: la requête d'affichage des pompes
@@ -54,17 +55,16 @@ def dashboard(request):
     p_atex = dash_pompes.filter(atex='1').count()
 
     #: special to UMR 6521. Base on technologie of pump. #
-
     p_palette = dash_pompes.filter(pompe__technologie__nom__icontains='palette').count()
     p_membrane = dash_pompes.filter(pompe__technologie__nom__icontains='membrane').count()
-    p_seche = dash_pompes.filter(pompe__technologie__cara2__icontains='seche').count()
+    p_seche = dash_pompes.filter(pompe__technologie__info__icontains='seche').count()
 
-    # special to UMR 6521 by stair. #
+    #: special to UMR 6521 by stair. #
     p_etage_1 = dash_pompes.filter(etage__nom__icontains='1').count()
     p_etage_2 = dash_pompes.filter(etage__nom__icontains='2').count()
     p_etage_3 = dash_pompes.filter(etage__nom__icontains='3').count()
 
-    # special to UMR6521 by teams. #
+    #: special to UMR6521 by teams. #
     p_ciel = dash_pompes.filter(equipe__sigle__icontains='ciel').count()
     p_spectre = dash_pompes.filter(equipe__sigle__icontains='spectre').count()
     p_cosm = dash_pompes.filter(equipe__sigle__icontains='cosm').count()
@@ -141,7 +141,11 @@ def delete_equipe(request, pk):
         queryset.delete()
         return redirect('/dashboard/equipe')
 
-    return render(request, 'pompe/equipe.html', {'queryset': queryset})
+    context = {
+        'queryset': queryset
+    }
+
+    return render(request, 'pompe/equipe.html', context)
 
 
 ## fabriquant
@@ -160,7 +164,10 @@ def fabriquant(request):
     else:
         form = Fabriquantform()
 
-    context = {'fabriquants': fabriquants, 'form': form}
+    context = {
+        'fabriquants': fabriquants,
+        'form': form
+    }
     return render(request, 'pompe/fabriquant.html', context)
 
 
@@ -182,11 +189,20 @@ def delete_fabriquant(request, pk):
 
         # suppression des médias = logos
         logomax_path = queryset.logo_max.path
+        logomax_parent_directory = os.path.dirname(logomax_path)
         logomini_path = queryset.logo_mini.path
+        logomini_parent_directory = os.path.dirname(logomini_path)
+
         if os.path.exists(logomax_path):
             os.remove(logomax_path)
+            # si dossier vide, on retire celui_ci du serveur
+            if len(os.listdir(logomax_parent_directory)) == 0:
+                os.rmdir(logomax_parent_directory)
         if os.path.exists(logomini_path):
             os.remove(logomini_path)
+            # si dossier vide, on retire celui_ci du serveur
+            if len(os.listdir(logomini_parent_directory)) == 0:
+                os.rmdir(logomini_parent_directory)
 
         queryset.delete()
         return redirect("/fabriquants")
@@ -229,7 +245,11 @@ def piece(request):
                'sites': sites,
                'batiments': batiments,
                'etages': etages,
-               'form': form, 'form2': form2, 'form3': form3, 'form4': form4}
+               'form': form,
+               'form2': form2,
+               'form3': form3,
+               'form4': form4
+               }
     return render(request, 'pompe/lieux.html', context)
 
 
@@ -242,7 +262,11 @@ def update_piece(request, pk):
         return redirect('/dashboard/lieux')
     else:
         form = ModifPieceForm(instance=pieces)
-    return render(request, 'pompe/forms.html', {'form': form})
+
+    context = {
+        'form': form
+    }
+    return render(request, 'pompe/forms.html', context)
 
 
 def delete_piece(request, pk):
@@ -251,7 +275,11 @@ def delete_piece(request, pk):
         queryset.delete()
         return redirect('/dashboard/lieux')
 
-    return render(request, 'pompe/lieux.html', {'queryset': queryset})
+    context = {
+        'queryset': queryset
+    }
+
+    return render(request, 'pompe/lieux.html', context)
 
 
 def update_site(request, pk):
@@ -417,12 +445,17 @@ def delete_fichepompe(request, pk):
     queryset = get_object_or_404(ModelePompe, pk=pk)
     if request.method == "POST":
         image_path = queryset.image.path
+        image_parent_directory = os.path.dirname(image_path)
         if os.path.exists(image_path):
             os.remove(image_path)
+            if len(os.listdir(image_parent_directory)) == 0:
+                os.rmdir(image_parent_directory)
             queryset.delete()
         return redirect('/fichepompe')
 
-    context = {'queryset': queryset}
+    context = {
+        'queryset': queryset
+    }
     return render(request, 'pompe/fiche_pompe.html', context)
 
 
@@ -470,7 +503,12 @@ def inventaire(request):
         form = Inventaireform()
         form2 = Tutelleform()
 
-    context = {'inventaires': inventaires, 'tutelles': tutelles, 'form': form, 'form2': form2}
+    context = {
+        'inventaires': inventaires,
+        'tutelles': tutelles,
+        'form': form,
+        'form2': form2
+        }
     return render(request, 'pompe/inventaire.html', context)
 
 
@@ -508,7 +546,10 @@ def delete_tutelle(request, pk):
 # pieces detachées
 def pdetache(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
-    return render(request, 'pompe/piece.html', {'pieces': pieces})
+    context = {
+        'pieces': pieces
+    }
+    return render(request, 'pompe/piece.html', context)
 
 
 def add_pdetache(request):
@@ -539,8 +580,11 @@ def delete_pdetache(request, pk):
     pieces = get_object_or_404(PiecesPompe, pk=pk)
     if request.method == "POST":
         pieces_image = pieces.image.path
+        image_path = os.path.dirname(pieces_image)
         if os.path.exists(pieces_image):
             os.remove(pieces_image)
+            if len(os.listdir(image_path)) == 0:
+                os.rmdir(image_path)
             pieces.delete()
         return redirect('/pieces_detaches')
     return render(request, 'pompe/piece.html', {'pieces': pieces})
@@ -580,8 +624,11 @@ def delete_huile(request, pk):
     huiles = get_object_or_404(Huile, pk=pk)
     if request.method == "POST":
         huile_path = huiles.image.path
+        huile_directory = os.path.dirname(huile_path)
         if os.path.exists(huile_path):
             os.remove(huile_path)
+            if len(os.listdir(huile_directory)) == 0:
+                os.rmdir(huile_directory)
             huiles.delete()
         return redirect('/huiles')
     return render(request, 'pompe/huile.html', {'huiles': huiles})
@@ -620,8 +667,11 @@ def delete_kit(request, pk):
     kits = get_object_or_404(Kit, pk=pk)
     if request.method == "POST":
         kit_image = kits.image.path
+        image_directory = os.path.dirname(kit_image)
         if os.path.exists(kit_image):
             os.remove(kit_image)
+            if len(os.listdir(image_directory)) == 0:
+                os.rmdir(image_directory)
             kits.delete()
         return redirect('/kits')
     return render(request, 'pompe/kit.html', {'kits': kits})
@@ -631,7 +681,9 @@ def delete_kit(request, pk):
 
 def doc(request):
     docs = Document.objects.all().order_by('nom')
-    context = {'docs': docs}
+    context = {
+        'docs': docs
+    }
     return render(request, 'pompe/doc.html', context)
 
 
@@ -664,8 +716,11 @@ def delete_doc(request, pk):
     if request.method == "POST":
         #: Suppression du fichier sur le serveur
         doc_file = docs.manuel.path
+        doc_directory = os.path.dirname(doc_file)
         if os.path.exists(doc_file):
             os.remove(doc_file)
+            if len(os.listdir(doc_directory)) == 0:
+                os.rmdir(doc_directory)
             docs.delete()
         return redirect('/docs')
     return render(request, 'pompe/doc.html', {'docs': docs})

@@ -8,37 +8,45 @@
         <h2>Modèles des pompes</h2>
     </div>
     <br/>
-    <section>
-        <table class="w3-table-all w3-centered w3-striped w3-mobile" style="margin-left:10px; margin-right: 50px;">
+    <section class="w3-mobile w3-padding-12" style="padding-left:20px; padding-right: 20px;">
+        <table class="w3-table-all w3-centered w3-striped">
             <tr class="w3-green w3-text-black">
-                <th><p>Fabriquant</p></th>
-                <th><p>Série</p></th>
-                <th><p>Nom</p></th>
-                <th><p>Phasage</p></th>
-                <th><p>Puissance</p></th>
-                <th><p>Technologie du vide</p></th>
-                <th><p>Vide fabriquant</p></th>
-                <th><p>Manuel</p></th>
-                <th><p>Actions</p></th>
+                <th>Fabriquant</th>
+                <th>Série</th>
+                <th>Nom</th>
+                <th>Phasage</th>
+                <th>Puissance</th>
+                <th>Technologie du vide</th>
+                <th>Vide fabriquant</th>
+                <th>Manuel</th>
+                <th>Actions</th>
             </tr>
             <tr>
                 {% for fichepompe in m_pompe %}
-                <td>{{fichepompe.fabriquant.nom}}</td>
+                <td>
+                    {% if fichepompe.fabriquant.logo_mini %}
+                    <img src="/media/{{fichepompe.fabriquant.logo_mini}}" class="w3-bar-item w3-hide-small" style="width:30%" alt="
+                     miniature logo"/>
+                    {% else %}
+                    <img src="{% static 'pompe/img/noimage.jpg' %}" class="w3-bar-item w3-hide-small" style="width:30%"
+                         alt="
+                     miniature logo"/>
+                    {% endif %}
+                </td>
                 <td>{{fichepompe.modele}}</td>
                 <td>{{fichepompe.nom}}</td>
                 <td>{{fichepompe.phasage}}</td>
                 <td>{{fichepompe.puissance}}</td>
                 <td>{{fichepompe.technologie.nom}}
-                    {% if fichepompe.technologie.cara1 %}
                 </td>
                 <td>{{fichepompe.vide_theo |stringformat:".0e"}} mbars</td>
                 <td>{% if fichepompe.documentation.manuel %}
                     <a href="/media/{{fichepompe.documentation.manuel}}"><img
                             src="{% static 'pompe/img/option/icons_download.png' %}" alt="manuel" class="w3-hover"/></a>
-                    {% else %}<i class="fa fa-close w3-xxlarge"></i>
+                    {% else %}
+                    <i class="fa fa-close w3-xxlarge"></i>
                     {% endif %}
                 </td>
-
                 <td>
                     <button class="w3-button" type="submit"><a
                             href="{% url 'pompe:fichepompe_edit' pk=fichepompe.pk %}">
@@ -47,66 +55,66 @@
                           onsubmit="return confirm('Etes-vous sur de vouloir effacer cette fiche ?')">
                         {% csrf_token %}
                         <button class="w3-button" type="submit"><img
-                                src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:40px;"/></button>
+                                src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:50%;"/></button>
                     </form>
                 </td>
             </tr>
             {% endfor %}
         </table>
     </section>
-    <br><br>
-    <section>
-        <div class="w3-row-padding w3-mobile">
-            <div class="w3-col m6 s6 ">
-                <div class="w3-card-2 w3-center">
-                    <header class="w3-container w3-cyan">
-                        <h4>Formulaire d'ajout de fiches</h4>
+
+    <section class="w3-mobile w3-padding-24" style="margin-left:20px ; margin-right:20px">
+        <div class="w3-row">
+            <div class="w3-col m6 s6">
+                <div class="w3-card">
+                    <header class="w3-container w3-cyan w3-center">
+                        <h4>Ajouter un modèle de pompe à vide</h4>
                     </header>
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data" class="w3-container">
                         {% csrf_token %}
-                        <table>
-                            {{form.as_p}}
-                        </table>
-                        <button class="w3-button w3-green" type="submit" name="fiche_form">Enregistrer</button>
-                        <button class="w3-button w3-red"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
+                        {{form.as_p}}
+                        <div class="w3-center w3-padding">
+                            <button class="w3-button w3-green w3-round" type="submit" name="fiche_form">Enregistrer
+                            </button>
+                            <button class="w3-button w3-red w3-round" type="reset">Effacer la saisie</button>
+                        </div>
                     </form>
-                    <br>
                 </div>
             </div>
-            <div class="w3-col m6 s6 ">
-                <div class="w3-card-2 w3-center ">
-                    <header class="w3-container w3-amber ">
-                        <h4>Formulaire d'ajout de technologie de pompes</h4>
+            <div class="w3-padding-small w3-col m6 s6 ">
+                <div class="w3-card ">
+                    <header class="w3-container w3-amber w3-center">
+                        <h4>Ajouter une technologie de vide</h4>
                     </header>
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data" class="w3-container">
                         {% csrf_token %}
-                        <table>
-                            {{form2.as_p}}
-                        </table>
-                        <button class="w3-button w3-green w3-round" type="submit" name="techno_form">Enregistrer</button>
-                        <button class="w3-button w3-red w3-round"><a href="{% url 'pompe:lieux' %}">Annuler</a></button>
-                        <br>
+                        {{form2.as_p}}
+                        <div class="w3-padding w3-center">
+                            <button class="w3-button w3-green w3-round" type="submit" name="techno_form">Enregistrer
+                            </button>
+                            <button class="w3-button w3-red w3-round" type="reset">Effacer la saisie</button>
+                        </div>
                     </form>
-                    <div class="w3-container w3-amber w3-margin-top">
-                        <h4>Technologie de pompes enregistrées</h4>
+                    <div class="w3-container w3-amber w3-margin-top w3-center">
+                        <h4>Technologie de vide enregistrées</h4>
                     </div>
                     <div class="w3-container">
-                        <table class="w3-table w3-centered w3-mobile ">
+                        <table class="w3-table w3-centered w3-mobile">
                             <tr>
                                 {% for fichepompe in technos %}
-                                <td><p>{{fichepompe.nom}}</p></td>
-                                <td><p>{{fichepompe.info}}</p></td>
+                                <td>{{fichepompe.nom}}</td>
+                                <td>{{fichepompe.info}}</td>
                                 <td>
                                     <button class="w3-button" type="submit"><a
                                             href="{% url 'pompe:techno_edit' pk=fichepompe.pk %}"><img
                                             src="{% static 'pompe/img/option/icons_edit.png' %}"
-                                            style="width:40px;"/></a></button>
+                                            style="width:50%;"/></a></button>
                                     <form method="POST" action="{% url 'pompe:techno_delete' pk=fichepompe.pk %}"
                                           onsubmit="return confirm('Etes-vous sur de vouloir effacer cette technologie ?')">
                                         {% csrf_token %}
                                         <button class="w3-button" type="submit"><img
                                                 src="{% static 'pompe/img/option/icons_delete.png' %}"
-                                                style="width:40px;"/></button>
+                                                style="width:50%;"/></button>
                                     </form>
                                 </td>
                             </tr>

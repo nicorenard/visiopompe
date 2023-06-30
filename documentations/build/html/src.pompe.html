@@ -94,7 +94,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pompe.models">Module MODELS</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#pompe.models.Batiment"><code class="docutils literal notranslate"><span class="pre">Batiment</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Doc"><code class="docutils literal notranslate"><span class="pre">Doc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pompe.models.Etage"><code class="docutils literal notranslate"><span class="pre">Etage</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pompe.models.Fabriquant"><code class="docutils literal notranslate"><span class="pre">Fabriquant</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pompe.models.Huile"><code class="docutils literal notranslate"><span class="pre">Huile</span></code></a></li>
@@ -290,7 +290,7 @@
 </section>
 <section id="module-pompe.filters">
 <span id="module-filters"></span><h2>Module FILTERS<a class="headerlink" href="#module-pompe.filters" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Filter function for pump search</p>
+<p>Classes de filtres pour les recherches de stocks de pompes</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.filters.PompeStockFilter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.filters.</span></span><span class="sig-name descname"><span class="pre">PompeStockFilter</span></span><a class="reference internal" href="_modules/pompe/filters.html#PompeStockFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.filters.PompeStockFilter" title="Lien permanent vers cette définition"></a></dt>
@@ -301,7 +301,7 @@
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.filters.PompeStockFilter.Meta.fields">
-<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['pompe',</span> <span class="pre">'equipe',</span> <span class="pre">'etage__batiment',</span> <span class="pre">'etage',</span> <span class="pre">'piece',</span> <span class="pre">'inventaire',</span> <span class="pre">'statut']</span></em><a class="headerlink" href="#pompe.filters.PompeStockFilter.Meta.fields" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['equipe',</span> <span class="pre">'etage__batiment',</span> <span class="pre">'etage',</span> <span class="pre">'piece',</span> <span class="pre">'pompe',</span> <span class="pre">'inventaire',</span> <span class="pre">'statut']</span></em><a class="headerlink" href="#pompe.filters.PompeStockFilter.Meta.fields" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -319,7 +319,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.filters.PompeStockFilter.declared_filters">
-<span class="sig-name descname"><span class="pre">declared_filters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pompe.filters.PompeStockFilter.declared_filters" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">declared_filters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'etage__batiment':</span> <span class="pre">&lt;django_filters.filters.ModelChoiceFilter</span> <span class="pre">object&gt;,</span> <span class="pre">'inventaire':</span> <span class="pre">&lt;django_filters.filters.ModelChoiceFilter</span> <span class="pre">object&gt;,</span> <span class="pre">'pompe':</span> <span class="pre">&lt;django_filters.filters.ModelChoiceFilter</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.filters.PompeStockFilter.declared_filters" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -332,6 +332,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Batimentform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Batimentform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Batimentform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Batimentform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un bâtiment sur un site.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un bâtiment</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Batimentform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Batimentform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Batimentform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -346,6 +353,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Batimentform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Batiment" title="pompe.models.Batiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Batiment</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Batimentform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'site':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Batimentform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -371,6 +383,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Docform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Docform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Docform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Docform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’une documentation technique.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer une documentation</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Docform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Docform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Docform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -383,8 +402,13 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.forms.Docform.Meta.model">
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Docform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>alias de <a class="reference internal" href="#pompe.models.Doc" title="pompe.models.Doc"><code class="xref py py-class docutils literal notranslate"><span class="pre">Doc</span></code></a></p>
+<dd><p>alias de <a class="reference internal" href="#pompe.models.Document" title="pompe.models.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Docform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'manuel':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'version':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Docform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -410,6 +434,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Equipeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Equipeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Equipeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Equipeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’une équipe.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer une équipe</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Equipeform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Equipeform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Equipeform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -424,6 +455,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Equipeform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.ModelEquipe" title="pompe.models.ModelEquipe"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelEquipe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Equipeform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'email_responsable':</span> <span class="pre">&lt;django.forms.widgets.EmailInput</span> <span class="pre">object&gt;,</span> <span class="pre">'localisation':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom_responsable':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'sigle':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Equipeform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -449,6 +485,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Etageform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Etageform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Etageform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Etageform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un étage dans un bâtiment.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un étage</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Etageform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Etageform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Etageform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -463,6 +506,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Etageform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Etage" title="pompe.models.Etage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Etage</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Etageform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'batiment':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Etageform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -488,6 +536,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Fabriquantform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Fabriquantform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Fabriquantform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Fabriquantform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un fabriquant.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un fabriquant</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Fabriquantform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Fabriquantform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Fabriquantform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -502,6 +557,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Fabriquantform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Fabriquant" title="pompe.models.Fabriquant"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fabriquant</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Fabriquantform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'adresse':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'code_postal':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'logo_max':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'logo_mini':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ville':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Fabriquantform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -527,6 +587,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Huileform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Huileform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Huileform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Huileform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un lot d’huile.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un lot d’huile</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Huileform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Huileform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Huileform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -541,6 +608,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Huileform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Huile" title="pompe.models.Huile"><code class="xref py py-class docutils literal notranslate"><span class="pre">Huile</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Huileform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_maj':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'information':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'quantite':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ref_fab':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Huileform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -566,6 +638,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Inventaireform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Inventaireform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Inventaireform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Inventaireform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un numéro d’inventaire.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un numéro d’inventaire</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Inventaireform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Inventaireform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Inventaireform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -580,6 +659,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Inventaireform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Inventaire" title="pompe.models.Inventaire"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventaire</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Inventaireform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_inventaire':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'numero':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Inventaireform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -605,6 +689,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Kitform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Kitform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Kitform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Kitform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un kit de maintenance de pompe à vide.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un kit de maintenance</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Kitform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Kitform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Kitform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -619,6 +710,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Kitform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Kit" title="pompe.models.Kit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kit</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Kitform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_maj':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'information':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'quantite':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ref_fab':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ref_rev':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'revendeur':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Kitform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -644,6 +740,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModelPompeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModelPompeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModelPompeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModelPompeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un modèle de pompe.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un modèle</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModelPompeform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModelPompeform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModelPompeform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -658,6 +761,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModelPompeform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.ModelePompe" title="pompe.models.ModelePompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelePompe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModelPompeform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'documentation':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'modele':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'phasage':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'puissance':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'technologie':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'vide_theo':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModelPompeform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -683,6 +791,14 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifBatimentForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifBatimentForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifBatimentForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifBatimentForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’un bâtiment.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifBatimentForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifBatimentForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifBatimentForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -697,6 +813,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifBatimentForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Batiment" title="pompe.models.Batiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Batiment</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifBatimentForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'site':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifBatimentForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -722,6 +843,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifDocForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifDocForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifDocForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifDocForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’une documentation technique.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifDocForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifDocForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifDocForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -734,8 +862,13 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.forms.ModifDocForm.Meta.model">
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifDocForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>alias de <a class="reference internal" href="#pompe.models.Doc" title="pompe.models.Doc"><code class="xref py py-class docutils literal notranslate"><span class="pre">Doc</span></code></a></p>
+<dd><p>alias de <a class="reference internal" href="#pompe.models.Document" title="pompe.models.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifDocForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'manuel':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'version':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifDocForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -761,6 +894,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifEquipeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifEquipeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifEquipeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifEquipeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’une équipe.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifEquipeForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifEquipeForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifEquipeForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -775,6 +915,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifEquipeForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.ModelEquipe" title="pompe.models.ModelEquipe"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelEquipe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifEquipeForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'email_responsable':</span> <span class="pre">&lt;django.forms.widgets.EmailInput</span> <span class="pre">object&gt;,</span> <span class="pre">'localisation':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom_responsable':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'sigle':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifEquipeForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -800,6 +945,14 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifEtageForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifEtageForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifEtageForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifEtageForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’un étage.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifEtageForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifEtageForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifEtageForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -814,6 +967,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifEtageForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Etage" title="pompe.models.Etage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Etage</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifEtageForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'batiment':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifEtageForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -839,6 +997,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifFabriquantForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifFabriquantForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifFabriquantForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifFabriquantForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’un fabriquant.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifFabriquantForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifFabriquantForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifFabriquantForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -853,6 +1018,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifFabriquantForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Fabriquant" title="pompe.models.Fabriquant"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fabriquant</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifFabriquantForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'adresse':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'code_postal':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'logo_max':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'logo_mini':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ville':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifFabriquantForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -878,6 +1048,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifHuileForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifHuileForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifHuileForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifHuileForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire de lot d’huile.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifHuileForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifHuileForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifHuileForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -892,6 +1069,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifHuileForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Huile" title="pompe.models.Huile"><code class="xref py py-class docutils literal notranslate"><span class="pre">Huile</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifHuileForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_maj':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'information':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'quantite':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ref_fab':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifHuileForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -917,6 +1099,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifInventaireForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifInventaireForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifInventaireForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifInventaireForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’un numéro d’inventaire.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifInventaireForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifInventaireForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifInventaireForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -931,6 +1120,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifInventaireForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Inventaire" title="pompe.models.Inventaire"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inventaire</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifInventaireForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_inventaire':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'numero':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifInventaireForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -956,6 +1150,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifKitForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifKitForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifKitForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifKitForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’un kit de maintenance de pompe à vide.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifKitForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifKitForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifKitForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -970,6 +1171,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifKitForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Kit" title="pompe.models.Kit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kit</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifKitForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_maj':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'information':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'quantite':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ref_fab':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'ref_rev':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'revendeur':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifKitForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -995,6 +1201,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifModelPompeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifModelPompeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifModelPompeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifModelPompeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un modèle de pompe.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifModelPompeForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifModelPompeForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifModelPompeForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1009,6 +1222,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifModelPompeForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.ModelePompe" title="pompe.models.ModelePompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelePompe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifModelPompeForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'documentation':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'modele':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'phasage':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'puissance':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'technologie':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'vide_theo':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifModelPompeForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1034,6 +1252,14 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifPieceForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifPieceForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifPieceForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifPieceForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’une pièce ou salle.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifPieceForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifPieceForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifPieceForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1048,6 +1274,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifPieceForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Piece" title="pompe.models.Piece"><code class="xref py py-class docutils literal notranslate"><span class="pre">Piece</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifPieceForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'etage':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifPieceForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1073,6 +1304,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifPiecePompeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifPiecePompeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifPiecePompeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifPiecePompeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’une documentation technique.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifPiecePompeForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifPiecePompeForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifPiecePompeForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1087,6 +1325,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifPiecePompeForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.PiecesPompe" title="pompe.models.PiecesPompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">PiecesPompe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifPiecePompeForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_maj':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'information':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'quantite':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifPiecePompeForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1112,6 +1355,14 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifSiteForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifSiteForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifSiteForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifSiteForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’un site.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifSiteForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifSiteForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifSiteForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1126,6 +1377,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifSiteForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Site" title="pompe.models.Site"><code class="xref py py-class docutils literal notranslate"><span class="pre">Site</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifSiteForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifSiteForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1151,6 +1407,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifStockPompeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifStockPompeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifStockPompeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifStockPompeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’un stock de pompe.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifStockPompeForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifStockPompeForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifStockPompeForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1165,6 +1428,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifStockPompeForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.StockPompe" title="pompe.models.StockPompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">StockPompe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifStockPompeForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'atex':</span> <span class="pre">&lt;django.forms.widgets.NullBooleanSelect</span> <span class="pre">object&gt;,</span> <span class="pre">'equipe':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'etage':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'historique':</span> <span class="pre">&lt;django.forms.widgets.Textarea</span> <span class="pre">object&gt;,</span> <span class="pre">'huile':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'inventaire':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'num_serie':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'place':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'pompe':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'statut':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'vidange':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'vide_user':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifStockPompeForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1190,6 +1458,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifTechnoForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifTechnoForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifTechnoForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifTechnoForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’une technologie du vide.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifTechnoForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifTechnoForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifTechnoForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1205,11 +1480,16 @@
 <dd><p>alias de <a class="reference internal" href="#pompe.models.TechnologiePompe" title="pompe.models.TechnologiePompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">TechnologiePompe</span></code></a></p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifTechnoForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'info':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifTechnoForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.forms.ModifTechnoForm.base_fields">
-<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'cara1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'cara2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifTechnoForm.base_fields" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'info':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifTechnoForm.base_fields" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1229,6 +1509,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifTutelleForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifTutelleForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifTutelleForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifTutelleForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Classe de modification d’un formulaire d’une tutelle budgétaire.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifTutelleForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifTutelleForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifTutelleForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1243,6 +1530,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.ModifTutelleForm.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Tutelle" title="pompe.models.Tutelle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tutelle</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.ModifTutelleForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.ModifTutelleForm.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1268,6 +1560,13 @@
 <dt class="sig sig-object py" id="pompe.forms.PiecePompeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">PiecePompeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#PiecePompeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.PiecePompeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’une pièce détaché.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer une pièce détachée</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.PiecePompeform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#PiecePompeform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.PiecePompeform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1282,6 +1581,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.PiecePompeform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.PiecesPompe" title="pompe.models.PiecesPompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">PiecesPompe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.PiecePompeform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'date_maj':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'fabriquant':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.widgets.ClearableFileInput</span> <span class="pre">object&gt;,</span> <span class="pre">'information':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'quantite':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.PiecePompeform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1307,6 +1611,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Pieceform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Pieceform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Pieceform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Pieceform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’une pièce ou salle.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer une pièce</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Pieceform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Pieceform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Pieceform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1321,6 +1632,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Pieceform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Piece" title="pompe.models.Piece"><code class="xref py py-class docutils literal notranslate"><span class="pre">Piece</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Pieceform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'etage':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Pieceform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1346,6 +1662,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Siteform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Siteform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Siteform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Siteform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un site.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un site</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Siteform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Siteform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Siteform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1360,6 +1683,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Siteform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Site" title="pompe.models.Site"><code class="xref py py-class docutils literal notranslate"><span class="pre">Site</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Siteform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Siteform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1385,6 +1713,13 @@
 <dt class="sig sig-object py" id="pompe.forms.StockPompeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">StockPompeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#StockPompeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.StockPompeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’un stock de pompe.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer un stock de pompe</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.StockPompeform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#StockPompeform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.StockPompeform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1399,6 +1734,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.StockPompeform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.StockPompe" title="pompe.models.StockPompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">StockPompe</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.StockPompeform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'atex':</span> <span class="pre">&lt;django.forms.widgets.NullBooleanSelect</span> <span class="pre">object&gt;,</span> <span class="pre">'equipe':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'etage':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'historique':</span> <span class="pre">&lt;django.forms.widgets.Textarea</span> <span class="pre">object&gt;,</span> <span class="pre">'huile':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'inventaire':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'mise_en_service':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'num_serie':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'piece':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'place':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'pompe':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'statut':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'vidange':</span> <span class="pre">&lt;django.forms.widgets.DateInput</span> <span class="pre">object&gt;,</span> <span class="pre">'vide_user':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.StockPompeform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1424,6 +1764,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Technologieform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Technologieform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Technologieform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Technologieform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’une technologie du vide.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer une technologie</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Technologieform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Technologieform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Technologieform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1439,11 +1786,16 @@
 <dd><p>alias de <a class="reference internal" href="#pompe.models.TechnologiePompe" title="pompe.models.TechnologiePompe"><code class="xref py py-class docutils literal notranslate"><span class="pre">TechnologiePompe</span></code></a></p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Technologieform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'info':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Technologieform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.forms.Technologieform.base_fields">
-<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'cara1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'cara2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Technologieform.base_fields" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'info':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Technologieform.base_fields" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1463,6 +1815,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Tutelleform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Tutelleform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Tutelleform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Tutelleform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<p>Formulaire de création d’une tutelle budgétaire.
+:param ModelForm: l’attribut basé sur Form de Django</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Le formulaire généré pour créer une tutelle budgétaire</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Tutelleform.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#Tutelleform.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Tutelleform.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1477,6 +1836,11 @@
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.forms.Tutelleform.Meta.model" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>alias de <a class="reference internal" href="#pompe.models.Tutelle" title="pompe.models.Tutelle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tutelle</span></code></a></p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.forms.Tutelleform.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'nom':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#pompe.forms.Tutelleform.Meta.widgets" title="Lien permanent vers cette définition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1574,25 +1938,25 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pompe.models.Doc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Doc</span></span><a class="reference internal" href="_modules/pompe/models.html#Doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Doc" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><a class="reference internal" href="_modules/pompe/models.html#Document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Document" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Doc(id, nom, fabriquant, manuel, version)</p>
+<p>Document(id, nom, fabriquant, manuel, version)</p>
 <dl class="py exception">
-<dt class="sig sig-object py" id="pompe.models.Doc.DoesNotExist">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Doc.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Document.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt class="sig sig-object py" id="pompe.models.Doc.MultipleObjectsReturned">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#pompe.models.Doc.MultipleObjectsReturned" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#pompe.models.Document.MultipleObjectsReturned" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.fabriquant">
-<span class="sig-name descname"><span class="pre">fabriquant</span></span><a class="headerlink" href="#pompe.models.Doc.fabriquant" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.fabriquant">
+<span class="sig-name descname"><span class="pre">fabriquant</span></span><a class="headerlink" href="#pompe.models.Document.fabriquant" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Accessor to the related object on the forward side of a many-to-one or
 one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <p>In the example:</p>
@@ -1604,20 +1968,20 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.fabriquant_id">
-<span class="sig-name descname"><span class="pre">fabriquant_id</span></span><a class="headerlink" href="#pompe.models.Doc.fabriquant_id" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.fabriquant_id">
+<span class="sig-name descname"><span class="pre">fabriquant_id</span></span><a class="headerlink" href="#pompe.models.Document.fabriquant_id" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.id">
-<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#pompe.models.Doc.id" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#pompe.models.Document.id" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.manuel">
-<span class="sig-name descname"><span class="pre">manuel</span></span><a class="headerlink" href="#pompe.models.Doc.manuel" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.manuel">
+<span class="sig-name descname"><span class="pre">manuel</span></span><a class="headerlink" href="#pompe.models.Document.manuel" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>The descriptor for the file attribute on the model instance. Return a
 FieldFile when accessed so you can write code like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">MyModel</span>
@@ -1633,8 +1997,8 @@ FieldFile when accessed so you can write code like:</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.modelepompe_set">
-<span class="sig-name descname"><span class="pre">modelepompe_set</span></span><a class="headerlink" href="#pompe.models.Doc.modelepompe_set" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.modelepompe_set">
+<span class="sig-name descname"><span class="pre">modelepompe_set</span></span><a class="headerlink" href="#pompe.models.Document.modelepompe_set" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Accessor to the related objects manager on the reverse side of a
 many-to-one relation.</p>
 <p>In the example:</p>
@@ -1648,20 +2012,20 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.nom">
-<span class="sig-name descname"><span class="pre">nom</span></span><a class="headerlink" href="#pompe.models.Doc.nom" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.nom">
+<span class="sig-name descname"><span class="pre">nom</span></span><a class="headerlink" href="#pompe.models.Document.nom" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.objects">
-<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pompe.models.Doc.objects" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pompe.models.Document.objects" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Doc.version">
-<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#pompe.models.Doc.version" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Document.version">
+<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#pompe.models.Document.version" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -1831,8 +2195,8 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.Fabriquant.doc_set">
-<span class="sig-name descname"><span class="pre">doc_set</span></span><a class="headerlink" href="#pompe.models.Fabriquant.doc_set" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.Fabriquant.document_set">
+<span class="sig-name descname"><span class="pre">document_set</span></span><a class="headerlink" href="#pompe.models.Fabriquant.document_set" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Accessor to the related objects manager on the reverse side of a
 many-to-one relation.</p>
 <p>In the example:</p>
@@ -1921,6 +2285,16 @@ many-to-one relation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
 <p>Most of the implementation is delegated to a dynamically defined manager
 class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pompe.models.Fabriquant.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Fabriquant.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Fabriquant.save" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The “force_insert” and “force_update” parameters can be used to insist
+that the « save » must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2037,6 +2411,16 @@ object the first time, the query is executed.</p>
 <span class="sig-name descname"><span class="pre">ref_fab</span></span><a class="headerlink" href="#pompe.models.Huile.ref_fab" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pompe.models.Huile.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Huile.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Huile.save" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The “force_insert” and “force_update” parameters can be used to insist
+that the « save » must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2276,6 +2660,16 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <span class="sig-name descname"><span class="pre">revendeur_id</span></span><a class="headerlink" href="#pompe.models.Kit.revendeur_id" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="pompe.models.Kit.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Kit.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Kit.save" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The “force_insert” and “force_update” parameters can be used to insist
+that the « save » must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -2505,6 +2899,16 @@ object the first time, the query is executed.</p>
 <span class="sig-name descname"><span class="pre">puissance</span></span><a class="headerlink" href="#pompe.models.ModelePompe.puissance" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pompe.models.ModelePompe.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#ModelePompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.ModelePompe.save" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The “force_insert” and “force_update” parameters can be used to insist
+that the « save » must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2763,6 +3167,16 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <span class="sig-name descname"><span class="pre">quantite</span></span><a class="headerlink" href="#pompe.models.PiecesPompe.quantite" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pompe.models.PiecesPompe.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#PiecesPompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.PiecesPompe.save" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The “force_insert” and “force_update” parameters can be used to insist
+that the « save » must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
 </dd></dl>
 
 </dd></dl>
@@ -3159,7 +3573,7 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.TechnologiePompe">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">TechnologiePompe</span></span><a class="reference internal" href="_modules/pompe/models.html#TechnologiePompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.TechnologiePompe" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>TechnologiePompe(id, nom, cara1, cara2)</p>
+<p>TechnologiePompe(id, nom, info)</p>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.TechnologiePompe.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.TechnologiePompe.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3173,22 +3587,15 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.TechnologiePompe.cara1">
-<span class="sig-name descname"><span class="pre">cara1</span></span><a class="headerlink" href="#pompe.models.TechnologiePompe.cara1" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.TechnologiePompe.cara2">
-<span class="sig-name descname"><span class="pre">cara2</span></span><a class="headerlink" href="#pompe.models.TechnologiePompe.cara2" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.models.TechnologiePompe.id">
 <span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#pompe.models.TechnologiePompe.id" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pompe.models.TechnologiePompe.info">
+<span class="sig-name descname"><span class="pre">info</span></span><a class="headerlink" href="#pompe.models.TechnologiePompe.info" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -3279,7 +3686,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.VersionApp">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">VersionApp</span></span><a class="reference internal" href="_modules/pompe/models.html#VersionApp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.VersionApp" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>VersionApp(id, version, maj_maj, maj_min, bug, texte, date_version)</p>
+<p>Classe pour gérer les versions de l’application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant la version avec ses attributs de classe</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.VersionApp.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.VersionApp.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3396,7 +3811,7 @@ object the first time, the query is executed.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.resource.DocRessource.Meta.model">
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#pompe.resource.DocRessource.Meta.model" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>alias de <a class="reference internal" href="#pompe.models.Doc" title="pompe.models.Doc"><code class="xref py py-class docutils literal notranslate"><span class="pre">Doc</span></code></a></p>
+<dd><p>alias de <a class="reference internal" href="#pompe.models.Document" title="pompe.models.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a></p>
 </dd></dl>
 
 </dd></dl>
@@ -3707,7 +4122,7 @@ object the first time, the query is executed.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.resource.TechnologieRessource.fields">
-<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'cara1':</span> <span class="pre">&lt;import_export.fields.Field:</span> <span class="pre">cara1&gt;,</span> <span class="pre">'cara2':</span> <span class="pre">&lt;import_export.fields.Field:</span> <span class="pre">cara2&gt;,</span> <span class="pre">'id':</span> <span class="pre">&lt;import_export.fields.Field:</span> <span class="pre">id&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;import_export.fields.Field:</span> <span class="pre">nom&gt;}</span></em><a class="headerlink" href="#pompe.resource.TechnologieRessource.fields" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'id':</span> <span class="pre">&lt;import_export.fields.Field:</span> <span class="pre">id&gt;,</span> <span class="pre">'info':</span> <span class="pre">&lt;import_export.fields.Field:</span> <span class="pre">info&gt;,</span> <span class="pre">'nom':</span> <span class="pre">&lt;import_export.fields.Field:</span> <span class="pre">nom&gt;}</span></em><a class="headerlink" href="#pompe.resource.TechnologieRessource.fields" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -3738,7 +4153,7 @@ object the first time, the query is executed.</p>
 </section>
 <section id="module-pompe.urls">
 <span id="module-urls"></span><h2>Module URLS<a class="headerlink" href="#module-pompe.urls" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Road of url in Visiopompe project</p>
+<p>Routes (urls) du module pompe</p>
 </section>
 <section id="module-pompe.views">
 <span id="module-views"></span><h2>Module VIEWS<a class="headerlink" href="#module-pompe.views" title="Lien permanent vers cette rubrique"></a></h2>
@@ -3772,7 +4187,8 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.views.dashboard">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#dashboard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.dashboard" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Fonction qui permet l’affichage de compteurs d’états généraux des pompes, de leurs types et leurs natures.
-Une option a été ajoutée pour un affichage spécifique en fonction des étages de l’UMR 6521.</p>
+Une option a été ajoutée pour un affichage spécifique en fonction des étages de l’UMR 6521, aux équipes et aux types
+de technologie de vide.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>request</strong> – la requête d’affichage des pompes</p>
@@ -3919,7 +4335,13 @@ Une option a été ajoutée pour un affichage spécifique en fonction des étage
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.index">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.index" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage de la page d’accueil du site.
+:param request: l’objet POST reçu en paramètre pour afficher la page dédiée.</p>
+<dl class="simple">
+<dt>Returns</dt><dd><p>index.html : la page renvoyée après traitement.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.inventaire">
@@ -4035,7 +4457,8 @@ soumission avec les erreurs.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.version">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.version" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction qui permet l’affichage des versions actuelles de l’application.</p>
+</dd></dl>
 
 </section>
 </section>

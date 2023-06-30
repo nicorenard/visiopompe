@@ -9,8 +9,8 @@
         <h2>Historique des actions sur la pompe</h2>
     </div>
     <br/>
-    <section>
-        <table class="w3-table-all w3-centered w3-striped w3-reponsive" style="margin-left:10px;">
+    <section class="w3-mobile w3-padding-24" style="margin-left:50px ; margin-right:50px">
+        <table class="w3-table-all w3-centered w3-striped " >
             <tr class="w3-green w3-text-black">
                 <th><p>Date</p></th>
                 <th><p>Historique</p></th>
@@ -20,12 +20,11 @@
             <tr>
                 <td><p>{{historique.date_historique}}</p></td>
                 <td><p>{{historique.history}}</p></td>
-               <!-- <td><p>...</p></td>-->
             {% endfor %}
             </tr>
         </table>
     </section>
     <br/>
-    <a href="{% url 'pompe:pompe' %}" class=" w3-button w3-light-grey w3-padding-16 w3-margin-left">Retour</a>
+    <a href="{% url 'pompe:pompe' %}" class=" w3-button w3-light-grey w3-margin-left w3-round"><i class="fa fa-chevron-circle-left"></i>&nbsp;Retour</a>
 </div>
 {% endblock %}

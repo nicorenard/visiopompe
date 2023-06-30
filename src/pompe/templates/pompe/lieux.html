@@ -3,7 +3,7 @@
 
 {% block title %}Gestions des lieux{% endblock %}
 {% block content %}
-<div class="w3-main w3-mobile w3-auto" style="margin-left:200px">
+<div class="w3-main w3-mobile" style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
         <h2>Gestions des Locaux</h2>
     </div>
@@ -34,22 +34,23 @@
         </div>
 
         <div id="Pieces" class="w3-container lieux" style="display:none">
-            <h2>Listes des Pièces</h2>
-            <div class="w3-card w3-text-black">
+            <h2>Liste des Pièces</h2>
+            <div class="w3-container">
                 <table class="w3-table-all w3-centered w3-striped">
                     <tr class="w3-grey">
-                        <th>Site</th>
-                        <th>Bâtiment</th>
-                        <th>Etage</th>
-                        <th>Pièce</th>
+                        <th>Pièces</th>
+                        <th>Bâtiments</th>
+                        <th>Etages</th>
+                        <th>Sites</th>
                         <th>Actions</th>
                     </tr>
                     <tr>
                         {% for piece in pieces %}
-                        <td>{{piece.etage.batiment.site.nom}}</td>
+                        <td><strong>{{piece.nom}}</strong></td>
                         <td>{{piece.etage.batiment.nom}}</td>
                         <td>{{piece.etage.nom}}</td>
-                        <td><strong>{{piece.nom}}</strong></td>
+
+                        <td>{{piece.etage.batiment.site.nom}}</td>
                         <td>
                             <button class="w3-button"><a
                                     href="{% url 'pompe:piece_edit' pk=piece.pk %}"><img
@@ -70,7 +71,7 @@
         </div>
 
         <div id="Etages" class="w3-container lieux" style="display:none">
-            <h2>Gestion des Etages</h2>
+            <h2>Liste des Etages</h2>
             <div class="w3-container">
                 <table class="w3-table-all w3-centered w3-striped">
                     <tr class="w3-grey">
@@ -104,7 +105,7 @@
         </div>
 
         <div id="Batiments" class="w3-container lieux" style="display:none">
-            <h2>Listes des Bâtiments</h2>
+            <h2>Liste des Bâtiments</h2>
             <div class="w3-container">
                 <table class="w3-table-all w3-centered w3-striped">
                     <tr class="w3-grey">
@@ -137,7 +138,7 @@
             </div>
         </div>
         <div id="Sites" class="w3-container lieux" style="display:none">
-            <h2>Gestion des Sites</h2>
+            <h2>Liste des Sites</h2>
             <div class="w3-container">
                 <table class="w3-table-all w3-centered w3-striped">
                     <tr class="w3-grey">
@@ -165,24 +166,23 @@
                 </table>
             </div>
         </div>
-
     </section>
     <!---forms---->
     <section class="w3-mobile w3-padding-32" style="margin-left:20px ; margin-right:20px">
-        <table class="w3-table w3-centered w3-mobile" style="margin-left:10px; margin-right:10px;">
+        <table class="w3-table w3-mobile" style="margin-left:10px; margin-right:10px;">
             <tr>
                 <td>
                     <div class="w3-row-padding">
                         <div class="w3-col">
                             <div class="w3-card w3-text-black">
-                                <header class="w3-container w3-orange">
-                                    <h4>Formulaire d'ajout de Pièces</h4>
+                                <header class="w3-container w3-orange w3-center">
+                                    <h4>Ajouter une Pièce</h4>
                                 </header>
-                                <div class="w3-container w3-padding-small">
-                                    <form method="POST" enctype="multipart/form-data">
+                                <div class=" w3-padding-small">
+                                    <form method="POST" enctype="multipart/form-data" class="w3-container">
                                         {% csrf_token %}
                                         {{form4.as_p}}
-                                        <div class="w3-padding-small w3-center">
+                                        <div class="w3-padding w3-center">
                                             <button class="w3-button w3-green w3-round" type="submit" name="piece_form">
                                                 Enregistrer
                                             </button>
@@ -199,11 +199,35 @@
                     <div class="w3-row-padding">
                         <div class="w3-col ">
                             <div class="w3-card w3-text-black">
-                                <header class="w3-container w3-orange">
+                                <header class="w3-container w3-orange w3-center">
+                                    <h4> Ajouter un Etage</h4>
+                                </header>
+                                <form method="POST" enctype="multipart/form-data" class="w3-container">
+                                    {% csrf_token %}
+                                    {{form3.as_p}}
+                                    <div class="w3-center w3-padding">
+                                        <button class="w3-button w3-green w3-round" type="submit" name="etage_form">
+                                            Enregistrer
+                                        </button>
+                                        <button class="w3-button w3-red w3-round">Annuler la saisie
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="w3-row-padding">
+                        <div class="w3-col ">
+                            <div class="w3-card w3-text-black">
+                                <header class="w3-container w3-orange w3-center">
                                     <h4>Ajouter un Bâtiment</h4>
                                 </header>
                                 <div class="w3-container w3-padding-small">
-                                    <form method="POST" enctype="multipart/form-data">
+                                    <form method="POST" enctype="multipart/form-data" class="w3-container">
                                         {% csrf_token %}
                                         {{form2.as_p}}
                                         <div class="w3-padding-small w3-center">
@@ -220,42 +244,18 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="w3-row-padding">
                         <div class="w3-col ">
                             <div class="w3-card w3-text-black">
-                                <header class="w3-container w3-orange">
-                                    <h4> Ajouter un Etage</h4>
-                                </header>
-                                <form method="POST" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    {{form3.as_p}}
-                                    <div class="w3-center w3-padding-small">
-                                        <button class="w3-button w3-green w3-round" type="submit" name="etage_form">
-                                            Enregistrer
-                                        </button>
-                                        <button class="w3-button w3-red w3-round">Annuler la saisie
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="w3-row-padding">
-                        <div class="w3-col ">
-                            <div class="w3-card w3-text-black">
-                                <header class="w3-container w3-orange">
-                                    <h4>Ajouter Site</h4>
+                                <header class="w3-container w3-orange w3-center">
+                                    <h4>Ajouter un Site</h4>
                                 </header>
                                 <div class="w3-container w3-padding-small">
-                                    <form method="POST" enctype="multipart/form-data">
+                                    <form method="POST" enctype="multipart/form-data" class="w3-container">
                                         {% csrf_token %}
                                         {{form.as_p}}
-                                        <div class="w3-padding-small w3-center">
+                                        <div class="w3-padding w3-center">
                                             <button class="w3-button w3-green w3-round" name="site_form" type="submit">
                                                 Enregistrer
                                             </button>

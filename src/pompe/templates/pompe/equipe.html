@@ -8,10 +8,9 @@
     <div class="w3-container w3-dark-grey">
         <h2>Gestions des équipes</h2>
     </div>
-    <br/>
-    <section class="w3-mobile" style="margin-left:50px ; margin-right:50px">
+    <section class="w3-mobile w3-padding-24" style="margin-left:50px ; margin-right:50px">
         <div class="w3-card w3-text-black">
-            <table class="w3-table-all w3-centered w3-striped w3-mobile ">
+            <table class="w3-table-all w3-centered w3-striped">
                 <tr class="w3-green w3-text-black">
                     <th><p>Nom</p></th>
                     <th><p>Sigle</p></th>
@@ -19,7 +18,6 @@
                     <th><p>Email responsable</p></th>
                     <th><p>Date de création</p></th>
                     <th><p>Localisation</p></th>
-
                     <th><p>Actions</p></th>
                 </tr>
                 <tr>
@@ -50,22 +48,26 @@
             </table>
         </div>
     </section>
-    <section class="w3-mobile w3-padding-32" style="width:50%">
-        <div class="w3-card w3-text-black ">
-            <header class="w3-container w3-grey w3-center">
-                <h4>Ajouter une équipe</h4>
-            </header>
-            <div class="w3-container w3-padding-small">
-                <form method="POST" enctype="multipart/form-data" class="w3-container">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <div class="w3-padding-small w3-center">
-                        <button class="w3-button w3-green w3-round" type="submit">Enregistrer</button>
-                        <button class="w3-button w3-red w3-round" type="reset">Effacer la saisie</button>
-                    </div>
-                </form>
+
+    <section class="w3-mobile w3-padding-12" style="margin-left:50px ; margin-right:50px">
+        <div style="display: flex; justify-content: center;">
+            <div class="w3-card w3-text-black" style="width:50%">
+                <header class="w3-container w3-grey w3-center">
+                    <h4>Ajouter une équipe</h4>
+                </header>
+                <div class="w3-container w3-padding-small">
+                    <form method="POST" enctype="multipart/form-data" class="w3-container">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <div class="w3-padding-small w3-center">
+                            <button class="w3-button w3-green w3-round" type="submit">Enregistrer</button>
+                            <button class="w3-button w3-red w3-round" type="reset">Effacer la saisie</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
+</div>
 </div>
 {% endblock %}

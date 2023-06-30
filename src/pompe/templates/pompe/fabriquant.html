@@ -10,45 +10,53 @@
     <br/>
 
     <!---forms---->
-    <section class="w3-mobile w3-padding-12" style="margin-left:200px ; margin-right:200px; width:50%">
-        <div class="w3-card">
-            <header class="w3-container w3-brown w3-center">
-                <h4>Ajouter un fabriquant</h4>
-            </header>
-            <form method="POST" enctype="multipart/form-data" class="w3-container">
-                {% csrf_token %}
-                {{form.as_table}}
-                <div class="w3-padding-small w3-center">
-                    <button class="w3-button w3-green w3-round" type="submit" name="fabriquant_form">Enregistrer
-                    </button>
-                    <button class="w3-button w3-red w3-round">Effacer la saisie</button>
-                </div>
-            </form>
-        </div>
-    </section>
+    <div style="display: flex; justify-content: center;">
+        <section class="w3-mobile w3-padding-12" style="width:50%">
+
+            <div class="w3-card">
+                <header class="w3-container w3-brown w3-center">
+                    <h4>Ajouter un fabriquant</h4>
+                </header>
+                <form method="POST" enctype="multipart/form-data" class="w3-container">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <div class="w3-padding w3-center">
+                        <button class="w3-button w3-green w3-round" type="submit" name="fabriquant_form">Enregistrer
+                        </button>
+                        <button class="w3-button w3-red w3-round">Effacer la saisie</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </div>
     <section class="w3-container w3-padding-24" style="margin-left:50px; margin-right:50px;">
         {% for fabriquant in fabriquants %}
         <ul class="w3-ul w3-card ">
             <li class="w3-bar">
                 <span>
-                    <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit"><a
-                                href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
-                            <img src="{% static 'pompe/img/option/icons_edit.png' %}"
-                                 style="width:30%;" alt="icon editer"/></a></button>
-                        <form method="POST"
+                    <form method="POST"
                               action="{% url 'pompe:fabriquant_delete' pk=fabriquant.pk %}"
                               onsubmit="return confirm('Etes-vous sur de vouloir effacer ce fabriquant ?')">
                             {% csrf_token %}
                             <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit">
                                 <img src="{% static 'pompe/img/option/icons_delete.png' %}"
-                                     style="width:30%;" alt="icon delete"/></button>
-                        </form>
+                                     style="width:50%;" alt="icon delete"/>
+                            </button>
+                    </form>
+                    <button class="w3-bar-item w3-button w3-white w3-xlarge w3-right" type="submit">
+                        <a href="{% url 'pompe:fabriquant_edit' pk=fabriquant.pk %}">
+                            <img src="{% static 'pompe/img/option/icons_edit.png' %}"
+                                 style="width:50%;" alt="icon editer"/>
+                        </a>
+                    </button>
                 </span>
                 {% if fabriquant.logo_mini %}
                 <img src="/media/{{fabriquant.logo_mini}}" class="w3-bar-item w3-hide-small" style="width:10%" alt="
                      miniature logo"/>
                 {% else %}
-                <img src="{% static 'pompe/img/noimage.jpg' %}" class="w3-bar-item w3-hide-small" style="width:10%" alt="
+                <img src="{% static 'pompe/img/noimage.jpg' %}" class="w3-bar-item w3-hide-small" style="width:10%"
+                     alt="
                      miniature logo"/>
                 {% endif %}
                 <div class="w3-bar-item">
@@ -60,7 +68,7 @@
                         {% endif %}</span>
                 </div>
             </li>
-             {% endfor %}
+            {% endfor %}
         </ul>
     </section>
 </div>

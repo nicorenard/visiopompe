@@ -96,18 +96,21 @@ class Fabriquant(models.Model):
         return self.nom
 
     def save(self, *args, **kwargs):
-        directory = os.path.dirname(self.image.path)
+        directory = os.path.dirname(self.logo_max.path)
+        directory2 = os.path.dirname(self.logo_mini.path)
         if not os.path.exists(directory):
             os.makedirs(directory)
+        if not os.path.exists(directory2):
+            os.makedirs(directory2)
 
         super().save(*args, **kwargs)
 
 
 class Document(models.Model):
-    nom = models.CharField(default='', max_length=50, verbose_name="Nom de la doc technique")
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
-    manuel = models.FileField(upload_to=upload_to_documentation, max_length=254, verbose_name="Télécharger le manuel")
-    version = models.CharField(default='x.x.x', max_length=50, verbose_name="Version de la doc technique")
+    manuel = models.FileField(upload_to=upload_to_documentation, max_length=254, verbose_name="Téléverser le manuel")
+    version = models.CharField(default='x.x.x', max_length=50, verbose_name="Version de la documentation")
 
     class Meta:
         db_table = "tab_document_doc"
@@ -312,7 +315,7 @@ class Kit(models.Model):
 
 
 class PiecesPompe(models.Model):
-    image = models.ImageField(upload_to=upload_to_piecepompe, max_length=254, blank=True, null=True)
+    image = models.ImageField(upload_to=upload_to_piecepompe, max_length=254, blank=True, null=True, default="noimage.jpg")
     nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pièce détachée")
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
