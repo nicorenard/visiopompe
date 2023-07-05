@@ -23,7 +23,7 @@ def index(request):
 
 def version(request):
     """
-    Fonction qui permet l'affichage des versions actuelles de l'application.
+    Fonction qui permet l'affichage des versions de l'application.
     """
     versions = VersionApp.objects.all().order_by('-version')
     return render(request, 'pompe/versionapp.html', {'versions': versions})
@@ -86,7 +86,7 @@ def equipe(request):
         request: l'élément soumis pour l'execution du formulaire de création d'une équipe
 
     Returns:
-        equipe/html : la page d'affichage des équipes enregistrées et le formulaire vide.
+        equipe.html : la page d'affichage des équipes enregistrées et le formulaire vide.
     """
     equipes = ModelEquipe.objects.all().order_by('sigle')
 
@@ -150,6 +150,14 @@ def delete_equipe(request, pk):
 
 ## fabriquant
 def fabriquant(request):
+    """
+    Fonction d'affichage des fabriquants et du formulaire de soumission de création d'un nouveau fabriquant
+    Args:
+        request: l'élément soumis pour l'execution du formulaire de création d'un fabriquant
+
+    Returns:
+        fabriquant.html : la page d'affichage des fabriquants enregistres et le formulaire vide.
+    """
     fabriquants = Fabriquant.objects.all().order_by('nom')
 
     if request.method == "POST" and 'fabriquant_form' in request.POST:
@@ -172,6 +180,18 @@ def fabriquant(request):
 
 
 def update_fabriquant(request, pk):
+    """
+    Fonction de mise à jour d'un fabriquant existant.
+
+    Args:
+        request : l'objet soumis en requête post
+        pk : l'identifiant du fabriquant en base de données
+
+    Returns:
+          fabriquant.html : la page des fabriquants avec les informations de mise à jour sinon la page du formulaire de
+          soumission avec les erreurs.
+
+    """
     fabriquants = get_object_or_404(Fabriquant, pk=pk)
     if request.method == "POST":
         form = ModifFabriquantForm(request.POST, request.FILES, instance=fabriquants)
@@ -184,6 +204,17 @@ def update_fabriquant(request, pk):
 
 
 def delete_fabriquant(request, pk):
+    """
+    Fonction de suppression d'un fabriquant en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du fabriquant à supprimer.
+
+    Returns:
+        fabriquant.html : la page fabriquant mise à jour.
+
+    """
     queryset = get_object_or_404(Fabriquant, pk=pk)
     if request.method == "POST":
 
@@ -270,6 +301,17 @@ def update_piece(request, pk):
 
 
 def delete_piece(request, pk):
+    """
+    Fonction de suppression d'une salle ou pièce (lieux) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la salle ou pièce à supprimer.
+
+    Returns:
+        lieux.html : la page lieux mise à jour.
+
+    """
     queryset = get_object_or_404(Piece, pk=pk)
     if request.method == "POST":
         queryset.delete()
@@ -295,6 +337,17 @@ def update_site(request, pk):
 
 
 def delete_site(request, pk):
+    """
+    Fonction de suppression d'un site (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du site à supprimer.
+
+    Returns:
+        lieux.html : la page lieu mise à jour.
+
+    """
     queryset = get_object_or_404(Site, pk=pk)
     if request.method == "POST":
         queryset.delete()
@@ -316,6 +369,17 @@ def update_batiment(request, pk):
 
 
 def delete_batiment(request, pk):
+    """
+    Fonction de suppression d'un bâtiment (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du bâtiment à supprimer.
+
+    Returns:
+        lieux.html : la page lieu mise à jour.
+
+    """
     queryset2 = get_object_or_404(Batiment, pk=pk)
     if request.method == "POST":
         queryset2.delete()
@@ -337,6 +401,17 @@ def update_etage(request, pk):
 
 
 def delete_etage(request, pk):
+    """
+    Fonction de suppression d'un étage (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'un étage' à supprimer.
+
+    Returns:
+        lieux.html : la page lieu mise à jour.
+
+    """
     queryset3 = get_object_or_404(Etage, pk=pk)
     if request.method == "POST":
         queryset3.delete()
@@ -391,6 +466,17 @@ def update_stockpompe(request, pk):
 
 
 def delete_stockpompe(request, pk):
+    """
+    Fonction de suppression d'un stock de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du stock de pompe à supprimer.
+
+    Returns:
+        pompe.html : la page pompe mise à jour.
+
+    """
     queryset = get_object_or_404(StockPompe, pk=pk)
     if request.method == "POST":
         queryset.delete()
@@ -442,6 +528,17 @@ def update_fichepompe(request, pk):
 
 
 def delete_fichepompe(request, pk):
+    """
+    Fonction de suppression d'une fiche modèle de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'une fiche à supprimer.
+
+    Returns:
+        fiche_pompe.html : la page des modèles de pompes mise à jour.
+
+    """
     queryset = get_object_or_404(ModelePompe, pk=pk)
     if request.method == "POST":
         image_path = queryset.image.path
@@ -474,6 +571,17 @@ def update_techno(request, pk):
 
 
 def delete_techno(request, pk):
+    """
+    Fonction de suppression d'une technologie de vide en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'une technologie' à supprimer.
+
+    Returns:
+        fiche_pompe.html : la page des modèles de pompe mise à jour.
+
+    """
     queryset1 = get_object_or_404(TechnologiePompe, pk=pk)
     if request.method == "POST":
         queryset1.delete()
@@ -526,6 +634,17 @@ def update_inventaire(request, pk):
 
 
 def delete_inventaire(request, pk):
+    """
+    Fonction de suppression d'un numéro d'inventaire en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du numéro à supprimer.
+
+    Returns:
+        inventaire.html : la page inventaire mise à jour.
+
+    """
     queryset = get_object_or_404(Inventaire, pk=pk)
     if request.method == "POST":
         queryset.delete()
@@ -535,6 +654,17 @@ def delete_inventaire(request, pk):
 
 
 def delete_tutelle(request, pk):
+    """
+    Fonction de suppression d'une tutelle budgétaire en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la tutelle à supprimer.
+
+    Returns:
+        inventaire.html : la page inventaire mise à jour.
+
+    """
     queryset1 = get_object_or_404(Tutelle, pk=pk)
     if request.method == "POST":
         queryset1.delete()
@@ -577,6 +707,17 @@ def update_pdetache(request, pk):
 
 
 def delete_pdetache(request, pk):
+    """
+    Fonction de suppression d'une pièce détachée en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la pièce détachée à supprimer.
+
+    Returns:
+        piece.html : la page mise à jour.
+
+    """
     pieces = get_object_or_404(PiecesPompe, pk=pk)
     if request.method == "POST":
         pieces_image = pieces.image.path
@@ -621,6 +762,17 @@ def update_huile(request, pk):
 
 
 def delete_huile(request, pk):
+    """
+    Fonction de suppression d'un lot d'huile en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du lot à supprimer.
+
+    Returns:
+        huile.html : la page mise à jour.
+
+    """
     huiles = get_object_or_404(Huile, pk=pk)
     if request.method == "POST":
         huile_path = huiles.image.path
@@ -664,6 +816,17 @@ def update_kit(request, pk):
 
 
 def delete_kit(request, pk):
+    """
+    Fonction de suppression d'un kit de maintenance en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du kit à supprimer.
+
+    Returns:
+        kit.html : la page des kits mise à jour.
+
+    """
     kits = get_object_or_404(Kit, pk=pk)
     if request.method == "POST":
         kit_image = kits.image.path
@@ -712,6 +875,17 @@ def update_doc(request, pk):
 
 
 def delete_doc(request, pk):
+    """
+    Fonction de suppression d'une documentation technique des pompes en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la documentation à supprimer.
+
+    Returns:
+        doc.html : la page des documentations mise à jour.
+
+    """
     docs = get_object_or_404(Document, pk=pk)
     if request.method == "POST":
         #: Suppression du fichier sur le serveur
