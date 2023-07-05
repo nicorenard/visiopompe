@@ -2,7 +2,7 @@
 
 <html lang="fr">
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="{% static 'pompe/css/w3.css' %}">
     <link rel="stylesheet" href="{% static 'pompe/css/font-awesome.min.css' %}">
@@ -66,7 +66,9 @@
     <footer>
    <div class="w3-container w3-dark-grey">
          <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile">
-             <i class="fa fa-envelope"></i> Support</a><a href="{% url 'pompe:version' %}" class="w3-button w3-small w3-right w3-mobile"> Version</a>
+             <i class="fa fa-envelope"></i> Support</a> {% for version in versions %}
+    <p class="w3-small w3-mobile w3-right">{{version.nom}}</p>
+    {% endfor %}
     </div>
     </footer>
 </div>

@@ -15,18 +15,11 @@ def index(request):
     Args:
         request: l'objet POST reçu en paramètre pour afficher la page dédiée.
 
-    Returns
-        index.html : la page renvoyée après traitement.
+    Returns:
+        index.html : la page d'acceuil retournée.
     """
+
     return render(request, 'pompe/index.html')
-
-
-def version(request):
-    """
-    Fonction qui permet l'affichage des versions de l'application.
-    """
-    versions = VersionApp.objects.all().order_by('-version')
-    return render(request, 'pompe/versionapp.html', {'versions': versions})
 
 
 # dashboard

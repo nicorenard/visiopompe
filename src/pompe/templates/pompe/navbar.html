@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 {% load static %}
 <html lang="fr">
 <head>
@@ -72,7 +72,9 @@
     <br/><br/><br/>
     <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*"
        class="w3-bar-item w3-button "><i class="fa fa-envelope"></i> Support</a>
-    <a href="{% url 'pompe:version' %}" class="w3-button w3-small w3-mobile w3-right">Version</a>
+    {% for version in versions %}
+    <p class=" w3-small w3-mobile w3-right">{{version.nom}}</p>
+    {% endfor %}
 </div>
 <button class="w3-button w3-grey w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
 

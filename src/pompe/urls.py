@@ -9,7 +9,6 @@ app_name = 'pompe'
 
 urlpatterns = [
     path('', views.index, name="homepage"),
-    path('versionapp/', views.version, name="version"),
     path('pompes/', views.pompe, name="pompe"),
     path('historique/<int:pk>/', views.historique, name="historic"),
     path('export_pompe/', views.pompe, name="export"),

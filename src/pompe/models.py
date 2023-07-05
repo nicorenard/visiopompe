@@ -20,18 +20,13 @@ class VersionApp(models.Model):
     Returns:
           l'objet contenant la version avec ses attributs de classe
     """
-    version = models.CharField(default='x.x.x', max_length=10, verbose_name="Version")
-    maj_maj = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour majeur")
-    maj_min = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour mineur")
-    bug = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Bugs")
-    texte = models.TextField(blank=True, null=True, max_length=254, verbose_name="Description")
-    date_version = models.DateField(default=date.today, verbose_name="Date")
+    nom = models.CharField(default='x.x.x', max_length=20, verbose_name="Version")
 
     class Meta:
         db_table = "tab_version_vs"
 
     def __str__(self):
-        return self.version
+        return self.nom
 
 
 # localisation tables #
