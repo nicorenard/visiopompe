@@ -7,7 +7,7 @@
 - [x] EQUIPES : Correction du formulaire. 
 - [x] LIEUX : Mettre le formulaire en haut et déplacer le reste en dessous.
 - [x] images : les stocker par date.
-- [ ] rezising image
+- [x] rezising image
 - [x] base de données : refactoring nom 
 
 

@@ -4,6 +4,10 @@ Fonctions utilitaires pour le module pompe
 
 import os
 from datetime import datetime
+from django.core.files import File
+from pathlib import Path
+from PIL import Image
+from io import BytesIO
 
 
 def get_upload_path(instance, filename, directory):
@@ -116,3 +120,37 @@ def upload_to_documentation(instance, filename):
         le nouveau chemin avec le dossier créé
     """
     return get_upload_path(instance, filename, 'manuel')
+
+
+# https://stackoverflow.com/questions/71918006/django-resize-image-before-saving
+image_types = {
+    "jpg": "JPEG",
+    "jpeg": "JPEG",
+    "png": "PNG",
+    "gif": "GIF",
+    "tif": "TIFF",
+    "tiff": "TIFF",
+}
+
+
+def image_resize(image, width, height):
+    # Open the image using Pillow
+    img = Image.open(image)
+    # verification de la taille
+    if img.width > width or img.height > height:
+        output_size = (width, height)
+        # Creation d'une image de type thumbail
+        img.thumbnail(output_size)
+        # Pour récupérer le path de l'image
+        img_filename = Path(image.file.name).name
+        # Pour récupérer l'extension
+        img_suffix = Path(image.file.name).name.split(".")[-1]
+        # Pour récupérer le format image_types dictionary
+        img_format = image_types[img_suffix]
+        # Sauvegarde de l'image retaillée dans le buffer et en fonction du format
+        buffer = BytesIO()
+        img.save(buffer, format=img_format)
+        # Englobage de l'image dans un buffer
+        file_object = File(buffer)
+        # Sauvegarde en utilisant django-storages
+        image.save(img_filename, file_object)

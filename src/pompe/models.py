@@ -7,7 +7,7 @@ from django.db import models
 from django.utils import timezone
 
 from .utils import upload_to_pompe, upload_to_huile, upload_to_documentation, upload_to_logoMiniFabriquant, \
-    upload_to_logoFabriquant, upload_to_kit, upload_to_piecepompe
+    upload_to_logoFabriquant, upload_to_kit, upload_to_piecepompe, image_resize
 
 
 class VersionApp(models.Model):
@@ -79,7 +79,7 @@ class Fabriquant(models.Model):
     logo_max = models.ImageField(upload_to=upload_to_logoFabriquant, default="noimage.jpg",
                                  max_length=254, verbose_name='Logo')
     logo_mini = models.ImageField(upload_to=upload_to_logoMiniFabriquant, max_length=254,
-                                  blank=True, null=True, verbose_name='miniature')
+                                  default="noimage.jpg", verbose_name='miniature')
     adresse = models.CharField(max_length=250, blank=True, null=True)
     code_postal = models.CharField(max_length=5, blank=True, null=True)
     ville = models.CharField(max_length=30, blank=True, null=True)
@@ -90,13 +90,18 @@ class Fabriquant(models.Model):
     def __str__(self):
         return self.nom
 
-    def save(self, *args, **kwargs):
+    def save(self, commit=True, *args, **kwargs):
         directory = os.path.dirname(self.logo_max.path)
         directory2 = os.path.dirname(self.logo_mini.path)
         if not os.path.exists(directory):
             os.makedirs(directory)
         if not os.path.exists(directory2):
             os.makedirs(directory2)
+
+        if commit:
+            image_resize(self.logo_max, 250, 250)
+            image_resize(self.logo_mini, 80, 80)
+            super().save(*args, **kwargs)
 
         super().save(*args, **kwargs)
 
@@ -113,6 +118,13 @@ class Document(models.Model):
     def __str__(self):
         return self.nom
 
+    def save(self, commit=True, *args, **kwargs):
+        directory = os.path.dirname(self.manuel.path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        super().save(*args, **kwargs)
+
 
 class TechnologiePompe(models.Model):
     nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie")
@@ -127,7 +139,7 @@ class TechnologiePompe(models.Model):
 
 
 class ModelePompe(models.Model):
-    image = models.ImageField(upload_to=upload_to_pompe, max_length=254, blank=True, null=True)
+    image = models.ImageField(upload_to=upload_to_pompe, max_length=254, default="noimage.jpg")
     nom = models.CharField(default='', max_length=50, verbose_name="Nom du modèle")
     modele = models.CharField(default='', max_length=50, verbose_name="Série ou famille ")
     PHASAGE = [
@@ -152,17 +164,21 @@ class ModelePompe(models.Model):
     def __str__(self):
         return self.nom
 
-    def save(self, *args, **kwargs):
+    def save(self, commit=True, *args, **kwargs):
         directory = os.path.dirname(self.image.path)
         if not os.path.exists(directory):
             os.makedirs(directory)
+
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
 
         super().save(*args, **kwargs)
 
 
 class Huile(models.Model):
     nom = models.CharField(default='', max_length=50, verbose_name="Nom")
-    image = models.ImageField(upload_to=upload_to_huile, max_length=254, blank=True, null=True, verbose_name="Image")
+    image = models.ImageField(upload_to=upload_to_huile, max_length=254, default="noimage.jpg", verbose_name="Image")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
     ref_fab = models.CharField(max_length=150, default='', verbose_name="Référence", blank=True, null=True)
     piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
@@ -176,12 +192,17 @@ class Huile(models.Model):
     def __str__(self):
         return self.nom
 
-    def save(self, *args, **kwargs):
+    def save(self, commit=True, *args, **kwargs):
         directory = os.path.dirname(self.image.path)
         if not os.path.exists(directory):
             os.makedirs(directory)
 
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
+
         super().save(*args, **kwargs)
+
 
 
 class ModelEquipe(models.Model):
@@ -282,7 +303,7 @@ class StockPompe(models.Model):
 
 
 class Kit(models.Model):
-    image = models.ImageField(upload_to=upload_to_kit, max_length=254, blank=True, null=True)
+    image = models.ImageField(upload_to=upload_to_kit, max_length=254, default="noimage.jpg")
     nom = models.CharField(default='', max_length=50, verbose_name="Nom du kit")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, verbose_name='Fabriquant',
                                    related_name="Fabriquant", on_delete=models.SET_NULL)
@@ -301,10 +322,14 @@ class Kit(models.Model):
     def __str__(self):
         return self.nom
 
-    def save(self, *args, **kwargs):
+    def save(self, commit=True, *args, **kwargs):
         directory = os.path.dirname(self.image.path)
         if not os.path.exists(directory):
             os.makedirs(directory)
+
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
 
         super().save(*args, **kwargs)
 
@@ -325,9 +350,13 @@ class PiecesPompe(models.Model):
     def __str__(self):
         return self.nom
 
-    def save(self, *args, **kwargs):
+    def save(self, commit=True, *args, **kwargs):
         directory = os.path.dirname(self.image.path)
         if not os.path.exists(directory):
             os.makedirs(directory)
+
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
 
         super().save(*args, **kwargs)
