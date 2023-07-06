@@ -7,8 +7,21 @@
         <h2>Documentations Technique</h2>
     </div>
     <br/>
+    <section class="w3-mobile w3-padding-24" style="margin-left:20px; margin-right:20px">
+        <!--formulaire de filtrage-->
+
+        <form class="d-flex">
+            <div class="w3-container">
+               <label for="recherche" class="form-label">Filtrer par Fabriquant </label>
+                 <i class="fa fa-search"></i>
+                <input class="w3-input w3-border w3-padding " type="search" id="recherche" onkeyup="filtreFabriquant()"
+                       placeholder='Rechercher par nom de fabriquant' />
+            </div>
+        </form>
+
+    </section>
     <section class="w3-mobile" style="margin-left:20px ; margin-right:20px">
-        <table class="w3-table-all w3-centered w3-striped" >
+        <table class="w3-table-all w3-centered w3-striped">
             <tr class="w3-green w3-text-black">
                 <th>Fabriquant</th>
                 <th>Nom manuel</th>
@@ -17,30 +30,42 @@
                 <th>Actions</th>
             </tr>
             <tr>
-                 {% for doc in docs %}
-                <td><img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}" style="width: 20%; display: block; margin: auto;" /></td>
+                {% for doc in docs %}
+                <td class="nom"><img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}"
+                         style="width: 20%; display: block; margin: auto;"/></td>
                 <td>{{doc.nom}}</td>
                 <td>{{doc.version}}</td>
-                <td><a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="picture download"/></a></td>
-                <td><button class="w3-button"><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button>
-                <form method="POST" action="{% url 'pompe:doc_delete' pk=doc.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette référence ?')">
-                {% csrf_token %}
-                    <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button>
-                </form>
+                <td><a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}"
+                                                         alt="picture_download"/></a></td>
+                <td>
+                    <button class="w3-button"><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img
+                            src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;"/></a></button>
+                    <form method="POST" action="{% url 'pompe:doc_delete' pk=doc.pk %}"
+                          onsubmit="return confirm('Etes-vous sur de vouloir effacer cette référence ?')">
+                        {% csrf_token %}
+                        <button class="w3-button" type="submit"><img
+                                src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;"/></button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
         </table>
     </section>
-<!----citation---->
+    <!----citation---->
     <section class="w3-container w3-mobile">
-            <div class="w3-panel w3-leftbar w3-display-container">
-                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
-                <p><i class="fa fa-quote-right "></i></p>
-                <p><i class="w3-serif w3-large">“La documentation est comme une assurance-vie: le bénéficiaire n'est presque jamais celui qui l'a signée.”</i></p>
-                <p align="left">Alan Jay Perlis</p>
-            </div>
+        <div class="w3-panel w3-leftbar w3-display-container">
+            <span onclick="this.parentElement.style.display='none'"
+                  class="w3-button w3-large w3-display-topright">x</span>
+            <p><i class="fa fa-quote-right "></i></p>
+            <p><i class="w3-serif w3-large">“La documentation est comme une assurance-vie: le bénéficiaire n'est presque
+                jamais celui qui l'a signée.”</i></p>
+            <p align="left">Alan Jay Perlis</p>
+        </div>
     </section>
 
 </div>
+{% endblock %}
+
+{% block js_script %}
+<script src="{% static 'pompe/js/filtres.js' %}"></script>
 {% endblock %}
