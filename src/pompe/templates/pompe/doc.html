@@ -32,7 +32,7 @@
             <tr>
                 {% for doc in docs %}
                 <td class="nom"><img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}"
-                         style="width: 20%; display: block; margin: auto;"/></td>
+                         style="width: 20%; display: block; margin: auto;" /></td>
                 <td>{{doc.nom}}</td>
                 <td>{{doc.version}}</td>
                 <td><a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}"
