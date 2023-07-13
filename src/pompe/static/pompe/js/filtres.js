@@ -30,3 +30,27 @@ function filtreFabriquant() {
     }
   }
 }
+
+//filtre Huile
+function filtreHuile() {
+  // Variables
+  var input, filter, p, i, pNom;
+  input = document.getElementById('recherche');
+  filter = input.value.toUpperCase();
+  para = document.querySelectorAll("p");
+console.log(filter)
+console.log(para.length)
+
+  for (i = 0; i < para.length; i++) {
+    pNom = para[i].getElementsByClassName("nom")[0];
+    console.log(pNom)
+    if (pNom) {
+      var txtValueNom = pNom.textContent || pNom.innerText;
+      if (txtValueNom.toUpperCase().indexOf(filter) > -1) {
+        para[i].style.display = "";
+      } else {
+        para[i].style.display = "none";
+      }
+    }
+  }
+}

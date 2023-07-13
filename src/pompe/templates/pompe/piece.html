@@ -1,7 +1,7 @@
 {% extends 'pompe/base.html' %}
 {% load static %}
 
-{% block title %}Stocks de pièces détachés{% endblock %}
+{% block title %}Stocks de pièces détachées{% endblock %}
 {% block content %}
 <div class="w3-main w3-mobile" style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
@@ -58,4 +58,8 @@
             </div>
     </section>
 </div>
+{% endblock %}
+
+{% block js_script %}
+<script src="{% static 'pompe/js/filtres.js' %}"></script>
 {% endblock %}

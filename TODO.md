@@ -20,6 +20,7 @@
 - [x] Documentation : ajouter un filtre de recherche
 - [ ] Pièces détachées : par nom et fabriquants
 - [ ] PIECES détachées: empécher le stock vide
+- [ ] corriger orthographe pour huile kit etc.. pour les litres
 
 #V1.3 : 
 

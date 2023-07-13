@@ -1,11 +1,11 @@
 #### VISIOPOMPE PROJECT #####
 
-Visiopompe est un mini projet développé via python 3 avec le Framework django.
+Visiopompe est un mini projet développé sous python 3 avec le Framework django.
 Ce projet à pour but de centraliser et de mettre en place un systeme de gestion d'un parc de matériel mécanique de type
-pompes à membranes et pompes à palettes au sein d'un laboratoire.
+pompes à vide (pompes à membranes et pompes à palettes) au sein d'un laboratoire par exemple.
 Le listing des pompes peut se faire sur plusieurs niveaux de localisations ( Site -> emplacements dans une pièce) avec
 tous les détails techniques et historique de la vie de l'appareillage.
-Ce systeme inclut également la gestion d'équipements de maintenance: pièces détachées, huiles et documentations
+Ce systeme inclut également la gestion d'équipements de maintenance: pièces détachées, kit de maintenances, huiles et documentations
 lié au fonctionnement de ces appareillages.
 
 ## Pour commencer
@@ -14,9 +14,11 @@ lié au fonctionnement de ces appareillages.
 
 - Installez un serveur linux avec un accès internet (prod testée : debian 11).
 - Configurez le serveur pour recevoir python 3.10.
+- Télécharger les sources.
+  - <code> git clone http....</code>
 - Installez avant de commencer un environnement virtuel:
 
-> sudo apt install python3-venv
+<code> sudo apt install python3-venv</code>
 - Créez un nouveau 'virtualenv' dédié au projet visiopompe dans
 - eg. /opt/local/virtualenvs/visiopompe
 > sudo mkdir -p /opt/local/virtualenvs/
@@ -208,17 +210,28 @@ Pour plus d'info sur les couleurs disponible à mettre dans la balise <header> �
 ## Changelog
 
 
-**Dernière version stable :** V.1.0
 
-V1.0 - 2022/04
+**Dernière version stable :** V.1.1
+
+V1.1 - 2023/07
+- Filtre par bâtiment dans le menu de recherche des stocks de pompes. 
+- Suppression automatique des documents et images lors de l'update ou suppression 
+- Refactoring affichage MODELE POMPE, des Fabriquants, des équipes, des lieux 
+- Refactoring des formulaires
+- Amélioration du stockage des images sur serveur par date
+- Retaillage des images
+- Refactoring  des noms de tables de la base de données : convention de nommage appliquée.
+
+V1.0 - 2022/
 VO - 2021/11
 
-## Features V1.2
+## Features 
 
->> BDD : Ajouter une ou des tables "images" pour éviter les redondances d'images pour les duplications de stocks, accessoires,
-kits etc... => optimisation de la place mémoire.
 >> HTML : Ajouter un bouton "duplication" pour dupliquer un objet en base de données => gain de temps users
 >> SESSION : Création de compte utilisateurs type "equipe" pour les droits sur l'application.
+>> Filtres de recherches pour les accessoires en générale
+>> Version responsive de l'application
+>> Dockerisation de l'application
 
 
 ## Auteurs
@@ -229,7 +242,7 @@ kits etc... => optimisation de la place mémoire.
 
 ## License
 
-Ce projet est sous licence [EN COURS] -  pour plus d'informations
+Ce projet est sous licence MIT -  pour plus d'informations
 
 
 
