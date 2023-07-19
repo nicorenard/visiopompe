@@ -11,7 +11,11 @@ from pathlib import Path
 
 import django
 
+from rinoh.frontend.rst import DocutilsInlineNode
 
+
+class Desc_Sig_Space(DocutilsInlineNode):
+    pass
 
 # django path directory
 # sys.path.insert(0, os.path.abspath("../src")) # path relatif

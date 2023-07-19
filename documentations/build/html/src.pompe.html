@@ -180,7 +180,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_site"><code class="docutils literal notranslate"><span class="pre">update_site()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_stockpompe"><code class="docutils literal notranslate"><span class="pre">update_stockpompe()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_techno"><code class="docutils literal notranslate"><span class="pre">update_techno()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.version"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -272,7 +271,7 @@
 :param admin.ModelAdmin: appel à la classe admin de ModelAdmin</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.admin.VersionAppAdmin.list_display">
-<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'version',</span> <span class="pre">'maj_maj',</span> <span class="pre">'maj_min',</span> <span class="pre">'bug',</span> <span class="pre">'texte',</span> <span class="pre">'date_version']</span></em><a class="headerlink" href="#pompe.admin.VersionAppAdmin.list_display" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'nom']</span></em><a class="headerlink" href="#pompe.admin.VersionAppAdmin.list_display" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -2023,6 +2022,16 @@ object the first time, the query is executed.</p>
 <span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pompe.models.Document.objects" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="pompe.models.Document.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Document.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Document.save" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The “force_insert” and “force_update” parameters can be used to insist
+that the « save » must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.models.Document.version">
 <span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#pompe.models.Document.version" title="Lien permanent vers cette définition"></a></dt>
@@ -2289,7 +2298,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.Fabriquant.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Fabriquant.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Fabriquant.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Fabriquant.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Fabriquant.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -2415,7 +2424,7 @@ object the first time, the query is executed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.Huile.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Huile.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Huile.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Huile.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Huile.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -2662,7 +2671,7 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.Kit.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Kit.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Kit.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Kit.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Kit.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -2903,7 +2912,7 @@ object the first time, the query is executed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.ModelePompe.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#ModelePompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.ModelePompe.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#ModelePompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.ModelePompe.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -3171,7 +3180,7 @@ object the first time, the query is executed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.PiecesPompe.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#PiecesPompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.PiecesPompe.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#PiecesPompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.PiecesPompe.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -3708,30 +3717,6 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.bug">
-<span class="sig-name descname"><span class="pre">bug</span></span><a class="headerlink" href="#pompe.models.VersionApp.bug" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.date_version">
-<span class="sig-name descname"><span class="pre">date_version</span></span><a class="headerlink" href="#pompe.models.VersionApp.date_version" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.get_next_by_date_version">
-<span class="sig-name descname"><span class="pre">get_next_by_date_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">date_version&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pompe.models.VersionApp.get_next_by_date_version" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.get_previous_by_date_version">
-<span class="sig-name descname"><span class="pre">get_previous_by_date_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">date_version&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pompe.models.VersionApp.get_previous_by_date_version" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.models.VersionApp.id">
 <span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#pompe.models.VersionApp.id" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
@@ -3739,15 +3724,8 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.maj_maj">
-<span class="sig-name descname"><span class="pre">maj_maj</span></span><a class="headerlink" href="#pompe.models.VersionApp.maj_maj" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.maj_min">
-<span class="sig-name descname"><span class="pre">maj_min</span></span><a class="headerlink" href="#pompe.models.VersionApp.maj_min" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.VersionApp.nom">
+<span class="sig-name descname"><span class="pre">nom</span></span><a class="headerlink" href="#pompe.models.VersionApp.nom" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -3756,20 +3734,6 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.VersionApp.objects">
 <span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pompe.models.VersionApp.objects" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.texte">
-<span class="sig-name descname"><span class="pre">texte</span></span><a class="headerlink" href="#pompe.models.VersionApp.texte" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.version">
-<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#pompe.models.VersionApp.version" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
 
 </dd></dl>
 
@@ -4205,12 +4169,42 @@ de technologie de vide.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_batiment">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_batiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_batiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_batiment" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un bâtiment (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du bâtiment à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieu mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_doc">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_doc" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une documentation technique des pompes en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la documentation à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des documentations mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>doc.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_equipe">
@@ -4235,62 +4229,242 @@ de technologie de vide.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_etage">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_etage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_etage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_etage" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un étage (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’un étage” à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieu mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_fabriquant">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_fabriquant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_fabriquant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_fabriquant" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un fabriquant en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du fabriquant à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page fabriquant mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fabriquant.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_fichepompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_fichepompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_fichepompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_fichepompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une fiche modèle de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’une fiche à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des modèles de pompes mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fiche_pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_huile">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_huile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_huile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_huile" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un lot d’huile en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du lot à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>huile.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_inventaire">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_inventaire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_inventaire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_inventaire" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un numéro d’inventaire en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du numéro à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page inventaire mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>inventaire.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_kit">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_kit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_kit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_kit" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un kit de maintenance en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du kit à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des kits mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>kit.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_pdetache">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_pdetache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_pdetache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_pdetache" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une pièce détachée en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la pièce détachée à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>piece.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_piece">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_piece" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une salle ou pièce (lieux) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la salle ou pièce à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieux mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_site">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_site</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_site"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_site" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un site (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du site à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieu mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_stockpompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_stockpompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_stockpompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_stockpompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un stock de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du stock de pompe à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_techno">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_techno</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_techno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_techno" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une technologie de vide en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’une technologie” à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des modèles de pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fiche_pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_tutelle">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_tutelle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_tutelle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_tutelle" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une tutelle budgétaire en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la tutelle à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page inventaire mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>inventaire.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.doc">
@@ -4307,7 +4481,7 @@ de technologie de vide.</p>
 <dd class="field-odd"><p>la page d’affichage des équipes enregistrées et le formulaire vide.</p>
 </dd>
 <dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
-<dd class="field-even"><p>equipe/html</p>
+<dd class="field-even"><p>equipe.html</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4315,7 +4489,17 @@ de technologie de vide.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.fabriquant">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">fabriquant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#fabriquant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.fabriquant" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des fabriquants et du formulaire de soumission de création d’un nouveau fabriquant
+:param request: l’élément soumis pour l’execution du formulaire de création d’un fabriquant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>la page d’affichage des fabriquants enregistres et le formulaire vide.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>fabriquant.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.fichepompe">
@@ -4337,8 +4521,12 @@ de technologie de vide.</p>
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.index" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Fonction d’affichage de la page d’accueil du site.
 :param request: l’objet POST reçu en paramètre pour afficher la page dédiée.</p>
-<dl class="simple">
-<dt>Returns</dt><dd><p>index.html : la page renvoyée après traitement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>la page d’acceuil retournée.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>index.html</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4407,7 +4595,23 @@ soumission avec les erreurs.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_fabriquant">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_fabriquant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_fabriquant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_fabriquant" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un fabriquant existant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête post</p></li>
+<li><p><strong>pk</strong> – l’identifiant du fabriquant en base de données</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des fabriquants avec les informations de mise à jour sinon la page du formulaire de
+soumission avec les erreurs.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fabriquant.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_fichepompe">
@@ -4453,12 +4657,6 @@ soumission avec les erreurs.</p>
 <dt class="sig sig-object py" id="pompe.views.update_techno">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_techno</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_techno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_techno" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pompe.views.version">
-<span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.version" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>Fonction qui permet l’affichage des versions actuelles de l’application.</p>
-</dd></dl>
 
 </section>
 </section>
