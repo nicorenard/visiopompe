@@ -30,27 +30,71 @@ function filtreFabriquant() {
     }
   }
 }
-
-//filtre Huile
+// filtre des huiles
 function filtreHuile() {
   // Variables
-  var input, filter, p, i, pNom;
+  var input, filter, para, div;
   input = document.getElementById('recherche');
   filter = input.value.toUpperCase();
-  para = document.querySelectorAll("p");
-console.log(filter)
-console.log(para.length)
+  para = document.querySelectorAll('p.nom');
+  div = document.querySelectorAll('div.filtre')
 
-  for (i = 0; i < para.length; i++) {
-    pNom = para[i].getElementsByClassName("nom")[0];
-    console.log(pNom)
-    if (pNom) {
-      var txtValueNom = pNom.textContent || pNom.innerText;
-      if (txtValueNom.toUpperCase().indexOf(filter) > -1) {
-        para[i].style.display = "";
-      } else {
-        para[i].style.display = "none";
-      }
+  // boucle sur les éléments
+  for (var i = 0; i < para.length; i++) {
+    var currentPara = para[i].innerText.toUpperCase();
+    if (currentPara.indexOf(filter) > -1) {
+      div[i].style.display = ""; // Show the paragraph
+    } else  {
+      div[i].style.display = "none"; // Hide the paragraph
     }
   }
 }
+// filtre des kits
+function filtreKit() {
+  // Variables
+  var input, filter, para, div;
+  input = document.getElementById('recherche');
+  filter = input.value.toUpperCase();
+  para = document.querySelectorAll('p.nom');
+  div = document.querySelectorAll('div.filtre');
+
+  // Loop through para elements
+  for (var i = 0; i < para.length; i++) {
+
+        var currentPara = para[i].innerText.toUpperCase();
+    console.log("currentpara= ", currentPara);
+    if (currentPara.indexOf(filter) > -1) {
+            div[i].style.display = ""; // Show the div}
+    } else {
+            div[i].style.display = "none"; // Hide the div}
+    }
+  }
+}
+// filtre des pieces détachées
+function filtrePieceD() {
+  // Variables
+  var input, filter, para, div;
+  input = document.getElementById('recherche');
+  filter = input.value.toUpperCase();
+  para = document.querySelectorAll('p.nom');
+  para2 = document.querySelectorAll('p.marque');
+  div = document.querySelectorAll('div.filtre');
+  console.log("para=", para);
+  console.log("div =", div);
+   console.log("filter =", filter);
+
+  // Loop through para elements
+  for (var i = 0; i < para.length; i++) {
+    var currentPara = para[i].innerText.toUpperCase();
+    var currentPara2 = para2[i].innerText.toUpperCase();
+    console.log("currentpara= ", currentPara);
+    if (currentPara.includes(filter) || currentPara2.includes(filter)) {
+            div[i].style.display = ""; // Show the div
+    } else {
+            div[i].style.display = "none"; // Hide the div
+    }
+  }
+}
+
+
+

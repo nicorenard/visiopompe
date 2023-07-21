@@ -6,7 +6,7 @@ Version : 1.0
 Introduction
 ************
 
-l'application **Visiopompe** propose 6 panneaux de gestion pour gérer votre parcs de pompes à vide.
+L'application **Visiopompe** propose 6 panneaux de gestion pour gérer votre parcs de pompes à vide.
 
 Menu :
 
@@ -33,20 +33,30 @@ Les informations en consultation sont les suivantes :
 + La marque ou le fabriquant
 + L'état actuel de la pompe
     + 4 états sont disponibles : En activité - En panne - En réparation - En stock
-+ La localisation de la pompe qui par du bâtiment à son emplacement dans une pièce.
++ La localisation de la pompe qui part du bâtiment jusqu'à son emplacement dans une pièce.
     + L'emplacement dans la pièce est le seul à être optionnel.
 + La date de prochaine vidange avec 3 colorations possible :
 
     + **Vert** = date non atteinte,
     + **Orange** = Jour même,
     + **Rouge** = date dépassée.
+
 + La date de mise en service de la pompe ( Si respectée, elle est la même date que celle introduite dans l'application)
 + Numéro de série de la pompe
-+ Numéro d'inventaire : Ce numéro est à introduire depuis le menu de gestion des inventaires (cf : Pompes -> Inventaire Stocks)
++ Numéro d'inventaire : Ce numéro est à introduire depuis le menu de gestion des inventaires
+
+    cf : Pompes -> Inventaire Stocks
+
 + La phase du moteur : Monophasé ou Triphasé
 + La puissance : 50Hz ou 60Hz
-+ La technologie qu'utilise la pompe ( cf : Administration -> Modèle de pompe)
-+ L'huile utilisée pour la dernière vidange (cf : Menu Huile)
++ La technologie qu'utilise la pompe
+
+    cf : Administration -> Modèle de pompe
+
++ L'huile utilisée pour la dernière vidange
+
+    cf : Menu Huile
+
 + Le vide théorique donné par le fabriquant
 + Le vide réel mesuré par un utilisateur
 + L'historique d'action sur la pompe ( dernière action en date affichée).
@@ -74,8 +84,9 @@ Voici les informations obligatoires pour en créer :
 
 Par validation, la mise en service, la puissance, la technologie, la date de la prochaine vidange seront enregistrées et le statut "en activité" sera inclu.
 
- ``Il est à noter que **sans** *numéro d'inventaire* , *d'équipe* ou d'autres informations comme *l'historique*, amoindri le suivi et la gestion du stock créé dans le temps.``
-
+    Il est à noter que sans **aucun numéro d'inventaire** ,
+    **sans équipe** renseignée ou d'autres informations comme **l'historique du stock**,
+    l'efficacité du suivi et la gestion du stock risque d'en partir.
 
 
 3. Inventaires Stocks :
@@ -267,8 +278,8 @@ Les informations suivantes sont obligatoires pour la création d'une équipe :
 + Localisation
 
 
-5.Lieux : 
----------
+5. Lieux :
+----------
 
 Dans ce sous-panneau, vous pourrez effectuer une gestion des lieux pour désigner l'emplacement de chaque stocks et accessoires au sein de l'application.
 
@@ -279,11 +290,8 @@ Les différentes possibilitées sont les suivantes :
 + Edition d'un lieu via l'icône *feuille et stylo*
 + Suppression d'un lieu via l'icône *poubelle*
 
-Cela concerne les niveaux suivant de lieux : 
+Les lieux sont structurés de la sorte, par ordre croissant :
 
-> Sites, 
-    |_____Bâtiments, 
-            |_______Etages, 
-                        |____Pièces.
+ Sites --> Bâtiments --> Etages --> Pièces.
 
-> Ces lieux sont obligatoires à établir avant de créer tous **stocks quelconques** comme une **équipe** !
+A minima, une pièce est obligatoire à créer avant de générer tous **stocks quelconques** tout comme une **équipe** !

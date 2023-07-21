@@ -41,7 +41,7 @@ class Site(models.Model):
 
 
 class Batiment(models.Model):
-    nom = models.CharField(default='', max_length=254, verbose_name="Batiment")
+    nom = models.CharField(default='', max_length=254, verbose_name="Bâtiment")
     site = models.ForeignKey(Site, null=True, on_delete=models.CASCADE)
 
     class Meta:
@@ -63,7 +63,7 @@ class Etage(models.Model):
 
 
 class Piece(models.Model):
-    nom = models.CharField(default='', max_length=254, verbose_name="Piece")
+    nom = models.CharField(default='', max_length=254, verbose_name="Pièce")
     etage = models.ForeignKey(Etage, null=True, on_delete=models.CASCADE)
 
     class Meta:
@@ -127,7 +127,7 @@ class Document(models.Model):
 
 
 class TechnologiePompe(models.Model):
-    nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie")
+    nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie du vide (palettes, membranes...")
     info = models.CharField(default='', max_length=50, null=False, blank=True,
                             verbose_name="Détail de la technologie")
 
@@ -154,7 +154,7 @@ class ModelePompe(models.Model):
     ]
     puissance = models.CharField(default='50', choices=PUISSANCE, max_length=20, verbose_name="Puissance du moteur")
     technologie = models.ForeignKey(TechnologiePompe, null=False, blank=False, on_delete=models.DO_NOTHING)
-    vide_theo = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
+    vide_theo = models.FloatField(default=0, verbose_name="Vide limite du fabriquant")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
     documentation = models.ForeignKey(Document, null=True, blank=True, on_delete=models.SET_NULL)
 
@@ -202,7 +202,6 @@ class Huile(models.Model):
             super().save(*args, **kwargs)
 
         super().save(*args, **kwargs)
-
 
 
 class ModelEquipe(models.Model):
@@ -339,7 +338,7 @@ class PiecesPompe(models.Model):
     nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pièce détachée")
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
-    piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
     quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock ?")
     information = models.TextField(blank=True, null=True, max_length=200,
                                    verbose_name="Information(s) complémentaire(s)")

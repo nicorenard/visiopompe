@@ -15,12 +15,12 @@
 - [ ] "inventaire" : ajouter un bouton export des numeros d'inventaire.
 - [ ] ajouter les messages d'actions > suppressions, modification, ajout
 - [ ] ajouter les messages d'erreurs ou de warning
-- [ ] HUILES : ajouter un filtre de recherche par fabriquants
-- [ ] KITS : ajouter un filtre de recherche par fabriquants
+- [x] HUILES : ajouter un filtre de recherche par fabriquants
+- [x] KITS : ajouter un filtre de recherche par fabriquants
 - [x] Documentation : ajouter un filtre de recherche
-- [ ] Pièces détachées : par nom et fabriquants
-- [ ] PIECES détachées: empécher le stock vide
-- [ ] corriger orthographe pour huile kit etc.. pour les litres
+- [x] Pièces détachées : par nom et fabriquants
+- [x] Pièces détachées: empécher le stock vide
+- [x] corriger orthographe pour huile kit etc.. pour les litres
 
 #V1.3 : 
 
