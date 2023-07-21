@@ -8,7 +8,29 @@
         <h2>Gestion des fabriquants</h2>
     </div>
     <br/>
-
+ <div class="w3-container">
+        {% if msg_erreur %}
+        <div class=" w3-panel w3-red w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_erreur }}
+        </div>
+        {% endif %}
+        {% if msg_warning %}
+        <div class="w3-panel w3-yellow w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_warning }}
+        </div>
+        {% endif %}
+        {% if msg_succes %}
+        <div class="w3-panel w3-green w3-round w3-display-container" >
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            <p>{{ msg_succes }}</p>
+        </div>
+        {% endif %}
+    </div>
     <!---forms---->
     <div style="display: flex; justify-content: center;">
         <section class="w3-mobile w3-padding-12" style="width:50%">

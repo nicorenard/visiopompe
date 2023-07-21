@@ -4,6 +4,8 @@ View of Visiopompe project centralized in views.py
 import os.path
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+
 from .filters import PompeStockFilter
 from .forms import *
 from .models import *
@@ -132,7 +134,9 @@ def delete_equipe(request, pk):
     queryset = get_object_or_404(ModelEquipe, pk=pk)
     if request.method == "POST":
         queryset.delete()
-        return redirect('/dashboard/equipe')
+        msg_succes = f'L\'équipe a bien été supprimée.'
+        url = reverse('pompe:equipe') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     context = {
         'queryset': queryset
@@ -158,9 +162,8 @@ def fabriquant(request):
         if form.is_valid():
             fabriquant = form.save(commit=False)
             cleaned_data = form.cleaned_data
-            # redimensionnement des 2 logos
-
-            fabriquant.save()
+            if cleaned_data:
+                fabriquant.save()
         return redirect('/fabriquants')
     else:
         form = Fabriquantform()
@@ -229,7 +232,9 @@ def delete_fabriquant(request, pk):
                 os.rmdir(logomini_parent_directory)
 
         queryset.delete()
-        return redirect("/fabriquants")
+        msg_succes = f'Le fabriquant a bien été supprimé.'
+        url = reverse('pompe:fabriquant') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     context = {'fabriquants': queryset}
     return render(request, 'pompe/fabriquant.html', context)
@@ -308,7 +313,9 @@ def delete_piece(request, pk):
     queryset = get_object_or_404(Piece, pk=pk)
     if request.method == "POST":
         queryset.delete()
-        return redirect('/dashboard/lieux')
+        msg_succes = f'La pièce a bien été supprimé.'
+        url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     context = {
         'queryset': queryset
@@ -344,7 +351,9 @@ def delete_site(request, pk):
     queryset = get_object_or_404(Site, pk=pk)
     if request.method == "POST":
         queryset.delete()
-        return redirect('/dashboard/lieux')
+        msg_succes = f'Le site a bien été supprimé.'
+        url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     return render(request, 'pompe/lieux.html', {'queryset': queryset})
 
@@ -376,7 +385,9 @@ def delete_batiment(request, pk):
     queryset2 = get_object_or_404(Batiment, pk=pk)
     if request.method == "POST":
         queryset2.delete()
-        return redirect('/dashboard/lieux')
+        msg_succes = f'Le bâtiment a bien été supprimé.'
+        url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     return render(request, 'pompe/lieux.html', {'queryset2': queryset2})
 
@@ -408,7 +419,9 @@ def delete_etage(request, pk):
     queryset3 = get_object_or_404(Etage, pk=pk)
     if request.method == "POST":
         queryset3.delete()
-        return redirect('/dashboard/lieux')
+        msg_succes = f'L\'étage a bien été supprimé.'
+        url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     return render(request, 'pompe/lieux.html', {'queryset3': queryset3})
 
@@ -421,10 +434,17 @@ def pompe(request):
     current_date = datetime.now().date()
     warning_date = current_date + timedelta(days=7)
 
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
+
     context = {'s_pompes': s_pompes,
                'current_date': current_date,
                'warning_date': warning_date,
                'filterpompe': filterpompe,
+               'msg_warning': msg_warning,
+               'msg_erreur': msg_erreur,
+               'msg_succes': msg_succes,
                }
     return render(request, 'pompe/pompe.html', context)
 
@@ -440,7 +460,9 @@ def add_stockpompe(request):
         form = StockPompeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/pompes')
+            msg_succes = f'Le stock de pompe a bien été ajouté.'
+            url = reverse('pompe:pompe') + '?msg_succes=' + msg_succes
+        return redirect(url)
     else:
         form = StockPompeform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -452,7 +474,9 @@ def update_stockpompe(request, pk):
         form = ModifStockPompeForm(request.POST, instance=s_pompes)
         if form.is_valid():
             form.save()
-        return redirect('/pompes')
+            msg_succes = f'Le stock de pompe a bien été mis à jour.'
+            url = reverse('pompe:pompe') + '?msg_succes=' + msg_succes
+        return redirect(url)
     else:
         form = ModifStockPompeForm(instance=s_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -473,7 +497,9 @@ def delete_stockpompe(request, pk):
     queryset = get_object_or_404(StockPompe, pk=pk)
     if request.method == "POST":
         queryset.delete()
-        return redirect('/pompes')
+        msg_succes = f'Le stock de pompe a bien été supprimé.'
+        url = reverse('pompe:pompe') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     return render(request, 'pompe/pompe.html', {'queryset': queryset})
 
@@ -491,18 +517,36 @@ def fichepompe(request):
             cleaned_data = form.cleaned_data
             if cleaned_data:
                 form.save()
+                msg_succes = f'La fiche modèle a bien été créée.'
+                url = reverse('pompe:fiche_pompe') + '?msg_succes=' + msg_succes
 
         elif form2.is_valid() and 'techno_form' in request.POST:
             cleaned_data2 = form2.cleaned_data
             if cleaned_data2:
                 form2.save()
-
-        return redirect('/fichepompe')
+                msg_succes = f'La technologie de vide a bien été créée.'
+                url = reverse('pompe:fiche_pompe') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = "L'ajout n'a pas pu être fait."
+            url = reverse('pompe:fiche_pompe') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
     else:
         form = ModelPompeform()
         form2 = Technologieform()
 
-    context = {'m_pompe': m_pompes, 'technos': technos, 'form': form, 'form2': form2}
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
+
+    context = {'m_pompe': m_pompes,
+               'technos': technos,
+               'form': form,
+               'form2': form2,
+               'msg_warning': msg_warning,
+               'msg_erreur': msg_erreur,
+               'msg_succes': msg_succes,
+
+               }
     return render(request, 'pompe/fiche_pompe.html', context)
 
 
@@ -514,7 +558,10 @@ def update_fichepompe(request, pk):
             cleaned_data = form.cleaned_data
             if cleaned_data:
                 form.save()
-            return redirect('/fichepompe')
+                msg_succes = f'La fiche {pk} a bien été mise à jour.'
+                url = reverse('pompe:fiche_pompe') + '?msg_succes=' + msg_succes
+
+        return redirect(url)
     else:
         form = ModifModelPompeForm(instance=m_pompes)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -541,7 +588,10 @@ def delete_fichepompe(request, pk):
             if len(os.listdir(image_parent_directory)) == 0:
                 os.rmdir(image_parent_directory)
             queryset.delete()
-        return redirect('/fichepompe')
+            msg_succes = f'La fiche {pk} a bien été supprimé.'
+            url = reverse('pompe:fiche_pompe') + '?msg_succes=' + msg_succes
+
+        return redirect(url)
 
     context = {
         'queryset': queryset
@@ -557,7 +607,16 @@ def update_techno(request, pk):
             cleaned_data = form.cleaned_data
             if cleaned_data:
                 form.save()
-            return redirect('/fichepompe')
+                msg_succes = f'La technologie de vide, {pk} a bien été mise à jour.'
+                url = reverse('pompe:fiche_pompe') + '?msg_succes=' + msg_succes
+
+            return redirect(url)
+        else:
+            msg_erreur = f'La technologie de vide, {pk} n\'a pas été mise à jour.'
+            url = reverse('pompe:fiche_pompe') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
+
     else:
         form = ModifTechnoForm(instance=technos)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -578,7 +637,10 @@ def delete_techno(request, pk):
     queryset1 = get_object_or_404(TechnologiePompe, pk=pk)
     if request.method == "POST":
         queryset1.delete()
-        return redirect('/fichepompe')
+        msg_succes = f'La technologie de vide, {pk} a bien été supprimée.'
+        url = reverse('pompe:fiche_pompe') + '?msg_succes=' + msg_succes
+
+        return redirect(url)
 
     context = {'queryset1': queryset1}
     return render(request, 'pompe/fiche_pompe.html', context)
@@ -595,21 +657,32 @@ def inventaire(request):
 
         if form2.is_valid() and 'tutelle_form' in request.POST:
             form2.save()
+            msg_succes = f'La tutelle budgétaire a bien été créée.'
+            url = reverse('pompe:inventaire') + '?msg_succes=' + msg_succes
 
         elif form.is_valid() and 'inventaire_form' in request.POST:
             form.save()
+            msg_succes = f'Le numéro d\'inventaire a bien été créé.'
+            url = reverse('pompe:inventaire') + '?msg_succes=' + msg_succes
 
-        return redirect('/inventaire')
+        return redirect(url)
     else:
         form = Inventaireform()
         form2 = Tutelleform()
+
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
 
     context = {
         'inventaires': inventaires,
         'tutelles': tutelles,
         'form': form,
-        'form2': form2
-        }
+        'form2': form2,
+        'msg_warning': msg_warning,
+        'msg_erreur': msg_erreur,
+        'msg_succes': msg_succes,
+    }
     return render(request, 'pompe/inventaire.html', context)
 
 
@@ -620,7 +693,14 @@ def update_inventaire(request, pk):
         form = ModifInventaireForm(request.POST, instance=inventaires)
         if form.is_valid():
             form.save()
-            return redirect('/inventaire')
+            msg_succes = f'Le numéro d\'inventaire : {pk} a bien été mis à jour.'
+            url = reverse('pompe:inventaire') + '?msg_succes=' + msg_succes
+            return redirect(url)
+        else:
+            msg_erreur = f'Le numéro d\'inventaire : {pk} n\'a pas été mis à jour.'
+            url = reverse('pompe:inventaire') + '?msg_erreur=' + msg_erreur
+            return redirect(url)
+
     else:
         form = ModifInventaireForm(instance=inventaires)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -641,7 +721,9 @@ def delete_inventaire(request, pk):
     queryset = get_object_or_404(Inventaire, pk=pk)
     if request.method == "POST":
         queryset.delete()
-        return redirect('/inventaire')
+        msg_succes = f'Le numéro d\'inventaire  a bien été supprimé.'
+        url = reverse('pompe:inventaire') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     return render(request, 'pompe/inventaire.html', {'queryset': queryset})
 
@@ -661,7 +743,9 @@ def delete_tutelle(request, pk):
     queryset1 = get_object_or_404(Tutelle, pk=pk)
     if request.method == "POST":
         queryset1.delete()
-        return redirect('/inventaire')
+        msg_succes = f'La tutelle budgétaire a bien été supprimé.'
+        url = reverse('pompe:inventaire') + '?msg_succes=' + msg_succes
+        return redirect(url)
 
     return render(request, 'pompe/inventaire.html', {'queryset1': queryset1})
 
@@ -669,8 +753,15 @@ def delete_tutelle(request, pk):
 # pieces detachées
 def pdetache(request):
     pieces = PiecesPompe.objects.all().order_by('nom')
+
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
     context = {
-        'pieces': pieces
+        'pieces': pieces,
+        'msg_warning': msg_warning,
+        'msg_erreur': msg_erreur,
+        'msg_succes': msg_succes,
     }
     return render(request, 'pompe/piece.html', context)
 
@@ -680,7 +771,14 @@ def add_pdetache(request):
         form = PiecePompeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/pieces_detaches')
+            msg_succes = f'La pièce a bien ajouté au stock.'
+            url = reverse('pompe:pdetache') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'La pièce n\'a pas pu être ajouté au stock.'
+            url = reverse('pompe:pdetache') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
+
     else:
         form = PiecePompeform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -693,7 +791,13 @@ def update_pdetache(request, pk):
         form = ModifPiecePompeForm(request.POST, request.FILES, instance=pdetaches)
         if form.is_valid():
             form.save()
-            return redirect('/pieces_detaches')
+            msg_succes = f'Le stock a bien été mis à jour.'
+            url = reverse('pompe:pdetache') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'Le stock n\'a pas pu être mis à jour.'
+            url = reverse('pompe:pdetache') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
     else:
         form = ModifPiecePompeForm(instance=pdetaches)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -720,14 +824,27 @@ def delete_pdetache(request, pk):
             if len(os.listdir(image_path)) == 0:
                 os.rmdir(image_path)
             pieces.delete()
-        return redirect('/pieces_detaches')
+            msg_succes = f'Le stock a bien supprimé.'
+            url = reverse('pompe:pdetache') + '?msg_succes=' + msg_succes
+        return redirect(url)
+
     return render(request, 'pompe/piece.html', {'pieces': pieces})
 
 
 # huile
 def huile(request):
     huiles = Huile.objects.all().order_by('nom')
-    return render(request, 'pompe/huile.html', {'huiles': huiles})
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
+
+    context = {
+        'huiles': huiles,
+        'msg_warning': msg_warning,
+        'msg_erreur': msg_erreur,
+        'msg_succes': msg_succes,
+    }
+    return render(request, 'pompe/huile.html', context)
 
 
 def add_huile(request):
@@ -735,7 +852,13 @@ def add_huile(request):
         form = Huileform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/huiles')
+            msg_succes = f'Le stock a bien ajouté.'
+            url = reverse('pompe:huile') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'Le stock n\'a pas pu être ajouté.'
+            url = reverse('pompe:huile') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
     else:
         form = Huileform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -748,7 +871,12 @@ def update_huile(request, pk):
         form = ModifHuileForm(request.POST, request.FILES, instance=huiles)
         if form.is_valid():
             form.save()
-            return redirect('/huiles')
+            msg_succes = f'Le stock a bien été mis à jour.'
+            url = reverse('pompe:huile') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'Le stock n\'a pas pu être mis à jour.'
+            url = reverse('pompe:huile') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
     else:
         form = ModifHuileForm(instance=huiles)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -775,14 +903,26 @@ def delete_huile(request, pk):
             if len(os.listdir(huile_directory)) == 0:
                 os.rmdir(huile_directory)
             huiles.delete()
-        return redirect('/huiles')
+            msg_succes = f'Le stock a bien supprimé.'
+            url = reverse('pompe:huile') + '?msg_succes=' + msg_succes
+        return redirect(url)
     return render(request, 'pompe/huile.html', {'huiles': huiles})
 
 
 # kit de maintenance
 def kit(request):
     kits = Kit.objects.all().order_by('nom')
-    return render(request, 'pompe/kit.html', {'kits': kits})
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
+
+    context = {
+        'kits': kits,
+        'msg_warning': msg_warning,
+        'msg_erreur': msg_erreur,
+        'msg_succes': msg_succes,
+    }
+    return render(request, 'pompe/kit.html', context)
 
 
 def add_kit(request):
@@ -790,7 +930,13 @@ def add_kit(request):
         form = Kitform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/kits')
+            msg_succes = f'Le stock a bien ajouté.'
+            url = reverse('pompe:kit') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'Le stock n\'a pas pu être ajouté.'
+            url = reverse('pompe:kit') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
     else:
         form = Kitform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -802,7 +948,13 @@ def update_kit(request, pk):
         form = ModifKitForm(request.POST, request.FILES, instance=kits)
         if form.is_valid():
             form.save()
-            return redirect('/kits')
+            msg_succes = f'Le stock a bien été mis à jour.'
+            url = reverse('pompe:kit') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'Le stock n\'a pas pu être mis à jour.'
+            url = reverse('pompe:kit') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
+
     else:
         form = ModifKitForm(instance=kits)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -829,7 +981,9 @@ def delete_kit(request, pk):
             if len(os.listdir(image_directory)) == 0:
                 os.rmdir(image_directory)
             kits.delete()
-        return redirect('/kits')
+            msg_succes = f'Le stock a bien supprimé.'
+            url = reverse('pompe:kit') + '?msg_succes=' + msg_succes
+        return redirect(url)
     return render(request, 'pompe/kit.html', {'kits': kits})
 
 
@@ -837,8 +991,14 @@ def delete_kit(request, pk):
 
 def doc(request):
     docs = Document.objects.all().order_by('nom')
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
     context = {
-        'docs': docs
+        'docs': docs,
+        'msg_warning': msg_warning,
+        'msg_erreur': msg_erreur,
+        'msg_succes': msg_succes,
     }
     return render(request, 'pompe/doc.html', context)
 
@@ -848,7 +1008,13 @@ def add_doc(request):
         form = Docform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/docs')
+            msg_succes = f'La documentation a bien été ajoutée.'
+            url = reverse('pompe:doc') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'La documentation n\'a pas pu être ajoutée.'
+            url = reverse('pompe:doc') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
     else:
         form = Docform()
     return render(request, 'pompe/forms.html', {'form': form})
@@ -861,7 +1027,12 @@ def update_doc(request, pk):
         form = ModifDocForm(request.POST, request.FILES, instance=docs)
         if form.is_valid():
             form.save()
-            return redirect('/docs')
+            msg_succes = f'La documentation a bien été mise à jour.'
+            url = reverse('pompe:kit') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'La documentation n\'a pas pu être mise à jour.'
+            url = reverse('pompe:kit') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
     else:
         form = ModifDocForm(instance=docs)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -889,5 +1060,7 @@ def delete_doc(request, pk):
             if len(os.listdir(doc_directory)) == 0:
                 os.rmdir(doc_directory)
             docs.delete()
-        return redirect('/docs')
+            msg_succes = f'La documentation a bien supprimée.'
+            url = reverse('pompe:doc') + '?msg_succes=' + msg_succes
+        return redirect(url)
     return render(request, 'pompe/doc.html', {'docs': docs})

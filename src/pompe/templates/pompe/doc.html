@@ -18,8 +18,30 @@
                        placeholder='Rechercher par nom de fabriquant' />
             </div>
         </form>
-
     </section>
+     <div class="w3-container">
+        {% if msg_erreur %}
+        <div class=" w3-panel w3-red w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_erreur }}
+        </div>
+        {% endif %}
+        {% if msg_warning %}
+        <div class="w3-panel w3-yellow w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_warning }}
+        </div>
+        {% endif %}
+        {% if msg_succes %}
+        <div class="w3-panel w3-green w3-round w3-display-container" >
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            <p>{{ msg_succes }}</p>
+        </div>
+        {% endif %}
+    </div>
     <section class="w3-mobile" style="margin-left:20px ; margin-right:20px">
         <table class="w3-table-all w3-centered w3-striped">
             <tr class="w3-green w3-text-black">
