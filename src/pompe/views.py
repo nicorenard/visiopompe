@@ -10,6 +10,10 @@ from .filters import PompeStockFilter
 from .forms import *
 from .models import *
 
+from django.http import HttpResponse
+from import_export.admin import ExportMixin
+import xlwt
+
 
 def index(request):
     """
@@ -730,6 +734,7 @@ def inventaire(request):
     inventaires = Inventaire.objects.all().order_by('numero')
     tutelles = Tutelle.objects.all().order_by('nom')
 
+    # forms
     if request.method == "POST":
         form = Inventaireform(request.POST)
         form2 = Tutelleform(request.POST)
@@ -761,11 +766,55 @@ def inventaire(request):
         'msg_warning': msg_warning,
         'msg_erreur': msg_erreur,
         'msg_succes': msg_succes,
+
     }
     return render(request, 'pompe/inventaire.html', context)
 
 
+def export_data_inventaire(request):
+    """
+    Fonction d'exportation des numéros d'inventaires des pompes.
+    Args:
+        request: la requête d'exportation
+
+    Returns:
+          inventaire_numero_pompe : le fichier excel contenant les numéros exportés
+    """
+    # Exportation avec ExportMixim dans la librairie djanog-import-export
+
+    dataset = Inventaire.objects.all()
+    # Création du classeur excel
+    classeur = xlwt.Workbook()
+    page = classeur.add_sheet("InventaireNumero")
+    #entete
+    headers =["ID","Numéro","Date de création"]
+    for col_index, header in enumerate(headers):
+        page.write(0, col_index, header)
+    #datas
+    for row_index, row in enumerate(dataset):
+        page.write(row_index + 1, 0, row.id),
+        page.write(row_index + 1, 1, row.numero),
+        page.write(row_index + 1, 2, row.date_inventaire.strftime("%d/%m/%Y")),
+
+    # préparation de l'objet au format excel a télécharger
+    reponse = HttpResponse(content_type='application/ms-excel')
+    reponse['Content-Disposition'] = 'attachment; filename="inventaire_numero_pompe.xls" '
+    classeur.save(reponse)
+    return reponse
+
+
 def update_inventaire(request, pk):
+    """
+    Fonction de mise à jour d'un numéro d'inventaire en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du numéro à supprimer.
+
+    Returns:
+        inventaire.html : la page inventaire mise à jour.
+
+    """
     inventaires = get_object_or_404(Inventaire, pk=pk)
 
     if request.method == "POST":
@@ -831,6 +880,16 @@ def delete_tutelle(request, pk):
 
 # pieces detachées
 def pdetache(request):
+    """
+    Fonction d'affichage des pièces détachées.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        piece.html : la page mise à jour.
+
+    """
     pieces = PiecesPompe.objects.all().order_by('nom')
 
     msg_succes = request.GET.get('msg_succes', '')
@@ -846,6 +905,16 @@ def pdetache(request):
 
 
 def add_pdetache(request):
+    """
+    Fonction de création d'une pièce détachée en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        piece.html : la page mise à jour.
+
+    """
     if request.method == "POST":
         form = PiecePompeform(request.POST, request.FILES)
         if form.is_valid():
@@ -864,6 +933,17 @@ def add_pdetache(request):
 
 
 def update_pdetache(request, pk):
+    """
+    Fonction de mise à jour d'une pièce détachée en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la pièce détachée à supprimer.
+
+    Returns:
+        piece.html : la page mise à jour.
+
+    """
     pdetaches = get_object_or_404(PiecesPompe, pk=pk)
 
     if request.method == "POST":
@@ -912,6 +992,17 @@ def delete_pdetache(request, pk):
 
 # huile
 def huile(request):
+    """
+    Fonction d'affichage des lots d'huiles en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du lot à supprimer.
+
+    Returns:
+        huile.html : la page mise à jour.
+
+    """
     huiles = Huile.objects.all().order_by('nom')
     msg_succes = request.GET.get('msg_succes', '')
     msg_erreur = request.GET.get('msg_erreur', '')
@@ -927,6 +1018,16 @@ def huile(request):
 
 
 def add_huile(request):
+    """
+    Fonction de création d'un lot d'huile en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        huile.html : la page mise à jour.
+
+    """
     if request.method == "POST":
         form = Huileform(request.POST, request.FILES)
         if form.is_valid():
@@ -944,6 +1045,17 @@ def add_huile(request):
 
 
 def update_huile(request, pk):
+    """
+    Fonction de mise à jour d'un lot d'huile en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du lot à supprimer.
+
+    Returns:
+        huile.html : la page mise à jour.
+
+    """
     huiles = get_object_or_404(Huile, pk=pk)
 
     if request.method == "POST":
@@ -990,6 +1102,16 @@ def delete_huile(request, pk):
 
 # kit de maintenance
 def kit(request):
+    """
+    Fonction d'affichage des kits de maintenance en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        kit.html : la page des kits.
+
+    """
     kits = Kit.objects.all().order_by('nom')
     msg_succes = request.GET.get('msg_succes', '')
     msg_erreur = request.GET.get('msg_erreur', '')
@@ -1005,6 +1127,16 @@ def kit(request):
 
 
 def add_kit(request):
+    """
+    Fonction de création d'un kit de maintenance en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        kit.html : la page des kits mise à jour.
+
+    """
     if request.method == "POST":
         form = Kitform(request.POST, request.FILES)
         if form.is_valid():
@@ -1022,6 +1154,17 @@ def add_kit(request):
 
 
 def update_kit(request, pk):
+    """
+    Fonction de mise à jour d'un kit de maintenance en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du kit à supprimer.
+
+    Returns:
+        kit.html : la page des kits mise à jour.
+
+    """
     kits = get_object_or_404(Kit, pk=pk)
     if request.method == "POST":
         form = ModifKitForm(request.POST, request.FILES, instance=kits)
@@ -1069,6 +1212,16 @@ def delete_kit(request, pk):
 # Documentations
 
 def doc(request):
+    """
+    Fonction d'affichage des documentations technique des pompes en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        doc.html : la page des documentations.
+
+    """
     docs = Document.objects.all().order_by('nom')
     msg_succes = request.GET.get('msg_succes', '')
     msg_erreur = request.GET.get('msg_erreur', '')
@@ -1083,6 +1236,16 @@ def doc(request):
 
 
 def add_doc(request):
+    """
+    Fonction d'ajout d'une documentation technique des pompes en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        doc.html : la page des documentations mise à jour.
+
+    """
     if request.method == "POST":
         form = Docform(request.POST, request.FILES)
         if form.is_valid():
@@ -1100,6 +1263,17 @@ def add_doc(request):
 
 
 def update_doc(request, pk):
+    """
+    Fonction de mise à jour d'une documentation technique des pompes en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la documentation à mettre à jour.
+
+    Returns:
+        doc.html : la page des documentations mise à jour.
+
+    """
     docs = get_object_or_404(Document, pk=pk)
 
     if request.method == "POST":

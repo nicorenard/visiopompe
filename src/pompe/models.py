@@ -31,6 +31,15 @@ class VersionApp(models.Model):
 
 # localisation tables #
 class Site(models.Model):
+    """
+    Classe pour gérer les sites.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un site
+    """
     nom = models.CharField(default='', max_length=254, verbose_name="Site")
 
     class Meta:
@@ -41,6 +50,15 @@ class Site(models.Model):
 
 
 class Batiment(models.Model):
+    """
+    Classe pour gérer les bâtiments liés à un ou plusieurs sites.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un bâtiment
+    """
     nom = models.CharField(default='', max_length=254, verbose_name="Bâtiment")
     site = models.ForeignKey(Site, null=True, on_delete=models.CASCADE)
 
@@ -52,6 +70,15 @@ class Batiment(models.Model):
 
 
 class Etage(models.Model):
+    """
+    Classe pour gérer les étages liés à un ou plusieurs bâtiments.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un étage
+    """
     nom = models.CharField(default='', max_length=254, verbose_name="Etage")
     batiment = models.ForeignKey(Batiment, null=True, on_delete=models.CASCADE)
 
@@ -63,6 +90,15 @@ class Etage(models.Model):
 
 
 class Piece(models.Model):
+    """
+    Classe pour gérer les pièces liés à un ou plusieurs étages.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant une salle
+    """
     nom = models.CharField(default='', max_length=254, verbose_name="Pièce")
     etage = models.ForeignKey(Etage, null=True, on_delete=models.CASCADE)
 
@@ -75,6 +111,15 @@ class Piece(models.Model):
 
 # pump tables #
 class Fabriquant(models.Model):
+    """
+    Classe pour gérer les fiches de fabriquants.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un fabriquant
+    """
     nom = models.CharField(max_length=50)
     logo_max = models.ImageField(upload_to=upload_to_logoFabriquant, default="noimage.jpg",
                                  max_length=254, verbose_name='Logo')
@@ -107,6 +152,15 @@ class Fabriquant(models.Model):
 
 
 class Document(models.Model):
+    """
+    Classe pour gérer les fiches de documentations techniques.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un document
+    """
     nom = models.CharField(default='', max_length=50, verbose_name="Nom")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
     manuel = models.FileField(upload_to=upload_to_documentation, max_length=254, verbose_name="Téléverser le manuel")
@@ -127,6 +181,15 @@ class Document(models.Model):
 
 
 class TechnologiePompe(models.Model):
+    """
+    Classe pour gérer les technologies de vide pour les pompes.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant une technologie
+    """
     nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie du vide (palettes, membranes...")
     info = models.CharField(default='', max_length=50, null=False, blank=True,
                             verbose_name="Détail de la technologie")
@@ -139,6 +202,15 @@ class TechnologiePompe(models.Model):
 
 
 class ModelePompe(models.Model):
+    """
+    Classe pour gérer les fiches de pompes (série ou famille).
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un fiche
+    """
     image = models.ImageField(upload_to=upload_to_pompe, max_length=254, default="noimage.jpg")
     nom = models.CharField(default='', max_length=50, verbose_name="Nom du modèle")
     modele = models.CharField(default='', max_length=50, verbose_name="Série ou famille ")
@@ -177,6 +249,15 @@ class ModelePompe(models.Model):
 
 
 class Huile(models.Model):
+    """
+    Classe pour gérer les types d'huiles pour les pompes.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant une huile
+    """
     nom = models.CharField(default='', max_length=50, verbose_name="Nom")
     image = models.ImageField(upload_to=upload_to_huile, max_length=254, default="noimage.jpg", verbose_name="Image")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
@@ -205,6 +286,15 @@ class Huile(models.Model):
 
 
 class ModelEquipe(models.Model):
+    """
+    Classe pour gérer les équipes d'appartenance de matériels.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant une équipe
+    """
     nom = models.CharField(default='', max_length=255, verbose_name="Nom complet de l'équipe")
     sigle = models.CharField(default='', max_length=10, verbose_name="Abbreviation du nom", blank=True, null=True)
     nom_responsable = models.CharField(default='', max_length=100, verbose_name="Responsable de l'équipe",
@@ -222,6 +312,15 @@ class ModelEquipe(models.Model):
 
 
 class Tutelle(models.Model):
+    """
+    Classe pour gérer les tutelles budgétaires.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant une tutelle budgétaire
+    """
     nom = models.CharField(max_length=30, default='', verbose_name="Tutelle")
 
     class Meta:
@@ -232,6 +331,15 @@ class Tutelle(models.Model):
 
 
 class Inventaire(models.Model):
+    """
+    Classe pour gérer les numéros d'inventaire pour les pompes.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un numéro lié à une tutelle
+    """
     tutelle = models.ForeignKey(Tutelle, null=True, blank=False, on_delete=models.CASCADE)
     numero = models.CharField(max_length=150, default='', verbose_name="Numéro d'inventaire")
     date_inventaire = models.DateField(default=date.today, verbose_name="Date de création")
@@ -246,6 +354,15 @@ class Inventaire(models.Model):
 ## historique on stock pump
 # ref : https://stackoverflow.com/questions/10540111/store-versioned-history-of-field-in-django-model
 class StockHistory(models.Model):
+    """
+    Classe pour gérer l'historique d'actions sur un stock de pompe.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant l'historique d'un stock
+    """
     version = models.IntegerField(editable=False)
     stockpump = models.ForeignKey('StockPompe', on_delete=models.CASCADE)
     date_historique = models.DateTimeField(default=datetime.now())
@@ -261,6 +378,15 @@ class StockHistory(models.Model):
 
 
 class StockPompe(models.Model):
+    """
+    Classe pour gérer les stocks de pompes.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un stock
+    """
     pompe = models.ForeignKey(ModelePompe, verbose_name="Modèle de pompe", null=True, blank=False,
                               on_delete=models.SET_NULL)
     mise_en_service = models.DateField(auto_now=date.today)
@@ -302,6 +428,15 @@ class StockPompe(models.Model):
 
 
 class Kit(models.Model):
+    """
+    Classe pour gérer les stocks de kit de maintenance.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant un kit
+    """
     image = models.ImageField(upload_to=upload_to_kit, max_length=254, default="noimage.jpg")
     nom = models.CharField(default='', max_length=50, verbose_name="Nom du kit")
     fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, verbose_name='Fabriquant',
@@ -334,6 +469,15 @@ class Kit(models.Model):
 
 
 class PiecesPompe(models.Model):
+    """
+    Classe pour gérer les pièces détachées d'un stock de pompe.
+
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant une pièce détachée
+    """
     image = models.ImageField(upload_to=upload_to_piecepompe, max_length=254, blank=True, null=True, default="noimage.jpg")
     nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pièce détachée")
     date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)

@@ -12,9 +12,9 @@
 
 
 #V1.2 :
-- [ ] "inventaire" : ajouter un bouton export des numeros d'inventaire.
-- [ ] ajouter les messages d'actions > suppressions, modification, ajout
-- [ ] ajouter les messages d'erreurs ou de warning
+- [x] "inventaire" : ajouter un bouton export des numeros d'inventaire.
+- [x] ajouter les messages d'actions > suppressions, modification, ajout
+- [x] ajouter les messages d'erreurs ou de warning
 - [x] HUILES : ajouter un filtre de recherche par fabriquants
 - [x] KITS : ajouter un filtre de recherche par fabriquants
 - [x] Documentation : ajouter un filtre de recherche

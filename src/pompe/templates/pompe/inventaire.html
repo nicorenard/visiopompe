@@ -72,19 +72,22 @@ class="w3-button w3-display-topright">&times;</span>
             </div>
         </div>
     </section>
-    <section class="w3-mobile w3-padding-small">
+    <section class="w3-mobile">
         <div class="w3-row-padding">
             <div class="w3-col m6 s6">
-                <table class="w3-table w3-striped">
-
-                    <tr class="w3-green w3-text-black w3-container">
+                <table class="w3-table w3-striped w3-card">
+                    <tr class="w3-green w3-text-black">
                         <th>Tutelle</th>
                         <th>Numéro d'inventaire</th>
                         <th>Date de création</th>
                         <th>Actions</th>
+
                     </tr>
+                    <tr class ="w3-grey">
+                        <td colspan="4"><a href="{% url 'pompe:inventaire_export' %}" class="w3-right"><i class="fa fa-download  w3-xlarge"></i></a></td>
+                    </tr>
+                     {% for inventaire in inventaires %}
                     <tr>
-                        {% for inventaire in inventaires %}
                         <td>{{inventaire.tutelle.nom}}</td>
                         <td>{{inventaire.numero}}</td>
                         <td>{{inventaire.date_inventaire}}</td>
