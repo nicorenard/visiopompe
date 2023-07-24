@@ -1,18 +1,17 @@
 """
-View of Visiopompe project centralized in views.py
+Les vues de l'applications centralisée dans le fichier views.py
 """
 import os.path
+import xlwt
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.http import HttpResponse
+
 
 from .filters import PompeStockFilter
 from .forms import *
 from .models import *
-
-from django.http import HttpResponse
-from import_export.admin import ExportMixin
-import xlwt
 
 
 def index(request):
@@ -278,6 +277,16 @@ def delete_fabriquant(request, pk):
 
 ## lieux
 def piece(request):
+    """
+    Fonction d'affichage et de création, d'une salle ou pièce (lieux), étages, bâtiment et site en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        lieux.html : la page lieux mise à jour.
+
+    """
     pieces = Piece.objects.all().order_by('nom')
     sites = Site.objects.all().order_by('nom')
     batiments = Batiment.objects.all().order_by('nom')
@@ -339,6 +348,17 @@ def piece(request):
 
 
 def update_piece(request, pk):
+    """
+    Fonction de modification d'une salle ou pièce (lieux) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la salle ou pièce à modifier.
+
+    Returns:
+        lieux.html : la page lieux mise à jour.
+
+    """
     pieces = get_object_or_404(Piece, pk=pk)
     if request.method == "POST":
         form = ModifPieceForm(request.POST, instance=pieces)
@@ -387,6 +407,17 @@ def delete_piece(request, pk):
 
 
 def update_site(request, pk):
+    """
+    Fonction de modification d'un site (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du site à modifier.
+
+    Returns:
+        lieux.html : la page lieux mise à jour.
+
+    """
     sites = get_object_or_404(Site, pk=pk)
     if request.method == "POST":
         form = ModifSiteForm(request.POST, instance=sites)
@@ -428,6 +459,17 @@ def delete_site(request, pk):
 
 
 def update_batiment(request, pk):
+    """
+    Fonction de mise à jour d'un bâtiment (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du bâtiment à modifier.
+
+    Returns:
+        lieux.html : la page lieux mise à jour.
+
+    """
     batiments = get_object_or_404(Batiment, pk=pk)
     if request.method == "POST":
         form = ModifBatimentForm(request.POST, instance=batiments)
@@ -469,6 +511,17 @@ def delete_batiment(request, pk):
 
 
 def update_etage(request, pk):
+    """
+    Fonction de mise à jour d'un étage (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'un étage' à modifier.
+
+    Returns:
+        lieux.html : la page lieux mise à jour.
+
+    """
     etages = get_object_or_404(Etage, pk=pk)
     if request.method == "POST":
         form = ModifEtageForm(request.POST, instance=etages)
@@ -511,6 +564,16 @@ def delete_etage(request, pk):
 
 # stocks pompes
 def pompe(request):
+    """
+    Fonction d'affichage des stocks de pompes.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        pompe.html : la page pompe.
+
+    """
     s_pompes = StockPompe.objects.all().order_by('mise_en_service')
     filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
     s_pompes = filterpompe.qs
@@ -533,12 +596,33 @@ def pompe(request):
 
 
 def historique(request, pk):
+    """
+    Fonction d'affichage de l' historique d'un stock de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du stock de pompe.
+
+    Returns:
+        pompe.html : la page pompe mise à jour.
+
+    """
     historic = StockHistory.objects.filter(stockpump=pk).order_by('-date_historique')
 
     return render(request, 'pompe/historique.html', {'historic': historic})
 
 
 def add_stockpompe(request):
+    """
+    Fonction d'ajout d'un stock de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        pompe.html : la page pompe mise à jour.
+
+    """
     if request.method == "POST":
         form = StockPompeform(request.POST, request.FILES)
         if form.is_valid():
@@ -552,6 +636,17 @@ def add_stockpompe(request):
 
 
 def update_stockpompe(request, pk):
+    """
+    Fonction de mise à jour d'un stock de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du stock de pompe à modifier.
+
+    Returns:
+        pompe.html : la page pompe mise à jour.
+
+    """
     s_pompes = get_object_or_404(StockPompe, pk=pk)
     if request.method == "POST":
         form = ModifStockPompeForm(request.POST, instance=s_pompes)
@@ -589,6 +684,16 @@ def delete_stockpompe(request, pk):
 
 # fiche modele des pompes
 def fichepompe(request):
+    """
+    Fonction d'affichage des fiches de pompes et technologie du vide'.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        fiche_pompe.html : la page des modèles de pompes et technologie.
+
+    """
     m_pompes = ModelePompe.objects.all().order_by('nom')
     technos = TechnologiePompe.objects.all().order_by('nom')
 
@@ -634,6 +739,17 @@ def fichepompe(request):
 
 
 def update_fichepompe(request, pk):
+    """
+    Fonction de mise à jour d'une fiche modèle de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'une fiche à modifier.
+
+    Returns:
+        fiche_pompe.html : la page des modèles de pompes mise à jour.
+
+    """
     m_pompes = get_object_or_404(ModelePompe, pk=pk)
     if request.method == "POST":
         form = ModifModelPompeForm(request.POST, request.FILES, instance=m_pompes)
@@ -683,6 +799,17 @@ def delete_fichepompe(request, pk):
 
 
 def update_techno(request, pk):
+    """
+    Fonction de mise à jour d'une technologie de vide en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'une technologie à modifier.
+
+    Returns:
+        fiche_pompe.html : la page des modèles de pompe mise à jour.
+
+    """
     technos = get_object_or_404(TechnologiePompe, pk=pk)
     if request.method == "POST":
         form = ModifTechnoForm(request.POST, instance=technos)
@@ -731,6 +858,16 @@ def delete_techno(request, pk):
 
 # inventaire et tutelle
 def inventaire(request):
+    """
+    Fonction d'affichage des tutelles budgétaire et numéros d'iventaire de stock de pompe.
+
+    Args:
+        request: l'objet soumis en requête POST
+
+    Returns:
+        inventaire.html : la page inventaire à afficher.
+
+    """
     inventaires = Inventaire.objects.all().order_by('numero')
     tutelles = Tutelle.objects.all().order_by('nom')
 
@@ -780,21 +917,22 @@ def export_data_inventaire(request):
     Returns:
           inventaire_numero_pompe : le fichier excel contenant les numéros exportés
     """
-    # Exportation avec ExportMixim dans la librairie djanog-import-export
+    # Exportation en fichier excel
 
     dataset = Inventaire.objects.all()
     # Création du classeur excel
     classeur = xlwt.Workbook()
     page = classeur.add_sheet("InventaireNumero")
     #entete
-    headers =["ID","Numéro","Date de création"]
+    headers =["ID", "Tutelles","Numéro","Date de création"]
     for col_index, header in enumerate(headers):
         page.write(0, col_index, header)
     #datas
     for row_index, row in enumerate(dataset):
         page.write(row_index + 1, 0, row.id),
-        page.write(row_index + 1, 1, row.numero),
-        page.write(row_index + 1, 2, row.date_inventaire.strftime("%d/%m/%Y")),
+        page.write(row_index + 1, 1, row.tutelle.nom),
+        page.write(row_index + 1, 2, row.numero),
+        page.write(row_index + 1, 3, row.date_inventaire.strftime("%d/%m/%Y")),
 
     # préparation de l'objet au format excel a télécharger
     reponse = HttpResponse(content_type='application/ms-excel')
@@ -809,7 +947,7 @@ def update_inventaire(request, pk):
 
     Args:
         request: l'objet soumis en requête POST
-        pk : l'identifiant du numéro à supprimer.
+        pk : l'identifiant du numéro à modifier.
 
     Returns:
         inventaire.html : la page inventaire mise à jour.
@@ -938,7 +1076,7 @@ def update_pdetache(request, pk):
 
     Args:
         request: l'objet soumis en requête POST
-        pk : l'identifiant de la pièce détachée à supprimer.
+        pk : l'identifiant de la pièce détachée à modifier.
 
     Returns:
         piece.html : la page mise à jour.
@@ -1050,7 +1188,7 @@ def update_huile(request, pk):
 
     Args:
         request: l'objet soumis en requête POST
-        pk : l'identifiant du lot à supprimer.
+        pk : l'identifiant du lot à modifier.
 
     Returns:
         huile.html : la page mise à jour.
@@ -1159,7 +1297,7 @@ def update_kit(request, pk):
 
     Args:
         request: l'objet soumis en requête POST
-        pk : l'identifiant du kit à supprimer.
+        pk : l'identifiant du kit à modifier.
 
     Returns:
         kit.html : la page des kits mise à jour.
