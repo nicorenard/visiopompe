@@ -1,0 +1,1203 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pompe.views &#8212; Documentation Visiopompe v1.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/translations.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pompe/views';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo_visiopompe.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo_visiopompe.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Menu :</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../users.html">Documentation Utilisateur</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">Documentation Technique</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../src.pompe.html">Paquet POMPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../src.config.html">Paquet CONFIG</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Code source de pompe.views</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">View of Visiopompe project centralized in views.py</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">.filters</span> <span class="kn">import</span> <span class="n">PompeStockFilter</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="index"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.index">[docs]</a><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction d&#39;affichage de la page d&#39;accueil du site.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet POST reçu en paramètre pour afficher la page dédiée.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        index.html : la page d&#39;acceuil retournée.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/index.html&#39;</span><span class="p">)</span></div>
+
+
+<span class="c1"># dashboard</span>
+
+<div class="viewcode-block" id="dashboard"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.dashboard">[docs]</a><span class="k">def</span> <span class="nf">dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction qui permet l&#39;affichage de compteurs d&#39;états généraux des pompes, de leurs types et leurs natures.</span>
+<span class="sd">    Une option a été ajoutée pour un affichage spécifique en fonction des étages de l&#39;UMR 6521, aux équipes et aux types</span>
+<span class="sd">    de technologie de vide.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: la requête d&#39;affichage des pompes</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          dashboard.html : la page de la dashboard avec les différents objets filtrés pour l&#39;affichage des compteurs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dash_pompes</span> <span class="o">=</span> <span class="n">StockPompe</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+    <span class="c1"># general setting for dashboard</span>
+
+    <span class="n">p_all</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_valide</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">statut</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_stock</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">statut</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_hs</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">statut</span><span class="o">=</span><span class="s1">&#39;P&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_rep</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">statut</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_atex</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">atex</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+    <span class="c1">#: special to UMR 6521. Base on technologie of pump. #</span>
+    <span class="n">p_palette</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pompe__technologie__nom__icontains</span><span class="o">=</span><span class="s1">&#39;palette&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_membrane</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pompe__technologie__nom__icontains</span><span class="o">=</span><span class="s1">&#39;membrane&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_seche</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pompe__technologie__info__icontains</span><span class="o">=</span><span class="s1">&#39;seche&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+    <span class="c1">#: special to UMR 6521 by stair. #</span>
+    <span class="n">p_etage_1</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">etage__nom__icontains</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_etage_2</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">etage__nom__icontains</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_etage_3</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">etage__nom__icontains</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+    <span class="c1">#: special to UMR6521 by teams. #</span>
+    <span class="n">p_ciel</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">equipe__sigle__icontains</span><span class="o">=</span><span class="s1">&#39;ciel&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_spectre</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">equipe__sigle__icontains</span><span class="o">=</span><span class="s1">&#39;spectre&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_cosm</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">equipe__sigle__icontains</span><span class="o">=</span><span class="s1">&#39;cosm&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">p_umr</span> <span class="o">=</span> <span class="n">dash_pompes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">equipe__sigle__icontains</span><span class="o">=</span><span class="s1">&#39;umr&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;p_all&#39;</span><span class="p">:</span> <span class="n">p_all</span><span class="p">,</span> <span class="s1">&#39;p_valide&#39;</span><span class="p">:</span> <span class="n">p_valide</span><span class="p">,</span> <span class="s1">&#39;p_stock&#39;</span><span class="p">:</span> <span class="n">p_stock</span><span class="p">,</span> <span class="s1">&#39;p_hs&#39;</span><span class="p">:</span> <span class="n">p_hs</span><span class="p">,</span> <span class="s1">&#39;p_rep&#39;</span><span class="p">:</span> <span class="n">p_rep</span><span class="p">,</span>
+               <span class="s1">&#39;p_atex&#39;</span><span class="p">:</span> <span class="n">p_atex</span><span class="p">,</span>
+               <span class="s1">&#39;p_palette&#39;</span><span class="p">:</span> <span class="n">p_palette</span><span class="p">,</span> <span class="s1">&#39;p_membrane&#39;</span><span class="p">:</span> <span class="n">p_membrane</span><span class="p">,</span> <span class="s1">&#39;p_seche&#39;</span><span class="p">:</span> <span class="n">p_seche</span><span class="p">,</span>
+               <span class="s1">&#39;p_etage_1&#39;</span><span class="p">:</span> <span class="n">p_etage_1</span><span class="p">,</span> <span class="s1">&#39;p_etage_2&#39;</span><span class="p">:</span> <span class="n">p_etage_2</span><span class="p">,</span> <span class="s1">&#39;p_etage_3&#39;</span><span class="p">:</span> <span class="n">p_etage_3</span><span class="p">,</span>
+               <span class="s1">&#39;p_ciel&#39;</span><span class="p">:</span> <span class="n">p_ciel</span><span class="p">,</span> <span class="s1">&#39;p_spectre&#39;</span><span class="p">:</span> <span class="n">p_spectre</span><span class="p">,</span> <span class="s1">&#39;p_cosm&#39;</span><span class="p">:</span> <span class="n">p_cosm</span><span class="p">,</span> <span class="s1">&#39;p_umr&#39;</span><span class="p">:</span> <span class="n">p_umr</span><span class="p">,</span>
+               <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/dashboard.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="equipe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.equipe">[docs]</a><span class="k">def</span> <span class="nf">equipe</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction d&#39;affichage des équipes et du formulaire de soumission de création d&#39;un nouvelle équipe</span>
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;élément soumis pour l&#39;execution du formulaire de création d&#39;une équipe</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        equipe.html : la page d&#39;affichage des équipes enregistrées et le formulaire vide.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">equipes</span> <span class="o">=</span> <span class="n">ModelEquipe</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;sigle&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Equipeform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/equipe&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Equipeform</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/equipe.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;equipes&#39;</span><span class="p">:</span> <span class="n">equipes</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_equipe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_equipe">[docs]</a><span class="k">def</span> <span class="nf">update_equipe</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de mise à jour d&#39;un équipe existante.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request : l&#39;objet soumis en requête post</span>
+<span class="sd">        pk : l&#39;identifiant de l&#39;équipe en base de données</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          equipe.html : la page équipe avec les informations mise à jour sinon la page du formulaire de</span>
+<span class="sd">          soumission avec les erreurs.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">equipes</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">ModelEquipe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifEquipeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">equipes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/equipe&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifEquipeForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">equipes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_equipe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_equipe">[docs]</a><span class="k">def</span> <span class="nf">delete_equipe</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;une équipe en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant de l&#39;équipe à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        equipe.html : la page équipe mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">ModelEquipe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/equipe&#39;</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queryset</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/equipe.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<span class="c1">## fabriquant</span>
+<div class="viewcode-block" id="fabriquant"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.fabriquant">[docs]</a><span class="k">def</span> <span class="nf">fabriquant</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction d&#39;affichage des fabriquants et du formulaire de soumission de création d&#39;un nouveau fabriquant</span>
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;élément soumis pour l&#39;execution du formulaire de création d&#39;un fabriquant</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fabriquant.html : la page d&#39;affichage des fabriquants enregistres et le formulaire vide.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fabriquants</span> <span class="o">=</span> <span class="n">Fabriquant</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span> <span class="ow">and</span> <span class="s1">&#39;fabriquant_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Fabriquantform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">fabriquant</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">commit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span>
+            <span class="c1"># redimensionnement des 2 logos</span>
+
+            <span class="n">fabriquant</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/fabriquants&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Fabriquantform</span><span class="p">()</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;fabriquants&#39;</span><span class="p">:</span> <span class="n">fabriquants</span><span class="p">,</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/fabriquant.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_fabriquant"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_fabriquant">[docs]</a><span class="k">def</span> <span class="nf">update_fabriquant</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de mise à jour d&#39;un fabriquant existant.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request : l&#39;objet soumis en requête post</span>
+<span class="sd">        pk : l&#39;identifiant du fabriquant en base de données</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          fabriquant.html : la page des fabriquants avec les informations de mise à jour sinon la page du formulaire de</span>
+<span class="sd">          soumission avec les erreurs.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fabriquants</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Fabriquant</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifFabriquantForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">fabriquants</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/fabriquants&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifFabriquantForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">fabriquants</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_fabriquant"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_fabriquant">[docs]</a><span class="k">def</span> <span class="nf">delete_fabriquant</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un fabriquant en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant du fabriquant à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fabriquant.html : la page fabriquant mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Fabriquant</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+
+        <span class="c1"># suppression des médias = logos</span>
+        <span class="n">logomax_path</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">logo_max</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">logomax_parent_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">logomax_path</span><span class="p">)</span>
+        <span class="n">logomini_path</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">logo_mini</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">logomini_parent_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">logomini_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">logomax_path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">logomax_path</span><span class="p">)</span>
+            <span class="c1"># si dossier vide, on retire celui_ci du serveur</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">logomax_parent_directory</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">logomax_parent_directory</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">logomini_path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">logomini_path</span><span class="p">)</span>
+            <span class="c1"># si dossier vide, on retire celui_ci du serveur</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">logomini_parent_directory</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">logomini_parent_directory</span><span class="p">)</span>
+
+        <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/fabriquants&quot;</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fabriquants&#39;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/fabriquant.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<span class="c1">## lieux</span>
+<div class="viewcode-block" id="piece"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.piece">[docs]</a><span class="k">def</span> <span class="nf">piece</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">pieces</span> <span class="o">=</span> <span class="n">Piece</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="n">sites</span> <span class="o">=</span> <span class="n">Site</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="n">batiments</span> <span class="o">=</span> <span class="n">Batiment</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="n">etages</span> <span class="o">=</span> <span class="n">Etage</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Siteform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="n">form2</span> <span class="o">=</span> <span class="n">Batimentform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="n">form3</span> <span class="o">=</span> <span class="n">Etageform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="n">form4</span> <span class="o">=</span> <span class="n">Pieceform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;site_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">form2</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;batiment_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">form2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">form3</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;etage_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">form3</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">form4</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;piece_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">form4</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Siteform</span><span class="p">()</span>
+        <span class="n">form2</span> <span class="o">=</span> <span class="n">Batimentform</span><span class="p">()</span>
+        <span class="n">form3</span> <span class="o">=</span> <span class="n">Etageform</span><span class="p">()</span>
+        <span class="n">form4</span> <span class="o">=</span> <span class="n">Pieceform</span><span class="p">()</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pieces&#39;</span><span class="p">:</span> <span class="n">pieces</span><span class="p">,</span>
+               <span class="s1">&#39;sites&#39;</span><span class="p">:</span> <span class="n">sites</span><span class="p">,</span>
+               <span class="s1">&#39;batiments&#39;</span><span class="p">:</span> <span class="n">batiments</span><span class="p">,</span>
+               <span class="s1">&#39;etages&#39;</span><span class="p">:</span> <span class="n">etages</span><span class="p">,</span>
+               <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span>
+               <span class="s1">&#39;form2&#39;</span><span class="p">:</span> <span class="n">form2</span><span class="p">,</span>
+               <span class="s1">&#39;form3&#39;</span><span class="p">:</span> <span class="n">form3</span><span class="p">,</span>
+               <span class="s1">&#39;form4&#39;</span><span class="p">:</span> <span class="n">form4</span>
+               <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/lieux.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_piece"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_piece">[docs]</a><span class="k">def</span> <span class="nf">update_piece</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">pieces</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Piece</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifPieceForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">pieces</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifPieceForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">pieces</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="delete_piece"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_piece">[docs]</a><span class="k">def</span> <span class="nf">delete_piece</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;une salle ou pièce (lieux) en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant de la salle ou pièce à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        lieux.html : la page lieux mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Piece</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queryset</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/lieux.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_site"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_site">[docs]</a><span class="k">def</span> <span class="nf">update_site</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">sites</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Site</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifSiteForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">sites</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifSiteForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">sites</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_site"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_site">[docs]</a><span class="k">def</span> <span class="nf">delete_site</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un site (lieu) en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant du site à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        lieux.html : la page lieu mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Site</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/lieux.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_batiment"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_batiment">[docs]</a><span class="k">def</span> <span class="nf">update_batiment</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">batiments</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Batiment</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifBatimentForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">batiments</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifBatimentForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">batiments</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_batiment"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_batiment">[docs]</a><span class="k">def</span> <span class="nf">delete_batiment</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un bâtiment (lieu) en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant du bâtiment à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        lieux.html : la page lieu mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset2</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Batiment</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset2</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/lieux.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;queryset2&#39;</span><span class="p">:</span> <span class="n">queryset2</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_etage"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_etage">[docs]</a><span class="k">def</span> <span class="nf">update_etage</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">etages</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Etage</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifEtageForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">etages</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifEtageForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">etages</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_etage"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_etage">[docs]</a><span class="k">def</span> <span class="nf">delete_etage</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un étage (lieu) en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant d&#39;un étage&#39; à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        lieux.html : la page lieu mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset3</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Etage</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset3</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/dashboard/lieux&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/lieux.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;queryset3&#39;</span><span class="p">:</span> <span class="n">queryset3</span><span class="p">})</span></div>
+
+
+<span class="c1"># stocks pompes</span>
+<div class="viewcode-block" id="pompe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.pompe">[docs]</a><span class="k">def</span> <span class="nf">pompe</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">s_pompes</span> <span class="o">=</span> <span class="n">StockPompe</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;mise_en_service&#39;</span><span class="p">)</span>
+    <span class="n">filterpompe</span> <span class="o">=</span> <span class="n">PompeStockFilter</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">queryset</span><span class="o">=</span><span class="n">s_pompes</span><span class="p">)</span>
+    <span class="n">s_pompes</span> <span class="o">=</span> <span class="n">filterpompe</span><span class="o">.</span><span class="n">qs</span>
+    <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+    <span class="n">warning_date</span> <span class="o">=</span> <span class="n">current_date</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;s_pompes&#39;</span><span class="p">:</span> <span class="n">s_pompes</span><span class="p">,</span>
+               <span class="s1">&#39;current_date&#39;</span><span class="p">:</span> <span class="n">current_date</span><span class="p">,</span>
+               <span class="s1">&#39;warning_date&#39;</span><span class="p">:</span> <span class="n">warning_date</span><span class="p">,</span>
+               <span class="s1">&#39;filterpompe&#39;</span><span class="p">:</span> <span class="n">filterpompe</span><span class="p">,</span>
+               <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/pompe.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="historique"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.historique">[docs]</a><span class="k">def</span> <span class="nf">historique</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">historic</span> <span class="o">=</span> <span class="n">StockHistory</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">stockpump</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-date_historique&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/historique.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;historic&#39;</span><span class="p">:</span> <span class="n">historic</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="add_stockpompe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.add_stockpompe">[docs]</a><span class="k">def</span> <span class="nf">add_stockpompe</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">StockPompeform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/pompes&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">StockPompeform</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_stockpompe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_stockpompe">[docs]</a><span class="k">def</span> <span class="nf">update_stockpompe</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">s_pompes</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">StockPompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifStockPompeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">s_pompes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/pompes&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifStockPompeForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">s_pompes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_stockpompe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_stockpompe">[docs]</a><span class="k">def</span> <span class="nf">delete_stockpompe</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un stock de pompe en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant du stock de pompe à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pompe.html : la page pompe mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">StockPompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/pompes&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/pompe.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">})</span></div>
+
+
+<span class="c1"># fiche modele des pompes</span>
+<div class="viewcode-block" id="fichepompe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.fichepompe">[docs]</a><span class="k">def</span> <span class="nf">fichepompe</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">m_pompes</span> <span class="o">=</span> <span class="n">ModelePompe</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="n">technos</span> <span class="o">=</span> <span class="n">TechnologiePompe</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModelPompeform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="n">form2</span> <span class="o">=</span> <span class="n">Technologieform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;fiche_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span>
+            <span class="k">if</span> <span class="n">cleaned_data</span><span class="p">:</span>
+                <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">form2</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;techno_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">cleaned_data2</span> <span class="o">=</span> <span class="n">form2</span><span class="o">.</span><span class="n">cleaned_data</span>
+            <span class="k">if</span> <span class="n">cleaned_data2</span><span class="p">:</span>
+                <span class="n">form2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/fichepompe&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModelPompeform</span><span class="p">()</span>
+        <span class="n">form2</span> <span class="o">=</span> <span class="n">Technologieform</span><span class="p">()</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;m_pompe&#39;</span><span class="p">:</span> <span class="n">m_pompes</span><span class="p">,</span> <span class="s1">&#39;technos&#39;</span><span class="p">:</span> <span class="n">technos</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s1">&#39;form2&#39;</span><span class="p">:</span> <span class="n">form2</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/fiche_pompe.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_fichepompe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_fichepompe">[docs]</a><span class="k">def</span> <span class="nf">update_fichepompe</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">m_pompes</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">ModelePompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifModelPompeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">m_pompes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span>
+            <span class="k">if</span> <span class="n">cleaned_data</span><span class="p">:</span>
+                <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/fichepompe&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifModelPompeForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">m_pompes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_fichepompe"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_fichepompe">[docs]</a><span class="k">def</span> <span class="nf">delete_fichepompe</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;une fiche modèle de pompe en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant d&#39;une fiche à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fiche_pompe.html : la page des modèles de pompes mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">ModelePompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">image_path</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">image_parent_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_parent_directory</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">image_parent_directory</span><span class="p">)</span>
+            <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/fichepompe&#39;</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queryset</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/fiche_pompe.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_techno"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_techno">[docs]</a><span class="k">def</span> <span class="nf">update_techno</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">technos</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">TechnologiePompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifTechnoForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">technos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span>
+            <span class="k">if</span> <span class="n">cleaned_data</span><span class="p">:</span>
+                <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/fichepompe&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifTechnoForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">technos</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_techno"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_techno">[docs]</a><span class="k">def</span> <span class="nf">delete_techno</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;une technologie de vide en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant d&#39;une technologie&#39; à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fiche_pompe.html : la page des modèles de pompe mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset1</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">TechnologiePompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset1</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/fichepompe&#39;</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;queryset1&#39;</span><span class="p">:</span> <span class="n">queryset1</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/fiche_pompe.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<span class="c1"># inventaire et tutelle</span>
+<div class="viewcode-block" id="inventaire"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.inventaire">[docs]</a><span class="k">def</span> <span class="nf">inventaire</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">inventaires</span> <span class="o">=</span> <span class="n">Inventaire</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;numero&#39;</span><span class="p">)</span>
+    <span class="n">tutelles</span> <span class="o">=</span> <span class="n">Tutelle</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Inventaireform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="n">form2</span> <span class="o">=</span> <span class="n">Tutelleform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">form2</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;tutelle_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">form2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;inventaire_form&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/inventaire&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Inventaireform</span><span class="p">()</span>
+        <span class="n">form2</span> <span class="o">=</span> <span class="n">Tutelleform</span><span class="p">()</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;inventaires&#39;</span><span class="p">:</span> <span class="n">inventaires</span><span class="p">,</span>
+        <span class="s1">&#39;tutelles&#39;</span><span class="p">:</span> <span class="n">tutelles</span><span class="p">,</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span>
+        <span class="s1">&#39;form2&#39;</span><span class="p">:</span> <span class="n">form2</span>
+        <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/inventaire.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_inventaire"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_inventaire">[docs]</a><span class="k">def</span> <span class="nf">update_inventaire</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">inventaires</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Inventaire</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifInventaireForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">inventaires</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/inventaire&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifInventaireForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">inventaires</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_inventaire"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_inventaire">[docs]</a><span class="k">def</span> <span class="nf">delete_inventaire</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un numéro d&#39;inventaire en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant du numéro à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        inventaire.html : la page inventaire mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Inventaire</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/inventaire&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/inventaire.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_tutelle"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_tutelle">[docs]</a><span class="k">def</span> <span class="nf">delete_tutelle</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;une tutelle budgétaire en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant de la tutelle à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        inventaire.html : la page inventaire mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset1</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Tutelle</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">queryset1</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/inventaire&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/inventaire.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;queryset1&#39;</span><span class="p">:</span> <span class="n">queryset1</span><span class="p">})</span></div>
+
+
+<span class="c1"># pieces detachées</span>
+<div class="viewcode-block" id="pdetache"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.pdetache">[docs]</a><span class="k">def</span> <span class="nf">pdetache</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">pieces</span> <span class="o">=</span> <span class="n">PiecesPompe</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;pieces&#39;</span><span class="p">:</span> <span class="n">pieces</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/piece.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="add_pdetache"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.add_pdetache">[docs]</a><span class="k">def</span> <span class="nf">add_pdetache</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PiecePompeform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/pieces_detaches&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PiecePompeform</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_pdetache"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_pdetache">[docs]</a><span class="k">def</span> <span class="nf">update_pdetache</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">pdetaches</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">PiecesPompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifPiecePompeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">pdetaches</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/pieces_detaches&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifPiecePompeForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">pdetaches</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_pdetache"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_pdetache">[docs]</a><span class="k">def</span> <span class="nf">delete_pdetache</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;une pièce détachée en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant de la pièce détachée à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        piece.html : la page mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pieces</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">PiecesPompe</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">pieces_image</span> <span class="o">=</span> <span class="n">pieces</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">pieces_image</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pieces_image</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pieces_image</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_path</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+            <span class="n">pieces</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/pieces_detaches&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/piece.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;pieces&#39;</span><span class="p">:</span> <span class="n">pieces</span><span class="p">})</span></div>
+
+
+<span class="c1"># huile</span>
+<div class="viewcode-block" id="huile"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.huile">[docs]</a><span class="k">def</span> <span class="nf">huile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">huiles</span> <span class="o">=</span> <span class="n">Huile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/huile.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;huiles&#39;</span><span class="p">:</span> <span class="n">huiles</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="add_huile"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.add_huile">[docs]</a><span class="k">def</span> <span class="nf">add_huile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Huileform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/huiles&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Huileform</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_huile"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_huile">[docs]</a><span class="k">def</span> <span class="nf">update_huile</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">huiles</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Huile</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifHuileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">huiles</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/huiles&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifHuileForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">huiles</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_huile"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_huile">[docs]</a><span class="k">def</span> <span class="nf">delete_huile</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un lot d&#39;huile en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant du lot à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        huile.html : la page mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">huiles</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Huile</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">huile_path</span> <span class="o">=</span> <span class="n">huiles</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">huile_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">huile_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">huile_path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">huile_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">huile_directory</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">huile_directory</span><span class="p">)</span>
+            <span class="n">huiles</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/huiles&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/huile.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;huiles&#39;</span><span class="p">:</span> <span class="n">huiles</span><span class="p">})</span></div>
+
+
+<span class="c1"># kit de maintenance</span>
+<div class="viewcode-block" id="kit"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.kit">[docs]</a><span class="k">def</span> <span class="nf">kit</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">kits</span> <span class="o">=</span> <span class="n">Kit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/kit.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;kits&#39;</span><span class="p">:</span> <span class="n">kits</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="add_kit"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.add_kit">[docs]</a><span class="k">def</span> <span class="nf">add_kit</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Kitform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/kits&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Kitform</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_kit"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_kit">[docs]</a><span class="k">def</span> <span class="nf">update_kit</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">kits</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Kit</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifKitForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">kits</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/kits&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifKitForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">kits</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_kit"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_kit">[docs]</a><span class="k">def</span> <span class="nf">delete_kit</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;un kit de maintenance en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant du kit à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        kit.html : la page des kits mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kits</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Kit</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">kit_image</span> <span class="o">=</span> <span class="n">kits</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">image_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">kit_image</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">kit_image</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">kit_image</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_directory</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">image_directory</span><span class="p">)</span>
+            <span class="n">kits</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/kits&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/kit.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;kits&#39;</span><span class="p">:</span> <span class="n">kits</span><span class="p">})</span></div>
+
+
+<span class="c1"># Documentations</span>
+
+<div class="viewcode-block" id="doc"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.doc">[docs]</a><span class="k">def</span> <span class="nf">doc</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="n">Document</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;docs&#39;</span><span class="p">:</span> <span class="n">docs</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/doc.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="add_doc"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.add_doc">[docs]</a><span class="k">def</span> <span class="nf">add_doc</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Docform</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/docs&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">Docform</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="update_doc"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.update_doc">[docs]</a><span class="k">def</span> <span class="nf">update_doc</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Document</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifDocForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">docs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/docs&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ModifDocForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">docs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/forms.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_doc"><a class="viewcode-back" href="../../src.pompe.html#pompe.views.delete_doc">[docs]</a><span class="k">def</span> <span class="nf">delete_doc</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction de suppression d&#39;une documentation technique des pompes en base de données.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: l&#39;objet soumis en requête POST</span>
+<span class="sd">        pk : l&#39;identifiant de la documentation à supprimer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        doc.html : la page des documentations mise à jour.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Document</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="c1">#: Suppression du fichier sur le serveur</span>
+        <span class="n">doc_file</span> <span class="o">=</span> <span class="n">docs</span><span class="o">.</span><span class="n">manuel</span><span class="o">.</span><span class="n">path</span>
+        <span class="n">doc_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">doc_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">doc_file</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">doc_file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">doc_directory</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">doc_directory</span><span class="p">)</span>
+            <span class="n">docs</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/docs&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/doc.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;docs&#39;</span><span class="p">:</span> <span class="n">docs</span><span class="p">})</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Nicolas RENARD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright Nicolas RENARD, 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

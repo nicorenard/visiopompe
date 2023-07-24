@@ -89,7 +89,13 @@ def equipe(request):
         form = Equipeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/dashboard/equipe')
+            msg_succes = f'Une nouvelle équipe a bien été créée.'
+            url = reverse('pompe:equipe') + '?msg_succes=' + msg_succes
+
+        else:
+            msg_erreur = "L'ajout n'a pas pu être fait."
+            url = reverse('pompe:equipe') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
     else:
         form = Equipeform()
     return render(request, 'pompe/equipe.html', {'equipes': equipes, 'form': form})
@@ -113,7 +119,14 @@ def update_equipe(request, pk):
         form = ModifEquipeForm(request.POST, instance=equipes)
         if form.is_valid():
             form.save()
-        return redirect('/dashboard/equipe')
+            msg_succes = f'L\'équipe a bien été mise à jour.'
+            url = reverse('pompe:equipe') + '?msg_succes=' + msg_succes
+
+        else:
+            msg_erreur = "La modification de l'équipe n'a pas été faites."
+            url = reverse('pompe:equipe') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
+
     else:
         form = ModifEquipeForm(instance=equipes)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -164,13 +177,26 @@ def fabriquant(request):
             cleaned_data = form.cleaned_data
             if cleaned_data:
                 fabriquant.save()
-        return redirect('/fabriquants')
+            msg_succes = f'Une nouvelle fiche fabriquant a bien été créée.'
+            url = reverse('pompe:fabriquant') + '?msg_succes=' + msg_succes
+
+        else:
+            msg_erreur = "L'ajout n'a pas pu être fait."
+            url = reverse('pompe:fabriquant') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
     else:
         form = Fabriquantform()
 
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
+
     context = {
         'fabriquants': fabriquants,
-        'form': form
+        'form': form,
+        'msg_warning': msg_warning,
+        'msg_erreur': msg_erreur,
+        'msg_succes': msg_succes,
     }
     return render(request, 'pompe/fabriquant.html', context)
 
@@ -193,7 +219,13 @@ def update_fabriquant(request, pk):
         form = ModifFabriquantForm(request.POST, request.FILES, instance=fabriquants)
         if form.is_valid():
             form.save()
-        return redirect('/fabriquants')
+            msg_succes = f'La fiche fabriquant a bien été mise à jour.'
+            url = reverse('pompe:fabriquant') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'La fiche fabriquant n\'a pas été mis à jour.'
+            url = reverse('pompe:fabriquant') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
     else:
         form = ModifFabriquantForm(instance=fabriquants)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -254,21 +286,38 @@ def piece(request):
         form4 = Pieceform(request.POST, request.FILES)
         if form.is_valid() and 'site_form' in request.POST:
             form.save()
+            msg_succes = f'Un site a bien été créé.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
 
         elif form2.is_valid() and 'batiment_form' in request.POST:
             form2.save()
+            msg_succes = f'Un bâtiment a bien été créé.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
 
         elif form3.is_valid() and 'etage_form' in request.POST:
             form3.save()
+            msg_succes = f'Un étage a bien été créé.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
 
         elif form4.is_valid() and 'piece_form' in request.POST:
             form4.save()
-        return redirect('/dashboard/lieux')
+            msg_succes = f'Une pièce a bien été créée.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+
+        else:
+            msg_erreur = "L'ajout n'a pas pu être fait."
+            url = reverse('pompe:lieux') + '?msg_erreur=' + msg_erreur
+        return redirect(url)
+
     else:
         form = Siteform()
         form2 = Batimentform()
         form3 = Etageform()
         form4 = Pieceform()
+
+    msg_succes = request.GET.get('msg_succes', '')
+    msg_erreur = request.GET.get('msg_erreur', '')
+    msg_warning = request.GET.get('msg_warning', '')
 
     context = {'pieces': pieces,
                'sites': sites,
@@ -277,7 +326,10 @@ def piece(request):
                'form': form,
                'form2': form2,
                'form3': form3,
-               'form4': form4
+               'form4': form4,
+               'msg_warning': msg_warning,
+               'msg_erreur': msg_erreur,
+               'msg_succes': msg_succes,
                }
     return render(request, 'pompe/lieux.html', context)
 
@@ -288,7 +340,13 @@ def update_piece(request, pk):
         form = ModifPieceForm(request.POST, instance=pieces)
         if form.is_valid():
             form.save()
-        return redirect('/dashboard/lieux')
+            msg_succes = f'La pièce a bien été mise à jour.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'La pièce n\'a pas été mise à jour.'
+            url = reverse('pompe:lieux') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
     else:
         form = ModifPieceForm(instance=pieces)
 
@@ -330,7 +388,14 @@ def update_site(request, pk):
         form = ModifSiteForm(request.POST, instance=sites)
         if form.is_valid():
             form.save()
-        return redirect('/dashboard/lieux')
+            msg_succes = f'Le site a bien été mis à jour.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'Le site n\'a pas été mis à jour.'
+            url = reverse('pompe:lieux') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
+
     else:
         form = ModifSiteForm(instance=sites)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -364,7 +429,14 @@ def update_batiment(request, pk):
         form = ModifBatimentForm(request.POST, instance=batiments)
         if form.is_valid():
             form.save()
-        return redirect('/dashboard/lieux')
+            msg_succes = f'Le bâtiment a bien été mis à jour.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'Le bâtiment n\'a pas été mis à jour.'
+            url = reverse('pompe:lieux') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
+
     else:
         form = ModifBatimentForm(instance=batiments)
     return render(request, 'pompe/forms.html', {'form': form})
@@ -398,7 +470,14 @@ def update_etage(request, pk):
         form = ModifEtageForm(request.POST, instance=etages)
         if form.is_valid():
             form.save()
-        return redirect('/dashboard/lieux')
+            msg_succes = f'L\'étage a bien été mis à jour.'
+            url = reverse('pompe:lieux') + '?msg_succes=' + msg_succes
+        else:
+            msg_erreur = f'L\'étage n\'a pas été mis à jour.'
+            url = reverse('pompe:lieux') + '?msg_erreur=' + msg_erreur
+
+        return redirect(url)
+
     else:
         form = ModifEtageForm(instance=etages)
     return render(request, 'pompe/forms.html', {'form': form})
