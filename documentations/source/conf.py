@@ -10,12 +10,6 @@ import sys
 import django
 
 from pathlib import Path
-from rinoh.frontend.rst import DocutilsInlineNode
-
-
-# issue #414 on rithotype git repository
-class Desc_Sig_Space(DocutilsInlineNode):
-    pass
 
 # django path directory
 # sys.path.insert(0, os.path.abspath("../src")) # path relatif
@@ -57,17 +51,6 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 # html_theme_path = ["_themes", ]
 html_logo = "_static/logo_visiopompe.jpg"
-
-#rinoh pdf
-rinoh_documents = [
-    {
-    'doc': 'index',
-    'target': f'{project}',
-    'title': project,
-    'author': author,
-    },
-
-]
 
 # -- Options for autodoc ----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration

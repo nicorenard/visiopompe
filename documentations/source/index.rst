@@ -4,10 +4,10 @@
    contain the root `toctree` directive.
 
 Bienvenue sur la documentation de Visiopompe.
-=============================================
+#############################################
 
 Introduction
-============
+************
 ``Visiopompe`` est un mini projet développé via python 3 avec le Framework ``Django``.
 Ce projet à pour but de centraliser et de mettre en place un systeme de gestion d'un parc de matériel mécanique de type
 pompes à membranes et pompes à palettes au sein d'un laboratoire.
@@ -18,7 +18,7 @@ Le listing des **pompes** peut se faire sur plusieurs niveaux de localisation.
 tous les détails techniques et historique de la vie de l'appareillage.
 
 Gestion Bonus
-*************
+=============
 Ce systeme inclut également la gestion d'équipements de maintenance lié au fonctionnement de ces appareillages:
  - pièces détachées,
  - huiles,
@@ -26,7 +26,7 @@ Ce systeme inclut également la gestion d'équipements de maintenance lié au fo
 
 
 Sommaire
-********
+========
 
 * :ref:`genindex`
 * :ref:`modindex`
@@ -34,7 +34,9 @@ Sommaire
 
 .. toctree::
    :maxdepth: 2
-   :caption: Menu :
+   :numbered:
+   :caption: Menu:
 
+   tutoriel
    users
    modules

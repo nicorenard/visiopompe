@@ -1,7 +1,7 @@
 Documentation Utilisateur
 =========================
 
-Version : 1.0
+Version : 1.2
 
 Introduction
 ************
@@ -75,31 +75,33 @@ Il y a également d'autres informations disponible.
 
 Ce formulaire permet la création d'un stock de pompe.
 
-Voici les informations obligatoires pour en créer : 
+Voici les informations obligatoires pour en créer un:
 
 + Modèle de pompe
 + Etage
 + Pièce
 + Numéro de série
 
-Par validation, la mise en service, la puissance, la technologie, la date de la prochaine vidange seront enregistrées et le statut "en activité" sera inclu.
+Après avoir valider le formulaire, la mise en service, la puissance, la technologie et le statut "en activité" sera inclu automatiquement.
 
+.. warning::
     Il est à noter que sans **aucun numéro d'inventaire** ,
     **sans équipe** renseignée ou d'autres informations comme **l'historique du stock**,
-    l'efficacité du suivi et la gestion du stock risque d'en partir.
+    l'efficacité du suivi et la gestion du stock risque d'en pâtir.
 
 
 3. Inventaires Stocks :
 -----------------------
 
-Ce sous panneau permet la gestion des numéros d'inventaires pour les stocks de pompes.
+Ce sous-panneau permet la gestion des numéros d'inventaires pour les stocks de pompes.
 
 Deux formulaires sont présents : 
 
 + L'ajout d'une tutelle budgétaire
 + L'ajout d'un numéro d'inventoriat
 
-> L'ajout d'une tutelle est obligatoire avant de pouvoir créer un numéro.
+.. note::
+    L'ajout d'une tutelle est **obligatoire** avant de pouvoir créer un numéro.
 
 Il y a également un tableau de consultation des numéros créés triés par tutelle budgétaire.
 
@@ -109,6 +111,7 @@ Pour effectuer ces actions, différentes icônes sont présentes :
 
 + Icône *page avec crayon* : permet l'édition complète du numéro d'inventaire.
 + Icône *poubelle* : permet la suppression d'un numéro.
++ Icône *téléchargement* : permet le téléchargement des tous les numéros d'inventaires, les tutelles et la date de création du numéro.
 
 
 Menu Pièces détachées
@@ -133,8 +136,8 @@ Pour effectuer ces actions, différentes icônes sont présentes :
 
 Ce formulaire de création permet d'ajouter une nouvelle pièce détachées.
 
-> Seul le champ de saisie **informations complémentaires** n'est pas obligatoire.
-
+.. note::
+    Seul le champ de saisie **informations complémentaires** n'est pas obligatoire.
 
 
 Menu Kits maintenance
@@ -163,8 +166,7 @@ Voici les informations obligatoires pour un nouvel ajout :
 
 + Nom
 + Un fabriquant
-
-> Il est possible d'ajouter une référence *vide* d'un kit.
++ Une quantité
 
 
 Menu Huiles
@@ -194,8 +196,6 @@ Voici les informations obligatoires pour un nouvel ajout :
 + Nom
 + Un fabriquant
 + Une pièce
-
-> Il est possible d'ajouter une référence *vide* d'un stock d'huile.
 
 
 Menu Documentations
@@ -238,7 +238,8 @@ Dans ce sous-panneau, vous pouvez créer, éditer et consulter les modèles de p
 
 Egalement, vous pouvez effectuer la gestion des technologies du vide inhérente à ces modèles de pompes.
 
-> Pour créer un modèle de pompe, il faut obligatoirement un **technologie** associée !
+.. note::
+    Pour créer un modèle de pompe, il faut obligatoirement un **technologie** associée !
 
 La technologie de pompe ne demande que l'information suivante obligatoire : 
 
@@ -257,7 +258,8 @@ Pour un modèle de pompe, voici les informations obligatoires :
 
 Dans ce sous-panneau, vous pourrez créer et manager les fabriquants dont les stocks de pompes et accessoires sont relatés.
 
-> Il faut au moins un fabriquant pour créer un **Modèle de pompe**.
+.. note::
+    Il faut au moins un fabriquant pour créer un **Modèle de pompe**.
 
 L' information suivante est obligatoire pour la création d'un fabriquant : 
 
@@ -269,7 +271,8 @@ L' information suivante est obligatoire pour la création d'un fabriquant :
 
 Dans ce sous-panneau, vous pourrez créer et manager les équipes dont les stocks devront appartenir.
 
-> Il faut au moins une équipe pour créer un **stock de pompe**.
+.. note::
+    Il faut au moins une équipe pour créer un **stock de pompe**.
 
 Les informations suivantes sont obligatoires pour la création d'une équipe : 
 
@@ -294,4 +297,5 @@ Les lieux sont structurés de la sorte, par ordre croissant :
 
  Sites --> Bâtiments --> Etages --> Pièces.
 
-A minima, une pièce est obligatoire à créer avant de générer tous **stocks quelconques** tout comme une **équipe** !
+.. warning::
+    A minima, une pièce est obligatoire à créer avant de générer tous **stocks quelconques** tout comme une **équipe** !

@@ -1,5 +1,6 @@
 """
-Resources functions to upload/download files (cvs, pdf, excel...) for administration panel
+Fonctions pour le téléchargement et téléversement des fichiers d'import-export (cvs, pdf, excel...) dans le panneau
+d'administration.
 """
 
 
@@ -7,7 +8,7 @@ from import_export import resources
 from .models import *
 
 
-#: ModelePompeRessource for
+#: ModelePompeRessourse
 class ModelePompeRessource(resources.ModelResource):
     class Meta:
         model = ModelePompe

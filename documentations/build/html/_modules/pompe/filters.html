@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pompe.filters &mdash; Documentation Visiopompe v1.0</title>
+  <title>pompe.filters &mdash; Documentation Visiopompe v1.1</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: white" >
+        <div class="wy-side-nav-search" >
 
           
           
@@ -51,7 +51,7 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Visiopompe</a>
       </nav>
@@ -80,6 +80,15 @@
 
 
 <div class="viewcode-block" id="PompeStockFilter"><a class="viewcode-back" href="../../src.pompe.html#pompe.filters.PompeStockFilter">[docs]</a><span class="k">class</span> <span class="nc">PompeStockFilter</span><span class="p">(</span><span class="n">django_filters</span><span class="o">.</span><span class="n">FilterSet</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de filtre pour les stocks de pompes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        FilterSet : Attributs de la classe django_filters</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le filtre de recherche dans le menu pompe avec ses options</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">etage__batiment</span> <span class="o">=</span> <span class="n">django_filters</span><span class="o">.</span><span class="n">ModelChoiceFilter</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span><span class="n">Batiment</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bâtiment&#39;</span><span class="p">)</span>
     <span class="n">pompe</span> <span class="o">=</span> <span class="n">django_filters</span><span class="o">.</span><span class="n">ModelChoiceFilter</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span><span class="n">ModelePompe</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pompe&#39;</span><span class="p">)</span>
