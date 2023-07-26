@@ -1,234 +1,893 @@
-import datetime
-import json
-from django.http import HttpResponse
-from django.shortcuts import render, redirect, get_object_or_404
-from field_history.models import FieldHistory
-from .models import Pompes, PiecesPompe, Kit, Huile, Doc, VersionApp
-from .forms import ModifPompeForm, Pompeform, PieceForm, ModifPieceForm, HuileForm, ModifHuileForm, KitForm, \
-    ModifKitForm, DocForm
-from .filters import PompeFilter
-from .resource import PompeRessource
+"""
+View of Visiopompe project centralized in views.py
+"""
+import os.path
+from datetime import timedelta
+from django.shortcuts import render, get_object_or_404, redirect
+from .filters import PompeStockFilter
+from .forms import *
+from .models import *
 
 
 def index(request):
-    pompes = Pompes.objects.all().order_by('mise_en_service')
-    filterpompe = PompeFilter(request.GET, queryset=pompes)
-    pompes = filterpompe.qs
-    current_date = datetime.date.today()
-    warning_date = current_date + datetime.timedelta(days=7)
-    #pour la dashboard
-    pompe_ok = pompes.filter(statut='A').count()
-    pompe_stock = pompes.filter(statut='S').count()
-    pompe_hs = pompes.filter(statut='P').count()
-    pompe_rep = pompes.filter(statut='R').count()
-    pompe_e1 = pompes.filter(localisation_etage='1er étage').count()
-    pompe_e2 = pompes.filter(localisation_etage='2ème étage').count()
-    pompe_e3 = pompes.filter(localisation_etage='3ème étage').count()
-    pompe_all = pompes.count()
+    """
+    Fonction d'affichage de la page d'accueil du site.
+    Args:
+        request: l'objet POST reçu en paramètre pour afficher la page dédiée.
+
+    Returns:
+        index.html : la page d'acceuil retournée.
+    """
+
+    return render(request, 'pompe/index.html')
 
 
-    #RECUPERER LES DONNEES DE serialized_data dans la table Fieldhistory_fieldhistory
-    #sous forme de dictionnaire et ensuite les trier en fonction du "PK" et "fields".
-    ''' 
-    data = list(FieldHistory.objects.values('serialized_data').all())
-    data2 = data[0]['serialized_data']
-    data3 = json.loads(data2)
-    data4 = data3[0]['fields']
-    data4_type = type(data4)
-    
-    infos = dict()
-    for pompe in pompes:
-        infos[pompe.pk] = FieldHistory.objects.get_from_model(pompe)
-    '''
+# dashboard
 
-    context = {'pompes': pompes, 'filterpompe': filterpompe, 'current_date': current_date,
-               'pompe_ok': pompe_ok, 'pompe_stock': pompe_stock, 'pompe_hs': pompe_hs, 'pompe_rep': pompe_rep,
-               'pompe_all': pompe_all, 'pompe_e1': pompe_e1, 'pompe_e2': pompe_e2, 'pompe_e3': pompe_e3, 'warning_date': warning_date
+def dashboard(request):
+    """
+    Fonction qui permet l'affichage de compteurs d'états généraux des pompes, de leurs types et leurs natures.
+    Une option a été ajoutée pour un affichage spécifique en fonction des étages de l'UMR 6521, aux équipes et aux types
+    de technologie de vide.
+
+    Args:
+        request: la requête d'affichage des pompes
+
+    Returns:
+          dashboard.html : la page de la dashboard avec les différents objets filtrés pour l'affichage des compteurs
+    """
+    dash_pompes = StockPompe.objects.all()
+
+    # general setting for dashboard
+
+    p_all = dash_pompes.count()
+    p_valide = dash_pompes.filter(statut='A').count()
+    p_stock = dash_pompes.filter(statut='S').count()
+    p_hs = dash_pompes.filter(statut='P').count()
+    p_rep = dash_pompes.filter(statut='R').count()
+    p_atex = dash_pompes.filter(atex='1').count()
+
+    #: special to UMR 6521. Base on technologie of pump. #
+    p_palette = dash_pompes.filter(pompe__technologie__nom__icontains='palette').count()
+    p_membrane = dash_pompes.filter(pompe__technologie__nom__icontains='membrane').count()
+    p_seche = dash_pompes.filter(pompe__technologie__info__icontains='seche').count()
+
+    #: special to UMR 6521 by stair. #
+    p_etage_1 = dash_pompes.filter(etage__nom__icontains='1').count()
+    p_etage_2 = dash_pompes.filter(etage__nom__icontains='2').count()
+    p_etage_3 = dash_pompes.filter(etage__nom__icontains='3').count()
+
+    #: special to UMR6521 by teams. #
+    p_ciel = dash_pompes.filter(equipe__sigle__icontains='ciel').count()
+    p_spectre = dash_pompes.filter(equipe__sigle__icontains='spectre').count()
+    p_cosm = dash_pompes.filter(equipe__sigle__icontains='cosm').count()
+    p_umr = dash_pompes.filter(equipe__sigle__icontains='umr').count()
+
+    context = {'p_all': p_all, 'p_valide': p_valide, 'p_stock': p_stock, 'p_hs': p_hs, 'p_rep': p_rep,
+               'p_atex': p_atex,
+               'p_palette': p_palette, 'p_membrane': p_membrane, 'p_seche': p_seche,
+               'p_etage_1': p_etage_1, 'p_etage_2': p_etage_2, 'p_etage_3': p_etage_3,
+               'p_ciel': p_ciel, 'p_spectre': p_spectre, 'p_cosm': p_cosm, 'p_umr': p_umr,
                }
-    return render(request, 'pompe/index.html', context)
+    return render(request, 'pompe/dashboard.html', context)
 
-def export(request):
-    pompe_resource = PompeRessource()
-    datapompe = pompe_resource.export()
-    response = HttpResponse(datapompe.csv, content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="datapompe.csv"'
-    return response
 
-def ajout_pompe(request):
+def equipe(request):
+    """
+    Fonction d'affichage des équipes et du formulaire de soumission de création d'un nouvelle équipe
+    Args:
+        request: l'élément soumis pour l'execution du formulaire de création d'une équipe
+
+    Returns:
+        equipe.html : la page d'affichage des équipes enregistrées et le formulaire vide.
+    """
+    equipes = ModelEquipe.objects.all().order_by('sigle')
+
     if request.method == "POST":
-        form = Pompeform(request.POST, request.FILES)
+        form = Equipeform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/pompe')
-
+        return redirect('/dashboard/equipe')
     else:
-        form = Pompeform()
+        form = Equipeform()
+    return render(request, 'pompe/equipe.html', {'equipes': equipes, 'form': form})
+
+
+def update_equipe(request, pk):
+    """
+    Fonction de mise à jour d'un équipe existante.
+
+    Args:
+        request : l'objet soumis en requête post
+        pk : l'identifiant de l'équipe en base de données
+
+    Returns:
+          equipe.html : la page équipe avec les informations mise à jour sinon la page du formulaire de
+          soumission avec les erreurs.
+
+    """
+    equipes = get_object_or_404(ModelEquipe, pk=pk)
+    if request.method == "POST":
+        form = ModifEquipeForm(request.POST, instance=equipes)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/equipe')
+    else:
+        form = ModifEquipeForm(instance=equipes)
     return render(request, 'pompe/forms.html', {'form': form})
 
 
-def modif_pompe(request, pk):
-    pompe = get_object_or_404(Pompes, pk=pk)
+def delete_equipe(request, pk):
+    """
+    Fonction de suppression d'une équipe en base de données.
 
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de l'équipe à supprimer.
+
+    Returns:
+        equipe.html : la page équipe mise à jour.
+
+    """
+    queryset = get_object_or_404(ModelEquipe, pk=pk)
     if request.method == "POST":
-        form = ModifPompeForm(request.POST, instance=pompe)
+        queryset.delete()
+        return redirect('/dashboard/equipe')
+
+    context = {
+        'queryset': queryset
+    }
+
+    return render(request, 'pompe/equipe.html', context)
+
+
+## fabriquant
+def fabriquant(request):
+    """
+    Fonction d'affichage des fabriquants et du formulaire de soumission de création d'un nouveau fabriquant
+    Args:
+        request: l'élément soumis pour l'execution du formulaire de création d'un fabriquant
+
+    Returns:
+        fabriquant.html : la page d'affichage des fabriquants enregistres et le formulaire vide.
+    """
+    fabriquants = Fabriquant.objects.all().order_by('nom')
+
+    if request.method == "POST" and 'fabriquant_form' in request.POST:
+        form = Fabriquantform(request.POST, request.FILES)
+        if form.is_valid():
+            fabriquant = form.save(commit=False)
+            cleaned_data = form.cleaned_data
+            # redimensionnement des 2 logos
+
+            fabriquant.save()
+        return redirect('/fabriquants')
+    else:
+        form = Fabriquantform()
+
+    context = {
+        'fabriquants': fabriquants,
+        'form': form
+    }
+    return render(request, 'pompe/fabriquant.html', context)
+
+
+def update_fabriquant(request, pk):
+    """
+    Fonction de mise à jour d'un fabriquant existant.
+
+    Args:
+        request : l'objet soumis en requête post
+        pk : l'identifiant du fabriquant en base de données
+
+    Returns:
+          fabriquant.html : la page des fabriquants avec les informations de mise à jour sinon la page du formulaire de
+          soumission avec les erreurs.
+
+    """
+    fabriquants = get_object_or_404(Fabriquant, pk=pk)
+    if request.method == "POST":
+        form = ModifFabriquantForm(request.POST, request.FILES, instance=fabriquants)
         if form.is_valid():
             form.save()
-            return redirect('/pompe')
+        return redirect('/fabriquants')
     else:
-        form = ModifPompeForm(instance=pompe)
+        form = ModifFabriquantForm(instance=fabriquants)
     return render(request, 'pompe/forms.html', {'form': form})
 
 
-def suppression_pompe(request, pk):
-    pompe = Pompes.objects.get(pk=pk)
+def delete_fabriquant(request, pk):
+    """
+    Fonction de suppression d'un fabriquant en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du fabriquant à supprimer.
+
+    Returns:
+        fabriquant.html : la page fabriquant mise à jour.
+
+    """
+    queryset = get_object_or_404(Fabriquant, pk=pk)
     if request.method == "POST":
-        pompe.delete()
-        return redirect('/pompe')
 
-    context = {'item': pompe}
-    return render(request, 'pompe/suppression.html', context)
+        # suppression des médias = logos
+        logomax_path = queryset.logo_max.path
+        logomax_parent_directory = os.path.dirname(logomax_path)
+        logomini_path = queryset.logo_mini.path
+        logomini_parent_directory = os.path.dirname(logomini_path)
+
+        if os.path.exists(logomax_path):
+            os.remove(logomax_path)
+            # si dossier vide, on retire celui_ci du serveur
+            if len(os.listdir(logomax_parent_directory)) == 0:
+                os.rmdir(logomax_parent_directory)
+        if os.path.exists(logomini_path):
+            os.remove(logomini_path)
+            # si dossier vide, on retire celui_ci du serveur
+            if len(os.listdir(logomini_parent_directory)) == 0:
+                os.rmdir(logomini_parent_directory)
+
+        queryset.delete()
+        return redirect("/fabriquants")
+
+    context = {'fabriquants': queryset}
+    return render(request, 'pompe/fabriquant.html', context)
 
 
+## lieux
 def piece(request):
-    pieces = PiecesPompe.objects.all().order_by('nom')
-    return render(request, 'pompe/pieces.html', {'pieces': pieces})
+    pieces = Piece.objects.all().order_by('nom')
+    sites = Site.objects.all().order_by('nom')
+    batiments = Batiment.objects.all().order_by('nom')
+    etages = Etage.objects.all().order_by('nom')
 
-
-def ajout_piece(request):
     if request.method == "POST":
-        form = PieceForm(request.POST, request.FILES)
-        if form.is_valid():
+        form = Siteform(request.POST, request.FILES)
+        form2 = Batimentform(request.POST, request.FILES)
+        form3 = Etageform(request.POST, request.FILES)
+        form4 = Pieceform(request.POST, request.FILES)
+        if form.is_valid() and 'site_form' in request.POST:
             form.save()
-        return redirect("/pompe/pieces")
+
+        elif form2.is_valid() and 'batiment_form' in request.POST:
+            form2.save()
+
+        elif form3.is_valid() and 'etage_form' in request.POST:
+            form3.save()
+
+        elif form4.is_valid() and 'piece_form' in request.POST:
+            form4.save()
+        return redirect('/dashboard/lieux')
     else:
-        form = PieceForm()
-    return render(request, 'pompe/forms2.html', {'form': form})
+        form = Siteform()
+        form2 = Batimentform()
+        form3 = Etageform()
+        form4 = Pieceform()
+
+    context = {'pieces': pieces,
+               'sites': sites,
+               'batiments': batiments,
+               'etages': etages,
+               'form': form,
+               'form2': form2,
+               'form3': form3,
+               'form4': form4
+               }
+    return render(request, 'pompe/lieux.html', context)
 
 
-def modif_piece(request, pk):
-    pieces = get_object_or_404(PiecesPompe, pk=pk)
-
+def update_piece(request, pk):
+    pieces = get_object_or_404(Piece, pk=pk)
     if request.method == "POST":
         form = ModifPieceForm(request.POST, instance=pieces)
         if form.is_valid():
             form.save()
-            return redirect("/pompe/pieces")
+        return redirect('/dashboard/lieux')
     else:
         form = ModifPieceForm(instance=pieces)
-    return render(request, 'pompe/forms2.html', {'form': form})
+
+    context = {
+        'form': form
+    }
+    return render(request, 'pompe/forms.html', context)
 
 
-def suppression_piece(request, pk):
-    pieces = PiecesPompe.objects.get(pk=pk)
+def delete_piece(request, pk):
+    """
+    Fonction de suppression d'une salle ou pièce (lieux) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la salle ou pièce à supprimer.
+
+    Returns:
+        lieux.html : la page lieux mise à jour.
+
+    """
+    queryset = get_object_or_404(Piece, pk=pk)
     if request.method == "POST":
-        pieces.delete()
-        return redirect("/pompe/pieces")
+        queryset.delete()
+        return redirect('/dashboard/lieux')
 
-    context = {'item': pieces}
-    return render(request, 'pompe/suppression_piece.html', context)
+    context = {
+        'queryset': queryset
+    }
+
+    return render(request, 'pompe/lieux.html', context)
 
 
+def update_site(request, pk):
+    sites = get_object_or_404(Site, pk=pk)
+    if request.method == "POST":
+        form = ModifSiteForm(request.POST, instance=sites)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/lieux')
+    else:
+        form = ModifSiteForm(instance=sites)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_site(request, pk):
+    """
+    Fonction de suppression d'un site (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du site à supprimer.
+
+    Returns:
+        lieux.html : la page lieu mise à jour.
+
+    """
+    queryset = get_object_or_404(Site, pk=pk)
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/dashboard/lieux')
+
+    return render(request, 'pompe/lieux.html', {'queryset': queryset})
+
+
+def update_batiment(request, pk):
+    batiments = get_object_or_404(Batiment, pk=pk)
+    if request.method == "POST":
+        form = ModifBatimentForm(request.POST, instance=batiments)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/lieux')
+    else:
+        form = ModifBatimentForm(instance=batiments)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_batiment(request, pk):
+    """
+    Fonction de suppression d'un bâtiment (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du bâtiment à supprimer.
+
+    Returns:
+        lieux.html : la page lieu mise à jour.
+
+    """
+    queryset2 = get_object_or_404(Batiment, pk=pk)
+    if request.method == "POST":
+        queryset2.delete()
+        return redirect('/dashboard/lieux')
+
+    return render(request, 'pompe/lieux.html', {'queryset2': queryset2})
+
+
+def update_etage(request, pk):
+    etages = get_object_or_404(Etage, pk=pk)
+    if request.method == "POST":
+        form = ModifEtageForm(request.POST, instance=etages)
+        if form.is_valid():
+            form.save()
+        return redirect('/dashboard/lieux')
+    else:
+        form = ModifEtageForm(instance=etages)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_etage(request, pk):
+    """
+    Fonction de suppression d'un étage (lieu) en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'un étage' à supprimer.
+
+    Returns:
+        lieux.html : la page lieu mise à jour.
+
+    """
+    queryset3 = get_object_or_404(Etage, pk=pk)
+    if request.method == "POST":
+        queryset3.delete()
+        return redirect('/dashboard/lieux')
+
+    return render(request, 'pompe/lieux.html', {'queryset3': queryset3})
+
+
+# stocks pompes
+def pompe(request):
+    s_pompes = StockPompe.objects.all().order_by('mise_en_service')
+    filterpompe = PompeStockFilter(request.GET, queryset=s_pompes)
+    s_pompes = filterpompe.qs
+    current_date = datetime.now().date()
+    warning_date = current_date + timedelta(days=7)
+
+    context = {'s_pompes': s_pompes,
+               'current_date': current_date,
+               'warning_date': warning_date,
+               'filterpompe': filterpompe,
+               }
+    return render(request, 'pompe/pompe.html', context)
+
+
+def historique(request, pk):
+    historic = StockHistory.objects.filter(stockpump=pk).order_by('-date_historique')
+
+    return render(request, 'pompe/historique.html', {'historic': historic})
+
+
+def add_stockpompe(request):
+    if request.method == "POST":
+        form = StockPompeform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('/pompes')
+    else:
+        form = StockPompeform()
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def update_stockpompe(request, pk):
+    s_pompes = get_object_or_404(StockPompe, pk=pk)
+    if request.method == "POST":
+        form = ModifStockPompeForm(request.POST, instance=s_pompes)
+        if form.is_valid():
+            form.save()
+        return redirect('/pompes')
+    else:
+        form = ModifStockPompeForm(instance=s_pompes)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_stockpompe(request, pk):
+    """
+    Fonction de suppression d'un stock de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du stock de pompe à supprimer.
+
+    Returns:
+        pompe.html : la page pompe mise à jour.
+
+    """
+    queryset = get_object_or_404(StockPompe, pk=pk)
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/pompes')
+
+    return render(request, 'pompe/pompe.html', {'queryset': queryset})
+
+
+# fiche modele des pompes
+def fichepompe(request):
+    m_pompes = ModelePompe.objects.all().order_by('nom')
+    technos = TechnologiePompe.objects.all().order_by('nom')
+
+    if request.method == "POST":
+        form = ModelPompeform(request.POST, request.FILES)
+        form2 = Technologieform(request.POST, request.FILES)
+
+        if form.is_valid() and 'fiche_form' in request.POST:
+            cleaned_data = form.cleaned_data
+            if cleaned_data:
+                form.save()
+
+        elif form2.is_valid() and 'techno_form' in request.POST:
+            cleaned_data2 = form2.cleaned_data
+            if cleaned_data2:
+                form2.save()
+
+        return redirect('/fichepompe')
+    else:
+        form = ModelPompeform()
+        form2 = Technologieform()
+
+    context = {'m_pompe': m_pompes, 'technos': technos, 'form': form, 'form2': form2}
+    return render(request, 'pompe/fiche_pompe.html', context)
+
+
+def update_fichepompe(request, pk):
+    m_pompes = get_object_or_404(ModelePompe, pk=pk)
+    if request.method == "POST":
+        form = ModifModelPompeForm(request.POST, request.FILES, instance=m_pompes)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            if cleaned_data:
+                form.save()
+            return redirect('/fichepompe')
+    else:
+        form = ModifModelPompeForm(instance=m_pompes)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_fichepompe(request, pk):
+    """
+    Fonction de suppression d'une fiche modèle de pompe en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'une fiche à supprimer.
+
+    Returns:
+        fiche_pompe.html : la page des modèles de pompes mise à jour.
+
+    """
+    queryset = get_object_or_404(ModelePompe, pk=pk)
+    if request.method == "POST":
+        image_path = queryset.image.path
+        image_parent_directory = os.path.dirname(image_path)
+        if os.path.exists(image_path):
+            os.remove(image_path)
+            if len(os.listdir(image_parent_directory)) == 0:
+                os.rmdir(image_parent_directory)
+            queryset.delete()
+        return redirect('/fichepompe')
+
+    context = {
+        'queryset': queryset
+    }
+    return render(request, 'pompe/fiche_pompe.html', context)
+
+
+def update_techno(request, pk):
+    technos = get_object_or_404(TechnologiePompe, pk=pk)
+    if request.method == "POST":
+        form = ModifTechnoForm(request.POST, instance=technos)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            if cleaned_data:
+                form.save()
+            return redirect('/fichepompe')
+    else:
+        form = ModifTechnoForm(instance=technos)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_techno(request, pk):
+    """
+    Fonction de suppression d'une technologie de vide en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant d'une technologie' à supprimer.
+
+    Returns:
+        fiche_pompe.html : la page des modèles de pompe mise à jour.
+
+    """
+    queryset1 = get_object_or_404(TechnologiePompe, pk=pk)
+    if request.method == "POST":
+        queryset1.delete()
+        return redirect('/fichepompe')
+
+    context = {'queryset1': queryset1}
+    return render(request, 'pompe/fiche_pompe.html', context)
+
+
+# inventaire et tutelle
+def inventaire(request):
+    inventaires = Inventaire.objects.all().order_by('numero')
+    tutelles = Tutelle.objects.all().order_by('nom')
+
+    if request.method == "POST":
+        form = Inventaireform(request.POST)
+        form2 = Tutelleform(request.POST)
+
+        if form2.is_valid() and 'tutelle_form' in request.POST:
+            form2.save()
+
+        elif form.is_valid() and 'inventaire_form' in request.POST:
+            form.save()
+
+        return redirect('/inventaire')
+    else:
+        form = Inventaireform()
+        form2 = Tutelleform()
+
+    context = {
+        'inventaires': inventaires,
+        'tutelles': tutelles,
+        'form': form,
+        'form2': form2
+        }
+    return render(request, 'pompe/inventaire.html', context)
+
+
+def update_inventaire(request, pk):
+    inventaires = get_object_or_404(Inventaire, pk=pk)
+
+    if request.method == "POST":
+        form = ModifInventaireForm(request.POST, instance=inventaires)
+        if form.is_valid():
+            form.save()
+            return redirect('/inventaire')
+    else:
+        form = ModifInventaireForm(instance=inventaires)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_inventaire(request, pk):
+    """
+    Fonction de suppression d'un numéro d'inventaire en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du numéro à supprimer.
+
+    Returns:
+        inventaire.html : la page inventaire mise à jour.
+
+    """
+    queryset = get_object_or_404(Inventaire, pk=pk)
+    if request.method == "POST":
+        queryset.delete()
+        return redirect('/inventaire')
+
+    return render(request, 'pompe/inventaire.html', {'queryset': queryset})
+
+
+def delete_tutelle(request, pk):
+    """
+    Fonction de suppression d'une tutelle budgétaire en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la tutelle à supprimer.
+
+    Returns:
+        inventaire.html : la page inventaire mise à jour.
+
+    """
+    queryset1 = get_object_or_404(Tutelle, pk=pk)
+    if request.method == "POST":
+        queryset1.delete()
+        return redirect('/inventaire')
+
+    return render(request, 'pompe/inventaire.html', {'queryset1': queryset1})
+
+
+# pieces detachées
+def pdetache(request):
+    pieces = PiecesPompe.objects.all().order_by('nom')
+    context = {
+        'pieces': pieces
+    }
+    return render(request, 'pompe/piece.html', context)
+
+
+def add_pdetache(request):
+    if request.method == "POST":
+        form = PiecePompeform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('/pieces_detaches')
+    else:
+        form = PiecePompeform()
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def update_pdetache(request, pk):
+    pdetaches = get_object_or_404(PiecesPompe, pk=pk)
+
+    if request.method == "POST":
+        form = ModifPiecePompeForm(request.POST, request.FILES, instance=pdetaches)
+        if form.is_valid():
+            form.save()
+            return redirect('/pieces_detaches')
+    else:
+        form = ModifPiecePompeForm(instance=pdetaches)
+    return render(request, 'pompe/forms.html', {'form': form})
+
+
+def delete_pdetache(request, pk):
+    """
+    Fonction de suppression d'une pièce détachée en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la pièce détachée à supprimer.
+
+    Returns:
+        piece.html : la page mise à jour.
+
+    """
+    pieces = get_object_or_404(PiecesPompe, pk=pk)
+    if request.method == "POST":
+        pieces_image = pieces.image.path
+        image_path = os.path.dirname(pieces_image)
+        if os.path.exists(pieces_image):
+            os.remove(pieces_image)
+            if len(os.listdir(image_path)) == 0:
+                os.rmdir(image_path)
+            pieces.delete()
+        return redirect('/pieces_detaches')
+    return render(request, 'pompe/piece.html', {'pieces': pieces})
+
+
+# huile
 def huile(request):
-    huiles = Huile.objects.all().order_by('marque')
-
+    huiles = Huile.objects.all().order_by('nom')
     return render(request, 'pompe/huile.html', {'huiles': huiles})
 
 
-def ajout_huile(request):
+def add_huile(request):
     if request.method == "POST":
-        form = HuileForm(request.POST)
+        form = Huileform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect("/pompe/huiles")
+        return redirect('/huiles')
     else:
-        form = HuileForm()
+        form = Huileform()
+    return render(request, 'pompe/forms.html', {'form': form})
 
-    return render(request, 'pompe/forms3.html', {'form': form})
 
-
-def modif_huile(request, pk):
+def update_huile(request, pk):
     huiles = get_object_or_404(Huile, pk=pk)
 
     if request.method == "POST":
-        form = ModifHuileForm(request.POST, instance=huiles)
+        form = ModifHuileForm(request.POST, request.FILES, instance=huiles)
         if form.is_valid():
             form.save()
-            return redirect("/pompe/huiles")
+            return redirect('/huiles')
     else:
         form = ModifHuileForm(instance=huiles)
-    return render(request, 'pompe/forms3.html', {'form': form})
+    return render(request, 'pompe/forms.html', {'form': form})
 
 
-def suppression_huile(request, pk):
-    huiles = Huile.objects.get(pk=pk)
+def delete_huile(request, pk):
+    """
+    Fonction de suppression d'un lot d'huile en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du lot à supprimer.
+
+    Returns:
+        huile.html : la page mise à jour.
+
+    """
+    huiles = get_object_or_404(Huile, pk=pk)
     if request.method == "POST":
-        huiles.delete()
-        return redirect("/pompe/huiles")
+        huile_path = huiles.image.path
+        huile_directory = os.path.dirname(huile_path)
+        if os.path.exists(huile_path):
+            os.remove(huile_path)
+            if len(os.listdir(huile_directory)) == 0:
+                os.rmdir(huile_directory)
+            huiles.delete()
+        return redirect('/huiles')
+    return render(request, 'pompe/huile.html', {'huiles': huiles})
 
-    context = {'item': huiles}
-    return render(request, 'pompe/suppression_huile.html', context)
 
-
+# kit de maintenance
 def kit(request):
     kits = Kit.objects.all().order_by('nom')
     return render(request, 'pompe/kit.html', {'kits': kits})
 
 
-def ajout_kit(request):
+def add_kit(request):
     if request.method == "POST":
-        form = KitForm(request.POST, request.FILES)
+        form = Kitform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect("/pompe/kit")
+        return redirect('/kits')
     else:
-        form = KitForm()
+        form = Kitform()
+    return render(request, 'pompe/forms.html', {'form': form})
 
-    return render(request, 'pompe/forms4.html', {'form': form})
 
-
-def modif_kit(request, pk):
+def update_kit(request, pk):
     kits = get_object_or_404(Kit, pk=pk)
-
     if request.method == "POST":
-        form = ModifKitForm(request.POST, instance=kits)
+        form = ModifKitForm(request.POST, request.FILES, instance=kits)
         if form.is_valid():
             form.save()
-            return redirect("/pompe/kit")
+            return redirect('/kits')
     else:
         form = ModifKitForm(instance=kits)
-    return render(request, 'pompe/forms4.html', {'form': form})
+    return render(request, 'pompe/forms.html', {'form': form})
 
 
-def suppression_kit(request, pk):
-    kits = Kit.objects.get(pk=pk)
+def delete_kit(request, pk):
+    """
+    Fonction de suppression d'un kit de maintenance en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant du kit à supprimer.
+
+    Returns:
+        kit.html : la page des kits mise à jour.
+
+    """
+    kits = get_object_or_404(Kit, pk=pk)
     if request.method == "POST":
-        kits.delete()
-        return redirect("/pompe/kit")
+        kit_image = kits.image.path
+        image_directory = os.path.dirname(kit_image)
+        if os.path.exists(kit_image):
+            os.remove(kit_image)
+            if len(os.listdir(image_directory)) == 0:
+                os.rmdir(image_directory)
+            kits.delete()
+        return redirect('/kits')
+    return render(request, 'pompe/kit.html', {'kits': kits})
 
-    context = {'item': kits}
-    return render(request, 'pompe/suppression_kit.html', context)
+
+# Documentations
 
 def doc(request):
-    docs = Doc.objects.all().order_by('fabriquant')
-
-    context = {'docs': docs}
+    docs = Document.objects.all().order_by('nom')
+    context = {
+        'docs': docs
+    }
     return render(request, 'pompe/doc.html', context)
 
-def ajout_doc(request):
+
+def add_doc(request):
     if request.method == "POST":
-        form = DocForm(request.POST, request.FILES)
+        form = Docform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/pompe/doc')
-
+        return redirect('/docs')
     else:
-        form = DocForm()
-    return render(request, 'pompe/forms5.html', {'form': form})
+        form = Docform()
+    return render(request, 'pompe/forms.html', {'form': form})
 
 
-def version(request):
-    versions = VersionApp.objects.all().order_by('-version')
-    return render(request, 'pompe/versionapp.html', {'versions': versions})
+def update_doc(request, pk):
+    docs = get_object_or_404(Document, pk=pk)
+
+    if request.method == "POST":
+        form = ModifDocForm(request.POST, request.FILES, instance=docs)
+        if form.is_valid():
+            form.save()
+            return redirect('/docs')
+    else:
+        form = ModifDocForm(instance=docs)
+    return render(request, 'pompe/forms.html', {'form': form})
 
 
-# definir API pour appli bureau ?
+def delete_doc(request, pk):
+    """
+    Fonction de suppression d'une documentation technique des pompes en base de données.
+
+    Args:
+        request: l'objet soumis en requête POST
+        pk : l'identifiant de la documentation à supprimer.
+
+    Returns:
+        doc.html : la page des documentations mise à jour.
+
+    """
+    docs = get_object_or_404(Document, pk=pk)
+    if request.method == "POST":
+        #: Suppression du fichier sur le serveur
+        doc_file = docs.manuel.path
+        doc_directory = os.path.dirname(doc_file)
+        if os.path.exists(doc_file):
+            os.remove(doc_file)
+            if len(os.listdir(doc_directory)) == 0:
+                os.rmdir(doc_directory)
+            docs.delete()
+        return redirect('/docs')
+    return render(request, 'pompe/doc.html', {'docs': docs})

@@ -1,0 +1,113 @@
+{% extends 'pompe/base.html' %}
+{% load static %}
+
+{% block title %}Inventaires des stocks{% endblock %}
+{% block content %}
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2> Gestions des Inventaires de stocks de pompes</h2>
+    </div>
+    <section class="w3-mobile w3-padding-24">
+        <div class="w3-row-padding">
+            <div class="w3-col m6 s6 " style="width:50%;">
+                <div class="w3-card w3-text-blue-gray">
+                    <header class="w3-container w3-center w3-light-blue">
+                        <h4>Ajoutez un numéro d'inventaire</h4>
+                    </header>
+                    <div class="w3-container w3-padding">
+                        <form method="POST" enctype="multipart/form-data" class="w3-container">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <div class="w3-center">
+                                <button class="w3-button w3-green w3-round" type="submit" name="inventaire_form">
+                                    Enregistrer
+                                </button>
+                                <button class="w3-button w3-red w3-round" type="reset">Effacer la saisie</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m6 s6" style="width:50%;">
+                <div class="w3-card w3-text-blue-gray">
+                    <header class="w3-container w3-center w3-light-blue">
+                        <h4>Ajoutez une tutelle budgétaire</h4>
+                    </header>
+                    <div class="w3-container w3-padding-small">
+                        <form method="POST" enctype="multipart/form-data" class="w3-container">
+                            {% csrf_token %}
+                            {{form2.as_p}}
+                            <div class="w3-center w3-padding">
+                                <button class="w3-button w3-green w3-round" type="submit" name="tutelle_form">
+                                    Enregistrer
+                                </button>
+                                <button class="w3-button w3-red w3-round" type="reset">Effacer la saisie</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="w3-mobile w3-padding-small">
+        <div class="w3-row-padding">
+            <div class="w3-col m6 s6">
+                <table class="w3-table w3-striped">
+
+                    <tr class="w3-green w3-text-black w3-container">
+                        <th>Tutelle</th>
+                        <th>Numéro d'inventaire</th>
+                        <th>Date de création</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        {% for inventaire in inventaires %}
+                        <td>{{inventaire.tutelle.nom}}</td>
+                        <td>{{inventaire.numero}}</td>
+                        <td>{{inventaire.date_inventaire}}</td>
+                        <td>
+                            <button class="w3-button" value="submit"><a
+                                    href="{% url 'pompe:inventaire_edit' pk=inventaire.pk %}"><img
+                                    src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:50%;"/></a>
+                            </button>
+                            <form method="POST" action="{% url 'pompe:inventaire_delete' pk=inventaire.pk %}"
+                                  onsubmit="return confirm('Etes-vous sur de vouloir effacer cette tutelle ?')">
+                                {% csrf_token %}
+                                <button class="w3-button " type="submit">
+                                    <img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:50%;">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="w3-col m6 s6">
+                <div class="w3-card w3-center w3-text-black">
+                    <header class="w3-container w3-light-green">
+                        <h4>Tutelles budgétaire</h4>
+                    </header>
+                    <div class="w3-container">
+                        <table class="w3-table w3-padding">
+                            {% for inventaire in tutelles %}
+                            <tr>
+                                <td class="w3-padding-16 w3-right">{{inventaire.nom}}</td>
+                                <td class="w3-center">
+                                    <form method="POST" action="{% url 'pompe:tutelle_delete' pk=inventaire.pk %}"
+                                          onsubmit="return confirm('Etes-vous sur de vouloir effacer cette tutelle ?')">
+                                        {% csrf_token %}
+                                        <button class="w3-button" type="submit"><img
+                                                src="{% static 'pompe/img/option/icons_delete.png' %}"
+                                                style="width:50%;"/></button>
+                                    </form>
+                                </td>
+                                {% endfor %}
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

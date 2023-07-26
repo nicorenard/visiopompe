@@ -1,0 +1,196 @@
+{% extends 'pompe/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="w3-main w3-mobile" style="margin-left:200px">
+    <div class="w3-container w3-dark-grey">
+        <h2>Dashboard</h2>
+    </div>
+    <br/>
+<div class="w3-container w3-padding-12">
+    <section>
+            <div class="w3-row-padding">
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-green">
+                                <h4>EN SERVICES</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_valide}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-red">
+                                <h4>EN PANNES</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_hs}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-blue">
+                                <h4>EN REPARATIONS</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_rep}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                        <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-amber">
+                                <h4>EN STOCKS</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_stock}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+                <br />
+            <div class="w3-row-padding">
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                            <header class="w3-container w3-pale-blue">
+                                <h4>POMPES TOTAL UMR</h4>
+                            </header>
+                            <div class="w3-container w3-xlarge">
+                                <p><strong>{{p_all}}</strong></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-pale-blue">
+                            <h4>POMPES TOTAL ETAGE 1</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_etage_1}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-pale-blue">
+                            <h4>POMPES TOTAL ETAGE 2</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_etage_2}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-pale-blue">
+                            <h4>POMPES TOTAL ETAGE 3</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_etage_3}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <br />
+            <div class="w3-row-padding">
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-pale-red">
+                            <h4>POMPES TOTAL ATEX</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_atex}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            <div class="w3-col m3 s3">
+                <div class="w3-card-2 w3-center w3-text-blue-gray">
+                    <header class="w3-container w3-pale-green">
+                        <h4>POMPES TOTAL PALETTES</h4>
+                    </header>
+                    <div class="w3-container w3-xlarge">
+                        <p><strong>{{p_palette}}</strong></p>
+                    </div>
+                </div>
+            </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-pale-green">
+                            <h4>POMPES TOTAL MEMBRANES</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_membrane}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-pale-green">
+                            <h4>POMPES TOTAL SECHES</h4></header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_seche}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <br />
+            <div class="w3-row-padding">
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-pale-yellow">
+                            <h4>POMPES RATTACHE "UMR"</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_umr}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            <div class="w3-col m3 s3">
+                <div class="w3-card-2 w3-center w3-text-blue-gray">
+                    <header class="w3-container w3-sand">
+                        <h4>POMPES EQUIPE CIEL</h4>
+                    </header>
+                    <div class="w3-container w3-xlarge">
+                        <p><strong>{{p_ciel}}</strong></p>
+                    </div>
+                </div>
+            </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4>POMPES EQUIPE COSM</h4>
+                        </header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_cosm}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m3 s3">
+                    <div class="w3-card-2 w3-center w3-text-blue-gray">
+                        <header class="w3-container w3-sand">
+                            <h4>POMPES EQUIPE SPECTRE</h4></header>
+                        <div class="w3-container w3-xlarge">
+                            <p><strong>{{p_spectre}}</strong></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+</div>
+<!----citation---->
+    <section class="w3-container w3-mobile">
+            <div class="w3-panel w3-leftbar w3-display-container">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
+                <p><i class="fa fa-quote-right "></i></p>
+                <p><i class="w3-serif w3-large">“Il faut pomper pour vivre et donc vivre pour pomper.”</i></p>
+                <p align="left">Jacques Rouxel / Les Shadoks </p>
+            </div>
+    </section>
+</div>
+{% endblock %}

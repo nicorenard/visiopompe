@@ -1,165 +1,362 @@
-from datetime import date
+"""
+Database classes and functions
+"""
+import os.path
+from datetime import date, datetime
 from django.db import models
-from field_history.tracker import FieldHistoryTracker
+from django.utils import timezone
+
+from .utils import upload_to_pompe, upload_to_huile, upload_to_documentation, upload_to_logoMiniFabriquant, \
+    upload_to_logoFabriquant, upload_to_kit, upload_to_piecepompe, image_resize
 
 
-class Pompes(models.Model):
+class VersionApp(models.Model):
+    """
+    Classe pour gérer les versions de l'application.
 
-    IMAGES = [
-        ('/pompe_img/adixen_pompe.jpg', 'Adixen'),
-        ('/pompe_img/alcatel_pompe.jpg', 'Alcatel'),
-        ('/pompe_img/edwards_pompe.jpg', 'Edwards'),
-        ('/pompe_img/leybold_pompe.jpg', 'Leybold'),
-        ('/pompe_img/pfeiffer_pompe.jpg', 'Pfeiffer'),
-        ('/pompe_img/vacuubrand_1.jpg', 'Vacuubrand pompe à palettes'),
-        ('/pompe_img/vacuubrand_membrane.jpg', 'Vacuubrand pompe à membranes'),
-        ('/pompe_img/vacuubrand_pompage.jpg', 'Vacuubrand groupe de pompages'),
-        ('/pompe_img/welch_pompe.jpeg', 'Welch pompe à palettes'),
-        ('/pompe_img/welch_pompe3.jpg', 'Welch groupe de pompages'),
-        ('/pompe_img/welch_membrane.jpg', 'Welch pompe à membranes'),
-        ('/pompe_img/noimage.jpg', 'Aucune image')
-    ]
-    image = models.ImageField(max_length=254, choices=IMAGES, blank=True, null=True)
-    nom = models.CharField(max_length=100, default='')
-    MARQUE = [
-        ('Adixen', 'Adixen'),
-        ('Alcatel', 'Alcatel'),
-        ('Edwards Vacuum', 'Edwards Vacuum'),
-        ('Pfeiffer Vacuum', 'Pfeiffer Vacuum'),
-        ('Vacuubrand', 'Vacuubrand'),
-        ('Welch', 'Welch'),
-        ('Autres', 'Autres'),
-    ]
-    marque = models.CharField(max_length=50, choices=MARQUE, verbose_name="Fabriquant")
-    modele = models.CharField(max_length=20, default='', verbose_name="Modèle de la pompe")
-    numero_serie = models.CharField(max_length=100, default='')
-    PUISSANCE = [
-        ('50', '50 Hertz'),
-        ('60', '60 Hertz')
-    ]
-    puissance = models.CharField(default='50', choices=PUISSANCE, max_length=2, verbose_name="Puissance du moteur")
-    TECHNOLOGIE = [
-        ('Sèches - Membranes', 'Sèches - Membranes'),
-        ('Sèches - Vis', 'Sèches - Vis'),
-        ('Palettes - 1 étage', 'Palettes - 1 étage'),
-        ('Palettes - 2 étages', 'Palettes - 2 étages')
-    ]
-    technologie = models.CharField(max_length=30, choices=TECHNOLOGIE, verbose_name="Technologie du vide")
-    vide_teste = models.FloatField(default=0, verbose_name="Vide limite testé")
-    vide_theorique = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
+    Args:
+        models : Attribut de la classe Model de Django
+
+    Returns:
+          l'objet contenant la version avec ses attributs de classe
+    """
+    nom = models.CharField(default='x.x.x', max_length=20, verbose_name="Version")
+
+    class Meta:
+        db_table = "tab_version_vs"
+
+    def __str__(self):
+        return self.nom
+
+
+# localisation tables #
+class Site(models.Model):
+    nom = models.CharField(default='', max_length=254, verbose_name="Site")
+
+    class Meta:
+        db_table = "tab_site_st"
+
+    def __str__(self):
+        return self.nom
+
+
+class Batiment(models.Model):
+    nom = models.CharField(default='', max_length=254, verbose_name="Batiment")
+    site = models.ForeignKey(Site, null=True, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "tab_batiment_bmt"
+
+    def __str__(self):
+        return self.nom
+
+
+class Etage(models.Model):
+    nom = models.CharField(default='', max_length=254, verbose_name="Etage")
+    batiment = models.ForeignKey(Batiment, null=True, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "tab_etage_etg"
+
+    def __str__(self):
+        return self.nom
+
+
+class Piece(models.Model):
+    nom = models.CharField(default='', max_length=254, verbose_name="Piece")
+    etage = models.ForeignKey(Etage, null=True, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "piece"
+
+    def __str__(self):
+        return self.nom
+
+
+# pump tables #
+class Fabriquant(models.Model):
+    nom = models.CharField(max_length=50)
+    logo_max = models.ImageField(upload_to=upload_to_logoFabriquant, default="noimage.jpg",
+                                 max_length=254, verbose_name='Logo')
+    logo_mini = models.ImageField(upload_to=upload_to_logoMiniFabriquant, max_length=254,
+                                  default="noimage.jpg", verbose_name='miniature')
+    adresse = models.CharField(max_length=250, blank=True, null=True)
+    code_postal = models.CharField(max_length=5, blank=True, null=True)
+    ville = models.CharField(max_length=30, blank=True, null=True)
+
+    class Meta:
+        db_table = "tab_fabriquant_fab"
+
+    def __str__(self):
+        return self.nom
+
+    def save(self, commit=True, *args, **kwargs):
+        directory = os.path.dirname(self.logo_max.path)
+        directory2 = os.path.dirname(self.logo_mini.path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        if not os.path.exists(directory2):
+            os.makedirs(directory2)
+
+        if commit:
+            image_resize(self.logo_max, 250, 250)
+            image_resize(self.logo_mini, 80, 80)
+            super().save(*args, **kwargs)
+
+        super().save(*args, **kwargs)
+
+
+class Document(models.Model):
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom")
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+    manuel = models.FileField(upload_to=upload_to_documentation, max_length=254, verbose_name="Téléverser le manuel")
+    version = models.CharField(default='x.x.x', max_length=50, verbose_name="Version de la documentation")
+
+    class Meta:
+        db_table = "tab_document_doc"
+
+    def __str__(self):
+        return self.nom
+
+    def save(self, commit=True, *args, **kwargs):
+        directory = os.path.dirname(self.manuel.path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        super().save(*args, **kwargs)
+
+
+class TechnologiePompe(models.Model):
+    nom = models.CharField(default='', max_length=50, verbose_name="Type de technologie")
+    info = models.CharField(default='', max_length=50, null=False, blank=True,
+                            verbose_name="Détail de la technologie")
+
+    class Meta:
+        db_table = "tab_technologiePompe_tep"
+
+    def __str__(self):
+        return self.nom
+
+
+class ModelePompe(models.Model):
+    image = models.ImageField(upload_to=upload_to_pompe, max_length=254, default="noimage.jpg")
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom du modèle")
+    modele = models.CharField(default='', max_length=50, verbose_name="Série ou famille ")
     PHASAGE = [
         ('Monophasé', 'Monophasé'),
         ('Triphasé', 'Triphasé')
     ]
-    phasage = models.CharField(max_length=15, choices=PHASAGE, default='Monophasé', verbose_name="Phasage du moteur électrique")
-    code_umr = models.CharField(max_length=100, default='', verbose_name="Codification UMR")
-    LOCALISATION = [
-        ('1er étage', '1er étage'),
-        ('2ème étage', '2ème étage'),
-        ('3ème étage', '3ème étage')
+    phasage = models.CharField(max_length=15, choices=PHASAGE, default='Monophasé',
+                               verbose_name="Phasage du moteur électrique")
+    PUISSANCE = [
+        ('50 Hertz', '50 Hertz'),
+        ('60 Hertz', '60 Hertz')
     ]
-    localisation_etage = models.CharField(max_length=10, default='', verbose_name="Etage", choices=LOCALISATION)
-    localisation_piece = models.CharField(max_length=10, default='', verbose_name="Pièce")
-    localisation_emplacement = models.CharField(max_length=50, default='', verbose_name="Emplacement", blank=True)
-    mise_en_service = models.DateField(auto_now=date.today)
-    STATUT_POMPE = [
-        ('A', 'En Activité'),
-        ('S', 'En Stock'),
-        ('R', 'En réparation'),
-        ('P', 'En panne'),
-            ]
-    statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='A', verbose_name="Etat de la pompe")
-    date_vidange = models.DateField(default=date.today, verbose_name="Date de la prochaine vidange", blank=True, null=True)
-    huile = models.CharField(max_length=50, verbose_name="Huile utilisée", blank=True)
-    information = models.TextField(blank=True, null=True)
-    field_history = FieldHistoryTracker(['information'])
+    puissance = models.CharField(default='50', choices=PUISSANCE, max_length=20, verbose_name="Puissance du moteur")
+    technologie = models.ForeignKey(TechnologiePompe, null=False, blank=False, on_delete=models.DO_NOTHING)
+    vide_theo = models.FloatField(default=0, verbose_name="Vide limite Fabriquant")
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+    documentation = models.ForeignKey(Document, null=True, blank=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        db_table = "tab_modelePompe_pom"
 
     def __str__(self):
         return self.nom
 
+    def save(self, commit=True, *args, **kwargs):
+        directory = os.path.dirname(self.image.path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
 
-class PiecesPompe(models.Model):
-    nom = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='', max_length=254, blank=True, null=True)
-    marque = models.CharField(max_length=50, verbose_name="Fabriquant")
-    type_pompe = models.CharField(max_length=100, verbose_name="Modèle de pompe")
-    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
-    localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
-    information = models.CharField(max_length=50, default='', blank=True, null=True)
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
 
-    def __str__(self):
-        return self.nom
+        super().save(*args, **kwargs)
 
 
 class Huile(models.Model):
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom")
+    image = models.ImageField(upload_to=upload_to_huile, max_length=254, default="noimage.jpg", verbose_name="Image")
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+    ref_fab = models.CharField(max_length=150, default='', verbose_name="Référence", blank=True, null=True)
+    piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
+    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
+    date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
+    information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
 
-    nom = models.CharField(max_length=50, default='')
-    huile_image = [
-        ('/huile_img/huile_adixen.jpg', 'Adixen'),
-        ('/huile_img/huile_alcatel.jpg', 'Alcatel'),
-        ('/huile_img/huile_edwards.jpg', 'Edwards'),
-        ('/huile_img/huile_leybold.png', 'Leybold'),
-        ('/huile_img/huile_pfeiffer.jpg', 'Pfeiffer'),
-        ('/huile_img/huile_vaccubrand.jpg', 'Vaccubrand'),
-        ('/huile_img/huile_welch.jpg', 'Welch'),
-        ('/huile_img/huile_universelle.jpg', 'Huile universelle'),
-        ('/pompe_img/noimage.jpg', 'Aucune image'),
-    ]
-    image = models.ImageField(choices=huile_image, max_length=254, blank=True, null=True)
-    marque = models.CharField(max_length=50, default='', verbose_name="Fabriquant")
-    type_pompe = models.CharField(max_length=100, default='', verbose_name="Modèle de pompe")
-    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
-    localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
-    information = models.TextField(max_length=100, default='', blank=True, null=True)
+    class Meta:
+        db_table = "tab_huile_hui"
 
     def __str__(self):
         return self.nom
+
+    def save(self, commit=True, *args, **kwargs):
+        directory = os.path.dirname(self.image.path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
+
+        super().save(*args, **kwargs)
+
+
+
+class ModelEquipe(models.Model):
+    nom = models.CharField(default='', max_length=255, verbose_name="Nom complet de l'équipe")
+    sigle = models.CharField(default='', max_length=10, verbose_name="Abbreviation du nom", blank=True, null=True)
+    nom_responsable = models.CharField(default='', max_length=100, verbose_name="Responsable de l'équipe",
+                                       blank=True, null=True)
+    email_responsable = models.CharField(default='', max_length=50, verbose_name="Email du Responsable",
+                                         blank=True, null=True)
+    date = models.DateField(default=date.today, verbose_name="Date de création")
+    localisation = models.ForeignKey(Etage, null=True, blank=False, on_delete=models.SET_NULL)
+
+    class Meta:
+        db_table = "tab_modeleEquipe_eqp"
+
+    def __str__(self):
+        return self.nom
+
+
+class Tutelle(models.Model):
+    nom = models.CharField(max_length=30, default='', verbose_name="Tutelle")
+
+    class Meta:
+        db_table = "tab_tutelle_tut"
+
+    def __str__(self):
+        return self.nom
+
+
+class Inventaire(models.Model):
+    tutelle = models.ForeignKey(Tutelle, null=True, blank=False, on_delete=models.CASCADE)
+    numero = models.CharField(max_length=150, default='', verbose_name="Numéro d'inventaire")
+    date_inventaire = models.DateField(default=date.today, verbose_name="Date de création")
+
+    class Meta:
+        db_table = "tab_inventaire_inv"
+
+    def __str__(self):
+        return self.numero
+
+
+## historique on stock pump
+# ref : https://stackoverflow.com/questions/10540111/store-versioned-history-of-field-in-django-model
+class StockHistory(models.Model):
+    version = models.IntegerField(editable=False)
+    stockpump = models.ForeignKey('StockPompe', on_delete=models.CASCADE)
+    date_historique = models.DateTimeField(default=datetime.now())
+    history = models.TextField()
+
+    class Meta:
+        unique_together = ('version', 'stockpump')
+
+    def save(self, *args, **kwargs):
+        current_version = StockHistory.objects.filter(stockpump=self.stockpump).order_by('-version')[:1]
+        self.version = current_version[0].version + 1 if current_version else 1
+        super(StockHistory, self).save(*args, **kwargs)
+
+
+class StockPompe(models.Model):
+    pompe = models.ForeignKey(ModelePompe, verbose_name="Modèle de pompe", null=True, blank=False,
+                              on_delete=models.SET_NULL)
+    mise_en_service = models.DateField(auto_now=date.today)
+    etage = models.ForeignKey(Etage, null=True, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=False, on_delete=models.SET_NULL)
+    place = models.CharField(default='', max_length=150, verbose_name="Emplacement dans la pièce",
+                             blank=True, null=True)
+    vide_user = models.FloatField(default=0, verbose_name="Vide limite testé", blank=True)
+    num_serie = models.CharField(max_length=150, default='', verbose_name="Numéro de série")
+    inventaire = models.ForeignKey(Inventaire, null=True, blank=True, on_delete=models.SET_NULL)
+    STATUT_POMPE = [
+        ('A', 'Active'),
+        ('P', 'En panne'),
+        ('R', 'En réparation'),
+        ('S', 'En Stock'),
+    ]
+    statut = models.CharField(max_length=1, choices=STATUT_POMPE, default='A', verbose_name="Etat actuel de la pompe")
+    atex = models.BooleanField(default=False, verbose_name="Pompe Atex ?")
+    huile = models.ForeignKey(Huile, null=True, blank=True, on_delete=models.SET_NULL)
+    equipe = models.ForeignKey(ModelEquipe, null=True, blank=True, on_delete=models.SET_NULL)
+    vidange = models.DateField(default=timezone.now, verbose_name="Date de la prochaine vidange", blank=True, null=True)
+    historique = models.TextField(blank=True, null=False, max_length=500, verbose_name="historique de la pompe")
+
+    class Meta:
+        db_table = "tab_stockpompe_stk"
+
+    def __str__(self):
+        return self.num_serie
+
+    def stock_history(self):
+        return StockHistory.objects.filter(stockpump=self).order_by('-version')
+
+    def save(self, *args, **kwargs):
+        super(StockPompe, self).save(*args, **kwargs)
+        stock_history = self.stock_history()
+        if not stock_history or self.historique != stock_history[0].history:
+            newHistory = StockHistory(stockpump=self, history=self.historique)
+            newHistory.save()
 
 
 class Kit(models.Model):
+    image = models.ImageField(upload_to=upload_to_kit, max_length=254, default="noimage.jpg")
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom du kit")
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, verbose_name='Fabriquant',
+                                   related_name="Fabriquant", on_delete=models.SET_NULL)
+    date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
+    ref_fab = models.CharField(max_length=50, default='', verbose_name="Référence Fabriquant", blank=True, null=True)
+    revendeur = models.ForeignKey(Fabriquant, null=True, blank=True, verbose_name='Revendeur',
+                                  related_name="Revendeur", on_delete=models.SET_NULL)
+    ref_rev = models.CharField(max_length=50, default='', verbose_name="Référence Revendeur", blank=True, null=True)
+    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Quantité en stock")
+    piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
+    information = models.TextField(blank=True, null=True, max_length=200, verbose_name="Information(s) complémentaire")
 
-    nom = models.CharField(max_length=50, default='')
-    image = models.ImageField(upload_to='', max_length=254, blank=True, null=True)
-    marque = models.CharField(max_length=50, default='', verbose_name="Fabriquant")
-    reference_marque = models.CharField(max_length=50, default='', verbose_name="Référence Fabriquant")
-    nom_revendeur = models.CharField(max_length=40, default='', verbose_name="Révendeur")
-    reference_revendeur = models.CharField(max_length=50, default='', verbose_name="Référence Revendeur")
-    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock")
-    localisation = models.CharField(max_length=20, default='', verbose_name="Lieux de stockage")
-    information = models.TextField(max_length=100, default='', blank=True, null=True)
-
-    def __str__(self):
-        return self.nom
-
-
-class Doc(models.Model):
-    nom = models.CharField(max_length=50, default='')
-
-    fabriquant_choice = [
-        ('Adixen', 'Adixen'),
-        ('Alcatel', 'Alcatel'),
-        ('Edwards', 'Edwards'),
-        ('Leybold', 'Leybold'),
-        ('Pfeiffer', 'Pfeiffer'),
-        ('Vacuubrand', 'Vacuubrand'),
-        ('Welch', 'Welch'),
-        ('Autres', 'Autres'),
-    ]
-    fabriquant = models.CharField(max_length=29, choices=fabriquant_choice, verbose_name="Fabriquant")
-    manuel = models.FileField(upload_to='upload/', max_length=254, verbose_name="Manuel technique")
-    informations = models.TextField(max_length=50, default='', blank=True, null=True)
+    class Meta:
+        db_table = "tab_kit_kit"
 
     def __str__(self):
         return self.nom
 
+    def save(self, commit=True, *args, **kwargs):
+        directory = os.path.dirname(self.image.path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
 
-class VersionApp(models.Model):
-    version = models.CharField(default='x.x.x', max_length=10, verbose_name="Version")
-    majeur = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour majeur")
-    mineur = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Mise à jour mineur")
-    bug = models.DecimalField(default=0, max_digits=10, decimal_places=0, verbose_name="Bugs")
-    texte = models.TextField(blank=True, null=True, max_length=254, verbose_name="Description")
-    date_version = models.DateField(default=date.today, verbose_name="Date")
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
+
+        super().save(*args, **kwargs)
+
+
+class PiecesPompe(models.Model):
+    image = models.ImageField(upload_to=upload_to_piecepompe, max_length=254, blank=True, null=True, default="noimage.jpg")
+    nom = models.CharField(default='', max_length=50, verbose_name="Nom de la pièce détachée")
+    date_maj = models.DateField(default=date.today, verbose_name="Date de mise à jour du stock", blank=True, null=True)
+    fabriquant = models.ForeignKey(Fabriquant, null=True, blank=False, on_delete=models.SET_NULL)
+    piece = models.ForeignKey(Piece, null=True, blank=True, on_delete=models.SET_NULL)
+    quantite = models.DecimalField(default=0, max_digits=5, decimal_places=0, verbose_name="Stock ?")
+    information = models.TextField(blank=True, null=True, max_length=200,
+                                   verbose_name="Information(s) complémentaire(s)")
+
+    class Meta:
+        db_table = "tab_piecepompe_pip"
 
     def __str__(self):
-        return self.version
+        return self.nom
+
+    def save(self, commit=True, *args, **kwargs):
+        directory = os.path.dirname(self.image.path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        if commit:
+            image_resize(self.image, 250, 250)
+            super().save(*args, **kwargs)
+
+        super().save(*args, **kwargs)

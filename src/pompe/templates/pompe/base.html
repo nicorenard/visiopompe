@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'pompe/css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'pompe/css/font-awesome.min.css' %}">
+
+    <!--favicon-->
+    <link rel="shortcut icon" type="image/favicon.ico" href="{% static 'pompe/img/logo_app.png' %}">
+    <title>{% block title %}Visiopompe {% endblock%}</title>
+</head>
+
+<body>
+    <!-----navbar---->
+{% include 'pompe/navbar.html' %}
+    <!----contenu---->
+{% block content %}
+
+{% endblock %}
+
+{% block js_script %}
+
+{% endblock %}
+</body>
+
+</html>

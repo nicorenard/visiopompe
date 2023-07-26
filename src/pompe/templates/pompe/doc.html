@@ -1,195 +1,39 @@
+{% extends 'pompe/base.html' %}
 {% load static %}
-<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="{% static 'pompe/w3.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>Documentations Technique</title>
-</head>
-<body>
-<!---------side bar------->
-<script>
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-}
-
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-</script>
-
-<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-centered" style="width:200px;" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-hide-large"  onclick="w3_close()">Fermer &times;</button>
-
-        <img style="margin: 10px 4px 10px 10px; padding:4px;width:90%" src="{% static 'pompe/img/logo_app.png'%}" alt="logo_appavatar">
-        <a href="{% url 'homepage' %}" class="w3-bar-item w3-button w3-mobile w3-red"><i class="fa fa-home"></i> Visiopompe V0.1</a>
-        <a href="{% url 'pompe:index' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pompes</a>
-        <a href="{% url 'pompe:pieces' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Pièces détachées</a>
-        <a href="{% url 'pompe:huiles' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Huiles</a>
-        <a href="{% url 'pompe:kit' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Kits maintenance</a>
-        <a href="{% url 'pompe:docs' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-right"></i> Documentations</a>
-        <a href="{% url 'pompe:ajout_doc' %}" class="w3-bar-item w3-button w3-hover-blue-grey w3-mobile"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Ajout</a>
-        <a href="mailto:nicolas.renard@univ-brest.fr?subject=[Support_Visiopompe]&body=*[Note]Merci d'ajouter une capture d'écran si possible*" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i> Support</a>
-        <a href="{% url 'pompe:version' %}" class="w3-button w3-small w3-right w3-mobile"> Version</a>
-</div>
-
-<!---------Contenu------->
-
+{% block title %}Documentation des pompes{% endblock %}
+{% block content %}
 <div class="w3-main w3-mobile " style="margin-left:200px">
     <div class="w3-container w3-dark-grey">
         <h2>Documentations Technique</h2>
     </div>
-
-<div class="w3-bar w3-grey w3-large">
-  <button class="w3-bar-item w3-button tablink w3-red" onclick="openMarque(event,'Adixen')">Adixen</button>
-  <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Alcatel')">Alcatel</button>
-  <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Edwards')">Edwards</button>
-  <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Leybold')">Leybold</button>
-  <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'PfeifferVacuum')">Pfeiffer Vacuum</button>
-  <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Vacuubrand')">Vaccubrand</button>
-  <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Welch')">Welch</button>
-  <button class="w3-bar-item w3-button tablink" onclick="openMarque(event,'Autres')">Autres</button>
-</div>
-
-<script>
-function openMarque(evt, marqueName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("marque");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-  }
-  document.getElementById(marqueName).style.display = "block";
-  evt.currentTarget.className += " w3-red";
-}
-</script>
-<br>
-    <div class="marque w3-row w3-padding" id="Adixen" >
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Adixen' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/doc_logo/logo_adixen.png' %}" alt="logo" style="width: 200px">
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
+    <br/>
+    <section class="w3-mobile" style="margin-left:20px ; margin-right:20px">
+        <table class="w3-table-all w3-centered w3-striped" >
+            <tr class="w3-green w3-text-black">
+                <th>Fabriquant</th>
+                <th>Nom manuel</th>
+                <th>Version</th>
+                <th>Télécharger ?</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                 {% for doc in docs %}
+                <td><img src="{{doc.fabriquant.logo_max.url}}" alt="{{doc.fabriquant.nom}}" style="width: 20%; display: block; margin: auto;" /></td>
+                <td>{{doc.nom}}</td>
+                <td>{{doc.version}}</td>
+                <td><a href="/media/{{doc.manuel}}"><img src="{% static 'pompe/img/option/icons_download.png' %}" alt="picture download"/></a></td>
+                <td><button class="w3-button"><a href="{% url 'pompe:doc_edit' pk=doc.pk %}"><img src="{% static 'pompe/img/option/icons_edit.png' %}" style="width:60%;" /></a></button>
+                <form method="POST" action="{% url 'pompe:doc_delete' pk=doc.pk %}" onsubmit="return confirm('Etes-vous sur de vouloir effacer cette référence ?')">
+                {% csrf_token %}
+                    <button class="w3-button" type="submit"><img src="{% static 'pompe/img/option/icons_delete.png' %}" style="width:60%;" /></button>
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
         </table>
-    </div>
-    <div class="marque w3-row w3-padding" id="Alcatel" style="display :none">
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Alcatel' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/doc_logo/logo_alcatel.png' %}" alt="logo" style="width: 230px" >
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </table>
-    </div>
-    <div class="marque w3-row w3-padding" id="Edwards" style="display :none">
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Edwards' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/doc_logo/logo_edwards.png' %}" alt="logo" style="width: 230px">
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </table>
-    </div>
-    <div class="marque w3-row w3-padding" id="Leybold" style="display :none">
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Leybold' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/doc_logo/logo_leybold.png' %}" alt="logo" style="width: 200px">
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </table>
-    </div>
-    <div class="marque w3-row w3-padding" id="PfeifferVacuum" style="display :none">
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Pfeiffer' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/doc_logo/logo_pfeiffer.png' %}" alt="logo" style="width: 250px">
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </table>
-    </div>
-    <div class="marque w3-row w3-padding" id="Vacuubrand" style="display :none">
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Vacuubrand' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/doc_logo/logo_vacuubrand.jpg' %}" alt="logo" style="width: 200px">
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </table>
-    </div>
-    <div class="marque w3-row w3-padding" id="Welch" style="display :none">
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Welch' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/doc_logo/logo_welch.png' %}" alt="logo" style="width: 200px">
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </table>
-    </div>
-    <div class="marque w3-row w3-padding" id="Autres" style="display :none">
-        <table class="w3-table w3-row-padding w3-responsive ">
-            {%  for docs in docs %}
-            {% if docs.fabriquant == 'Autres' %}
-            <td class=" w3-container w3-border w3-hover-greyscale w3-card-2 ">
-                <img src="{% static 'pompe/img/noimage.jpg' %}" alt="logo" style="width: 200px">
-                <p class="w3-center"><strong> {{docs.nom}}</strong></p>
-                <p class="w3-center"> {{docs.informations}}</p>
-                <p class="w3-center"><a href="/media/{{docs.manuel}}" >
-                    <img src="{% static 'pompe/img/option/icons_download.png' %}" alt="download"></a></p>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </table>
-    </div>
-    <section class="w3-container w3-mobile ">
+    </section>
+<!----citation---->
+    <section class="w3-container w3-mobile">
             <div class="w3-panel w3-leftbar w3-display-container">
                 <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">x</span>
                 <p><i class="fa fa-quote-right "></i></p>
@@ -199,8 +43,4 @@ function openMarque(evt, marqueName) {
     </section>
 
 </div>
-
-
-</body>
-
-</html>
+{% endblock %}
