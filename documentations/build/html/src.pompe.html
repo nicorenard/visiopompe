@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paquet POMPE &mdash; Documentation Visiopompe v1.0</title>
+  <title>3.1.1. Paquet POMPE &mdash; Documentation Visiopompe v1.1</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,15 +20,15 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Paquet CONFIG" href="src.config.html" />
-    <link rel="prev" title="Documentation Technique" href="modules.html" /> 
+    <link rel="next" title="3.1.2. Paquet CONFIG" href="src.config.html" />
+    <link rel="prev" title="3. Documentation Technique" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: white" >
+        <div class="wy-side-nav-search" >
 
           
           
@@ -44,148 +44,25 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Menu :</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Menu:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="users.html">Documentation Utilisateur</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Documentation Technique</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Paquet POMPE</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-pompe.admin">Module ADMIN</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.admin.HistoryAdmin"><code class="docutils literal notranslate"><span class="pre">HistoryAdmin</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.admin.PersonAdmin"><code class="docutils literal notranslate"><span class="pre">PersonAdmin</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.admin.VersionAppAdmin"><code class="docutils literal notranslate"><span class="pre">VersionAppAdmin</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutoriel.html">1. Tutoriel rapide Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">2. Documentation Utilisateur</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">3. Documentation Technique</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html#introduction">3.1. Introduction</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.1.1. Paquet POMPE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-pompe.admin">3.1.1.1. Module ADMIN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pompe.filters">3.1.1.2. Module FILTERS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pompe.forms">3.1.1.3. Module FORMS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pompe.models">3.1.1.4. Module MODELS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pompe.resource">3.1.1.5. Module RESOURCE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pompe.urls">3.1.1.6. Module URLS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pompe.views">3.1.1.7. Module VIEWS</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pompe.filters">Module FILTERS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.filters.PompeStockFilter"><code class="docutils literal notranslate"><span class="pre">PompeStockFilter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.config.html">3.1.2. Paquet CONFIG</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pompe.forms">Module FORMS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Batimentform"><code class="docutils literal notranslate"><span class="pre">Batimentform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Docform"><code class="docutils literal notranslate"><span class="pre">Docform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Equipeform"><code class="docutils literal notranslate"><span class="pre">Equipeform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Etageform"><code class="docutils literal notranslate"><span class="pre">Etageform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Fabriquantform"><code class="docutils literal notranslate"><span class="pre">Fabriquantform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Huileform"><code class="docutils literal notranslate"><span class="pre">Huileform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Inventaireform"><code class="docutils literal notranslate"><span class="pre">Inventaireform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Kitform"><code class="docutils literal notranslate"><span class="pre">Kitform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModelPompeform"><code class="docutils literal notranslate"><span class="pre">ModelPompeform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifBatimentForm"><code class="docutils literal notranslate"><span class="pre">ModifBatimentForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifDocForm"><code class="docutils literal notranslate"><span class="pre">ModifDocForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifEquipeForm"><code class="docutils literal notranslate"><span class="pre">ModifEquipeForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifEtageForm"><code class="docutils literal notranslate"><span class="pre">ModifEtageForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifFabriquantForm"><code class="docutils literal notranslate"><span class="pre">ModifFabriquantForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifHuileForm"><code class="docutils literal notranslate"><span class="pre">ModifHuileForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifInventaireForm"><code class="docutils literal notranslate"><span class="pre">ModifInventaireForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifKitForm"><code class="docutils literal notranslate"><span class="pre">ModifKitForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifModelPompeForm"><code class="docutils literal notranslate"><span class="pre">ModifModelPompeForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifPieceForm"><code class="docutils literal notranslate"><span class="pre">ModifPieceForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifPiecePompeForm"><code class="docutils literal notranslate"><span class="pre">ModifPiecePompeForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifSiteForm"><code class="docutils literal notranslate"><span class="pre">ModifSiteForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifStockPompeForm"><code class="docutils literal notranslate"><span class="pre">ModifStockPompeForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifTechnoForm"><code class="docutils literal notranslate"><span class="pre">ModifTechnoForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.ModifTutelleForm"><code class="docutils literal notranslate"><span class="pre">ModifTutelleForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.PiecePompeform"><code class="docutils literal notranslate"><span class="pre">PiecePompeform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Pieceform"><code class="docutils literal notranslate"><span class="pre">Pieceform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Siteform"><code class="docutils literal notranslate"><span class="pre">Siteform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.StockPompeform"><code class="docutils literal notranslate"><span class="pre">StockPompeform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Technologieform"><code class="docutils literal notranslate"><span class="pre">Technologieform</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.forms.Tutelleform"><code class="docutils literal notranslate"><span class="pre">Tutelleform</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pompe.models">Module MODELS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Batiment"><code class="docutils literal notranslate"><span class="pre">Batiment</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Etage"><code class="docutils literal notranslate"><span class="pre">Etage</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Fabriquant"><code class="docutils literal notranslate"><span class="pre">Fabriquant</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Huile"><code class="docutils literal notranslate"><span class="pre">Huile</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Inventaire"><code class="docutils literal notranslate"><span class="pre">Inventaire</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Kit"><code class="docutils literal notranslate"><span class="pre">Kit</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.ModelEquipe"><code class="docutils literal notranslate"><span class="pre">ModelEquipe</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.ModelePompe"><code class="docutils literal notranslate"><span class="pre">ModelePompe</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Piece"><code class="docutils literal notranslate"><span class="pre">Piece</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.PiecesPompe"><code class="docutils literal notranslate"><span class="pre">PiecesPompe</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Site"><code class="docutils literal notranslate"><span class="pre">Site</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.StockHistory"><code class="docutils literal notranslate"><span class="pre">StockHistory</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.StockPompe"><code class="docutils literal notranslate"><span class="pre">StockPompe</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.TechnologiePompe"><code class="docutils literal notranslate"><span class="pre">TechnologiePompe</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.Tutelle"><code class="docutils literal notranslate"><span class="pre">Tutelle</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.models.VersionApp"><code class="docutils literal notranslate"><span class="pre">VersionApp</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pompe.resource">Module RESOURCE</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.BatimentResource"><code class="docutils literal notranslate"><span class="pre">BatimentResource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.DocRessource"><code class="docutils literal notranslate"><span class="pre">DocRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.EquipeResource"><code class="docutils literal notranslate"><span class="pre">EquipeResource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.EtageResource"><code class="docutils literal notranslate"><span class="pre">EtageResource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.FabriquantRessource"><code class="docutils literal notranslate"><span class="pre">FabriquantRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.HistoriqueRessource"><code class="docutils literal notranslate"><span class="pre">HistoriqueRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.HuileRessource"><code class="docutils literal notranslate"><span class="pre">HuileRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.InventaireRessource"><code class="docutils literal notranslate"><span class="pre">InventaireRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.KitRessource"><code class="docutils literal notranslate"><span class="pre">KitRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.ModelePompeRessource"><code class="docutils literal notranslate"><span class="pre">ModelePompeRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.PiecePompeRessource"><code class="docutils literal notranslate"><span class="pre">PiecePompeRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.PieceResource"><code class="docutils literal notranslate"><span class="pre">PieceResource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.SiteResource"><code class="docutils literal notranslate"><span class="pre">SiteResource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.StockPompeRessource"><code class="docutils literal notranslate"><span class="pre">StockPompeRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.TechnologieRessource"><code class="docutils literal notranslate"><span class="pre">TechnologieRessource</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.resource.TutelleRessource"><code class="docutils literal notranslate"><span class="pre">TutelleRessource</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pompe.urls">Module URLS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pompe.views">Module VIEWS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.add_doc"><code class="docutils literal notranslate"><span class="pre">add_doc()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.add_huile"><code class="docutils literal notranslate"><span class="pre">add_huile()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.add_kit"><code class="docutils literal notranslate"><span class="pre">add_kit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.add_pdetache"><code class="docutils literal notranslate"><span class="pre">add_pdetache()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.add_stockpompe"><code class="docutils literal notranslate"><span class="pre">add_stockpompe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.dashboard"><code class="docutils literal notranslate"><span class="pre">dashboard()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_batiment"><code class="docutils literal notranslate"><span class="pre">delete_batiment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_doc"><code class="docutils literal notranslate"><span class="pre">delete_doc()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_equipe"><code class="docutils literal notranslate"><span class="pre">delete_equipe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_etage"><code class="docutils literal notranslate"><span class="pre">delete_etage()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_fabriquant"><code class="docutils literal notranslate"><span class="pre">delete_fabriquant()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_fichepompe"><code class="docutils literal notranslate"><span class="pre">delete_fichepompe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_huile"><code class="docutils literal notranslate"><span class="pre">delete_huile()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_inventaire"><code class="docutils literal notranslate"><span class="pre">delete_inventaire()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_kit"><code class="docutils literal notranslate"><span class="pre">delete_kit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_pdetache"><code class="docutils literal notranslate"><span class="pre">delete_pdetache()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_piece"><code class="docutils literal notranslate"><span class="pre">delete_piece()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_site"><code class="docutils literal notranslate"><span class="pre">delete_site()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_stockpompe"><code class="docutils literal notranslate"><span class="pre">delete_stockpompe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_techno"><code class="docutils literal notranslate"><span class="pre">delete_techno()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.delete_tutelle"><code class="docutils literal notranslate"><span class="pre">delete_tutelle()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.doc"><code class="docutils literal notranslate"><span class="pre">doc()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.equipe"><code class="docutils literal notranslate"><span class="pre">equipe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.fabriquant"><code class="docutils literal notranslate"><span class="pre">fabriquant()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.fichepompe"><code class="docutils literal notranslate"><span class="pre">fichepompe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.historique"><code class="docutils literal notranslate"><span class="pre">historique()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.huile"><code class="docutils literal notranslate"><span class="pre">huile()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.inventaire"><code class="docutils literal notranslate"><span class="pre">inventaire()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.kit"><code class="docutils literal notranslate"><span class="pre">kit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.pdetache"><code class="docutils literal notranslate"><span class="pre">pdetache()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.piece"><code class="docutils literal notranslate"><span class="pre">piece()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.pompe"><code class="docutils literal notranslate"><span class="pre">pompe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_batiment"><code class="docutils literal notranslate"><span class="pre">update_batiment()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_doc"><code class="docutils literal notranslate"><span class="pre">update_doc()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_equipe"><code class="docutils literal notranslate"><span class="pre">update_equipe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_etage"><code class="docutils literal notranslate"><span class="pre">update_etage()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_fabriquant"><code class="docutils literal notranslate"><span class="pre">update_fabriquant()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_fichepompe"><code class="docutils literal notranslate"><span class="pre">update_fichepompe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_huile"><code class="docutils literal notranslate"><span class="pre">update_huile()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_inventaire"><code class="docutils literal notranslate"><span class="pre">update_inventaire()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_kit"><code class="docutils literal notranslate"><span class="pre">update_kit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_pdetache"><code class="docutils literal notranslate"><span class="pre">update_pdetache()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_piece"><code class="docutils literal notranslate"><span class="pre">update_piece()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_site"><code class="docutils literal notranslate"><span class="pre">update_site()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_stockpompe"><code class="docutils literal notranslate"><span class="pre">update_stockpompe()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.update_techno"><code class="docutils literal notranslate"><span class="pre">update_techno()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pompe.views.version"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="src.config.html">Paquet CONFIG</a></li>
 </ul>
 </li>
 </ul>
@@ -194,7 +71,7 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Visiopompe</a>
       </nav>
@@ -204,8 +81,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">Documentation Technique</a></li>
-      <li class="breadcrumb-item active">Paquet POMPE</li>
+          <li class="breadcrumb-item"><a href="modules.html"><span class="section-number">3. </span>Documentation Technique</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.1.1. </span>Paquet POMPE</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/src.pompe.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
@@ -216,11 +93,11 @@
            <div itemprop="articleBody">
              
   <section id="paquet-pompe">
-<h1>Paquet POMPE<a class="headerlink" href="#paquet-pompe" title="Lien permanent vers cette rubrique"></a></h1>
+<h1><span class="section-number">3.1.1. </span>Paquet POMPE<a class="headerlink" href="#paquet-pompe" title="Lien permanent vers cette rubrique"></a></h1>
 <p>Le paquet « POMPE » correspond au module de l’application VISIOPOMPE</p>
 <section id="module-pompe.admin">
-<span id="module-admin"></span><h2>Module ADMIN<a class="headerlink" href="#module-pompe.admin" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Admin administration panel’s functions</p>
+<span id="module-admin"></span><h2><span class="section-number">3.1.1.1. </span>Module ADMIN<a class="headerlink" href="#module-pompe.admin" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Classes pour la gestion du panneau d’administration de l’application</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.admin.HistoryAdmin">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.admin.</span></span><span class="sig-name descname"><span class="pre">HistoryAdmin</span></span><a class="reference internal" href="_modules/pompe/admin.html#HistoryAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.admin.HistoryAdmin" title="Lien permanent vers cette définition"></a></dt>
@@ -272,7 +149,7 @@
 :param admin.ModelAdmin: appel à la classe admin de ModelAdmin</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.admin.VersionAppAdmin.list_display">
-<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'version',</span> <span class="pre">'maj_maj',</span> <span class="pre">'maj_min',</span> <span class="pre">'bug',</span> <span class="pre">'texte',</span> <span class="pre">'date_version']</span></em><a class="headerlink" href="#pompe.admin.VersionAppAdmin.list_display" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'nom']</span></em><a class="headerlink" href="#pompe.admin.VersionAppAdmin.list_display" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -289,12 +166,21 @@
 
 </section>
 <section id="module-pompe.filters">
-<span id="module-filters"></span><h2>Module FILTERS<a class="headerlink" href="#module-pompe.filters" title="Lien permanent vers cette rubrique"></a></h2>
+<span id="module-filters"></span><h2><span class="section-number">3.1.1.2. </span>Module FILTERS<a class="headerlink" href="#module-pompe.filters" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Classes de filtres pour les recherches de stocks de pompes</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.filters.PompeStockFilter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.filters.</span></span><span class="sig-name descname"><span class="pre">PompeStockFilter</span></span><a class="reference internal" href="_modules/pompe/filters.html#PompeStockFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.filters.PompeStockFilter" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">FilterSet</span></code></p>
+<p>Classe de filtre pour les stocks de pompes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>FilterSet</strong> – Attributs de la classe django_filters</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le filtre de recherche dans le menu pompe avec ses options</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.filters.PompeStockFilter.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/filters.html#PompeStockFilter.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.filters.PompeStockFilter.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -326,17 +212,19 @@
 
 </section>
 <section id="module-pompe.forms">
-<span id="module-forms"></span><h2>Module FORMS<a class="headerlink" href="#module-pompe.forms" title="Lien permanent vers cette rubrique"></a></h2>
+<span id="module-forms"></span><h2><span class="section-number">3.1.1.3. </span>Module FORMS<a class="headerlink" href="#module-pompe.forms" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Forms of the project Visiopompe</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.Batimentform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Batimentform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Batimentform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Batimentform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un bâtiment sur un site.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un bâtiment sur un site.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un bâtiment</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un bâtiment</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -383,11 +271,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Docform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Docform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Docform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Docform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’une documentation technique.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’une documentation technique.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer une documentation</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer une documentation</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -434,11 +324,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Equipeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Equipeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Equipeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Equipeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’une équipe.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’une équipe.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer une équipe</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer une équipe</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -485,11 +377,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Etageform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Etageform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Etageform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Etageform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un étage dans un bâtiment.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un étage dans un bâtiment.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un étage</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un étage</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -536,11 +430,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Fabriquantform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Fabriquantform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Fabriquantform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Fabriquantform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un fabriquant.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un fabriquant.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un fabriquant</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un fabriquant</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -587,11 +483,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Huileform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Huileform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Huileform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Huileform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un lot d’huile.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un lot d’huile.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un lot d’huile</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un lot d’huile</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -638,11 +536,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Inventaireform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Inventaireform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Inventaireform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Inventaireform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un numéro d’inventaire.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un numéro d’inventaire.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un numéro d’inventaire</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un numéro d’inventaire</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -689,11 +589,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Kitform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Kitform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Kitform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Kitform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un kit de maintenance de pompe à vide.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un kit de maintenance de pompe à vide.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un kit de maintenance</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un kit de maintenance</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -740,11 +642,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModelPompeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModelPompeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModelPompeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModelPompeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un modèle de pompe.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un modèle de pompe.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un modèle</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un modèle</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -791,14 +695,17 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifBatimentForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifBatimentForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifBatimentForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifBatimentForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’un bâtiment.
-:param ModelForm: l’attribut basé sur Form de Django</p>
-<blockquote>
-<div><dl class="simple">
+<p>Classe de modification d’un formulaire d’un bâtiment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – <p>l’attribut basé sur Form de Django</p>
+<dl class="simple">
 <dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
-</div></blockquote>
+</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifBatimentForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifBatimentForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifBatimentForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -843,11 +750,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifDocForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifDocForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifDocForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifDocForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’une documentation technique.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’une documentation technique.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -894,11 +803,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifEquipeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifEquipeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifEquipeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifEquipeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’une équipe.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’une équipe.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -945,14 +856,17 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifEtageForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifEtageForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifEtageForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifEtageForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’un étage.
-:param ModelForm: l’attribut basé sur Form de Django</p>
-<blockquote>
-<div><dl class="simple">
+<p>Classe de modification d’un formulaire d’un étage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – <p>l’attribut basé sur Form de Django</p>
+<dl class="simple">
 <dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
-</div></blockquote>
+</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifEtageForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifEtageForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifEtageForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -997,11 +911,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifFabriquantForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifFabriquantForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifFabriquantForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifFabriquantForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’un fabriquant.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’un fabriquant.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1048,11 +964,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifHuileForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifHuileForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifHuileForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifHuileForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire de lot d’huile.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire de lot d’huile.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1099,11 +1017,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifInventaireForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifInventaireForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifInventaireForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifInventaireForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’un numéro d’inventaire.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’un numéro d’inventaire.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1150,11 +1070,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifKitForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifKitForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifKitForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifKitForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’un kit de maintenance de pompe à vide.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’un kit de maintenance de pompe à vide.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1201,11 +1123,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifModelPompeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifModelPompeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifModelPompeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifModelPompeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un modèle de pompe.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un modèle de pompe.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1252,14 +1176,17 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifPieceForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifPieceForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifPieceForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifPieceForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’une pièce ou salle.
-:param ModelForm: l’attribut basé sur Form de Django</p>
-<blockquote>
-<div><dl class="simple">
+<p>Classe de modification d’un formulaire d’une pièce ou salle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – <p>l’attribut basé sur Form de Django</p>
+<dl class="simple">
 <dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
-</div></blockquote>
+</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifPieceForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifPieceForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifPieceForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1304,11 +1231,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifPiecePompeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifPiecePompeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifPiecePompeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifPiecePompeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’une documentation technique.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’une documentation technique.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1355,14 +1284,17 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifSiteForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifSiteForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifSiteForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifSiteForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’un site.
-:param ModelForm: l’attribut basé sur Form de Django</p>
-<blockquote>
-<div><dl class="simple">
+<p>Classe de modification d’un formulaire d’un site.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – <p>l’attribut basé sur Form de Django</p>
+<dl class="simple">
 <dt>Returns:</dt><dd><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
-</div></blockquote>
+</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.forms.ModifSiteForm.Meta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifSiteForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifSiteForm.Meta" title="Lien permanent vers cette définition"></a></dt>
@@ -1407,11 +1339,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifStockPompeForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifStockPompeForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifStockPompeForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifStockPompeForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’un stock de pompe.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’un stock de pompe.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1458,11 +1392,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifTechnoForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifTechnoForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifTechnoForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifTechnoForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’une technologie du vide.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’une technologie du vide.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1509,11 +1445,13 @@
 <dt class="sig sig-object py" id="pompe.forms.ModifTutelleForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">ModifTutelleForm</span></span><a class="reference internal" href="_modules/pompe/forms.html#ModifTutelleForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.ModifTutelleForm" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Classe de modification d’un formulaire d’une tutelle budgétaire.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Classe de modification d’un formulaire d’une tutelle budgétaire.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire avec les informations pré-remplies</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire avec les informations pré-remplies</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1560,11 +1498,13 @@
 <dt class="sig sig-object py" id="pompe.forms.PiecePompeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">PiecePompeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#PiecePompeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.PiecePompeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’une pièce détaché.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’une pièce détaché.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer une pièce détachée</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer une pièce détachée</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1611,11 +1551,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Pieceform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Pieceform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Pieceform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Pieceform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’une pièce ou salle.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’une pièce ou salle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer une pièce</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer une pièce</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1662,11 +1604,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Siteform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Siteform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Siteform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Siteform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un site.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un site.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un site</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un site</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1713,11 +1657,13 @@
 <dt class="sig sig-object py" id="pompe.forms.StockPompeform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">StockPompeform</span></span><a class="reference internal" href="_modules/pompe/forms.html#StockPompeform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.StockPompeform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’un stock de pompe.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’un stock de pompe.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer un stock de pompe</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer un stock de pompe</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1764,11 +1710,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Technologieform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Technologieform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Technologieform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Technologieform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’une technologie du vide.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’une technologie du vide.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer une technologie</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer une technologie</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1815,11 +1763,13 @@
 <dt class="sig sig-object py" id="pompe.forms.Tutelleform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.forms.</span></span><span class="sig-name descname"><span class="pre">Tutelleform</span></span><a class="reference internal" href="_modules/pompe/forms.html#Tutelleform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.forms.Tutelleform" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
-<p>Formulaire de création d’une tutelle budgétaire.
-:param ModelForm: l’attribut basé sur Form de Django</p>
+<p>Formulaire de création d’une tutelle budgétaire.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Le formulaire généré pour créer une tutelle budgétaire</p>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ModelForm</strong> – l’attribut basé sur Form de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le formulaire généré pour créer une tutelle budgétaire</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -1864,13 +1814,21 @@
 
 </section>
 <section id="module-pompe.models">
-<span id="module-models"></span><h2>Module MODELS<a class="headerlink" href="#module-pompe.models" title="Lien permanent vers cette rubrique"></a></h2>
+<span id="module-models"></span><h2><span class="section-number">3.1.1.4. </span>Module MODELS<a class="headerlink" href="#module-pompe.models" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Database classes and functions</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.models.Batiment">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Batiment</span></span><a class="reference internal" href="_modules/pompe/models.html#Batiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Batiment" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Batiment(id, nom, site)</p>
+<p>Classe pour gérer les bâtiments liés à un ou plusieurs sites.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un bâtiment</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Batiment.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Batiment.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -1941,7 +1899,15 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dt class="sig sig-object py" id="pompe.models.Document">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><a class="reference internal" href="_modules/pompe/models.html#Document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Document" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Document(id, nom, fabriquant, manuel, version)</p>
+<p>Classe pour gérer les fiches de documentations techniques.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un document</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Document.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Document.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2023,6 +1989,16 @@ object the first time, the query is executed.</p>
 <span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pompe.models.Document.objects" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="pompe.models.Document.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Document.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Document.save" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The “force_insert” and “force_update” parameters can be used to insist
+that the « save » must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.models.Document.version">
 <span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#pompe.models.Document.version" title="Lien permanent vers cette définition"></a></dt>
@@ -2036,7 +2012,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.Etage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Etage</span></span><a class="reference internal" href="_modules/pompe/models.html#Etage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Etage" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Etage(id, nom, batiment)</p>
+<p>Classe pour gérer les étages liés à un ou plusieurs bâtiments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un étage</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Etage.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Etage.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2137,7 +2121,15 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dt class="sig sig-object py" id="pompe.models.Fabriquant">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Fabriquant</span></span><a class="reference internal" href="_modules/pompe/models.html#Fabriquant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Fabriquant" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Fabriquant(id, nom, logo_max, logo_mini, adresse, code_postal, ville)</p>
+<p>Classe pour gérer les fiches de fabriquants.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un fabriquant</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Fabriquant.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Fabriquant.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2289,7 +2281,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.Fabriquant.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Fabriquant.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Fabriquant.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Fabriquant.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Fabriquant.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -2310,7 +2302,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.Huile">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Huile</span></span><a class="reference internal" href="_modules/pompe/models.html#Huile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Huile" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Huile(id, nom, image, fabriquant, ref_fab, piece, quantite, date_maj, information)</p>
+<p>Classe pour gérer les types d’huiles pour les pompes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant une huile</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Huile.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Huile.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2415,7 +2415,7 @@ object the first time, the query is executed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.Huile.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Huile.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Huile.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Huile.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Huile.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -2444,7 +2444,15 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dt class="sig sig-object py" id="pompe.models.Inventaire">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Inventaire</span></span><a class="reference internal" href="_modules/pompe/models.html#Inventaire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Inventaire" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Inventaire(id, tutelle, numero, date_inventaire)</p>
+<p>Classe pour gérer les numéros d’inventaire pour les pompes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un numéro lié à une tutelle</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Inventaire.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Inventaire.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2532,7 +2540,15 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dt class="sig sig-object py" id="pompe.models.Kit">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Kit</span></span><a class="reference internal" href="_modules/pompe/models.html#Kit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Kit" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Kit(id, image, nom, fabriquant, date_maj, ref_fab, revendeur, ref_rev, quantite, piece, information)</p>
+<p>Classe pour gérer les stocks de kit de maintenance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un kit</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Kit.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Kit.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2662,7 +2678,7 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.Kit.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Kit.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Kit.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#Kit.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Kit.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -2676,7 +2692,15 @@ non-SQL backends), respectively. Normally, they should not be set.</p>
 <dt class="sig sig-object py" id="pompe.models.ModelEquipe">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">ModelEquipe</span></span><a class="reference internal" href="_modules/pompe/models.html#ModelEquipe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.ModelEquipe" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>ModelEquipe(id, nom, sigle, nom_responsable, email_responsable, date, localisation)</p>
+<p>Classe pour gérer les équipes d’appartenance de matériels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant une équipe</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.ModelEquipe.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.ModelEquipe.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2785,7 +2809,15 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dt class="sig sig-object py" id="pompe.models.ModelePompe">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">ModelePompe</span></span><a class="reference internal" href="_modules/pompe/models.html#ModelePompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.ModelePompe" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>ModelePompe(id, image, nom, modele, phasage, puissance, technologie, vide_theo, fabriquant, documentation)</p>
+<p>Classe pour gérer les fiches de pompes (série ou famille).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un fiche</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.ModelePompe.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.ModelePompe.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -2903,7 +2935,7 @@ object the first time, the query is executed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.ModelePompe.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#ModelePompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.ModelePompe.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#ModelePompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.ModelePompe.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -2957,7 +2989,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.Piece">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Piece</span></span><a class="reference internal" href="_modules/pompe/models.html#Piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Piece" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Piece(id, nom, etage)</p>
+<p>Classe pour gérer les pièces liés à un ou plusieurs étages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant une salle</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Piece.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Piece.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3073,7 +3113,15 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dt class="sig sig-object py" id="pompe.models.PiecesPompe">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">PiecesPompe</span></span><a class="reference internal" href="_modules/pompe/models.html#PiecesPompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.PiecesPompe" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>PiecesPompe(id, image, nom, date_maj, fabriquant, piece, quantite, information)</p>
+<p>Classe pour gérer les pièces détachées d’un stock de pompe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant une pièce détachée</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.PiecesPompe.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.PiecesPompe.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3171,7 +3219,7 @@ object the first time, the query is executed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pompe.models.PiecesPompe.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#PiecesPompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.PiecesPompe.save" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/models.html#PiecesPompe.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.PiecesPompe.save" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Save the current instance. Override this in a subclass if you want to
 control the saving process.</p>
 <p>The “force_insert” and “force_update” parameters can be used to insist
@@ -3185,7 +3233,15 @@ non-SQL backends), respectively. Normally, they should not be set.</p>
 <dt class="sig sig-object py" id="pompe.models.Site">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Site</span></span><a class="reference internal" href="_modules/pompe/models.html#Site"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Site" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Site(id, nom)</p>
+<p>Classe pour gérer les sites.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un site</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Site.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Site.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3238,7 +3294,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.StockHistory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">StockHistory</span></span><a class="reference internal" href="_modules/pompe/models.html#StockHistory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.StockHistory" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>StockHistory(id, version, stockpump, date_historique, history)</p>
+<p>Classe pour gérer l’historique d’actions sur un stock de pompe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant l’historique d’un stock</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.StockHistory.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.StockHistory.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3328,7 +3392,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.StockPompe">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">StockPompe</span></span><a class="reference internal" href="_modules/pompe/models.html#StockPompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.StockPompe" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>StockPompe(id, pompe, mise_en_service, etage, piece, place, vide_user, num_serie, inventaire, statut, atex, huile, equipe, vidange, historique)</p>
+<p>Classe pour gérer les stocks de pompes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant un stock</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.StockPompe.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.StockPompe.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3573,7 +3645,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.TechnologiePompe">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">TechnologiePompe</span></span><a class="reference internal" href="_modules/pompe/models.html#TechnologiePompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.TechnologiePompe" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>TechnologiePompe(id, nom, info)</p>
+<p>Classe pour gérer les technologies de vide pour les pompes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant une technologie</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.TechnologiePompe.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.TechnologiePompe.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3633,7 +3713,15 @@ object the first time, the query is executed.</p>
 <dt class="sig sig-object py" id="pompe.models.Tutelle">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.models.</span></span><span class="sig-name descname"><span class="pre">Tutelle</span></span><a class="reference internal" href="_modules/pompe/models.html#Tutelle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.models.Tutelle" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
-<p>Tutelle(id, nom)</p>
+<p>Classe pour gérer les tutelles budgétaires.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>models</strong> – Attribut de la classe Model de Django</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>l’objet contenant une tutelle budgétaire</p>
+</dd>
+</dl>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pompe.models.Tutelle.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pompe.models.Tutelle.DoesNotExist" title="Lien permanent vers cette définition"></a></dt>
@@ -3708,30 +3796,6 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.bug">
-<span class="sig-name descname"><span class="pre">bug</span></span><a class="headerlink" href="#pompe.models.VersionApp.bug" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.date_version">
-<span class="sig-name descname"><span class="pre">date_version</span></span><a class="headerlink" href="#pompe.models.VersionApp.date_version" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.get_next_by_date_version">
-<span class="sig-name descname"><span class="pre">get_next_by_date_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">date_version&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pompe.models.VersionApp.get_next_by_date_version" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.get_previous_by_date_version">
-<span class="sig-name descname"><span class="pre">get_previous_by_date_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">date_version&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pompe.models.VersionApp.get_previous_by_date_version" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="pompe.models.VersionApp.id">
 <span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#pompe.models.VersionApp.id" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
@@ -3739,15 +3803,8 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.maj_maj">
-<span class="sig-name descname"><span class="pre">maj_maj</span></span><a class="headerlink" href="#pompe.models.VersionApp.maj_maj" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.maj_min">
-<span class="sig-name descname"><span class="pre">maj_min</span></span><a class="headerlink" href="#pompe.models.VersionApp.maj_min" title="Lien permanent vers cette définition"></a></dt>
+<dt class="sig sig-object py" id="pompe.models.VersionApp.nom">
+<span class="sig-name descname"><span class="pre">nom</span></span><a class="headerlink" href="#pompe.models.VersionApp.nom" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -3757,26 +3814,13 @@ object the first time, the query is executed.</p>
 <span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pompe.models.VersionApp.objects" title="Lien permanent vers cette définition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.texte">
-<span class="sig-name descname"><span class="pre">texte</span></span><a class="headerlink" href="#pompe.models.VersionApp.texte" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pompe.models.VersionApp.version">
-<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#pompe.models.VersionApp.version" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
 </dd></dl>
 
 </section>
 <section id="module-pompe.resource">
-<span id="module-resource"></span><h2>Module RESOURCE<a class="headerlink" href="#module-pompe.resource" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Resources functions to upload/download files (cvs, pdf, excel…) for administration panel</p>
+<span id="module-resource"></span><h2><span class="section-number">3.1.1.5. </span>Module RESOURCE<a class="headerlink" href="#module-pompe.resource" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Fonctions pour le téléchargement et téléversement des fichiers d’import-export (cvs, pdf, excel…) dans le panneau
+d’administration.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pompe.resource.BatimentResource">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pompe.resource.</span></span><span class="sig-name descname"><span class="pre">BatimentResource</span></span><a class="reference internal" href="_modules/pompe/resource.html#BatimentResource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.resource.BatimentResource" title="Lien permanent vers cette définition"></a></dt>
@@ -4152,36 +4196,96 @@ object the first time, the query is executed.</p>
 
 </section>
 <section id="module-pompe.urls">
-<span id="module-urls"></span><h2>Module URLS<a class="headerlink" href="#module-pompe.urls" title="Lien permanent vers cette rubrique"></a></h2>
+<span id="module-urls"></span><h2><span class="section-number">3.1.1.6. </span>Module URLS<a class="headerlink" href="#module-pompe.urls" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Routes (urls) du module pompe</p>
 </section>
 <section id="module-pompe.views">
-<span id="module-views"></span><h2>Module VIEWS<a class="headerlink" href="#module-pompe.views" title="Lien permanent vers cette rubrique"></a></h2>
-<p>View of Visiopompe project centralized in views.py</p>
+<span id="module-views"></span><h2><span class="section-number">3.1.1.7. </span>Module VIEWS<a class="headerlink" href="#module-pompe.views" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Les vues de l’applications centralisée dans le fichier views.py</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.add_doc">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">add_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#add_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.add_doc" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’ajout d’une documentation technique des pompes en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des documentations mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>doc.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.add_huile">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">add_huile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#add_huile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.add_huile" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de création d’un lot d’huile en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>huile.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.add_kit">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">add_kit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#add_kit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.add_kit" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de création d’un kit de maintenance en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des kits mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>kit.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.add_pdetache">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">add_pdetache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#add_pdetache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.add_pdetache" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de création d’une pièce détachée en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>piece.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.add_stockpompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">add_stockpompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#add_stockpompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.add_stockpompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’ajout d’un stock de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.dashboard">
@@ -4205,12 +4309,42 @@ de technologie de vide.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_batiment">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_batiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_batiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_batiment" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un bâtiment (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du bâtiment à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieu mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_doc">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_doc" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une documentation technique des pompes en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la documentation à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des documentations mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>doc.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_equipe">
@@ -4235,67 +4369,259 @@ de technologie de vide.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_etage">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_etage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_etage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_etage" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un étage (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’un étage” à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieu mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_fabriquant">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_fabriquant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_fabriquant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_fabriquant" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un fabriquant en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du fabriquant à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page fabriquant mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fabriquant.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_fichepompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_fichepompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_fichepompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_fichepompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une fiche modèle de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’une fiche à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des modèles de pompes mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fiche_pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_huile">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_huile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_huile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_huile" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un lot d’huile en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du lot à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>huile.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_inventaire">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_inventaire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_inventaire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_inventaire" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un numéro d’inventaire en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du numéro à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page inventaire mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>inventaire.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_kit">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_kit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_kit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_kit" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un kit de maintenance en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du kit à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des kits mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>kit.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_pdetache">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_pdetache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_pdetache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_pdetache" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une pièce détachée en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la pièce détachée à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>piece.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_piece">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_piece" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une salle ou pièce (lieux) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la salle ou pièce à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieux mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_site">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_site</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_site"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_site" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un site (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du site à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieu mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_stockpompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_stockpompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_stockpompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_stockpompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’un stock de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du stock de pompe à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_techno">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_techno</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_techno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_techno" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une technologie de vide en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’une technologie” à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des modèles de pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fiche_pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.delete_tutelle">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">delete_tutelle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#delete_tutelle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.delete_tutelle" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de suppression d’une tutelle budgétaire en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la tutelle à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page inventaire mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>inventaire.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.doc">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.doc" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des documentations technique des pompes en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des documentations.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>doc.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.equipe">
@@ -4307,7 +4633,22 @@ de technologie de vide.</p>
 <dd class="field-odd"><p>la page d’affichage des équipes enregistrées et le formulaire vide.</p>
 </dd>
 <dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
-<dd class="field-even"><p>equipe/html</p>
+<dd class="field-even"><p>equipe.html</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pompe.views.export_data_inventaire">
+<span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">export_data_inventaire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#export_data_inventaire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.export_data_inventaire" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Fonction d’exportation des numéros d’inventaires des pompes.
+:param request: la requête d’exportation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>le fichier excel contenant les numéros exportés</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>inventaire_numero_pompe</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4315,30 +4656,86 @@ de technologie de vide.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.fabriquant">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">fabriquant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#fabriquant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.fabriquant" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des fabriquants et du formulaire de soumission de création d’un nouveau fabriquant
+:param request: l’élément soumis pour l’execution du formulaire de création d’un fabriquant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>la page d’affichage des fabriquants enregistres et le formulaire vide.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>fabriquant.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.fichepompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">fichepompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#fichepompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.fichepompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des fiches de pompes et technologie du vide”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des modèles de pompes et technologie.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fiche_pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.historique">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">historique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#historique"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.historique" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage de l” historique d’un stock de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du stock de pompe.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.huile">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">huile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#huile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.huile" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des lots d’huiles en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du lot à supprimer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>huile.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.index">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.index" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Fonction d’affichage de la page d’accueil du site.
 :param request: l’objet POST reçu en paramètre pour afficher la page dédiée.</p>
-<dl class="simple">
-<dt>Returns</dt><dd><p>index.html : la page renvoyée après traitement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>la page d’acceuil retournée.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>index.html</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4346,37 +4743,127 @@ de technologie de vide.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.inventaire">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">inventaire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#inventaire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.inventaire" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des tutelles budgétaire et numéros d’iventaire de stock de pompe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page inventaire à afficher.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>inventaire.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.kit">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">kit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#kit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.kit" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des kits de maintenance en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des kits.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>kit.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.pdetache">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">pdetache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#pdetache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.pdetache" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des pièces détachées.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>piece.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.piece">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.piece" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage et de création, d’une salle ou pièce (lieux), étages, bâtiment et site en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieux mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.pompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">pompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#pompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.pompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction d’affichage des stocks de pompes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – l’objet soumis en requête POST</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page pompe.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_batiment">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_batiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_batiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_batiment" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un bâtiment (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du bâtiment à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieux mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_doc">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_doc" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’une documentation technique des pompes en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la documentation à mettre à jour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des documentations mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>doc.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_equipe">
@@ -4402,62 +4889,222 @@ soumission avec les erreurs.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_etage">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_etage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_etage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_etage" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un étage (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’un étage” à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieux mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_fabriquant">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_fabriquant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_fabriquant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_fabriquant" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un fabriquant existant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête post</p></li>
+<li><p><strong>pk</strong> – l’identifiant du fabriquant en base de données</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des fabriquants avec les informations de mise à jour sinon la page du formulaire de
+soumission avec les erreurs.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fabriquant.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_fichepompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_fichepompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_fichepompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_fichepompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’une fiche modèle de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’une fiche à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des modèles de pompes mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fiche_pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_huile">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_huile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_huile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_huile" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un lot d’huile en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du lot à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>huile.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_inventaire">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_inventaire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_inventaire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_inventaire" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un numéro d’inventaire en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du numéro à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page inventaire mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>inventaire.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_kit">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_kit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_kit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_kit" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un kit de maintenance en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du kit à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des kits mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>kit.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_pdetache">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_pdetache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_pdetache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_pdetache" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’une pièce détachée en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la pièce détachée à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>piece.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_piece">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_piece" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de modification d’une salle ou pièce (lieux) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant de la salle ou pièce à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieux mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_site">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_site</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_site"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_site" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de modification d’un site (lieu) en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du site à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page lieux mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lieux.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_stockpompe">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_stockpompe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_stockpompe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_stockpompe" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
+<dd><p>Fonction de mise à jour d’un stock de pompe en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant du stock de pompe à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pompe.html</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pompe.views.update_techno">
 <span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">update_techno</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#update_techno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.update_techno" title="Lien permanent vers cette définition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pompe.views.version">
-<span class="sig-prename descclassname"><span class="pre">pompe.views.</span></span><span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pompe/views.html#version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pompe.views.version" title="Lien permanent vers cette définition"></a></dt>
-<dd><p>Fonction qui permet l’affichage des versions actuelles de l’application.</p>
+<dd><p>Fonction de mise à jour d’une technologie de vide en base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – l’objet soumis en requête POST</p></li>
+<li><p><strong>pk</strong> – l’identifiant d’une technologie à modifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>la page des modèles de pompe mise à jour.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fiche_pompe.html</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -4467,8 +5114,8 @@ soumission avec les erreurs.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="modules.html" class="btn btn-neutral float-left" title="Documentation Technique" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="src.config.html" class="btn btn-neutral float-right" title="Paquet CONFIG" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="3. Documentation Technique" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="src.config.html" class="btn btn-neutral float-right" title="3.1.2. Paquet CONFIG" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

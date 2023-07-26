@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paquet CONFIG &mdash; Documentation Visiopompe v1.0</title>
+  <title>3.1.2. Paquet CONFIG &mdash; Documentation Visiopompe v1.1</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,14 +20,14 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="prev" title="Paquet POMPE" href="src.pompe.html" /> 
+    <link rel="prev" title="3.1.1. Paquet POMPE" href="src.pompe.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: white" >
+        <div class="wy-side-nav-search" >
 
           
           
@@ -43,14 +43,18 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Menu :</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Menu:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="users.html">Documentation Utilisateur</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Documentation Technique</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="src.pompe.html">Paquet POMPE</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Paquet CONFIG</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-config.settings">Module SETTING</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-config.urls">Module URLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutoriel.html">1. Tutoriel rapide Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">2. Documentation Utilisateur</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">3. Documentation Technique</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html#introduction">3.1. Introduction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="src.pompe.html">3.1.1. Paquet POMPE</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.1.2. Paquet CONFIG</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-config.settings">3.1.2.1. Module SETTING</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-config.urls">3.1.2.2. Module URLS</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -61,7 +65,7 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Visiopompe</a>
       </nav>
@@ -71,8 +75,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">Documentation Technique</a></li>
-      <li class="breadcrumb-item active">Paquet CONFIG</li>
+          <li class="breadcrumb-item"><a href="modules.html"><span class="section-number">3. </span>Documentation Technique</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.1.2. </span>Paquet CONFIG</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/src.config.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
@@ -83,14 +87,21 @@
            <div itemprop="articleBody">
              
   <section id="paquet-config">
-<h1>Paquet CONFIG<a class="headerlink" href="#paquet-config" title="Lien permanent vers cette rubrique"></a></h1>
+<h1><span class="section-number">3.1.2. </span>Paquet CONFIG<a class="headerlink" href="#paquet-config" title="Lien permanent vers cette rubrique"></a></h1>
 <p>« CONFIG » est le paquet qui permet la configuration des différents élements du framework Django.</p>
 <section id="module-config.settings">
-<span id="module-setting"></span><h2>Module SETTING<a class="headerlink" href="#module-config.settings" title="Lien permanent vers cette rubrique"></a></h2>
+<span id="module-setting"></span><h2><span class="section-number">3.1.2.1. </span>Module SETTING<a class="headerlink" href="#module-config.settings" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Django settings for config project. Using Django 3.2.6.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="config.settings.IMPORT_EXPORT_USE_TRANSACTIONS">
+<span class="sig-prename descclassname"><span class="pre">config.settings.</span></span><span class="sig-name descname"><span class="pre">IMPORT_EXPORT_USE_TRANSACTIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.settings.IMPORT_EXPORT_USE_TRANSACTIONS" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Configuration for import_export</p>
+</dd></dl>
+
 </section>
 <section id="module-config.urls">
-<span id="module-urls"></span><h2>Module URLS<a class="headerlink" href="#module-config.urls" title="Lien permanent vers cette rubrique"></a></h2>
+<span id="module-urls"></span><h2><span class="section-number">3.1.2.2. </span>Module URLS<a class="headerlink" href="#module-config.urls" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Roads of the application and framework.</p>
 </section>
 </section>
 
@@ -98,7 +109,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="src.pompe.html" class="btn btn-neutral float-left" title="Paquet POMPE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="src.pompe.html" class="btn btn-neutral float-left" title="3.1.1. Paquet POMPE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 
   <hr/>

@@ -1,12 +1,12 @@
 Documentation Utilisateur
 =========================
 
-Version : 1.0
+Version : 1.2
 
 Introduction
 ************
 
-l'application **Visiopompe** propose 6 panneaux de gestion pour gérer votre parcs de pompes à vide.
+L'application **Visiopompe** propose 6 panneaux de gestion pour gérer votre parcs de pompes à vide.
 
 Menu :
 
@@ -33,20 +33,30 @@ Les informations en consultation sont les suivantes :
 + La marque ou le fabriquant
 + L'état actuel de la pompe
     + 4 états sont disponibles : En activité - En panne - En réparation - En stock
-+ La localisation de la pompe qui par du bâtiment à son emplacement dans une pièce.
++ La localisation de la pompe qui part du bâtiment jusqu'à son emplacement dans une pièce.
     + L'emplacement dans la pièce est le seul à être optionnel.
 + La date de prochaine vidange avec 3 colorations possible :
 
     + **Vert** = date non atteinte,
     + **Orange** = Jour même,
     + **Rouge** = date dépassée.
+
 + La date de mise en service de la pompe ( Si respectée, elle est la même date que celle introduite dans l'application)
 + Numéro de série de la pompe
-+ Numéro d'inventaire : Ce numéro est à introduire depuis le menu de gestion des inventaires (cf : Pompes -> Inventaire Stocks)
++ Numéro d'inventaire : Ce numéro est à introduire depuis le menu de gestion des inventaires
+
+    cf : Pompes -> Inventaire Stocks
+
 + La phase du moteur : Monophasé ou Triphasé
 + La puissance : 50Hz ou 60Hz
-+ La technologie qu'utilise la pompe ( cf : Administration -> Modèle de pompe)
-+ L'huile utilisée pour la dernière vidange (cf : Menu Huile)
++ La technologie qu'utilise la pompe
+
+    cf : Administration -> Modèle de pompe
+
++ L'huile utilisée pour la dernière vidange
+
+    cf : Menu Huile
+
 + Le vide théorique donné par le fabriquant
 + Le vide réel mesuré par un utilisateur
 + L'historique d'action sur la pompe ( dernière action en date affichée).
@@ -65,30 +75,33 @@ Il y a également d'autres informations disponible.
 
 Ce formulaire permet la création d'un stock de pompe.
 
-Voici les informations obligatoires pour en créer : 
+Voici les informations obligatoires pour en créer un:
 
 + Modèle de pompe
 + Etage
 + Pièce
 + Numéro de série
 
-Par validation, la mise en service, la puissance, la technologie, la date de la prochaine vidange seront enregistrées et le statut "en activité" sera inclu.
+Après avoir valider le formulaire, la mise en service, la puissance, la technologie et le statut "en activité" sera inclu automatiquement.
 
- ``Il est à noter que **sans** *numéro d'inventaire* , *d'équipe* ou d'autres informations comme *l'historique*, amoindri le suivi et la gestion du stock créé dans le temps.``
-
+.. warning::
+    Il est à noter que sans **aucun numéro d'inventaire** ,
+    **sans équipe** renseignée ou d'autres informations comme **l'historique du stock**,
+    l'efficacité du suivi et la gestion du stock risque d'en pâtir.
 
 
 3. Inventaires Stocks :
 -----------------------
 
-Ce sous panneau permet la gestion des numéros d'inventaires pour les stocks de pompes.
+Ce sous-panneau permet la gestion des numéros d'inventaires pour les stocks de pompes.
 
 Deux formulaires sont présents : 
 
 + L'ajout d'une tutelle budgétaire
 + L'ajout d'un numéro d'inventoriat
 
-> L'ajout d'une tutelle est obligatoire avant de pouvoir créer un numéro.
+.. note::
+    L'ajout d'une tutelle est **obligatoire** avant de pouvoir créer un numéro.
 
 Il y a également un tableau de consultation des numéros créés triés par tutelle budgétaire.
 
@@ -98,6 +111,7 @@ Pour effectuer ces actions, différentes icônes sont présentes :
 
 + Icône *page avec crayon* : permet l'édition complète du numéro d'inventaire.
 + Icône *poubelle* : permet la suppression d'un numéro.
++ Icône *téléchargement* : permet le téléchargement des tous les numéros d'inventaires, les tutelles et la date de création du numéro.
 
 
 Menu Pièces détachées
@@ -122,8 +136,8 @@ Pour effectuer ces actions, différentes icônes sont présentes :
 
 Ce formulaire de création permet d'ajouter une nouvelle pièce détachées.
 
-> Seul le champ de saisie **informations complémentaires** n'est pas obligatoire.
-
+.. note::
+    Seul le champ de saisie **informations complémentaires** n'est pas obligatoire.
 
 
 Menu Kits maintenance
@@ -152,8 +166,7 @@ Voici les informations obligatoires pour un nouvel ajout :
 
 + Nom
 + Un fabriquant
-
-> Il est possible d'ajouter une référence *vide* d'un kit.
++ Une quantité
 
 
 Menu Huiles
@@ -183,8 +196,6 @@ Voici les informations obligatoires pour un nouvel ajout :
 + Nom
 + Un fabriquant
 + Une pièce
-
-> Il est possible d'ajouter une référence *vide* d'un stock d'huile.
 
 
 Menu Documentations
@@ -227,7 +238,8 @@ Dans ce sous-panneau, vous pouvez créer, éditer et consulter les modèles de p
 
 Egalement, vous pouvez effectuer la gestion des technologies du vide inhérente à ces modèles de pompes.
 
-> Pour créer un modèle de pompe, il faut obligatoirement un **technologie** associée !
+.. note::
+    Pour créer un modèle de pompe, il faut obligatoirement un **technologie** associée !
 
 La technologie de pompe ne demande que l'information suivante obligatoire : 
 
@@ -246,7 +258,8 @@ Pour un modèle de pompe, voici les informations obligatoires :
 
 Dans ce sous-panneau, vous pourrez créer et manager les fabriquants dont les stocks de pompes et accessoires sont relatés.
 
-> Il faut au moins un fabriquant pour créer un **Modèle de pompe**.
+.. note::
+    Il faut au moins un fabriquant pour créer un **Modèle de pompe**.
 
 L' information suivante est obligatoire pour la création d'un fabriquant : 
 
@@ -258,7 +271,8 @@ L' information suivante est obligatoire pour la création d'un fabriquant :
 
 Dans ce sous-panneau, vous pourrez créer et manager les équipes dont les stocks devront appartenir.
 
-> Il faut au moins une équipe pour créer un **stock de pompe**.
+.. note::
+    Il faut au moins une équipe pour créer un **stock de pompe**.
 
 Les informations suivantes sont obligatoires pour la création d'une équipe : 
 
@@ -267,8 +281,8 @@ Les informations suivantes sont obligatoires pour la création d'une équipe :
 + Localisation
 
 
-5.Lieux : 
----------
+5. Lieux :
+----------
 
 Dans ce sous-panneau, vous pourrez effectuer une gestion des lieux pour désigner l'emplacement de chaque stocks et accessoires au sein de l'application.
 
@@ -279,11 +293,9 @@ Les différentes possibilitées sont les suivantes :
 + Edition d'un lieu via l'icône *feuille et stylo*
 + Suppression d'un lieu via l'icône *poubelle*
 
-Cela concerne les niveaux suivant de lieux : 
+Les lieux sont structurés de la sorte, par ordre croissant :
 
-> Sites, 
-    |_____Bâtiments, 
-            |_______Etages, 
-                        |____Pièces.
+ Sites --> Bâtiments --> Etages --> Pièces.
 
-> Ces lieux sont obligatoires à établir avant de créer tous **stocks quelconques** comme une **équipe** !
+.. warning::
+    A minima, une pièce est obligatoire à créer avant de générer tous **stocks quelconques** tout comme une **équipe** !

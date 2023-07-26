@@ -12,18 +12,20 @@
 
 
 #V1.2 :
-- [ ] "inventaire" : ajouter un bouton export des numeros d'inventaire.
-- [ ] correction page equipe : version mobile et petit ecran.
-- [ ] corriger le JS du menu qui s'ouvre pas en mode mobile.
-- [ ] HUILES : ajouter un filtre de recherche par fabriquants
-- [ ] KITS : ajouter un filtre de recherche par fabriquants
-- [ ] DOcumentation : idem
-- [ ]Pièces détachés : par nom et fabriquants
-- [ ] PIECES détachés: empécher le stock vide
+- [x] "inventaire" : ajouter un bouton export des numeros d'inventaire.
+- [x] ajouter les messages d'actions > suppressions, modification, ajout
+- [x] ajouter les messages d'erreurs ou de warning
+- [x] HUILES : ajouter un filtre de recherche par fabriquants
+- [x] KITS : ajouter un filtre de recherche par fabriquants
+- [x] Documentation : ajouter un filtre de recherche
+- [x] Pièces détachées : par nom et fabriquants
+- [x] Pièces détachées: empécher le stock vide
+- [x] corriger orthographe pour huile kit etc.. pour les litres
 
 #V1.3 : 
-- [ ] ajouter les messages d'actions > suppressions, modification, ajout
-- [ ] ajouter les messages d'erreurs ou de warning
+
+- [ ] correction page equipe : version mobile et petit ecran.
+- [ ] corriger le JS du menu qui s'ouvre pas en mode mobile.
 
 
 #V2.0 :

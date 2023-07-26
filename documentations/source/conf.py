@@ -7,11 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
 import sys
-from pathlib import Path
-
 import django
 
-
+from pathlib import Path
 
 # django path directory
 # sys.path.insert(0, os.path.abspath("../src")) # path relatif
@@ -27,7 +25,7 @@ django.setup()
 project = 'Visiopompe'
 copyright = 'Nicolas RENARD, 2022'
 author = 'Nicolas RENARD'
-release = 'v1.0'
+release = 'v1.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -51,36 +49,8 @@ language = 'fr'
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
-html_theme_path = ["_themes", ]
+# html_theme_path = ["_themes", ]
 html_logo = "_static/logo_visiopompe.jpg"
-html_theme_options = {
-
-    'canonical_url': '',
-    'analytics_id': '',
-    'logo_only': False,
-    'display_version': True,
-    'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
-    'vcs_pageview_mode': '',
-    'style_nav_header_background': 'white',
-    # Toc options
-    'collapse_navigation': True,
-    'sticky_navigation': True,
-    'navigation_depth': 4,
-    'includehidden': True,
-    'titles_only': False
-}
-
-#rinoh pdf
-rinoh_documents = [
-    {
-    'doc': 'index',
-    'target': f'{project}',
-    'title': project,
-    'author': author,
-    },
-
-]
 
 # -- Options for autodoc ----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration

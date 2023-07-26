@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pompe.forms &mdash; Documentation Visiopompe v1.1</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Visiopompe
+              <img src="../../_static/logo_visiopompe.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Menu :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutoriel.html">Tutoriel rapide Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../users.html">Documentation Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Documentation Technique</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Visiopompe</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">pompe.forms</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de pompe.forms</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Forms of the project Visiopompe</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="c1"># stock pompes</span>
+<div class="viewcode-block" id="StockPompeform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.StockPompeform">[docs]</a><span class="k">class</span> <span class="nc">StockPompeform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un stock de pompe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un stock de pompe</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StockPompeform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.StockPompeform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">StockPompe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;pompe&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;mise_en_service&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;etage&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;vide_user&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;num_serie&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;inventaire&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;statut&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;atex&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NullBooleanSelect</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;huile&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;equipe&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;vidange&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;historique&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Textarea</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifStockPompeForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifStockPompeForm">[docs]</a><span class="k">class</span> <span class="nc">ModifStockPompeForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;un stock de pompe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifStockPompeForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifStockPompeForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">StockPompe</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mise_en_service&#39;</span><span class="p">]</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;pompe&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;etage&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;vide_user&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;num_serie&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;inventaire&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;statut&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;atex&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NullBooleanSelect</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;huile&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;equipe&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;vidange&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;historique&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Textarea</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="Inventaireform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Inventaireform">[docs]</a><span class="k">class</span> <span class="nc">Inventaireform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un numéro d&#39;inventaire.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un numéro d&#39;inventaire</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Inventaireform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Inventaireform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Inventaire</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;numero&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_inventaire&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifInventaireForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifInventaireForm">[docs]</a><span class="k">class</span> <span class="nc">ModifInventaireForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;un numéro d&#39;inventaire.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifInventaireForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifInventaireForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Inventaire</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;numero&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_inventaire&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="Tutelleform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Tutelleform">[docs]</a><span class="k">class</span> <span class="nc">Tutelleform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;une tutelle budgétaire.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer une tutelle budgétaire</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Tutelleform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Tutelleform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Tutelle</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifTutelleForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifTutelleForm">[docs]</a><span class="k">class</span> <span class="nc">ModifTutelleForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;une tutelle budgétaire.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifTutelleForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifTutelleForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Tutelle</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<span class="c1"># fiche pompes</span>
+<div class="viewcode-block" id="ModelPompeform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModelPompeform">[docs]</a><span class="k">class</span> <span class="nc">ModelPompeform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un modèle de pompe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un modèle</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModelPompeform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModelPompeform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ModelePompe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;modele&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;phasage&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;puissance&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;technologie&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;vide_theo&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;documentation&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifModelPompeForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifModelPompeForm">[docs]</a><span class="k">class</span> <span class="nc">ModifModelPompeForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un modèle de pompe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifModelPompeForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifModelPompeForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ModelePompe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;modele&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;phasage&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;puissance&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;technologie&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;vide_theo&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;documentation&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="Technologieform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Technologieform">[docs]</a><span class="k">class</span> <span class="nc">Technologieform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;une technologie du vide.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer une technologie</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Technologieform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Technologieform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">TechnologiePompe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifTechnoForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifTechnoForm">[docs]</a><span class="k">class</span> <span class="nc">ModifTechnoForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;une technologie du vide.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifTechnoForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifTechnoForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">TechnologiePompe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<span class="c1"># documentations</span>
+<div class="viewcode-block" id="Docform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Docform">[docs]</a><span class="k">class</span> <span class="nc">Docform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;une documentation technique.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer une documentation</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Docform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Docform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;manuel&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifDocForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifDocForm">[docs]</a><span class="k">class</span> <span class="nc">ModifDocForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;une documentation technique.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifDocForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifDocForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;manuel&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<span class="c1"># pieces detachées</span>
+<div class="viewcode-block" id="PiecePompeform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.PiecePompeform">[docs]</a><span class="k">class</span> <span class="nc">PiecePompeform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;une pièce détaché.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer une pièce détachée</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PiecePompeform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.PiecePompeform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">PiecesPompe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_maj&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;quantite&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;information&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifPiecePompeForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifPiecePompeForm">[docs]</a><span class="k">class</span> <span class="nc">ModifPiecePompeForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;une documentation technique.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifPiecePompeForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifPiecePompeForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">PiecesPompe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_maj&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;quantite&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;information&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<span class="c1"># kit de maintenance</span>
+<div class="viewcode-block" id="Kitform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Kitform">[docs]</a><span class="k">class</span> <span class="nc">Kitform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un kit de maintenance de pompe à vide.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un kit de maintenance</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Kitform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Kitform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Kit</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_maj&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ref_fab&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;revendeur&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ref_rev&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;quantite&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;information&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifKitForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifKitForm">[docs]</a><span class="k">class</span> <span class="nc">ModifKitForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;un kit de maintenance de pompe à vide.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifKitForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifKitForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Kit</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_maj&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ref_fab&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;revendeur&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ref_rev&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;quantite&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;information&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<span class="c1"># huile</span>
+<div class="viewcode-block" id="Huileform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Huileform">[docs]</a><span class="k">class</span> <span class="nc">Huileform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un lot d&#39;huile.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un lot d&#39;huile</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Huileform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Huileform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Huile</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ref_fab&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;quantite&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_maj&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;information&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifHuileForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifHuileForm">[docs]</a><span class="k">class</span> <span class="nc">ModifHuileForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire de lot d&#39;huile.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifHuileForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifHuileForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Huile</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;fabriquant&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ref_fab&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;piece&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;quantite&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date_maj&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;information&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="Equipeform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Equipeform">[docs]</a><span class="k">class</span> <span class="nc">Equipeform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;une équipe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer une équipe</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Equipeform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Equipeform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ModelEquipe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;sigle&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom_responsable&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;email_responsable&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;localisation&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifEquipeForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifEquipeForm">[docs]</a><span class="k">class</span> <span class="nc">ModifEquipeForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;une équipe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">          Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifEquipeForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifEquipeForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ModelEquipe</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;sigle&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;nom_responsable&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;email_responsable&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;localisation&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<span class="c1">## Fabriquant</span>
+<div class="viewcode-block" id="Fabriquantform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Fabriquantform">[docs]</a><span class="k">class</span> <span class="nc">Fabriquantform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un fabriquant.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un fabriquant</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Fabriquantform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Fabriquantform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Fabriquant</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;logo_max&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;logo_mini&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;adresse&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;code_postal&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ville&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifFabriquantForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifFabriquantForm">[docs]</a><span class="k">class</span> <span class="nc">ModifFabriquantForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;un fabriquant.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">            Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifFabriquantForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifFabriquantForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Fabriquant</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;logo_max&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;logo_mini&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ClearableFileInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;adresse&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;code_postal&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;ville&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<span class="c1">## Lieux</span>
+
+<div class="viewcode-block" id="Siteform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Siteform">[docs]</a><span class="k">class</span> <span class="nc">Siteform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un site.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un site</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Siteform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Siteform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Site</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifSiteForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifSiteForm">[docs]</a><span class="k">class</span> <span class="nc">ModifSiteForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;un site.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">     Returns:</span>
+<span class="sd">            Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifSiteForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifSiteForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Site</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="Batimentform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Batimentform">[docs]</a><span class="k">class</span> <span class="nc">Batimentform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un bâtiment sur un site.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un bâtiment</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Batimentform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Batimentform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Batiment</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;site&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifBatimentForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifBatimentForm">[docs]</a><span class="k">class</span> <span class="nc">ModifBatimentForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;un bâtiment.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">     Returns:</span>
+<span class="sd">            Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifBatimentForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifBatimentForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Batiment</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;site&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="Etageform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Etageform">[docs]</a><span class="k">class</span> <span class="nc">Etageform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;un étage dans un bâtiment.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer un étage</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Etageform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Etageform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Etage</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;batiment&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifEtageForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifEtageForm">[docs]</a><span class="k">class</span> <span class="nc">ModifEtageForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;un étage.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">     Returns:</span>
+<span class="sd">            Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifEtageForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifEtageForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Etage</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;batiment&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="Pieceform"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Pieceform">[docs]</a><span class="k">class</span> <span class="nc">Pieceform</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formulaire de création d&#39;une pièce ou salle.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Le formulaire généré pour créer une pièce</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Pieceform.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.Pieceform.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Piece</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;etage&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="ModifPieceForm"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifPieceForm">[docs]</a><span class="k">class</span> <span class="nc">ModifPieceForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe de modification d&#39;un formulaire d&#39;une pièce ou salle.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ModelForm : l&#39;attribut basé sur Form de Django</span>
+
+<span class="sd">     Returns:</span>
+<span class="sd">            Le formulaire avec les informations pré-remplies</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModifPieceForm.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.forms.ModifPieceForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Piece</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+            <span class="s1">&#39;etage&#39;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;w3-input w3-round w3-border&#39;</span><span class="p">}),</span>
+
+        <span class="p">}</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Nicolas RENARD, 2022.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -9,7 +9,7 @@ Module SETTING
 
 .. automodule:: config.settings
    :members:
-   :inherited-members:
+   :undoc-members:
    :show-inheritance:
 
 Module URLS
@@ -19,4 +19,3 @@ Module URLS
    :members:
    :undoc-members:
    :show-inheritance:
-

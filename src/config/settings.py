@@ -1,6 +1,5 @@
 """
 Django settings for config project. Using Django 3.2.6.
-
 """
 import os
 from pathlib import Path
@@ -80,10 +79,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
         #'ENGINE': 'django.db.backends.mysql',
         #'NAME': 'visiopompe',
-        #'USER': 'admin',
-        #'PASSWORD': 'ItsH@rdtob3th3adm1n!',
+        #'USER': 'user',
+        #'PASSWORD': 'mdp',
         #'HOST': 'localhost',
-        #'PORT': '','''
+        #'PORT': 'port'
     }
 }
 
@@ -138,7 +137,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configuration for import_export
+#: Configuration for import_export
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 IMPORT_EXPORT_SKIP_ADMIN_LOG = False
 IMPORT_EXPORT_IMPORT_PERMISSION_CODE = None

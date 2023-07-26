@@ -7,9 +7,45 @@
     <div class="w3-container w3-dark-grey">
         <h2>Kits de Maintenance</h2>
     </div>
+     <section class="w3-mobile w3-padding-24" style="margin-left:20px; margin-right:20px">
+        <!--formulaire de filtrage-->
+
+        <form class="d-flex">
+            <div class="w3-container">
+               <label for="recherche" class="form-label">Filtrer par Marque, revendeur ou nom </label>
+                 <i class="fa fa-search"></i>
+                <input class="w3-input w3-border w3-padding " type="search" id="recherche" onkeyup="filtreKit()"
+                       placeholder='Rechercher...' />
+            </div>
+        </form>
+
+    </section>
+     <div class="w3-container">
+        {% if msg_erreur %}
+        <div class=" w3-panel w3-red w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_erreur }}
+        </div>
+        {% endif %}
+        {% if msg_warning %}
+        <div class="w3-panel w3-yellow w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_warning }}
+        </div>
+        {% endif %}
+        {% if msg_succes %}
+        <div class="w3-panel w3-green w3-round w3-display-container" >
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            <p>{{ msg_succes }}</p>
+        </div>
+        {% endif %}
+    </div>
     {% for kit in kits %}
     <section class="w3-container w3-padding-16 w3-mobile">
-        <div class="w3-cell-row w3-border">
+        <div class="w3-cell-row w3-border filtre">
             <div class="w3-col m3">
                 {% if kit.image %}
                 <img src="{{kit.image.url}}" class="w3-leftbar" alt="{{kit.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:70%; "/>
@@ -18,14 +54,15 @@
                  {% endif %}
             </div>
             <div class="w3-col m5">
-                <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{kit.nom}} - <strong>MARQUE</strong> : {{kit.fabriquant.nom}}</p>
+                <p class="w3-leftbar nom" style="font-size: 20px; "><strong>NOM</strong> : {{kit.nom}} - <strong>MARQUE</strong> : {{kit.fabriquant.nom}}</p>
                 <p style="font-size: 14px;">Référence fabriquant : {% if kit.ref_fab %}<i>{{kit.ref_fab}}</i>{% endif %}</p>
-                <p style="font-size: 14px;">Revendeur :{% if kit.revendeur %} <i>{{kit.revendeur}}</i>{% endif %} <strong>||</strong> Référence revendeur : {% if kit.ref_rev %}<i>{{kit.ref_rev}}</i>{% endif %}</p>
+                <p  style="font-size: 14px;" >Revendeur :{% if kit.revendeur %} <i>{{kit.revendeur}}</i>{% endif %} </p>
+                <p  style="font-size: 14px;">  <strong>||</strong> Référence revendeur : {% if kit.ref_rev %}<i>{{kit.ref_rev}}</i>{% endif %}</p>
                 <p style="font-size: 14px;">Informations du kit : <i>{{kit.information}}</i></p>
             </div>
             <div class="w3-col m3" >
                 <p class=" w3-leftbar">&nbsp;<img src="{% static 'pompe/img/menu_pompe/icon_quantite.png' %}" alt="quantite" style="width: 15%"/>
-                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.quantite }}</strong></i></p>
+                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.quantite }}</strong></i> stock(s)</p>
                 <br>
                 <p class=" w3-leftbar">&nbsp;<img src="{% static 'pompe/img/menu_pompe/icon_localisation.png' %}" alt="geolocalisation" style="width: 15%"/>
                    {% if kit.piece.etage.batiment %} <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{kit.piece.etage.batiment.nom}}</strong>{% endif %}</i>
@@ -60,4 +97,8 @@
 
     </section>
 </div>
+{% endblock %}
+
+{% block js_script %}
+<script src="{% static 'pompe/js/filtres.js' %}"></script>
 {% endblock %}

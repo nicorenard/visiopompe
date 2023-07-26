@@ -9,11 +9,13 @@ from .models import *
 class StockPompeform(forms.ModelForm):
     """
     Formulaire de création d'un stock de pompe.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un stock de pompe
+
     """
 
     class Meta:
@@ -41,11 +43,13 @@ class StockPompeform(forms.ModelForm):
 class ModifStockPompeForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'un stock de pompe.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -72,11 +76,13 @@ class ModifStockPompeForm(forms.ModelForm):
 class Inventaireform(forms.ModelForm):
     """
     Formulaire de création d'un numéro d'inventaire.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un numéro d'inventaire
+
     """
 
     class Meta:
@@ -92,11 +98,13 @@ class Inventaireform(forms.ModelForm):
 class ModifInventaireForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'un numéro d'inventaire.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -112,11 +120,13 @@ class ModifInventaireForm(forms.ModelForm):
 class Tutelleform(forms.ModelForm):
     """
     Formulaire de création d'une tutelle budgétaire.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer une tutelle budgétaire
+
     """
 
     class Meta:
@@ -130,11 +140,13 @@ class Tutelleform(forms.ModelForm):
 class ModifTutelleForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'une tutelle budgétaire.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -149,11 +161,13 @@ class ModifTutelleForm(forms.ModelForm):
 class ModelPompeform(forms.ModelForm):
     """
     Formulaire de création d'un modèle de pompe.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un modèle
+
     """
 
     class Meta:
@@ -175,11 +189,13 @@ class ModelPompeform(forms.ModelForm):
 class ModifModelPompeForm(forms.ModelForm):
     """
     Classe de modification d'un modèle de pompe.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -201,11 +217,13 @@ class ModifModelPompeForm(forms.ModelForm):
 class Technologieform(forms.ModelForm):
     """
     Formulaire de création d'une technologie du vide.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer une technologie
+
     """
 
     class Meta:
@@ -220,11 +238,13 @@ class Technologieform(forms.ModelForm):
 class ModifTechnoForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'une technologie du vide.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -240,11 +260,13 @@ class ModifTechnoForm(forms.ModelForm):
 class Docform(forms.ModelForm):
     """
     Formulaire de création d'une documentation technique.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer une documentation
+
     """
 
     class Meta:
@@ -261,11 +283,13 @@ class Docform(forms.ModelForm):
 class ModifDocForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'une documentation technique.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
           Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -282,13 +306,15 @@ class ModifDocForm(forms.ModelForm):
 # pieces detachées
 class PiecePompeform(forms.ModelForm):
     """
-       Formulaire de création d'une pièce détaché.
-       Args:
-           ModelForm : l'attribut basé sur Form de Django
+    Formulaire de création d'une pièce détaché.
 
-       Returns:
-           Le formulaire généré pour créer une pièce détachée
-       """
+    Args:
+        ModelForm : l'attribut basé sur Form de Django
+
+    Returns:
+        Le formulaire généré pour créer une pièce détachée
+
+    """
 
     class Meta:
         model = PiecesPompe
@@ -307,11 +333,13 @@ class PiecePompeform(forms.ModelForm):
 class ModifPiecePompeForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'une documentation technique.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
           Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -332,11 +360,13 @@ class ModifPiecePompeForm(forms.ModelForm):
 class Kitform(forms.ModelForm):
     """
     Formulaire de création d'un kit de maintenance de pompe à vide.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un kit de maintenance
+
     """
 
     class Meta:
@@ -359,11 +389,13 @@ class Kitform(forms.ModelForm):
 class ModifKitForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'un kit de maintenance de pompe à vide.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
           Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -387,11 +419,13 @@ class ModifKitForm(forms.ModelForm):
 class Huileform(forms.ModelForm):
     """
     Formulaire de création d'un lot d'huile.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un lot d'huile
+
     """
 
     class Meta:
@@ -412,11 +446,13 @@ class Huileform(forms.ModelForm):
 class ModifHuileForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire de lot d'huile.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
           Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -437,11 +473,13 @@ class ModifHuileForm(forms.ModelForm):
 class Equipeform(forms.ModelForm):
     """
     Formulaire de création d'une équipe.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer une équipe
+
     """
 
     class Meta:
@@ -460,11 +498,13 @@ class Equipeform(forms.ModelForm):
 class ModifEquipeForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'une équipe.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
           Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -484,11 +524,13 @@ class ModifEquipeForm(forms.ModelForm):
 class Fabriquantform(forms.ModelForm):
     """
     Formulaire de création d'un fabriquant.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un fabriquant
+
     """
 
     class Meta:
@@ -507,11 +549,13 @@ class Fabriquantform(forms.ModelForm):
 class ModifFabriquantForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'un fabriquant.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
             Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -532,11 +576,13 @@ class ModifFabriquantForm(forms.ModelForm):
 class Siteform(forms.ModelForm):
     """
     Formulaire de création d'un site.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un site
+
     """
 
     class Meta:
@@ -550,11 +596,13 @@ class Siteform(forms.ModelForm):
 class ModifSiteForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'un site.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
      Returns:
             Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -568,11 +616,13 @@ class ModifSiteForm(forms.ModelForm):
 class Batimentform(forms.ModelForm):
     """
     Formulaire de création d'un bâtiment sur un site.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un bâtiment
+
     """
 
     class Meta:
@@ -588,11 +638,13 @@ class Batimentform(forms.ModelForm):
 class ModifBatimentForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'un bâtiment.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
      Returns:
             Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -608,11 +660,13 @@ class ModifBatimentForm(forms.ModelForm):
 class Etageform(forms.ModelForm):
     """
     Formulaire de création d'un étage dans un bâtiment.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer un étage
+
     """
 
     class Meta:
@@ -628,11 +682,13 @@ class Etageform(forms.ModelForm):
 class ModifEtageForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'un étage.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
      Returns:
             Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:
@@ -648,11 +704,13 @@ class ModifEtageForm(forms.ModelForm):
 class Pieceform(forms.ModelForm):
     """
     Formulaire de création d'une pièce ou salle.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
     Returns:
         Le formulaire généré pour créer une pièce
+
     """
 
     class Meta:
@@ -668,11 +726,13 @@ class Pieceform(forms.ModelForm):
 class ModifPieceForm(forms.ModelForm):
     """
     Classe de modification d'un formulaire d'une pièce ou salle.
+
     Args:
         ModelForm : l'attribut basé sur Form de Django
 
      Returns:
             Le formulaire avec les informations pré-remplies
+
     """
 
     class Meta:

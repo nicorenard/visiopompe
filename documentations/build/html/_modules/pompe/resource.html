@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pompe.resource &mdash; Documentation Visiopompe v1.1</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Visiopompe
+              <img src="../../_static/logo_visiopompe.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Menu :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutoriel.html">Tutoriel rapide Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../users.html">Documentation Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Documentation Technique</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Visiopompe</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">pompe.resource</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de pompe.resource</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Fonctions pour le téléchargement et téléversement des fichiers d&#39;import-export (cvs, pdf, excel...) dans le panneau</span>
+<span class="sd">d&#39;administration.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">import_export</span> <span class="kn">import</span> <span class="n">resources</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="c1">#: ModelePompeRessourse</span>
+<div class="viewcode-block" id="ModelePompeRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.ModelePompeRessource">[docs]</a><span class="k">class</span> <span class="nc">ModelePompeRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="ModelePompeRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.ModelePompeRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ModelePompe</span></div></div>
+
+
+<div class="viewcode-block" id="StockPompeRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.StockPompeRessource">[docs]</a><span class="k">class</span> <span class="nc">StockPompeRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="StockPompeRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.StockPompeRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">StockPompe</span></div></div>
+
+
+<div class="viewcode-block" id="FabriquantRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.FabriquantRessource">[docs]</a><span class="k">class</span> <span class="nc">FabriquantRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="FabriquantRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.FabriquantRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Fabriquant</span></div></div>
+
+
+<div class="viewcode-block" id="TechnologieRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.TechnologieRessource">[docs]</a><span class="k">class</span> <span class="nc">TechnologieRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="TechnologieRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.TechnologieRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">TechnologiePompe</span></div></div>
+
+
+<div class="viewcode-block" id="HistoriqueRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.HistoriqueRessource">[docs]</a><span class="k">class</span> <span class="nc">HistoriqueRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="HistoriqueRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.HistoriqueRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">StockHistory</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span></div></div>
+
+
+<span class="c1">##Accessoire pompes</span>
+<div class="viewcode-block" id="HuileRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.HuileRessource">[docs]</a><span class="k">class</span> <span class="nc">HuileRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="HuileRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.HuileRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Huile</span></div></div>
+
+
+<div class="viewcode-block" id="PiecePompeRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.PiecePompeRessource">[docs]</a><span class="k">class</span> <span class="nc">PiecePompeRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="PiecePompeRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.PiecePompeRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">PiecesPompe</span></div></div>
+
+
+<div class="viewcode-block" id="KitRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.KitRessource">[docs]</a><span class="k">class</span> <span class="nc">KitRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="KitRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.KitRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Kit</span></div></div>
+
+
+<div class="viewcode-block" id="DocRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.DocRessource">[docs]</a><span class="k">class</span> <span class="nc">DocRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="DocRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.DocRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Document</span></div></div>
+
+
+<div class="viewcode-block" id="EquipeResource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.EquipeResource">[docs]</a><span class="k">class</span> <span class="nc">EquipeResource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="EquipeResource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.EquipeResource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">ModelEquipe</span></div></div>
+
+
+<span class="c1">## Lieux</span>
+<div class="viewcode-block" id="SiteResource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.SiteResource">[docs]</a><span class="k">class</span> <span class="nc">SiteResource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="SiteResource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.SiteResource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Site</span></div></div>
+
+
+<div class="viewcode-block" id="BatimentResource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.BatimentResource">[docs]</a><span class="k">class</span> <span class="nc">BatimentResource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="BatimentResource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.BatimentResource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Batiment</span></div></div>
+
+
+<div class="viewcode-block" id="EtageResource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.EtageResource">[docs]</a><span class="k">class</span> <span class="nc">EtageResource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="EtageResource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.EtageResource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Etage</span></div></div>
+
+
+<div class="viewcode-block" id="PieceResource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.PieceResource">[docs]</a><span class="k">class</span> <span class="nc">PieceResource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="PieceResource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.PieceResource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Piece</span></div></div>
+
+
+<div class="viewcode-block" id="TutelleRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.TutelleRessource">[docs]</a><span class="k">class</span> <span class="nc">TutelleRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="TutelleRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.TutelleRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Tutelle</span></div></div>
+
+
+<div class="viewcode-block" id="InventaireRessource"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.InventaireRessource">[docs]</a><span class="k">class</span> <span class="nc">InventaireRessource</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">ModelResource</span><span class="p">):</span>
+<div class="viewcode-block" id="InventaireRessource.Meta"><a class="viewcode-back" href="../../src.pompe.html#pompe.resource.InventaireRessource.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Inventaire</span></div></div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Nicolas RENARD, 2022.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

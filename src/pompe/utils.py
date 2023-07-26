@@ -134,6 +134,17 @@ image_types = {
 
 
 def image_resize(image, width, height):
+    """
+    Fonction pour retailler les images importé dans le serveur.
+
+    Args:
+        image : le nom du fichier image téléversé
+        width: la longueur du fichier image
+        height: la hauteur du fichier image
+
+    Returns:
+          l'image retaillée avant sauvegarde
+    """
     # Open the image using Pillow
     img = Image.open(image)
     # verification de la taille

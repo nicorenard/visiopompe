@@ -31,6 +31,7 @@ urlpatterns = [
     path('inventaire/', views.inventaire, name="inventaire"),
     path('inventaire_edit/<int:pk>/', views.update_inventaire, name="inventaire_edit"),
     path('inventaire_delete/<int:pk>/', views.delete_inventaire, name="inventaire_delete"),
+    path('inventaire/export/', views.export_data_inventaire, name="inventaire_export"),
     path('tutelle_delete/<int:pk>/', views.delete_tutelle, name="tutelle_delete"),
     path('pdetache_add/', views.add_pdetache, name="add_pdetache"),
     path('pdetache_edit/<int:pk>/', views.update_pdetache, name="pdetache_edit"),
@@ -56,5 +57,6 @@ urlpatterns = [
     path('dashboard/etage_delete/<int:pk>/', views.delete_etage, name="etage_delete"),
     path('dashboard/piece_edit/<int:pk>/', views.update_piece, name="piece_edit"),
     path('dashboard/piece_delete/<int:pk>/', views.delete_piece, name="piece_delete"),
+
 
 ]

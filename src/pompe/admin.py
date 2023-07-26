@@ -1,5 +1,5 @@
 """
-Admin administration panel's functions
+Classes pour la gestion du panneau d'administration de l'application
 """
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin

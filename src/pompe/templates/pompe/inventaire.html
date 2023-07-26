@@ -7,6 +7,29 @@
     <div class="w3-container w3-dark-grey">
         <h2> Gestions des Inventaires de stocks de pompes</h2>
     </div>
+    <div class="w3-container">
+        {% if msg_erreur %}
+        <div class=" w3-panel w3-red w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_erreur }}
+        </div>
+        {% endif %}
+        {% if msg_warning %}
+        <div class="w3-panel w3-yellow w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_warning }}
+        </div>
+        {% endif %}
+        {% if msg_succes %}
+        <div class="w3-panel w3-green w3-round w3-display-container" >
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            <p>{{ msg_succes }}</p>
+        </div>
+        {% endif %}
+    </div>
     <section class="w3-mobile w3-padding-24">
         <div class="w3-row-padding">
             <div class="w3-col m6 s6 " style="width:50%;">
@@ -49,19 +72,22 @@
             </div>
         </div>
     </section>
-    <section class="w3-mobile w3-padding-small">
+    <section class="w3-mobile">
         <div class="w3-row-padding">
             <div class="w3-col m6 s6">
-                <table class="w3-table w3-striped">
-
-                    <tr class="w3-green w3-text-black w3-container">
+                <table class="w3-table w3-striped w3-card">
+                    <tr class="w3-green w3-text-black">
                         <th>Tutelle</th>
                         <th>Numéro d'inventaire</th>
                         <th>Date de création</th>
                         <th>Actions</th>
+
                     </tr>
+                    <tr class ="w3-grey">
+                        <td colspan="4"><a href="{% url 'pompe:inventaire_export' %}" class="w3-right"><i class="fa fa-download  w3-xlarge"></i></a></td>
+                    </tr>
+                     {% for inventaire in inventaires %}
                     <tr>
-                        {% for inventaire in inventaires %}
                         <td>{{inventaire.tutelle.nom}}</td>
                         <td>{{inventaire.numero}}</td>
                         <td>{{inventaire.date_inventaire}}</td>

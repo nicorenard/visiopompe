@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Documentation Visiopompe v1.0</title>
+  <title>Index &mdash; Documentation Visiopompe v1.1</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: white" >
+        <div class="wy-side-nav-search" >
 
           
           
@@ -41,17 +41,18 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Menu :</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Menu:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="users.html">Documentation Utilisateur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Documentation Technique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutoriel.html">1. Tutoriel rapide Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">2. Documentation Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">3. Documentation Technique</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Visiopompe</a>
       </nav>
@@ -209,8 +210,6 @@
 </li>
       <li><a href="src.pompe.html#pompe.resource.BatimentResource.Meta">BatimentResource.Meta (classe dans pompe.resource)</a>
 </li>
-      <li><a href="src.pompe.html#pompe.models.VersionApp.bug">bug (attribut pompe.models.VersionApp)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -257,8 +256,6 @@
         <li><a href="src.pompe.html#pompe.models.PiecesPompe.date_maj">(attribut pompe.models.PiecesPompe)</a>
 </li>
       </ul></li>
-      <li><a href="src.pompe.html#pompe.models.VersionApp.date_version">date_version (attribut pompe.models.VersionApp)</a>
-</li>
       <li><a href="src.pompe.html#pompe.forms.Batimentform.declared_fields">declared_fields (attribut pompe.forms.Batimentform)</a>
 
       <ul>
@@ -435,6 +432,8 @@
         <li><a href="src.pompe.html#pompe.resource.HistoriqueRessource.Meta.exclude">(attribut pompe.resource.HistoriqueRessource.Meta)</a>
 </li>
       </ul></li>
+      <li><a href="src.pompe.html#pompe.views.export_data_inventaire">export_data_inventaire() (dans le module pompe.views)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -591,8 +590,6 @@
 </li>
       <li><a href="src.pompe.html#pompe.models.Inventaire.get_next_by_date_inventaire">get_next_by_date_inventaire() (méthode pompe.models.Inventaire)</a>
 </li>
-      <li><a href="src.pompe.html#pompe.models.VersionApp.get_next_by_date_version">get_next_by_date_version() (méthode pompe.models.VersionApp)</a>
-</li>
       <li><a href="src.pompe.html#pompe.models.StockPompe.get_next_by_mise_en_service">get_next_by_mise_en_service() (méthode pompe.models.StockPompe)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.ModelePompe.get_phasage_display">get_phasage_display() (méthode pompe.models.ModelePompe)</a>
@@ -604,8 +601,6 @@
       <li><a href="src.pompe.html#pompe.models.StockHistory.get_previous_by_date_historique">get_previous_by_date_historique() (méthode pompe.models.StockHistory)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.Inventaire.get_previous_by_date_inventaire">get_previous_by_date_inventaire() (méthode pompe.models.Inventaire)</a>
-</li>
-      <li><a href="src.pompe.html#pompe.models.VersionApp.get_previous_by_date_version">get_previous_by_date_version() (méthode pompe.models.VersionApp)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.StockPompe.get_previous_by_mise_en_service">get_previous_by_mise_en_service() (méthode pompe.models.StockPompe)</a>
 </li>
@@ -713,6 +708,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="src.config.html#config.settings.IMPORT_EXPORT_USE_TRANSACTIONS">IMPORT_EXPORT_USE_TRANSACTIONS (dans le module config.settings)</a>
+</li>
       <li><a href="src.pompe.html#pompe.views.index">index() (dans le module pompe.views)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.TechnologiePompe.info">info (attribut pompe.models.TechnologiePompe)</a>
@@ -801,10 +798,6 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="src.pompe.html#pompe.models.VersionApp.maj_maj">maj_maj (attribut pompe.models.VersionApp)</a>
-</li>
-      <li><a href="src.pompe.html#pompe.models.VersionApp.maj_min">maj_min (attribut pompe.models.VersionApp)</a>
-</li>
       <li><a href="src.pompe.html#pompe.models.Document.manuel">manuel (attribut pompe.models.Document)</a>
 </li>
       <li><a href="src.pompe.html#pompe.admin.HistoryAdmin.media">media (propriété pompe.admin.HistoryAdmin)</a>
@@ -1123,6 +1116,8 @@
 </li>
         <li><a href="src.pompe.html#pompe.models.Tutelle.nom">(attribut pompe.models.Tutelle)</a>
 </li>
+        <li><a href="src.pompe.html#pompe.models.VersionApp.nom">(attribut pompe.models.VersionApp)</a>
+</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -1355,9 +1350,11 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="src.pompe.html#pompe.models.Fabriquant.save">save() (méthode pompe.models.Fabriquant)</a>
+      <li><a href="src.pompe.html#pompe.models.Document.save">save() (méthode pompe.models.Document)</a>
 
       <ul>
+        <li><a href="src.pompe.html#pompe.models.Fabriquant.save">(méthode pompe.models.Fabriquant)</a>
+</li>
         <li><a href="src.pompe.html#pompe.models.Huile.save">(méthode pompe.models.Huile)</a>
 </li>
         <li><a href="src.pompe.html#pompe.models.Kit.save">(méthode pompe.models.Kit)</a>
@@ -1399,10 +1396,10 @@
 </li>
       <li><a href="src.pompe.html#pompe.resource.SiteResource.Meta">SiteResource.Meta (classe dans pompe.resource)</a>
 </li>
-      <li><a href="src.pompe.html#pompe.models.StockPompe.statut">statut (attribut pompe.models.StockPompe)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="src.pompe.html#pompe.models.StockPompe.statut">statut (attribut pompe.models.StockPompe)</a>
+</li>
       <li><a href="src.pompe.html#pompe.models.StockPompe.STATUT_POMPE">STATUT_POMPE (attribut pompe.models.StockPompe)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.StockPompe.stock_history">stock_history() (méthode pompe.models.StockPompe)</a>
@@ -1473,8 +1470,6 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="src.pompe.html#pompe.models.VersionApp.texte">texte (attribut pompe.models.VersionApp)</a>
-</li>
       <li><a href="src.pompe.html#pompe.models.Inventaire.tutelle">tutelle (attribut pompe.models.Inventaire)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.Tutelle">Tutelle (classe dans pompe.models)</a>
@@ -1540,19 +1535,15 @@
       <ul>
         <li><a href="src.pompe.html#pompe.models.StockHistory.version">(attribut pompe.models.StockHistory)</a>
 </li>
-        <li><a href="src.pompe.html#pompe.models.VersionApp.version">(attribut pompe.models.VersionApp)</a>
-</li>
       </ul></li>
-      <li><a href="src.pompe.html#pompe.views.version">version() (dans le module pompe.views)</a>
-</li>
       <li><a href="src.pompe.html#pompe.models.VersionApp">VersionApp (classe dans pompe.models)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.VersionApp.DoesNotExist">VersionApp.DoesNotExist</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="src.pompe.html#pompe.models.VersionApp.MultipleObjectsReturned">VersionApp.MultipleObjectsReturned</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="src.pompe.html#pompe.admin.VersionAppAdmin">VersionAppAdmin (classe dans pompe.admin)</a>
 </li>
       <li><a href="src.pompe.html#pompe.models.StockPompe.vidange">vidange (attribut pompe.models.StockPompe)</a>

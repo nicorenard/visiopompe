@@ -7,9 +7,45 @@
     <div class="w3-container w3-dark-grey">
         <h2>Huiles</h2>
     </div>
+        <section class="w3-mobile w3-padding-24" style="margin-left:20px; margin-right:20px">
+        <!--formulaire de filtrage-->
+
+        <form class="d-flex">
+            <div class="w3-container">
+               <label for="recherche" class="form-label">Filtrer par Marque ou Nom d'Huile </label>
+                 <i class="fa fa-search"></i>
+                <input class="w3-input w3-border w3-padding " type="search" id="recherche" onkeyup="filtreHuile()"
+                       placeholder='Rechercher...' />
+            </div>
+        </form>
+
+    </section>
+     <div class="w3-container">
+        {% if msg_erreur %}
+        <div class=" w3-panel w3-red w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_erreur }}
+        </div>
+        {% endif %}
+        {% if msg_warning %}
+        <div class="w3-panel w3-yellow w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_warning }}
+        </div>
+        {% endif %}
+        {% if msg_succes %}
+        <div class="w3-panel w3-green w3-round w3-display-container" >
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            <p>{{ msg_succes }}</p>
+        </div>
+        {% endif %}
+    </div>
     {% for huile in huiles %}
     <section  class="w3-mobile" style="margin : 20px ;">
-        <div class="w3-cell-row w3-border">
+        <div class="w3-cell-row w3-border filtre">
             <div class="w3-col m3">
                 {% if huile.image %}
                  <img src="{{huile.image.url}}" class="w3-leftbar" alt="{{huile.nom}}" style="margin: 10px 4px 10px 10px; padding:4px;width:30%" />
@@ -18,14 +54,14 @@
                 {% endif %}
             </div>
             <div class="w3-col m5">
-                <p class="w3-leftbar" style="font-size: 20px; "><strong>NOM</strong> : {{huile.nom}} - <strong>MARQUE</strong> : {{huile.fabriquant.nom}}</p>
+                <p class="w3-leftbar nom" style="font-size: 20px; "><strong>NOM</strong> : {{huile.nom}} - <strong>MARQUE</strong> : {{huile.fabriquant.nom}}</p>
                 <p style="font-size: 16px;">Référence fabriquant : {% if huile.ref_fab %}<i>{{huile.ref_fab}}</i>{% endif %}</p>
                 <p style="font-size: 16px;">Mise à jour du stock : <i>{{huile.date_maj}}</i></p>
                 <p style="font-size: 16px;">Informations : <i>{{huile.information}}</i></p>
             </div>
             <div class="w3-col m3">
                 <p class=" w3-leftbar">&nbsp<img src="{% static 'pompe/img/menu_pompe/icon_quantite.png' %}" alt="quantite" style="width: 15%" />
-                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{huile.quantite}} Litres</strong></i></p>
+                    <i class="fa fa-chevron-right" style="font-size : 18px"> <strong>{{huile.quantite}} litre(s)</strong></i></p>
                 <br />
                 <p class=" w3-leftbar">&nbsp<img src="{% static 'pompe/img/menu_pompe/icon_localisation.png' %}" alt="geolocalisation" style="width: 15%"/>
                     <i class="fa fa-chevron-right" style="font-size : 18px"></i> {{huile.piece.etage.batiment.nom}}
@@ -54,4 +90,8 @@
     </section>
 
 </div>
+{% endblock %}
+
+{% block js_script %}
+<script src="{% static 'pompe/js/filtres.js' %}"></script>
 {% endblock %}

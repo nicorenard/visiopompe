@@ -1,3 +1,7 @@
+"""
+Roads of the application and framework.
+"""
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -14,4 +18,4 @@ urlpatterns = [
 
 if DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# valable que dans le serveur de dev pas en production.
+# only on dev server, not production server.
