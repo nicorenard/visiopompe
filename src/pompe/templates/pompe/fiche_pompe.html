@@ -8,30 +8,7 @@
         <h2>Modèles des pompes</h2>
     </div>
     <br/>
-    <!-----Message d'ajout---->
-    <div class="w3-container">
-        {% if msg_erreur %}
-        <div class=" w3-panel w3-red w3-round">
-            <span onclick="this.parentElement.style.display='none'"
-class="w3-button w3-display-topright">&times;</span>
-            {{ msg_erreur }}
-        </div>
-        {% endif %}
-        {% if msg_warning %}
-        <div class="w3-panel w3-yellow w3-round">
-            <span onclick="this.parentElement.style.display='none'"
-class="w3-button w3-display-topright">&times;</span>
-            {{ msg_warning }}
-        </div>
-        {% endif %}
-        {% if msg_succes %}
-        <div class="w3-panel w3-green w3-round w3-display-container" >
-            <span onclick="this.parentElement.style.display='none'"
-class="w3-button w3-display-topright">&times;</span>
-            <p>{{ msg_succes }}</p>
-        </div>
-        {% endif %}
-    </div>
+
     <section class="w3-mobile w3-padding-12" style="padding-left:20px; padding-right: 20px;">
         <table class="w3-table-all w3-centered w3-striped">
             <tr class="w3-pale-green w3-text-black">
@@ -86,7 +63,30 @@ class="w3-button w3-display-topright">&times;</span>
             {% endfor %}
         </table>
     </section>
-
+  <!-----Message d'ajout---->
+    <section class="w3-container">
+        {% if msg_erreur %}
+        <div class=" w3-panel w3-red w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_erreur }}
+        </div>
+        {% endif %}
+        {% if msg_warning %}
+        <div class="w3-panel w3-yellow w3-round">
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            {{ msg_warning }}
+        </div>
+        {% endif %}
+        {% if msg_succes %}
+        <div class="w3-panel w3-green w3-round w3-display-container" >
+            <span onclick="this.parentElement.style.display='none'"
+class="w3-button w3-display-topright">&times;</span>
+            <p>{{ msg_succes }}</p>
+        </div>
+        {% endif %}
+    </section>
     <section class="w3-mobile w3-padding-24" style="margin-left:20px ; margin-right:20px">
         <div class="w3-row">
             <div class="w3-col m6 s6">
@@ -120,7 +120,7 @@ class="w3-button w3-display-topright">&times;</span>
                         </div>
                     </form>
                     <div class="w3-container w3-amber w3-margin-top w3-center">
-                        <h4>Technologie de vide enregistrées</h4>
+                        <h4>Technologies de vide enregistrées</h4>
                     </div>
                     <div class="w3-container">
                         <table class="w3-table w3-centered w3-mobile">
