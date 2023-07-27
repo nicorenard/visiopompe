@@ -1419,10 +1419,10 @@ def update_doc(request, pk):
         if form.is_valid():
             form.save()
             msg_succes = f'La documentation a bien été mise à jour.'
-            url = reverse('pompe:kit') + '?msg_succes=' + msg_succes
+            url = reverse('pompe:doc') + '?msg_succes=' + msg_succes
         else:
             msg_erreur = f'La documentation n\'a pas pu être mise à jour.'
-            url = reverse('pompe:kit') + '?msg_erreur=' + msg_erreur
+            url = reverse('pompe:doc') + '?msg_erreur=' + msg_erreur
         return redirect(url)
     else:
         form = ModifDocForm(instance=docs)
