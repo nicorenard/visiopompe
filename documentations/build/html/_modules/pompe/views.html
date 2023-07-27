@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pompe.views &mdash; Documentation Visiopompe v1.1</title>
+  <title>pompe.views &mdash; Documentation Visiopompe v1.2</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -41,10 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Menu :</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Menu:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../users.html">Documentation Utilisateur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Documentation Technique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutoriel.html">1. Tutoriel rapide Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../users.html">2. Documentation Utilisateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">3. Documentation Technique</a></li>
 </ul>
 
         </div>
@@ -1061,7 +1062,7 @@
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Inventaire</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
         <span class="n">queryset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-        <span class="n">msg_succes</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Le numéro d</span><span class="se">\&#39;</span><span class="s1">inventaire  a bien été supprimé.&#39;</span>
+        <span class="n">msg_succes</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Le numéro d</span><span class="se">\&#39;</span><span class="s1">inventaire a bien été supprimé.&#39;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;pompe:inventaire&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;?msg_succes=&#39;</span> <span class="o">+</span> <span class="n">msg_succes</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1195,7 +1196,7 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_path</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
             <span class="n">pieces</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-            <span class="n">msg_succes</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Le stock a bien supprimé.&#39;</span>
+            <span class="n">msg_succes</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Le stock a bien été supprimé.&#39;</span>
             <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;pompe:pdetache&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;?msg_succes=&#39;</span> <span class="o">+</span> <span class="n">msg_succes</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1306,7 +1307,7 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">huile_directory</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">huile_directory</span><span class="p">)</span>
             <span class="n">huiles</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-            <span class="n">msg_succes</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Le stock a bien supprimé.&#39;</span>
+            <span class="n">msg_succes</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Le stock a bien été supprimé.&#39;</span>
             <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;pompe:huile&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;?msg_succes=&#39;</span> <span class="o">+</span> <span class="n">msg_succes</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pompe/huile.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;huiles&#39;</span><span class="p">:</span> <span class="n">huiles</span><span class="p">})</span></div>
@@ -1493,10 +1494,10 @@
         <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
             <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="n">msg_succes</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;La documentation a bien été mise à jour.&#39;</span>
-            <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;pompe:kit&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;?msg_succes=&#39;</span> <span class="o">+</span> <span class="n">msg_succes</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;pompe:doc&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;?msg_succes=&#39;</span> <span class="o">+</span> <span class="n">msg_succes</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">msg_erreur</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;La documentation n</span><span class="se">\&#39;</span><span class="s1">a pas pu être mise à jour.&#39;</span>
-            <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;pompe:kit&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;?msg_erreur=&#39;</span> <span class="o">+</span> <span class="n">msg_erreur</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;pompe:doc&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;?msg_erreur=&#39;</span> <span class="o">+</span> <span class="n">msg_erreur</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">ModifDocForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">docs</span><span class="p">)</span>

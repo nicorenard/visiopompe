@@ -987,7 +987,7 @@ def delete_inventaire(request, pk):
     queryset = get_object_or_404(Inventaire, pk=pk)
     if request.method == "POST":
         queryset.delete()
-        msg_succes = f'Le numéro d\'inventaire  a bien été supprimé.'
+        msg_succes = f'Le numéro d\'inventaire a bien été supprimé.'
         url = reverse('pompe:inventaire') + '?msg_succes=' + msg_succes
         return redirect(url)
 
@@ -1121,7 +1121,7 @@ def delete_pdetache(request, pk):
             if len(os.listdir(image_path)) == 0:
                 os.rmdir(image_path)
             pieces.delete()
-            msg_succes = f'Le stock a bien supprimé.'
+            msg_succes = f'Le stock a bien été supprimé.'
             url = reverse('pompe:pdetache') + '?msg_succes=' + msg_succes
         return redirect(url)
 
@@ -1232,7 +1232,7 @@ def delete_huile(request, pk):
             if len(os.listdir(huile_directory)) == 0:
                 os.rmdir(huile_directory)
             huiles.delete()
-            msg_succes = f'Le stock a bien supprimé.'
+            msg_succes = f'Le stock a bien été supprimé.'
             url = reverse('pompe:huile') + '?msg_succes=' + msg_succes
         return redirect(url)
     return render(request, 'pompe/huile.html', {'huiles': huiles})
@@ -1419,10 +1419,10 @@ def update_doc(request, pk):
         if form.is_valid():
             form.save()
             msg_succes = f'La documentation a bien été mise à jour.'
-            url = reverse('pompe:kit') + '?msg_succes=' + msg_succes
+            url = reverse('pompe:doc') + '?msg_succes=' + msg_succes
         else:
             msg_erreur = f'La documentation n\'a pas pu être mise à jour.'
-            url = reverse('pompe:kit') + '?msg_erreur=' + msg_erreur
+            url = reverse('pompe:doc') + '?msg_erreur=' + msg_erreur
         return redirect(url)
     else:
         form = ModifDocForm(instance=docs)
