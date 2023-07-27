@@ -25,7 +25,7 @@ django.setup()
 project = 'Visiopompe'
 copyright = 'Nicolas RENARD, 2022'
 author = 'Nicolas RENARD'
-release = 'v1.1'
+release = 'v1.2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -35,7 +35,6 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'rinoh.frontend.sphinx',
 
 ]
 
