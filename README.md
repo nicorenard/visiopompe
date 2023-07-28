@@ -1,10 +1,12 @@
 # Projet VISIOPOMPE
 
 Visiopompe est un mini projet développé sous python.
+
 Ce projet à pour but de centraliser et de mettre en place un systeme de gestion d'un parc de matériels mécaniques de type
 pompes avec technologies de vide (pompes à membranes, pompes à palettes, à vis etc...) au sein d'un laboratoire par exemple.
 Le listing des pompes peut se faire sur plusieurs niveaux de localisations ( Site -> emplacements dans une pièce) avec
 tous les détails techniques et historique de la vie de l'appareillage.
+
 Ce systeme inclut également la gestion d'équipements de maintenance: pièces détachées, kit de maintenances, huiles et documentations
 lié au fonctionnement de ces appareillages.
 
@@ -17,7 +19,9 @@ lié au fonctionnement de ces appareillages.
 ## Avant propos
 
 L'application est testé et en production sur un serveur **DEBIAN 11** avec une configuration **Apache 2** + module **WSGI**.
+
 La version de python utilisée est la version **3.10**.
+
 La base de données utilisée est **MariaDB**.
 
 ## Installation du projet
@@ -169,20 +173,17 @@ Par la suite, la navigation au sein du site web se fait grâce au menu à gauche
 
 ## BONUS DASHBOARD
 
-****[Nécessite de l'aide d'un développeur **Evaluez selon votre besoin**]****
-
-<details><summary>
-
+****[Nécessite de l'aide d'un développeur]****
 L'application propose d'avoir la possibilité de voir un menu _dashboard_ qui représente des compteurs des stocks, accessoires et pompes présentes.
-Le format qui est proposé était prévu pour une utilisation standard.
 
+Le format qui est proposé était prévu pour une utilisation standard.
+<details><summary>
 Cliquer pour en savoir plus...
 </summary>
 
 
 Si vous souhaitez agrémenter la dashboard en fonction de vos besoins par exemple des stocks de pompes par étages, batiments, un site,
 vous devez pour cela modifier le fichier suivant : 
-
 
 -  dashboard.html situé dans ".src/pompe/templates/pompe".
 -  views.py situé dans ".src/pompe".
@@ -264,13 +265,13 @@ Allez sur ce site : https://www.w3schools.com/w3css/w3css_colors.asp
 
 **Dernière version stable :** V.1.2
 
-V1.2 - 2023/07
+V1.2 - 2023/07/25
 - Ajout de recherches filtrées sur les parties accessoires (pièces détachées, huiles, kits de maintenances)
 - Ajout de messages d'erreurs, succès, informations
 - Documentations technique, utilisateur et tutoriel utilisateur
 - Bouton d'exportation des numéros d'inventaires et tutelles budgétaires.
 
-V1.1 - 2023/07
+V1.1 - 2023/07/15
 - Filtre par bâtiment dans le menu de recherche des stocks de pompes. 
 - Suppression automatique des documents et images lors de l'update ou suppression sur le serveur.
 - Refactoring affichage MODELE POMPE, des Fabriquants, des équipes, des lieux. 
