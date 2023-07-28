@@ -148,16 +148,17 @@ parc de pompes ou les autres éléments necessaires au fonctionnement de l'appli
 /!\ Pour débuter, commencez par remplir dans l'ordre suivant les différentes rubriques **AVANT** de compléter un modèle de
 pompe et un stock.
 
-1 - [Menu] Administration > Lieux
-1.1 - Sites
-1.2 - Bâtiments
-1.3 - Etages
-1.4 - Pièces
-2 - [Menu] Administration > Fabriquants
-3 - [Menu] Administration > Modèles des pompes
-3.1 - Technologie de vide
-3.2 - Fiches de pompe
-4 - [Menu] Pompes > Créer un stock
+1. [Menu] Administration > Lieux
+    2. Sites
+    3. Bâtiments
+    4. Etages
+    5. Pièces
+6. [Menu] Administration > Fabriquants
+7. [Menu] Administration > Modèles des pompes
+    8. Technologie de vide
+    9. Fiches de pompe
+10. [Menu] Pompes > Créer un stock
+
 
 /!\ Un stock a besoin pour être créé, à minima, de ces informations ci dessus.
 
