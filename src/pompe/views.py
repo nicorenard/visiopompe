@@ -52,27 +52,12 @@ def dashboard(request):
     p_rep = dash_pompes.filter(statut='R').count()
     p_atex = dash_pompes.filter(atex='1').count()
 
-    #: special to UMR 6521. Base on technologie of pump. #
-    p_palette = dash_pompes.filter(pompe__technologie__nom__icontains='palette').count()
-    p_membrane = dash_pompes.filter(pompe__technologie__nom__icontains='membrane').count()
-    p_seche = dash_pompes.filter(pompe__technologie__info__icontains='seche').count()
-
-    #: special to UMR 6521 by stair. #
-    p_etage_1 = dash_pompes.filter(etage__nom__icontains='1').count()
-    p_etage_2 = dash_pompes.filter(etage__nom__icontains='2').count()
-    p_etage_3 = dash_pompes.filter(etage__nom__icontains='3').count()
-
-    #: special to UMR6521 by teams. #
-    p_ciel = dash_pompes.filter(equipe__sigle__icontains='ciel').count()
-    p_spectre = dash_pompes.filter(equipe__sigle__icontains='spectre').count()
-    p_cosm = dash_pompes.filter(equipe__sigle__icontains='cosm').count()
-    p_umr = dash_pompes.filter(equipe__sigle__icontains='umr').count()
-
-    context = {'p_all': p_all, 'p_valide': p_valide, 'p_stock': p_stock, 'p_hs': p_hs, 'p_rep': p_rep,
-               'p_atex': p_atex,
-               'p_palette': p_palette, 'p_membrane': p_membrane, 'p_seche': p_seche,
-               'p_etage_1': p_etage_1, 'p_etage_2': p_etage_2, 'p_etage_3': p_etage_3,
-               'p_ciel': p_ciel, 'p_spectre': p_spectre, 'p_cosm': p_cosm, 'p_umr': p_umr,
+    context = {'p_all': p_all, 
+               'p_valide': p_valide,
+               'p_stock': p_stock,
+               'p_hs': p_hs,
+               'p_rep': p_rep,
+               'p_atex': p_atex
                }
     return render(request, 'pompe/dashboard.html', context)
 
