@@ -1,242 +1,298 @@
-#### VISIOPOMPE PROJECT #####
+# Projet VISIOPOMPE
 
-Visiopompe est un mini projet développé sous python 3 avec le Framework django.
-Ce projet à pour but de centraliser et de mettre en place un systeme de gestion d'un parc de matériel mécanique de type
-pompes à vide (pompes à membranes et pompes à palettes) au sein d'un laboratoire par exemple.
+Visiopompe est un mini projet développé sous python.
+Ce projet à pour but de centraliser et de mettre en place un systeme de gestion d'un parc de matériels mécaniques de type
+pompes avec technologies de vide (pompes à membranes, pompes à palettes, à vis etc...) au sein d'un laboratoire par exemple.
 Le listing des pompes peut se faire sur plusieurs niveaux de localisations ( Site -> emplacements dans une pièce) avec
 tous les détails techniques et historique de la vie de l'appareillage.
 Ce systeme inclut également la gestion d'équipements de maintenance: pièces détachées, kit de maintenances, huiles et documentations
 lié au fonctionnement de ces appareillages.
 
-## Pour commencer
+## Spécification :
 
-### Pré-requis
+- Langage : Python 3.10
+- Framework front-end : W3.css 
+- Framework back-end : Django
 
-- Installez un serveur linux avec un accès internet (prod testée : debian 11).
-- Configurez le serveur pour recevoir python 3.10.
-- Télécharger les sources.
-  - <code> git clone http....</code>
-- Installez avant de commencer un environnement virtuel:
+## Avant propos
 
+L'application est testé et en production sur un serveur **DEBIAN 11** avec une configuration **Apache 2** + module **WSGI**.
+La version de python utilisée est la version **3.10**.
+La base de données utilisée est **MariaDB**.
+
+## Installation du projet
+
+- Télécharger les sources du projet dans le dossier /var/html/www par example:  
+<code> git clone http....</code>
+- Télécharger et installez un environnement virtuel:
 <code> sudo apt install python3-venv</code>
-- Créez un nouveau 'virtualenv' dédié au projet visiopompe dans
-- eg. /opt/local/virtualenvs/visiopompe
-> sudo mkdir -p /opt/local/virtualenvs/
-> python3 -m venv /opt/local/virtualenvs/visiopompe
+- Créez un nouveau 'virtualenv' dédié au projet visiopompe :
+<code> python3 -m venv /chemin/vers/visiopompe</code>
+- Activez le virtualenv :
+source chemin/vers/visiopompe/bin/activate
 
 - Installez les dépendances Python tierces, décrites dans le fichier "requierements-prod.txt"
-  du projet, dans ce nouveau virtualenv, à l'aide du logiciel 'pip' fourni dans ce virtualenv:
+du projet, dans ce nouveau virtualenv, à l'aide du logiciel 'pip' fourni dans ce virtualenv:
 
-<code> /opt/local/virtualenvs/visiopompe/bin/pip install -r path/to/visiopompe/requirements-prod.txt</code>
-# des dépendances additionnelles listées dans "requirements-dev.txt" si vous voulez participer au projet.
+<code> pip install -r chemin/vers/visiopompe/requirements-prod.txt</code>
 
-- Placez les sources Python du projet 'visiopompe' dans un répertoire dédié,
-  par ex. /opt/local/visiopompe/v1.0:
+Note : des dépendances additionnelles listées dans "requirements-dev.txt" sont disponible sur la branche v1.2 si vous voulez forker le projet.
 
-> sudo mkdir -p /opt/local/visiopompe/v1.0
-> sudo cp -R path/to/visiopompe/src/* /opt/local/visiopompe/v1.0/
-
-Vous pouvez maintenant créer un nouveau "projet" 'visiopompe', une nouvelle instance,
-avec ses propres configuration, base de données, fichiers uploadés, etc.!
-
-- Créer un fichier .env basé sur le fochier .env-example et placez le dans le dossier racine du projet :
+- Créer un fichier **.env** basé sur le fichier _.env-example_ et placez le à racine du projet :
 
 Structure du fichier:
->   clef_secrete : https://codinggear.blog/django-generate-secret-key
+
+[ ] clef secrète à générer : https://codinggear.blog/django-generate-secret-key
+
 > 
     SECRET_KEY = **Introduisez une clé secrète** 
     DJANGO_DEBUG = False
-    ALLOWED_HOSTS = **mettre l'adresse IP**
+    ALLOWED_HOSTS = **mettre l'adresse IP/nom du serveur**
 
-- Paramétrez l’accès à base de données via le fichier "setting.py" contenu dans "/src/config".
-Pour cela il est nécessaire de modifier la configuration de la base de données si vous ne souhaitez pas
+- Paramétrez l’accès à base de données via le fichier "setting.py" contenu dans le dossier "/src/config".
+Pour cela il est nécessaire de modifier la configuration de la base de données si vous ne souhaitez pas utiliser
 la base de données par défault : SQLite.
+Note : les dépendances fournis inclus les librairies pour MySql/MariaDB.
 
 Par défaut la configuration est la suivante:
+```
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+```
 
-Vous pourrez la modifier et la configurer comme suit, par exemple pour PostgreSQL:
+Vous pourrez la modifier et la configurer comme suit, par exemple pour MariaDB:
 
+```
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
+        'ENGINE': 'django.db.backends.mysqlsql',
+        'NAME': 'my_database',
+        'USER': 'my_database_user',
+        'PASSWORD': 'my_password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
+```
 
-### Installation
+
+## Paramétrage d'Apache 2 + module wsgi
+
+Succintement : 
+
+- `sudo apt-get install libapache2-mod-wsgi-py3`
+- `cd /etc/apache2/sites-available/` 
+puis créer un fichier "visiopompe.conf"
+
+- Structure du fichier 'visiopompe.conf' : 
+https://docs.djangoproject.com/fr/4.2/howto/deployment/wsgi/modwsgi/
+
+
+- `sudo systemctl restart apache2` 
+Puis donner les droits d'accès en écriture et en lecture à Apache sur le dossier static et média :
+- `chmod 755 /chemin/vers/dossier/visiopompe/media`
+- `chmod 644 /chemin/vers/fichier/visiopompe.conf`
+- `chown -R www-data:www-data /chemin/vers/dossier/visiopompe/media`
+- `systemctl restart apache2`
+
+### Configuration supplémentaire
 
 [ HTML ]
--Changez dans le fichier HTML : "pompe/templates/navbar.html" l'adresse mail du support et indiquez celui de
-l'administrateur en charge du projet.
-
-
+Changez dans le fichier HTML "pompe/templates/navbar.html",  
+l'adresse mail du support et indiquez celui de l'administrateur en charge du projet.
 
 [ ADMIN ]
-- Si vous souhaitez faire un import massif ou un export . il existe cette option dans la partie administration du site.
+Si vous souhaitez faire un import massif ou un export . il existe cette option dans la partie administration du site.
 L'import/export est possible pour les fiches suivantes :
---"modèles de pompes","stocks"
---"huiles","pièces détachées","documentations techniques"
---"tutelles","les codes inventaires"
---"les équipes","les fabriquants de pompes"
---"sites", "bâtiments", "étages", "pièces"
+- "modèles de pompes","stocks"
+- "huiles","pièces détachées","documentations techniques"
+- "tutelles","les codes inventaires"
+- "les équipes","les fabriquants de pompes"
+- "sites", "bâtiments", "étages", "pièces"
 
 Pour accéder à la partie administration, faite la commande suivante:
 
->>> python manage.py createsuperuser
+`python manage.py createsuperuser`
 
 Entrez un login puis un mot de passe. /!\ Le mot de passe n'est pas visible.
 
 Vous pouvez accéder à l'administration de la sorte :
 
->>> adresse_du_site_web/admin  (ex : http://localhost/admin)
+`adresse_du_site_web/admin  (ex : http://localhost/admin)`
 
 Il faut ensuite aller dans l'onglet "ModelePompe" par exemple puis cliquer sur les boutons correspondant.
-l'import se fait via le template délivré dans le dossier "importation".
 Il est conseillé d'importer au format CSV.
-Note : Ce fichier csv et le dossier "importation" ne sont pas à laisser sur votre serveur.
 
 [ DIVERS ]
-- Le dossier "documentations" est informatif et concernera un developpeur et sysadmin.
-Il ne doit pas être laissé sur le serveur de production (inutile).
+Le dossier "documentations" contient la documentation de l'application sous forme de site web standalone :
+- Tutoriel rapide utilisateur
+- documentation complète utilisateur
+- documentation developpeur.
+
+Vous pouvez la rendre accessible depuis votre serveur en modifiant votre fichier _.conf_ d'Apache et en créant un lien url supplémentaire dans le menu de l'application par exemple.
 
 ## Démarrage
 
 Lorsque le site web est en place ainsi que l'accès établit, il convient de créer un compte "sysadmin" qui aura accès
 en cas de problème au schéma complet des élements affichés dans le site web.
->>>>(pour le créer voir plus haut : rubrique >>[ADMIN]
+>
+    pour le créer voir plus haut : rubrique >[ADMIN]
+
 Il pourra également supprimer massivement ou importer massivement dans la base de données, les fiches ou stocks de
 parc de pompes ou les autres éléments necessaires au fonctionnement de l'application.
 
-/!\ Pour débuter, commencez par remplir dans l'ordre suivant les différentes rubriques AVANT de compléter un modèle de
+/!\ Pour débuter, commencez par remplir dans l'ordre suivant les différentes rubriques **AVANT** de compléter un modèle de
 pompe et un stock.
 
-1- [Menu] Administration / Lieux
+1 - [Menu] Administration > Lieux
 1.1 - Sites
 1.2 - Bâtiments
 1.3 - Etages
 1.4 - Pièces
-2 - [Menu] Administration / Fabriquants
-3 - [Menu] Administration / Modèles des pompes
-3.1 - Technologie de pompe
+2 - [Menu] Administration > Fabriquants
+3 - [Menu] Administration > Modèles des pompes
+3.1 - Technologie de vide
 3.2 - Fiches de pompe
-4 - [Menu] Pompes / Créer un stock
+4 - [Menu] Pompes > Créer un stock
 
-/!\ Un stock a besoin pour être créé, à minima, de ces informations là.
-Il est rudement conseillé de compléter les autres élements pour un meilleur suivi de vos machines.
-Se référer à la documentation utilisateur pour plus de détail.
+/!\ Un stock a besoin pour être créé, à minima, de ces informations ci dessus.
 
+Il est rudement conseillé de compléter les autres élements pour un meilleur suivi de vos appareils.
+> Se référer à la documentation utilisateur pour plus de détail.
 
 Par la suite, la navigation au sein du site web se fait grâce au menu à gauche.
 
-[BONUS]
-- Cas de la Dashboard.
+## BONUS DASHBOARD
 
-****[Nécessite de l'aide d'un dev **Evaluez selon votre besoin**]****
+****[Nécessite de l'aide d'un développeur **Evaluez selon votre besoin**]****
 
-L'application propose d'avoir la possibilité de voir un menu dashboard
-qui reprend les informations de suivis des stocks, accessoires et pompes présentes.
-Le format qui est proposé en prévu pour une utilisation "standard".
+<details><summary>
+
+L'application propose d'avoir la possibilité de voir un menu _dashboard_ qui représente des compteurs des stocks, accessoires et pompes présentes.
+Le format qui est proposé était prévu pour une utilisation standard.
+
+Cliquer pour en savoir plus...
+</summary>
+
+
 Si vous souhaitez agrémenter la dashboard en fonction de vos besoins par exemple des stocks de pompes par étages, batiments, un site,
-vous devez pour cela modifier le fichier suivant : dashboard.html situé dans ".src/pompe/templates/pompe".
-Vous devez aussi modifier le fichier de l'application : views.py.
+vous devez pour cela modifier le fichier suivant : 
 
-# VIEW.py
->>ligne  28 : ajoutez ces codes en fonction des besoins
 
-Encart pour les sites :
->>>>variable = dash_pompes.filter(etage__batiment__site='x').count()
+-  dashboard.html situé dans ".src/pompe/templates/pompe".
+-  views.py situé dans ".src/pompe".
+
+### views.py
+> ligne  28 : ajoutez ces codes en fonction des besoins. Ce sont des exemples non exaustif.
+
+- Encart pour les sites :
+`variable = dash_pompes.filter(etage__batiment__site='x').count()`
 x = valeur en base de données en référence à l'id du site en BDD.
-Encart pour les batiments:
->>>> variable = dash_pompes.filter(etage__batiment='x').count()
+
+- Encart pour les batiments:
+`variable = dash_pompes.filter(etage__batiment='x').count()`
 x = valeur en base de données en référence à l'id du batiment en BDD.
-Encart pour les étages:
->>>> variable = dash_pompes.filter(etage='x').count()
+
+- Encart pour les étages:
+`variable = dash_pompes.filter(etage='x').count()`
 x = valeur en base de données en référence à l'id de l'étage en BDD.
-Encart pour les pièces:
->>>> variable = dash_pompes.filter(piece='x').count()
-x = valeur en base de données en référence à l'id de la pièce en BDD .
-Encart par équipes :
->>>> variable = dash_pompes.filter(equipe='x').count()
-x = valeur en base de données en référence à l'id de l'équipe' en BDD .
-(ex : equipe__sigle__icontains='CEMCA')
-Encart par fabriquants :
->>>> var = dash_pompes.filter(pompe__fabriquant='x').count()
-Encart par pompes et technologie associée :
->>>> var = dash_pompes.filter(pompe__technologie='x').count()
+
+- Encart pour les pièces:
+`variable = dash_pompes.filter(piece='x').count()`
+x = valeur en base de données en référence à l'id de la pièce en BDD.
+
+- Encart par équipes :
+`variable = dash_pompes.filter(equipe='x').count()`
+x = valeur en base de données en référence à l'id de l'équipe' en BDD ou une référence à une équipe particulière.
+(ex : equipe__sigle__icontains='nom_d_equipe)
+
+Pour une valeur autre via le nom ou le sigle pour l'équipe, 
+-> utiliser le parametre "icontains" qui _case-insensitive_. 
+Plus d'infos voir la documentation django.
+
+- Encart par fabriquants :
+`var = dash_pompes.filter(pompe__fabriquant='x').count()`
+
+- Encart par pompes et technologie associée :
+ `var = dash_pompes.filter(pompe__technologie='x').count()`
 x = valeur en base de données en référence à la technologie créée.
 
-Pour une valeur autre via le nom ou le sigle pour l'équipe 
--> utiliser le parametre "icontains" qui case-insensitive. 
-Plus d'infos voir la django doc.
+etc....
 
 Lorsque vous avez créé une variable et un filtre, il faut l'ajouter à la variable "context" pour la déclarer
-et l'utiliser dans le template dashboard.html.
-par exemple : 'variable_fabriquant':variable_fabriquant
+et l'utiliser dans le template "dashboard.html".
+par exemple : 
+```
+context = {
 
-# DASHBOARD.HTML
+    ..code précédent.. 
+    'votre_variable': votre variable
+}
+```
 
-La dashboard fonctionne sous un systeme de container divisé en 4 parties.
+### dashboard.html
+
+La dashboard fonctionne sous un systeme de _container_ divisé en 4 parties.
 Pour créer un block de 4 nouveaux encarts, il faut copier ce code à la suite entre une balise
-<div class="w3-col m3 s3">**code**</div>
+```
+<div class="w3-col m3 s3">** autre code**
 
                     <div class="w3-card-2 w3-center w3-text-blue-gray">
                         <header class="w3-container w3-pale-blue">
                             <h4>**TITRE DE L'ENCART**</h4>
                         </header>
                         <div class="w3-container w3-xlarge">
-                            <p><strong>{{**VARIABLE DANS view.py/context**}}</strong></p>
+                            <p><strong>{{**VARIABLE DANS views.py/context**}}</strong></p>
                         </div>
                     </div>
+</div>                    
+```
 
 La dashboard est un élement modulable. A vous de voir si vous souhaitez ou non l'agrémenter.
-Pour plus d'info sur les couleurs disponible à mettre dans la balise <header> à l'emplacement
->> <header class="w3-couleur"></header>
- Allez sur ce site : https://www.w3schools.com/w3css/w3css_colors.asp
-
-## Projet fabriqué avec :
-
-* [Python 3] - [W3.css] - [Django]
+Pour plus d'informations sur les couleurs disponible à mettre dans la balise <header> à l'emplacement
+`<header class="w3-couleur"></header>`
+ 
+Allez sur ce site : https://www.w3schools.com/w3css/w3css_colors.asp
+</details>
 
 ## Changelog
 
+**Dernière version stable :** V.1.2
 
-
-**Dernière version stable :** V.1.1
+V1.2 - 2023/07
+- Ajout de recherches filtrées sur les parties accessoires (pièces détachées, huiles, kits de maintenances)
+- Ajout de messages d'erreurs, succès, informations
+- Documentations technique, utilisateur et tutoriel utilisateur
+- Bouton d'exportation des numéros d'inventaires et tutelles budgétaires.
 
 V1.1 - 2023/07
 - Filtre par bâtiment dans le menu de recherche des stocks de pompes. 
-- Suppression automatique des documents et images lors de l'update ou suppression 
-- Refactoring affichage MODELE POMPE, des Fabriquants, des équipes, des lieux 
-- Refactoring des formulaires
-- Amélioration du stockage des images sur serveur par date
-- Retaillage des images
+- Suppression automatique des documents et images lors de l'update ou suppression sur le serveur.
+- Refactoring affichage MODELE POMPE, des Fabriquants, des équipes, des lieux. 
+- Refactoring des formulaires.
+- Amélioration du stockage des images sur serveur par date.
+- Redimensionnage des images.
 - Refactoring  des noms de tables de la base de données : convention de nommage appliquée.
 
 V1.0 - 2022/
 VO - 2021/11
 
-## Features 
+## Features possible
 
->> HTML : Ajouter un bouton "duplication" pour dupliquer un objet en base de données => gain de temps users
->> SESSION : Création de compte utilisateurs type "equipe" pour les droits sur l'application.
->> Filtres de recherches pour les accessoires en générale
->> Version responsive de l'application
->> Dockerisation de l'application
+- HTML : Ajouter un bouton "duplication" pour dupliquer un objet en base de données => gain de temps users
+- SESSION : Création de compte utilisateurs type "equipe" pour les droits sur l'application.
+- Version mobile de l'application
+- Dockerisation de l'application
 
 
 ## Auteurs
 
-* Nicolas Renard _ (nicolas.renard[arobase]univ-brest.fr)
+Nicolas Renard _ (nicolas.renard[arobase]univ-brest.fr)
+
 *!* L'auteur remercie chaleureusement V.Férotin (http://vincent-ferotin.info/) pour ses conseils avisés.
 
 
