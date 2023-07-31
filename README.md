@@ -9,6 +9,11 @@ tous les détails techniques et historique de la vie de l'appareillage.
 
 Ce systeme inclut également la gestion d'équipements de maintenance: pièces détachées, kit de maintenances, huiles et documentations
 lié au fonctionnement de ces appareillages.
+## Screenshots
+![visopompe_1](https://github.com/nicorenard/visiopompe/assets/39690470/1cc64fea-e3bd-487e-907f-bfddfdc08c0a)
+![visopompe_2](https://github.com/nicorenard/visiopompe/assets/39690470/d7836df7-c405-4b77-a600-bbc993ee285b)
+![visopompe_3](https://github.com/nicorenard/visiopompe/assets/39690470/86efdbc8-76bb-47d1-961b-4727e00ab164)
+![visopompe_4](https://github.com/nicorenard/visiopompe/assets/39690470/366ad017-9691-4891-82b1-97eb1da5ff96)
 
 ## Spécification :
 
@@ -300,7 +305,9 @@ Nicolas Renard _ (nicolas.renard[arobase]univ-brest.fr)
 
 ## License
 
-Ce projet est sous licence MIT -  pour plus d'informations
+Ce projet est sous licence MIT -  
+
+Dépot original : https://gitlab.in2p3.fr/nicolas.renard/visiopompe
 
 
 
